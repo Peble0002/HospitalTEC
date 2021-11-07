@@ -21,9 +21,9 @@ public abstract class Persona {
    * @param id
    * @param nombre 
    */
-  public Persona(int pId, String pNombre) {
+  public Persona(int pId) {
     this.id = pId;
-    this.nombre = pNombre;
+ 
   }
 
   /**
