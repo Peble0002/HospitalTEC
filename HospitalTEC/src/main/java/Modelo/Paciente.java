@@ -11,9 +11,9 @@ import java.util.ArrayList;
 
 /**
  *
- * @author pablo
+ * @author Pablo Chaves, Aaron Soto y Luis Leitón
  */
-public class Paciente extends Persona{
+public class Paciente extends Usuario{
   private LocalDate fechaNacimiento;
   private String tipoSangre;
   private String nacionalidad;
@@ -104,7 +104,9 @@ public class Paciente extends Persona{
     this.vacunas.add(vacunas);
   }
   
-  
+  public void asignarDireccion(){
+    
+  }
 
   
   

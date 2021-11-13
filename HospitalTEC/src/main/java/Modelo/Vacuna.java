@@ -5,10 +5,57 @@
  */
 package Modelo;
 
+import java.time.LocalDate;
+
 /**
  *
- * @author pablo
+ * @author Pablo Chaves, Aaron Soto y Luis Leitón
  */
-class Vacuna {
+public class Vacuna {
+  private LocalDate fechaAplicacion;
+  private String nombre;
+  private String farmaceutica;
+  private int numeroLote;
+
+  public Vacuna(int pDia, int pMes, int pAno, String nombre, String farmaceutica, int numeroLote) {
+    this.fechaAplicacion = LocalDate.of(pAno, pMes, pDia);
+    this.nombre = nombre;
+    this.farmaceutica = farmaceutica;
+    this.numeroLote = numeroLote;
+  }
+
+  public LocalDate getFechaAplicacion() {
+    return fechaAplicacion;
+  }
+
+  public void setFechaAplicacion(LocalDate fechaAplicacion) {
+    this.fechaAplicacion = fechaAplicacion;
+  }
+
+  public String getNombre() {
+    return nombre;
+  }
+
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+
+  public String getFarmaceutica() {
+    return farmaceutica;
+  }
+
+  public void setFarmaceutica(String farmaceutica) {
+    this.farmaceutica = farmaceutica;
+  }
+
+  public int getNumeroLote() {
+    return numeroLote;
+  }
+
+  public void setNumeroLote(int numeroLote) {
+    this.numeroLote = numeroLote;
+  }
+  
+  
   
 }

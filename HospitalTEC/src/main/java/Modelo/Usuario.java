@@ -10,8 +10,9 @@ package Modelo;
  * @author Pablo Chaves, Aaron Soto y Luis Leitón
  * @version (06/11/2021)
  */
-public abstract class Persona {
+public abstract class Usuario {
   protected int id;
+  protected String contraseña;
   protected String nombre;
   protected String apellido1;
   protected String apellido2;
@@ -21,9 +22,9 @@ public abstract class Persona {
    * @param id
    * @param nombre 
    */
-  public Persona(int pId) {
+  public Usuario(int pId) {
     this.id = pId;
- 
+    
   }
 
   /**
