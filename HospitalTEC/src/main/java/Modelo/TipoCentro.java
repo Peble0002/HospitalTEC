@@ -11,32 +11,32 @@ package Modelo;
  */
 class TipoCentro {
   private int codigo;
-  private String Tipo;
+  private String tipo;
 
   /**
    * 
    * @param codigo
-   * @param Tipo 
+   * @param tipo 
    */
-  public TipoCentro(int codigo, String Tipo) {
-    this.codigo = codigo;
-    this.Tipo = Tipo;
+  public TipoCentro(int pCodigo, String pTipo) {
+    this.codigo = pCodigo;
+    this.tipo = pTipo;
   }
 
   public int getCodigo() {
     return codigo;
   }
 
-  public void setCodigo(int codigo) {
-    this.codigo = codigo;
+  public void setCodigo(int pCodigo) {
+    this.codigo = pCodigo;
   }
 
   public String getTipo() {
-    return Tipo;
+    return tipo;
   }
 
-  public void setTipo(String Tipo) {
-    this.Tipo = Tipo;
+  public void setTipo(String pTipo) {
+    this.tipo = pTipo;
   }
   
   

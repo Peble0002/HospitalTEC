@@ -26,14 +26,23 @@ public class Paciente extends Usuario{
 
   /**
    * 
-   * @param fechaNacimiento
-   * @param tipoSangre
-   * @param nacionalidad
+   * @param pFechaNacimiento
+   * @param pTipoSangre
+   * @param pNacionalidad
    * @param pId 
    */
-  public Paciente(LocalDate fechaNacimiento, String tipoSangre, String nacionalidad, int pId) {
+  public Paciente(LocalDate pFechaNacimiento, String pTipoSangre, String pNacionalidad, int pId) {
     super(pId);
-    this.fechaNacimiento = fechaNacimiento;
+    this.fechaNacimiento = pFechaNacimiento;
+    this.tipoSangre = pTipoSangre;
+    this.nacionalidad = pNacionalidad;
+    this.telefonos= new ArrayList<String>();
+    this.vacunas= new ArrayList<Vacuna>();
+  }
+  
+  public Paciente(int pDia, int pMes, int pAno, String tipoSangre, String nacionalidad, int pId) {
+    super(pId);
+    this.fechaNacimiento = LocalDate.of(pAno, pMes, pDia);
     this.tipoSangre = tipoSangre;
     this.nacionalidad = nacionalidad;
     this.telefonos= new ArrayList<String>();
@@ -52,16 +61,16 @@ public class Paciente extends Usuario{
     return tipoSangre;
   }
 
-  public void setTipoSangre(String tipoSangre) {
-    this.tipoSangre = tipoSangre;
+  public void setTipoSangre(String pTipoSangre) {
+    this.tipoSangre = pTipoSangre;
   }
 
   public String getNacionalidad() {
     return nacionalidad;
   }
 
-  public void setNacionalidad(String nacionalidad) {
-    this.nacionalidad = nacionalidad;
+  public void setNacionalidad(String pNacionalidad) {
+    this.nacionalidad = pNacionalidad;
   }
 
   public String getProvincia() {

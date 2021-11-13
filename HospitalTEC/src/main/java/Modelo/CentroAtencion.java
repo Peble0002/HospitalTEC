@@ -26,10 +26,10 @@ public class CentroAtencion {
    * @param capacidad
    * @param pTipo 
    */
-  public CentroAtencion(String nombre, String ubicacion, int capacidad, TipoCentro pTipo) {
-    this.nombre = nombre;
-    this.ubicacion = ubicacion;
-    this.capacidad = capacidad;
+  public CentroAtencion(String pNombre, String pUbicacion, int pCapacidad, TipoCentro pTipo) {
+    this.nombre = pNombre;
+    this.ubicacion = pUbicacion;
+    this.capacidad = pCapacidad;
     this.tipo= pTipo;
     codigo = contador.incrementAndGet();    
   }
@@ -38,32 +38,32 @@ public class CentroAtencion {
     return nombre;
   }
 
-  public void setNombre(String nombre) {
-    this.nombre = nombre;
+  public void setNombre(String pNombre) {
+    this.nombre = pNombre;
   }
 
   public String getUbicacion() {
     return ubicacion;
   }
 
-  public void setUbicacion(String ubicacion) {
-    this.ubicacion = ubicacion;
+  public void setUbicacion(String pUbicacion) {
+    this.ubicacion = pUbicacion;
   }
 
   public int getCapacidad() {
     return capacidad;
   }
 
-  public void setCapacidad(int capacidad) {
-    this.capacidad = capacidad;
+  public void setCapacidad(int pCapacidad) {
+    this.capacidad = pCapacidad;
   }
 
   public TipoCentro getTipo() {
     return tipo;
   }
 
-  public void setTipo(TipoCentro tipo) {
-    this.tipo = tipo;
+  public void setTipo(TipoCentro pTipo) {
+    this.tipo = pTipo;
   }
   
   

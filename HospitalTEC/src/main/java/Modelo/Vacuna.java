@@ -17,11 +17,20 @@ public class Vacuna {
   private String farmaceutica;
   private int numeroLote;
 
-  public Vacuna(int pDia, int pMes, int pAno, String nombre, String farmaceutica, int numeroLote) {
+  /**
+   * 
+   * @param pDia
+   * @param pMes
+   * @param pAno
+   * @param pNombre
+   * @param pFarmaceutica
+   * @param pNumeroLote 
+   */
+  public Vacuna(int pDia, int pMes, int pAno, String pNombre, String pFarmaceutica, int pNumeroLote) {
     this.fechaAplicacion = LocalDate.of(pAno, pMes, pDia);
-    this.nombre = nombre;
-    this.farmaceutica = farmaceutica;
-    this.numeroLote = numeroLote;
+    this.nombre = pNombre;
+    this.farmaceutica = pFarmaceutica;
+    this.numeroLote = pNumeroLote;
   }
 
   public LocalDate getFechaAplicacion() {
@@ -36,24 +45,24 @@ public class Vacuna {
     return nombre;
   }
 
-  public void setNombre(String nombre) {
-    this.nombre = nombre;
+  public void setNombre(String pNombre) {
+    this.nombre = pNombre;
   }
 
   public String getFarmaceutica() {
     return farmaceutica;
   }
 
-  public void setFarmaceutica(String farmaceutica) {
-    this.farmaceutica = farmaceutica;
+  public void setFarmaceutica(String pFarmaceutica) {
+    this.farmaceutica = pFarmaceutica;
   }
 
   public int getNumeroLote() {
     return numeroLote;
   }
 
-  public void setNumeroLote(int numeroLote) {
-    this.numeroLote = numeroLote;
+  public void setNumeroLote(int pNumeroLote) {
+    this.numeroLote = pNumeroLote;
   }
   
   
