@@ -33,10 +33,10 @@ public class RegistrarVacunas extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         tbFarmaceutica = new javax.swing.JTextField();
-        tbFechaVacuna = new javax.swing.JTextField();
         tbNombreVacuna = new javax.swing.JTextField();
         btnRegistrarVacuna = new javax.swing.JButton();
         tbNumeroLote = new javax.swing.JTextField();
+        jFechaAplicacion = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,6 +52,11 @@ public class RegistrarVacunas extends javax.swing.JFrame {
         btnVolver.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(11, 136, 136));
         btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 153, 153));
@@ -66,8 +71,6 @@ public class RegistrarVacunas extends javax.swing.JFrame {
         jLabel2.setText("Nombre");
 
         tbFarmaceutica.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-
-        tbFechaVacuna.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         tbNombreVacuna.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         tbNombreVacuna.addActionListener(new java.awt.event.ActionListener() {
@@ -94,12 +97,16 @@ public class RegistrarVacunas extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel6))
                 .addGap(68, 68, 68)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tbNumeroLote)
-                    .addComponent(tbNombreVacuna)
-                    .addComponent(tbFechaVacuna)
-                    .addComponent(tbFarmaceutica))
-                .addGap(21, 21, 21))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tbNumeroLote)
+                            .addComponent(tbNombreVacuna)
+                            .addComponent(tbFarmaceutica))
+                        .addGap(21, 21, 21))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jFechaAplicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(93, 93, 93)
                 .addComponent(btnVolver)
@@ -120,10 +127,10 @@ public class RegistrarVacunas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(tbNombreVacuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tbFechaVacuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jFechaAplicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -145,6 +152,13 @@ public class RegistrarVacunas extends javax.swing.JFrame {
     private void tbNombreVacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbNombreVacunaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tbNombreVacunaActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+      RegistroPacientes RP = new RegistroPacientes();
+      RP.setVisible(true);
+
+      this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,13 +198,13 @@ public class RegistrarVacunas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnRegistrarVacuna;
     public javax.swing.JButton btnVolver;
+    public com.toedter.calendar.JDateChooser jFechaAplicacion;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     public javax.swing.JTextField tbFarmaceutica;
-    public javax.swing.JTextField tbFechaVacuna;
     public javax.swing.JTextField tbNombreVacuna;
     public javax.swing.JTextField tbNumeroLote;
     // End of variables declaration//GEN-END:variables

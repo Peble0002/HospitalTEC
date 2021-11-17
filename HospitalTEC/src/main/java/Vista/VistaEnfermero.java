@@ -8,12 +8,12 @@ package Vista;
  *
  * @author LUIS LEITON
  */
-public class VistaDoctor extends javax.swing.JFrame {
+public class VistaEnfermero extends javax.swing.JFrame {
 
     /**
-     * Creates new form VistaDoctor
+     * Creates new form VistaEnfermero
      */
-    public VistaDoctor() {
+    public VistaEnfermero() {
         initComponents();
     }
 
@@ -26,8 +26,9 @@ public class VistaDoctor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnDetalleHospitalizaciones = new javax.swing.JButton();
         btnCancelarCita = new javax.swing.JButton();
-        btnAtenderCita = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         btnCitasRegistradas = new javax.swing.JButton();
         btnDiagnosticos = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -36,11 +37,12 @@ public class VistaDoctor extends javax.swing.JFrame {
         btnCantidadCitas = new javax.swing.JButton();
         btnCantidadDiagnosticos = new javax.swing.JButton();
         btnCantidadTratamientos = new javax.swing.JButton();
-        btnDetalleHospitalizaciones = new javax.swing.JButton();
-        btnVolver = new javax.swing.JButton();
-        btnSeguimientoInternado = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btnDetalleHospitalizaciones.setBackground(new java.awt.Color(0, 102, 102));
+        btnDetalleHospitalizaciones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnDetalleHospitalizaciones.setText("Detalle de hospitalizaciones");
 
         btnCancelarCita.setBackground(new java.awt.Color(0, 102, 102));
         btnCancelarCita.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -51,12 +53,12 @@ public class VistaDoctor extends javax.swing.JFrame {
             }
         });
 
-        btnAtenderCita.setBackground(new java.awt.Color(0, 102, 102));
-        btnAtenderCita.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnAtenderCita.setText("Atender cita");
-        btnAtenderCita.addActionListener(new java.awt.event.ActionListener() {
+        btnVolver.setBackground(new java.awt.Color(0, 102, 102));
+        btnVolver.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtenderCitaActionPerformed(evt);
+                btnVolverActionPerformed(evt);
             }
         });
 
@@ -97,28 +99,6 @@ public class VistaDoctor extends javax.swing.JFrame {
         btnCantidadTratamientos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnCantidadTratamientos.setText("Cantidad de tratamientos");
 
-        btnDetalleHospitalizaciones.setBackground(new java.awt.Color(0, 102, 102));
-        btnDetalleHospitalizaciones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnDetalleHospitalizaciones.setText("Detalle de hospitalizaciones");
-
-        btnVolver.setBackground(new java.awt.Color(0, 102, 102));
-        btnVolver.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnVolver.setText("Volver");
-        btnVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverActionPerformed(evt);
-            }
-        });
-
-        btnSeguimientoInternado.setBackground(new java.awt.Color(0, 102, 102));
-        btnSeguimientoInternado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnSeguimientoInternado.setText("Seguimiento Internado");
-        btnSeguimientoInternado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSeguimientoInternadoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -131,33 +111,31 @@ public class VistaDoctor extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAsignarCita)
-                            .addComponent(btnTratamientos))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnCantidadCitas)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnCantidadCitas)
-                                .addGap(33, 33, 33)
-                                .addComponent(btnCantidadDiagnosticos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnCantidadTratamientos))
+                                .addGap(11, 11, 11)
+                                .addComponent(btnAsignarCita)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnCancelarCita)
-                                .addGap(36, 36, 36)
-                                .addComponent(btnAtenderCita)
-                                .addGap(33, 33, 33)
+                                .addGap(34, 34, 34)
                                 .addComponent(btnCitasRegistradas)
-                                .addGap(56, 56, 56)
-                                .addComponent(btnDiagnosticos))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(btnVolver))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addComponent(btnDetalleHospitalizaciones)
-                        .addGap(45, 45, 45)
-                        .addComponent(btnSeguimientoInternado)))
-                .addContainerGap(87, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnDiagnosticos)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnTratamientos))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(btnCantidadDiagnosticos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnVolver)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnCantidadTratamientos)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnDetalleHospitalizaciones)))))))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,44 +146,33 @@ public class VistaDoctor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAsignarCita)
                     .addComponent(btnCancelarCita)
-                    .addComponent(btnAtenderCita)
                     .addComponent(btnCitasRegistradas)
-                    .addComponent(btnDiagnosticos))
+                    .addComponent(btnDiagnosticos)
+                    .addComponent(btnTratamientos))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnTratamientos)
                     .addComponent(btnCantidadCitas)
                     .addComponent(btnCantidadDiagnosticos)
-                    .addComponent(btnCantidadTratamientos))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDetalleHospitalizaciones)
-                    .addComponent(btnSeguimientoInternado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCantidadTratamientos)
+                    .addComponent(btnDetalleHospitalizaciones))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(btnVolver)
-                .addContainerGap())
+                .addGap(22, 22, 22))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCitaActionPerformed
-        CancelarCitaDoctor CCD = new CancelarCitaDoctor();
-        CCD.setVisible(true);
+        CancelarCitaEnfermero CCE = new CancelarCitaEnfermero();
+        CCE.setVisible(true);
 
         this.dispose();
     }//GEN-LAST:event_btnCancelarCitaActionPerformed
 
     private void btnAsignarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarCitaActionPerformed
-        
+
     }//GEN-LAST:event_btnAsignarCitaActionPerformed
-
-    private void btnAtenderCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtenderCitaActionPerformed
-      AtenderCita AC = new AtenderCita();
-        AC.setVisible(true);
-
-        this.dispose();
-    }//GEN-LAST:event_btnAtenderCitaActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
       Principal P = new Principal();
@@ -213,13 +180,6 @@ public class VistaDoctor extends javax.swing.JFrame {
 
       this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
-
-    private void btnSeguimientoInternadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeguimientoInternadoActionPerformed
-      RegistroSeguimientoInternado RSI = new RegistroSeguimientoInternado();
-      RSI.setVisible(true);
-
-      this.dispose(); 
-    }//GEN-LAST:event_btnSeguimientoInternadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,27 +198,26 @@ public class VistaDoctor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaDoctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaEnfermero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaDoctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaEnfermero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaDoctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaEnfermero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaDoctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaEnfermero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaDoctor().setVisible(true);
+                new VistaEnfermero().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAsignarCita;
-    public javax.swing.JButton btnAtenderCita;
     public javax.swing.JButton btnCancelarCita;
     public javax.swing.JButton btnCantidadCitas;
     public javax.swing.JButton btnCantidadDiagnosticos;
@@ -266,9 +225,8 @@ public class VistaDoctor extends javax.swing.JFrame {
     public javax.swing.JButton btnCitasRegistradas;
     public javax.swing.JButton btnDetalleHospitalizaciones;
     public javax.swing.JButton btnDiagnosticos;
-    public javax.swing.JButton btnSeguimientoInternado;
     public javax.swing.JButton btnTratamientos;
-    public javax.swing.JButton btnVolver;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

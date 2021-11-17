@@ -8,12 +8,12 @@ package Vista;
  *
  * @author LUIS LEITON
  */
-public class RegistrarTratamiento extends javax.swing.JFrame {
+public class CancelarCitaDoctor extends javax.swing.JFrame {
 
     /**
-     * Creates new form RegistrarTratamiento
+     * Creates new form CancelarCitaDoctor
      */
-    public RegistrarTratamiento() {
+    public CancelarCitaDoctor() {
         initComponents();
     }
 
@@ -26,13 +26,15 @@ public class RegistrarTratamiento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        cbCedulas = new javax.swing.JComboBox<>();
         btnVolver = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        btnRegistrarTratamiento = new javax.swing.JButton();
-        tbNombre = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        btnCancelar = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        cbCedulas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         btnVolver.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(11, 136, 136));
@@ -45,38 +47,36 @@ public class RegistrarTratamiento extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 153, 153));
-        jLabel5.setText("Registrar Tratamientos");
+        jLabel5.setText("Cancelar cita");
 
-        btnRegistrarTratamiento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnRegistrarTratamiento.setForeground(new java.awt.Color(11, 136, 136));
-        btnRegistrarTratamiento.setText("Registrar");
+        btnCancelar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(11, 136, 136));
+        btnCancelar.setText("Cancelar");
 
-        tbNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 153, 153));
-        jLabel3.setText("Nombre");
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel13.setText("Cédula paciente");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(btnVolver))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(93, 93, 93)
-                                .addComponent(tbNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(154, 154, 154)
-                                .addComponent(btnRegistrarTratamiento)))))
-                .addContainerGap(138, Short.MAX_VALUE))
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel13)
+                        .addGap(48, 48, 48)
+                        .addComponent(cbCedulas, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(155, 155, 155)
+                        .addComponent(jLabel5))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(btnVolver)
+                        .addGap(149, 149, 149)
+                        .addComponent(btnCancelar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,23 +85,23 @@ public class RegistrarTratamiento extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(tbNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                    .addComponent(jLabel13)
+                    .addComponent(cbCedulas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVolver)
-                    .addComponent(btnRegistrarTratamiento))
-                .addGap(25, 25, 25))
+                    .addComponent(btnCancelar))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-      VistaSecretario VS = new VistaSecretario();
-      VS.setVisible(true);
+        VistaDoctor VD = new VistaDoctor();
+        VD.setVisible(true);
 
-      this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
@@ -121,29 +121,29 @@ public class RegistrarTratamiento extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistrarTratamiento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CancelarCitaDoctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistrarTratamiento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CancelarCitaDoctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistrarTratamiento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CancelarCitaDoctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistrarTratamiento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CancelarCitaDoctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistrarTratamiento().setVisible(true);
+                new CancelarCitaDoctor().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnRegistrarTratamiento;
+    public javax.swing.JButton btnCancelar;
     public javax.swing.JButton btnVolver;
-    private javax.swing.JLabel jLabel3;
+    public javax.swing.JComboBox<String> cbCedulas;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel5;
-    public javax.swing.JTextField tbNombre;
     // End of variables declaration//GEN-END:variables
 }

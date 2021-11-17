@@ -42,7 +42,6 @@ public class RegistrarDoctor extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         tbContrasenaDoctor = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        tbFechaIngreso = new javax.swing.JTextField();
         lblTipoFuncionario = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -52,6 +51,7 @@ public class RegistrarDoctor extends javax.swing.JFrame {
         cbAreaTrabajo = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
         cbCentroAtencion = new javax.swing.JComboBox<>();
+        jFechaIngreso = new com.toedter.calendar.JDateChooser();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -87,6 +87,11 @@ public class RegistrarDoctor extends javax.swing.JFrame {
         btnVolver.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(11, 136, 136));
         btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 153, 153));
@@ -111,13 +116,6 @@ public class RegistrarDoctor extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 153, 153));
         jLabel9.setText("Fecha de ingreso");
-
-        tbFechaIngreso.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        tbFechaIngreso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tbFechaIngresoActionPerformed(evt);
-            }
-        });
 
         lblTipoFuncionario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTipoFuncionario.setForeground(new java.awt.Color(0, 51, 51));
@@ -214,14 +212,14 @@ public class RegistrarDoctor extends javax.swing.JFrame {
                                             .addComponent(cbAreaTrabajo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel7)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(tbContrasenaDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                                 .addComponent(jLabel9)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                                                .addComponent(tbFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel7)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                                                .addComponent(tbContrasenaDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(23, 23, 23)))
                                 .addContainerGap())))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -259,9 +257,9 @@ public class RegistrarDoctor extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9)
-                                    .addComponent(tbFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(32, 32, 32)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel15)
@@ -297,13 +295,16 @@ public class RegistrarDoctor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tbCedulaDoctorActionPerformed
 
-    private void tbFechaIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbFechaIngresoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tbFechaIngresoActionPerformed
-
     private void tbCodigoMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbCodigoMedicoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tbCodigoMedicoActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+      Principal P = new Principal();
+      P.setVisible(true);
+      
+      this.dispose(); 
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -347,6 +348,7 @@ public class RegistrarDoctor extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> cbCentroAtencion;
     public javax.swing.JComboBox<String> cbEspecialidad;
     private javax.swing.JComboBox<String> jComboBox1;
+    public com.toedter.calendar.JDateChooser jFechaIngreso;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -365,7 +367,6 @@ public class RegistrarDoctor extends javax.swing.JFrame {
     public javax.swing.JTextField tbCedulaDoctor;
     public javax.swing.JTextField tbCodigoMedico;
     public javax.swing.JTextField tbContrasenaDoctor;
-    public javax.swing.JTextField tbFechaIngreso;
     public javax.swing.JTextField tbNombreDoctor;
     // End of variables declaration//GEN-END:variables
 }

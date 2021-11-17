@@ -74,6 +74,11 @@ public class RegistroInternado extends javax.swing.JFrame {
         btnVolver.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(11, 136, 136));
         btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 153, 153));
@@ -220,6 +225,13 @@ public class RegistroInternado extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+      AtenderCita AC = new AtenderCita();
+      AC.setVisible(true);
+      
+      this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -261,8 +273,8 @@ public class RegistroInternado extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> cbCentroAtencion;
     public javax.swing.JComboBox<String> cbDiagnosticos;
     public javax.swing.JComboBox<String> cbEspecialidad;
-    private com.toedter.calendar.JDateChooser jFechaFinal;
-    private com.toedter.calendar.JDateChooser jFechaInicio;
+    public com.toedter.calendar.JDateChooser jFechaFinal;
+    public com.toedter.calendar.JDateChooser jFechaInicio;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;

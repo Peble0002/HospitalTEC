@@ -32,6 +32,7 @@ public class VistaPaciente extends javax.swing.JFrame {
         btnDiagnosticos = new javax.swing.JButton();
         btnHospitalizaciones = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,14 +70,19 @@ public class VistaPaciente extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 153, 153));
         jLabel3.setText("Bienvenido");
 
+        btnVolver.setBackground(new java.awt.Color(0, 102, 102));
+        btnVolver.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(283, 283, 283)
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnSolicitarCita)
@@ -89,6 +95,15 @@ public class VistaPaciente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(btnHospitalizaciones)
                 .addGap(23, 23, 23))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(283, 283, 283)
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(348, 348, 348)
+                        .addComponent(btnVolver)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,7 +117,9 @@ public class VistaPaciente extends javax.swing.JFrame {
                     .addComponent(btnCitasAsociadas)
                     .addComponent(btnDiagnosticos)
                     .addComponent(btnHospitalizaciones))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(btnVolver)
+                .addContainerGap())
         );
 
         pack();
@@ -121,6 +138,13 @@ public class VistaPaciente extends javax.swing.JFrame {
 
         this.dispose();
     }//GEN-LAST:event_btnSolicitarCitaActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+      Principal P = new Principal();
+      P.setVisible(true);
+
+      this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,6 +187,7 @@ public class VistaPaciente extends javax.swing.JFrame {
     public javax.swing.JButton btnDiagnosticos;
     public javax.swing.JButton btnHospitalizaciones;
     public javax.swing.JButton btnSolicitarCita;
+    public javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

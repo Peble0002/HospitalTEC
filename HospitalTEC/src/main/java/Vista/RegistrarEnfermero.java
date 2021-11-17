@@ -43,7 +43,6 @@ public class RegistrarEnfermero extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         tbContrasenaEnfermero = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        tbFechaIngresoEnfermero = new javax.swing.JTextField();
         lblTipoFuncionario = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         btnRegistrarEnfermero = new javax.swing.JButton();
@@ -51,6 +50,7 @@ public class RegistrarEnfermero extends javax.swing.JFrame {
         cbACargo = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         cbExperiencia = new javax.swing.JComboBox<>();
+        jFechaIngreso = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,6 +92,11 @@ public class RegistrarEnfermero extends javax.swing.JFrame {
         btnVolver.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(11, 136, 136));
         btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 153, 153));
@@ -116,13 +121,6 @@ public class RegistrarEnfermero extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 153, 153));
         jLabel9.setText("Fecha de ingreso");
-
-        tbFechaIngresoEnfermero.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        tbFechaIngresoEnfermero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tbFechaIngresoEnfermeroActionPerformed(evt);
-            }
-        });
 
         lblTipoFuncionario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTipoFuncionario.setForeground(new java.awt.Color(0, 51, 51));
@@ -185,8 +183,8 @@ public class RegistrarEnfermero extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(55, 55, 55)
                                 .addComponent(jLabel9)
-                                .addGap(27, 27, 27)
-                                .addComponent(tbFechaIngresoEnfermero, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(46, 46, 46)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,10 +244,11 @@ public class RegistrarEnfermero extends javax.swing.JFrame {
                             .addComponent(jLabel10)
                             .addComponent(cbACargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tbCedulaEnfermero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9)
-                            .addComponent(tbFechaIngresoEnfermero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jFechaIngreso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(tbCedulaEnfermero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel9)))
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tbNombreEnfermero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -282,9 +281,12 @@ public class RegistrarEnfermero extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tbCedulaEnfermeroActionPerformed
 
-    private void tbFechaIngresoEnfermeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbFechaIngresoEnfermeroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tbFechaIngresoEnfermeroActionPerformed
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+     Principal P = new Principal();
+     P.setVisible(true);
+      
+     this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -328,6 +330,7 @@ public class RegistrarEnfermero extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> cbAreaTrabajo;
     public javax.swing.JComboBox<String> cbCentroAtencion;
     public javax.swing.JComboBox<String> cbExperiencia;
+    public com.toedter.calendar.JDateChooser jFechaIngreso;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel15;
@@ -345,7 +348,6 @@ public class RegistrarEnfermero extends javax.swing.JFrame {
     public javax.swing.JTextField tbApellido2Enfermero;
     public javax.swing.JTextField tbCedulaEnfermero;
     public javax.swing.JTextField tbContrasenaEnfermero;
-    public javax.swing.JTextField tbFechaIngresoEnfermero;
     public javax.swing.JTextField tbNombreEnfermero;
     // End of variables declaration//GEN-END:variables
 }

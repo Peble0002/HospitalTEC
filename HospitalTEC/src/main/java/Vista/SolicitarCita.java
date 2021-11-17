@@ -65,6 +65,11 @@ public class SolicitarCita extends javax.swing.JFrame {
         btnVolver.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(11, 136, 136));
         btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 153, 153));
@@ -164,6 +169,13 @@ public class SolicitarCita extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+      VistaPaciente VP = new VistaPaciente();
+      VP.setVisible(true);
+      
+      this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -203,7 +215,7 @@ public class SolicitarCita extends javax.swing.JFrame {
     public javax.swing.JButton btnSolicitarCita;
     public javax.swing.JButton btnVolver;
     public javax.swing.JComboBox<String> cbAreaCita;
-    private com.toedter.calendar.JDateChooser jFechaCita;
+    public com.toedter.calendar.JDateChooser jFechaCita;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

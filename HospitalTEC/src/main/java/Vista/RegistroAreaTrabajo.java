@@ -43,6 +43,11 @@ public class RegistroAreaTrabajo extends javax.swing.JFrame {
         btnVolver.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(11, 136, 136));
         btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 153, 153));
@@ -117,6 +122,13 @@ public class RegistroAreaTrabajo extends javax.swing.JFrame {
     private void tbCodigoAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbCodigoAreaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tbCodigoAreaActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+      VistaSecretario VS = new VistaSecretario();
+      VS.setVisible(true);
+
+      this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments

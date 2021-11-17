@@ -29,7 +29,6 @@ public class RegistrarSecretario extends javax.swing.JFrame {
         btnRegistrarSecretario = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         lblTipoFuncionario = new javax.swing.JLabel();
-        tbFechaIngresoSecretario = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         cbCentroAtencion = new javax.swing.JComboBox<>();
         tbContrasenaSecretario = new javax.swing.JTextField();
@@ -47,6 +46,7 @@ public class RegistrarSecretario extends javax.swing.JFrame {
         tbApellido1Secretario = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jFechaIngreso = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,13 +61,6 @@ public class RegistrarSecretario extends javax.swing.JFrame {
         lblTipoFuncionario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTipoFuncionario.setForeground(new java.awt.Color(0, 51, 51));
         lblTipoFuncionario.setText("Secretario");
-
-        tbFechaIngresoSecretario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        tbFechaIngresoSecretario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tbFechaIngresoSecretarioActionPerformed(evt);
-            }
-        });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 153, 153));
@@ -109,6 +102,11 @@ public class RegistrarSecretario extends javax.swing.JFrame {
         btnVolver.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(11, 136, 136));
         btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 153, 153));
@@ -165,8 +163,8 @@ public class RegistrarSecretario extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(55, 55, 55)
                                 .addComponent(jLabel9)
-                                .addGap(27, 27, 27)
-                                .addComponent(tbFechaIngresoSecretario, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(46, 46, 46)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,10 +214,11 @@ public class RegistrarSecretario extends javax.swing.JFrame {
                                 .addComponent(jLabel6)
                                 .addComponent(tbApellido2Secretario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tbCedulaSecretario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9)
-                            .addComponent(tbFechaIngresoSecretario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jFechaIngreso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(tbCedulaSecretario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel9)))
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tbNombreSecretario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -240,13 +239,16 @@ public class RegistrarSecretario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tbFechaIngresoSecretarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbFechaIngresoSecretarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tbFechaIngresoSecretarioActionPerformed
-
     private void tbCedulaSecretarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbCedulaSecretarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tbCedulaSecretarioActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+     Principal P = new Principal();
+     P.setVisible(true);
+      
+     this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,6 +290,7 @@ public class RegistrarSecretario extends javax.swing.JFrame {
     public javax.swing.JButton btnVolver;
     public javax.swing.JComboBox<String> cbAreaTrabajo;
     public javax.swing.JComboBox<String> cbCentroAtencion;
+    public com.toedter.calendar.JDateChooser jFechaIngreso;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
@@ -303,7 +306,6 @@ public class RegistrarSecretario extends javax.swing.JFrame {
     public javax.swing.JTextField tbApellido2Secretario;
     public javax.swing.JTextField tbCedulaSecretario;
     public javax.swing.JTextField tbContrasenaSecretario;
-    public javax.swing.JTextField tbFechaIngresoSecretario;
     public javax.swing.JTextField tbNombreSecretario;
     // End of variables declaration//GEN-END:variables
 }

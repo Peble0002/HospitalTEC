@@ -39,6 +39,11 @@ public class AtenderCita extends javax.swing.JFrame {
         btnVolver.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(11, 136, 136));
         btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 153, 153));
@@ -51,6 +56,11 @@ public class AtenderCita extends javax.swing.JFrame {
         btnInternar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnInternar.setForeground(new java.awt.Color(11, 136, 136));
         btnInternar.setText("Internar Paciente");
+        btnInternar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInternarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 153, 153));
@@ -59,10 +69,20 @@ public class AtenderCita extends javax.swing.JFrame {
         btnRegistrarBitacora.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnRegistrarBitacora.setForeground(new java.awt.Color(11, 136, 136));
         btnRegistrarBitacora.setText("Registrar Bitácora");
+        btnRegistrarBitacora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarBitacoraActionPerformed(evt);
+            }
+        });
 
         btnRegistrarDiagnostico.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnRegistrarDiagnostico.setForeground(new java.awt.Color(11, 136, 136));
         btnRegistrarDiagnostico.setText("Registrar Diagnóstico");
+        btnRegistrarDiagnostico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarDiagnosticoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,6 +137,34 @@ public class AtenderCita extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRegistrarDiagnosticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarDiagnosticoActionPerformed
+      RegistrarDiagnosticoPaciente RDP = new RegistrarDiagnosticoPaciente();
+      RDP.setVisible(true);
+      
+      this.dispose();
+    }//GEN-LAST:event_btnRegistrarDiagnosticoActionPerformed
+
+    private void btnRegistrarBitacoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarBitacoraActionPerformed
+      RegistroBitacora RB = new RegistroBitacora();
+      RB.setVisible(true);
+      
+      this.dispose();
+    }//GEN-LAST:event_btnRegistrarBitacoraActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+      VistaDoctor VD = new VistaDoctor();
+      VD.setVisible(true);
+      
+      this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnInternarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInternarActionPerformed
+      RegistroInternado RI = new RegistroInternado();
+      RI.setVisible(true);
+      
+      this.dispose();
+    }//GEN-LAST:event_btnInternarActionPerformed
 
     /**
      * @param args the command line arguments

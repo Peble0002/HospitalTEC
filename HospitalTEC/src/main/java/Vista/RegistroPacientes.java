@@ -50,10 +50,10 @@ public class RegistroPacientes extends javax.swing.JFrame {
         tbNacionalidadPaciente = new javax.swing.JTextField();
         tbDistritoPaciente = new javax.swing.JTextField();
         tbProvinciaPaciente = new javax.swing.JTextField();
-        tbFechaPaciente = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         tbTelefonoPaciente = new javax.swing.JTextField();
         btnRegistraVacunas = new javax.swing.JButton();
+        jFechaNacimiento = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,6 +91,11 @@ public class RegistroPacientes extends javax.swing.JFrame {
         btnVolver.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(11, 136, 136));
         btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 153, 153));
@@ -143,8 +148,6 @@ public class RegistroPacientes extends javax.swing.JFrame {
 
         tbProvinciaPaciente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
-        tbFechaPaciente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 153, 153));
         jLabel14.setText("Teléfono");
@@ -154,6 +157,11 @@ public class RegistroPacientes extends javax.swing.JFrame {
         btnRegistraVacunas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnRegistraVacunas.setForeground(new java.awt.Color(11, 136, 136));
         btnRegistraVacunas.setText("Registrar Vacunas");
+        btnRegistraVacunas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistraVacunasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -207,11 +215,11 @@ public class RegistroPacientes extends javax.swing.JFrame {
                                     .addComponent(btnRegistraVacunas)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(tbContrasenaPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jLabel8)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(tbFechaPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGap(15, 15, 15)
+                                                .addComponent(jFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(tbContrasenaPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(52, 52, 52)
                                         .addComponent(jLabel14)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -273,13 +281,16 @@ public class RegistroPacientes extends javax.swing.JFrame {
                             .addComponent(tbDistritoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tbContrasenaPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel8)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(tbFechaPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel14)
-                        .addComponent(tbTelefonoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(tbTelefonoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26)
                 .addComponent(btnRegistraVacunas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -298,6 +309,20 @@ public class RegistroPacientes extends javax.swing.JFrame {
     private void tbTipoSangrePacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbTipoSangrePacienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tbTipoSangrePacienteActionPerformed
+
+    private void btnRegistraVacunasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistraVacunasActionPerformed
+     RegistrarVacunas RV = new RegistrarVacunas();
+     RV.setVisible(true);
+      
+     this.dispose(); 
+    }//GEN-LAST:event_btnRegistraVacunasActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+      Principal nPrincipal = new Principal();
+      nPrincipal.setVisible(true);
+
+      this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -338,6 +363,7 @@ public class RegistroPacientes extends javax.swing.JFrame {
     public javax.swing.JButton btnRegistraVacunas;
     public javax.swing.JButton btnRegistrarPaciente;
     public javax.swing.JButton btnVolver;
+    public com.toedter.calendar.JDateChooser jFechaNacimiento;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -357,7 +383,6 @@ public class RegistroPacientes extends javax.swing.JFrame {
     public javax.swing.JTextField tbCedulaPaciente;
     public javax.swing.JTextField tbContrasenaPaciente;
     public javax.swing.JTextField tbDistritoPaciente;
-    public javax.swing.JTextField tbFechaPaciente;
     public javax.swing.JTextField tbNacionalidadPaciente;
     public javax.swing.JTextField tbNombrePaciente;
     public javax.swing.JTextField tbProvinciaPaciente;
