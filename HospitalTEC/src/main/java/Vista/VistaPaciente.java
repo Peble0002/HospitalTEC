@@ -33,6 +33,7 @@ public class VistaPaciente extends javax.swing.JFrame {
         btnHospitalizaciones = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         btnVolver = new javax.swing.JButton();
+        btnTratamientos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,14 +58,29 @@ public class VistaPaciente extends javax.swing.JFrame {
         btnCitasAsociadas.setBackground(new java.awt.Color(0, 102, 102));
         btnCitasAsociadas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnCitasAsociadas.setText("Citas asociadas");
+        btnCitasAsociadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCitasAsociadasActionPerformed(evt);
+            }
+        });
 
         btnDiagnosticos.setBackground(new java.awt.Color(0, 102, 102));
         btnDiagnosticos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnDiagnosticos.setText("Diagnósticos");
+        btnDiagnosticos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDiagnosticosActionPerformed(evt);
+            }
+        });
 
         btnHospitalizaciones.setBackground(new java.awt.Color(0, 102, 102));
         btnHospitalizaciones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnHospitalizaciones.setText("Hospitalizaciones");
+        btnHospitalizaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHospitalizacionesActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 153, 153));
@@ -76,6 +92,15 @@ public class VistaPaciente extends javax.swing.JFrame {
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVolverActionPerformed(evt);
+            }
+        });
+
+        btnTratamientos.setBackground(new java.awt.Color(0, 102, 102));
+        btnTratamientos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnTratamientos.setText("Tratamientos");
+        btnTratamientos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTratamientosActionPerformed(evt);
             }
         });
 
@@ -92,7 +117,9 @@ public class VistaPaciente extends javax.swing.JFrame {
                 .addComponent(btnCitasAsociadas)
                 .addGap(33, 33, 33)
                 .addComponent(btnDiagnosticos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
+                .addComponent(btnTratamientos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(btnHospitalizaciones)
                 .addGap(23, 23, 23))
             .addGroup(layout.createSequentialGroup()
@@ -116,7 +143,8 @@ public class VistaPaciente extends javax.swing.JFrame {
                     .addComponent(btnCancelarCita)
                     .addComponent(btnCitasAsociadas)
                     .addComponent(btnDiagnosticos)
-                    .addComponent(btnHospitalizaciones))
+                    .addComponent(btnHospitalizaciones)
+                    .addComponent(btnTratamientos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(btnVolver)
                 .addContainerGap())
@@ -145,6 +173,34 @@ public class VistaPaciente extends javax.swing.JFrame {
 
       this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnCitasAsociadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCitasAsociadasActionPerformed
+      CitasAsociadasPaciente CAP = new CitasAsociadasPaciente();
+      CAP.setVisible(true);
+
+      this.dispose();
+    }//GEN-LAST:event_btnCitasAsociadasActionPerformed
+
+    private void btnDiagnosticosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosticosActionPerformed
+      DiagnosticosAsociadosPaciente DAP = new DiagnosticosAsociadosPaciente();
+      DAP.setVisible(true);
+
+      this.dispose();
+    }//GEN-LAST:event_btnDiagnosticosActionPerformed
+
+    private void btnTratamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTratamientosActionPerformed
+      TratamientosAsociadosPaciente TAP = new TratamientosAsociadosPaciente();
+      TAP.setVisible(true);
+
+      this.dispose(); 
+    }//GEN-LAST:event_btnTratamientosActionPerformed
+
+    private void btnHospitalizacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalizacionesActionPerformed
+      HospitalizacionesAsociadasPaciente HAP = new HospitalizacionesAsociadasPaciente();
+      HAP.setVisible(true);
+
+      this.dispose();
+    }//GEN-LAST:event_btnHospitalizacionesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,6 +243,7 @@ public class VistaPaciente extends javax.swing.JFrame {
     public javax.swing.JButton btnDiagnosticos;
     public javax.swing.JButton btnHospitalizaciones;
     public javax.swing.JButton btnSolicitarCita;
+    public javax.swing.JButton btnTratamientos;
     public javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables

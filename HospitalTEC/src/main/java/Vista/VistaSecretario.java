@@ -52,10 +52,20 @@ public class VistaSecretario extends javax.swing.JFrame {
         btnCitasRegistradas.setBackground(new java.awt.Color(0, 102, 102));
         btnCitasRegistradas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnCitasRegistradas.setText("Citas registradas");
+        btnCitasRegistradas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCitasRegistradasActionPerformed(evt);
+            }
+        });
 
         btnHospitalizaciones.setBackground(new java.awt.Color(0, 102, 102));
         btnHospitalizaciones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnHospitalizaciones.setText("Hospitalizaciones registradas");
+        btnHospitalizaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHospitalizacionesActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 153, 153));
@@ -242,6 +252,20 @@ public class VistaSecretario extends javax.swing.JFrame {
 
       this.dispose();
     }//GEN-LAST:event_btnAsignarTDActionPerformed
+
+    private void btnCitasRegistradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCitasRegistradasActionPerformed
+      CitasSistema CS = new CitasSistema();
+      CS.setVisible(true);
+
+      this.dispose();
+    }//GEN-LAST:event_btnCitasRegistradasActionPerformed
+
+    private void btnHospitalizacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalizacionesActionPerformed
+      HospitalizacionesSistema HS = new HospitalizacionesSistema();
+      HS.setVisible(true);
+
+      this.dispose();
+    }//GEN-LAST:event_btnHospitalizacionesActionPerformed
 
     /**
      * @param args the command line arguments

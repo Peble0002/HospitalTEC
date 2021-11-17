@@ -63,10 +63,20 @@ public class VistaDoctor extends javax.swing.JFrame {
         btnCitasRegistradas.setBackground(new java.awt.Color(0, 102, 102));
         btnCitasRegistradas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnCitasRegistradas.setText("Citas registradas");
+        btnCitasRegistradas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCitasRegistradasActionPerformed(evt);
+            }
+        });
 
         btnDiagnosticos.setBackground(new java.awt.Color(0, 102, 102));
         btnDiagnosticos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnDiagnosticos.setText("Diagnósticos ");
+        btnDiagnosticos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDiagnosticosActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic Medium", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 153, 153));
@@ -84,6 +94,11 @@ public class VistaDoctor extends javax.swing.JFrame {
         btnTratamientos.setBackground(new java.awt.Color(0, 102, 102));
         btnTratamientos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnTratamientos.setText("Tratamientos");
+        btnTratamientos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTratamientosActionPerformed(evt);
+            }
+        });
 
         btnCantidadCitas.setBackground(new java.awt.Color(0, 102, 102));
         btnCantidadCitas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -100,6 +115,11 @@ public class VistaDoctor extends javax.swing.JFrame {
         btnDetalleHospitalizaciones.setBackground(new java.awt.Color(0, 102, 102));
         btnDetalleHospitalizaciones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnDetalleHospitalizaciones.setText("Detalle de hospitalizaciones");
+        btnDetalleHospitalizaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDetalleHospitalizacionesActionPerformed(evt);
+            }
+        });
 
         btnVolver.setBackground(new java.awt.Color(0, 102, 102));
         btnVolver.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -220,6 +240,34 @@ public class VistaDoctor extends javax.swing.JFrame {
 
       this.dispose(); 
     }//GEN-LAST:event_btnSeguimientoInternadoActionPerformed
+
+    private void btnCitasRegistradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCitasRegistradasActionPerformed
+      CitasSistema CS = new CitasSistema();
+      CS.setVisible(true);
+
+      this.dispose();   
+    }//GEN-LAST:event_btnCitasRegistradasActionPerformed
+
+    private void btnDiagnosticosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosticosActionPerformed
+      DiagnosticosSistema DS = new DiagnosticosSistema();
+      DS.setVisible(true);
+
+      this.dispose();
+    }//GEN-LAST:event_btnDiagnosticosActionPerformed
+
+    private void btnTratamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTratamientosActionPerformed
+      TratamientosSistema TS = new TratamientosSistema();
+      TS.setVisible(true);
+
+      this.dispose();
+    }//GEN-LAST:event_btnTratamientosActionPerformed
+
+    private void btnDetalleHospitalizacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalleHospitalizacionesActionPerformed
+      DetalleHospitalizacionSistema DHS = new DetalleHospitalizacionSistema();
+      DHS.setVisible(true);
+
+      this.dispose();
+    }//GEN-LAST:event_btnDetalleHospitalizacionesActionPerformed
 
     /**
      * @param args the command line arguments
