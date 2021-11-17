@@ -34,6 +34,10 @@ public class Principal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnIniciarSesion = new javax.swing.JButton();
         tbContrasena = new javax.swing.JPasswordField();
+        btnPaciente = new javax.swing.JButton();
+        btnDoctor = new javax.swing.JButton();
+        btnEnfermero = new javax.swing.JButton();
+        btnSecretario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 102, 255));
@@ -58,14 +62,31 @@ public class Principal extends javax.swing.JFrame {
 
         tbContrasena.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
+        btnPaciente.setBackground(new java.awt.Color(0, 102, 102));
+        btnPaciente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnPaciente.setText("Paciente");
+        btnPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPacienteActionPerformed(evt);
+            }
+        });
+
+        btnDoctor.setBackground(new java.awt.Color(0, 102, 102));
+        btnDoctor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnDoctor.setText("Doctor");
+
+        btnEnfermero.setBackground(new java.awt.Color(0, 102, 102));
+        btnEnfermero.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnEnfermero.setText("Enfermero");
+
+        btnSecretario.setBackground(new java.awt.Color(0, 102, 102));
+        btnSecretario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSecretario.setText("Secretario");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnIniciarSesion)
-                .addGap(252, 252, 252))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -79,7 +100,19 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(tbContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(69, 69, 69)
-                        .addComponent(jLabel3)))
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(249, 249, 249)
+                        .addComponent(btnIniciarSesion))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(btnPaciente)
+                        .addGap(26, 26, 26)
+                        .addComponent(btnDoctor)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEnfermero)
+                        .addGap(35, 35, 35)
+                        .addComponent(btnSecretario)))
                 .addContainerGap(71, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -95,13 +128,26 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(tbContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
                 .addComponent(btnIniciarSesion)
-                .addGap(39, 39, 39))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEnfermero)
+                    .addComponent(btnDoctor)
+                    .addComponent(btnPaciente)
+                    .addComponent(btnSecretario))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacienteActionPerformed
+      VistaPaciente VP = new VistaPaciente();
+      VP.setVisible(true);
+      
+      this.dispose();  
+    }//GEN-LAST:event_btnPacienteActionPerformed
 
   /**
    * @param args the command line arguments
@@ -139,7 +185,11 @@ public class Principal extends javax.swing.JFrame {
   }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnDoctor;
+    public javax.swing.JButton btnEnfermero;
     public javax.swing.JButton btnIniciarSesion;
+    public javax.swing.JButton btnPaciente;
+    public javax.swing.JButton btnSecretario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

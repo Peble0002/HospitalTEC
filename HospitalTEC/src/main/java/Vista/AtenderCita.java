@@ -28,12 +28,11 @@ public class AtenderCita extends javax.swing.JFrame {
 
         btnVolver = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        cbCedulas = new javax.swing.JComboBox<>();
-        btnSolicitarCita = new javax.swing.JButton();
+        cbCedulasPacientes = new javax.swing.JComboBox<>();
+        btnInternar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        btnSolicitarCita1 = new javax.swing.JButton();
-        btnSolicitarCita2 = new javax.swing.JButton();
-        btnSolicitarCita3 = new javax.swing.JButton();
+        btnRegistrarBitacora = new javax.swing.JButton();
+        btnRegistrarDiagnostico = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,29 +44,25 @@ public class AtenderCita extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(0, 153, 153));
         jLabel5.setText("Atender Cita");
 
-        cbCedulas.setBackground(new java.awt.Color(192, 225, 249));
-        cbCedulas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        cbCedulas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbCedulasPacientes.setBackground(new java.awt.Color(192, 225, 249));
+        cbCedulasPacientes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cbCedulasPacientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        btnSolicitarCita.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnSolicitarCita.setForeground(new java.awt.Color(11, 136, 136));
-        btnSolicitarCita.setText("Solicitar");
+        btnInternar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnInternar.setForeground(new java.awt.Color(11, 136, 136));
+        btnInternar.setText("Internar Paciente");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 153, 153));
         jLabel2.setText("Seleccione la cédula del paciente a atender");
 
-        btnSolicitarCita1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnSolicitarCita1.setForeground(new java.awt.Color(11, 136, 136));
-        btnSolicitarCita1.setText("Solicitar");
+        btnRegistrarBitacora.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnRegistrarBitacora.setForeground(new java.awt.Color(11, 136, 136));
+        btnRegistrarBitacora.setText("Registrar Bitácora");
 
-        btnSolicitarCita2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnSolicitarCita2.setForeground(new java.awt.Color(11, 136, 136));
-        btnSolicitarCita2.setText("Solicitar");
-
-        btnSolicitarCita3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnSolicitarCita3.setForeground(new java.awt.Color(11, 136, 136));
-        btnSolicitarCita3.setText("Solicitar");
+        btnRegistrarDiagnostico.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnRegistrarDiagnostico.setForeground(new java.awt.Color(11, 136, 136));
+        btnRegistrarDiagnostico.setText("Registrar Diagnóstico");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,32 +71,30 @@ public class AtenderCita extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(338, 338, 338)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbCedulas, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(127, 127, 127)
-                        .addComponent(btnVolver)))
-                .addContainerGap(217, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(btnSolicitarCita3)
+                        .addGap(35, 35, 35)
+                        .addComponent(btnRegistrarDiagnostico)
+                        .addGap(57, 57, 57)
+                        .addComponent(btnRegistrarBitacora)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSolicitarCita2)))
-                .addGap(69, 69, 69)
-                .addComponent(btnSolicitarCita)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(392, Short.MAX_VALUE)
-                    .addComponent(btnSolicitarCita1)
-                    .addGap(368, 368, 368)))
+                        .addComponent(btnInternar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(338, 338, 338)
+                                .addComponent(cbCedulasPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel2)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(43, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnVolver)
+                .addGap(291, 291, 291))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(251, 251, 251)
+                .addComponent(jLabel5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,20 +104,15 @@ public class AtenderCita extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(cbCedulas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(89, 89, 89)
+                    .addComponent(cbCedulasPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSolicitarCita3)
-                    .addComponent(btnSolicitarCita2)
-                    .addComponent(btnSolicitarCita))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                    .addComponent(btnRegistrarDiagnostico)
+                    .addComponent(btnRegistrarBitacora)
+                    .addComponent(btnInternar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(btnVolver)
-                .addGap(107, 107, 107))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(261, Short.MAX_VALUE)
-                    .addComponent(btnSolicitarCita1)
-                    .addGap(97, 97, 97)))
+                .addGap(36, 36, 36))
         );
 
         pack();
@@ -166,12 +154,11 @@ public class AtenderCita extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnSolicitarCita;
-    public javax.swing.JButton btnSolicitarCita1;
-    public javax.swing.JButton btnSolicitarCita2;
-    public javax.swing.JButton btnSolicitarCita3;
+    public javax.swing.JButton btnInternar;
+    public javax.swing.JButton btnRegistrarBitacora;
+    public javax.swing.JButton btnRegistrarDiagnostico;
     public javax.swing.JButton btnVolver;
-    public javax.swing.JComboBox<String> cbCedulas;
+    public javax.swing.JComboBox<String> cbCedulasPacientes;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
