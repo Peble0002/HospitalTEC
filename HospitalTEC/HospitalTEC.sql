@@ -20,27 +20,15 @@ CREATE TABLE [Usuario] (
       REFERENCES [tipoUsuario]([tipoUsuario]),
 );
 
-CREATE TABLE [Diagnostico] (
+CREATE TABLE [CatalogoDiagnosticos] (
   [IdDiagnostico] VARCHAR,
-  [Nivel] VARCHAR,
-  [Observaciones] VARCHAR,
+  [NombreDiagnostico] VARCHAR,
   PRIMARY KEY ([IdDiagnostico])
 );
 
-CREATE TABLE [Catalogo] (
-  [IdDiagnostico] VARCHAR,
-  [NombreDiagnostico] VARCHAR,
-  PRIMARY KEY ([IdDiagnostico]),
-  CONSTRAINT [FK_Catalogo.IdDiagnostico]
-    FOREIGN KEY ([IdDiagnostico])
-      REFERENCES [Diagnostico]([IdDiagnostico])
-);
-
-CREATE TABLE [Tratamiento] (
+CREATE TABLE [CatalogoTratamientos] (
   [IdTratamiento] VARCHAR,
   [Nombre] VARCHAR,
-  [Dosis] VARCHAR,
-  [Tipo] VARCHAR,
   PRIMARY KEY ([IdTratamiento])
 );
 
@@ -49,10 +37,10 @@ CREATE TABLE [Tratamiento_Diagnostico] (
   [IdTratamiento] VARCHAR,
   CONSTRAINT [FK_Tratamiento_Diagnostico.IdDiagnostico]
     FOREIGN KEY ([IdDiagnostico])
-      REFERENCES [Catalogo]([IdDiagnostico]),
+      REFERENCES [CatalogoDiagnosticos]([IdDiagnostico]),
   CONSTRAINT [FK_Tratamiento_Diagnostico.IdTratamiento]
     FOREIGN KEY ([IdTratamiento])
-      REFERENCES [Tratamiento]([IdTratamiento])
+      REFERENCES [CatalogoTratamientos]([IdTratamiento])
 );
 
 CREATE TABLE [Bitacora] (
@@ -131,7 +119,7 @@ CREATE TABLE [Centro_paciente] (
   [idPaciente] VARCHAR,
   [Codigo] INT,
   PRIMARY KEY ([idPaciente], [Codigo]),
-  CONSTRAINT [FK_CentroAtencion.Codigo]
+  CONSTRAINT [FK_Centro_Paciente.Codigo]
     FOREIGN KEY ([Codigo])
       REFERENCES [CentroAtencion]([Codigo]),
   CONSTRAINT [FK_Paciente.idPaciente]
@@ -222,14 +210,23 @@ CREATE TABLE [Internado_Centro] (
 );
 
 CREATE TABLE [Cita_Diagnostico] (
-  [IdCita] Varchar,
-  [IdDiagnostico] Varchar,
+  [IdCita] VARCHAR,
+  [IdDiagnostico] VARCHAR,
+  [IdTratamiento] VARCHAR,
+  [Dosis] VARCHAR,
+  [Tipo] VARCHAR,
+  [Nivel] VARCHAR,
+  [Observaciones] VARCHAR,
   CONSTRAINT [FK_Cita_Diagnostico.IdCita]
     FOREIGN KEY ([IdCita])
       REFERENCES [Cita]([IdCita]),
-  CONSTRAINT [FK_Cita_Diagnostico.IdDiagnostico]
+  CONSTRAINT [FK_Cita_Diagnostico.CatalogoDiagnostico]
     FOREIGN KEY ([IdDiagnostico])
-      REFERENCES [Diagnostico]([IdDiagnostico])
+      REFERENCES [CatalogoDiagnosticos]([IdDiagnostico]),
+  CONSTRAINT [FK_Cita_Diagnostico.CatalogoTratamientos]
+    FOREIGN KEY ([IdTratamiento])
+      REFERENCES [CatalogoTratamientos]([IdTratamiento])
+  
 );
 
 CREATE TABLE [Cita_Internado] (
