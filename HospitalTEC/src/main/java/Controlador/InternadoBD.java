@@ -1,14 +1,15 @@
 
 package Controlador;
 
-import Modelo.Usuario;
+import Modelo.Internado;
 
 /**
- * Clase para conectar con la tabla Usuario
+ * Clase para conectar con la tabla Internado
  * @author  Pablo Chaves, Aaron Soto y Luis Leitón
  * @version (17/11/2021)
  */
-public class UsuarioBD {
+public class InternadoBD {
   private Conexion conexion;
-  private Usuario usuario;
+  private Internado internado;
+  
 }

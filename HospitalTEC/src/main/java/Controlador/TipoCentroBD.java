@@ -1,14 +1,14 @@
 
 package Controlador;
 
-import Modelo.Usuario;
-
+import Modelo.TipoCentro;
 /**
- * Clase para conectar con la tabla Usuario
+ * Clase para conectar con la tabla TipoCentro
  * @author  Pablo Chaves, Aaron Soto y Luis Leitón
  * @version (17/11/2021)
  */
-public class UsuarioBD {
+public class TipoCentroBD {
   private Conexion conexion;
-  private Usuario usuario;
+  private TipoCentro tipoCentro;
+  
 }

@@ -1,14 +1,15 @@
 
 package Controlador;
 
-import Modelo.Usuario;
+import Modelo.Cita;
 
 /**
- * Clase para conectar con la tabla Usuario
+ * Clase para conectar con la tabla Cita
  * @author  Pablo Chaves, Aaron Soto y Luis Leitón
  * @version (17/11/2021)
  */
-public class UsuarioBD {
+public class CitaBD {
   private Conexion conexion;
-  private Usuario usuario;
+  private Cita cita;
+  
 }

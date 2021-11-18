@@ -7,7 +7,7 @@ package Modelo;
  * @author Pablo Chaves, Aaron Soto y Luis Leitón
  * @version (17/11/2021)
  */
-class TipoCentro {
+public class TipoCentro {
   private int codigo;
   private String tipo;
 

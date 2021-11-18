@@ -1,14 +1,14 @@
 
 package Controlador;
 
-import Modelo.Usuario;
+import Modelo.Vacuna;
 
 /**
- * Clase para conectar con la tabla Usuario
+ * Clase para conectar con la tabla Vacuna
  * @author  Pablo Chaves, Aaron Soto y Luis Leitón
  * @version (17/11/2021)
  */
-public class UsuarioBD {
+public class VacunaBD {
   private Conexion conexion;
-  private Usuario usuario;
+  private Vacuna vacuna;
 }

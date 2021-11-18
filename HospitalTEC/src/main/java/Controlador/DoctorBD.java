@@ -1,14 +1,16 @@
 
 package Controlador;
 
-import Modelo.Usuario;
+import Modelo.Doctor;
 
 /**
- * Clase para conectar con la tabla Usuario
+ * Clase para conectar con la tabla Doctor
  * @author  Pablo Chaves, Aaron Soto y Luis Leitón
  * @version (17/11/2021)
  */
-public class UsuarioBD {
+public class DoctorBD {
   private Conexion conexion;
-  private Usuario usuario;
+  private Doctor doctor;
+  
+  
 }
