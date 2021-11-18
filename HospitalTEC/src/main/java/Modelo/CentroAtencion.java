@@ -1,15 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Modelo;
 
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- *
+ * Clase del Centro de Atencion
  * @author Pablo Chaves, Aaron Soto y Luis Leitón
+ * @version (17/11/2021)
  */
 public class CentroAtencion {
   private static final AtomicInteger contador = new AtomicInteger(0);
@@ -18,6 +16,7 @@ public class CentroAtencion {
   private String ubicacion;
   private int capacidad;
   private TipoCentro tipo;
+  private ArrayList<Funcionario> trabajadores;
 
   /**
    * 
@@ -26,12 +25,14 @@ public class CentroAtencion {
    * @param capacidad
    * @param pTipo 
    */
-  public CentroAtencion(String pNombre, String pUbicacion, int pCapacidad, TipoCentro pTipo) {
+  public CentroAtencion(String pNombre, String pUbicacion, int pCapacidad, 
+          TipoCentro pTipo) {
     this.nombre = pNombre;
     this.ubicacion = pUbicacion;
     this.capacidad = pCapacidad;
     this.tipo= pTipo;
-    codigo = contador.incrementAndGet();    
+    this.codigo = contador.incrementAndGet(); 
+    this.trabajadores = new ArrayList<Funcionario>();
   }
 
   public String getNombre() {
@@ -65,6 +66,15 @@ public class CentroAtencion {
   public void setTipo(TipoCentro pTipo) {
     this.tipo = pTipo;
   }
+  
+  public void asignarFuncionario(Funcionario pFuncionario){
+    trabajadores.add(pFuncionario);
+  }
+
+  public void setTrabajadores(ArrayList<Funcionario> trabajadores) {
+    this.trabajadores = trabajadores;
+  }
+  
   
   
 }

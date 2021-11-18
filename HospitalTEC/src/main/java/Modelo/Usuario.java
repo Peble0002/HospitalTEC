@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Modelo;
 
 /**
- * Abstraccion de la clase persona
+ * Abstraccion de la clase usuario
  * @author Pablo Chaves, Aaron Soto y Luis Leitón
- * @version (06/11/2021)
+ * @version (17/11/2021)
  */
 public abstract class Usuario {
   protected int id;

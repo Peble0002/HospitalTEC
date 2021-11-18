@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Modelo;
 
 import java.time.LocalDate;
@@ -10,8 +6,9 @@ import java.time.Month;
 import java.util.ArrayList;
 
 /**
- *
+ * Clase Paciente hija de Usuario
  * @author Pablo Chaves, Aaron Soto y Luis Leitón
+ * @version (17/11/2021)
  */
 public class Paciente extends Usuario{
   private LocalDate fechaNacimiento;
@@ -23,6 +20,7 @@ public class Paciente extends Usuario{
   //revisar la generic
   private ArrayList<String> telefonos;
   private ArrayList<Vacuna> vacunas;
+  private ArrayList<CentroAtencion> centros; 
 
   /**
    * 
@@ -31,22 +29,27 @@ public class Paciente extends Usuario{
    * @param pNacionalidad
    * @param pId 
    */
-  public Paciente(LocalDate pFechaNacimiento, String pTipoSangre, String pNacionalidad, int pId) {
+  public Paciente(LocalDate pFechaNacimiento, String pTipoSangre,
+          String pNacionalidad, int pId) {
     super(pId);
     this.fechaNacimiento = pFechaNacimiento;
     this.tipoSangre = pTipoSangre;
     this.nacionalidad = pNacionalidad;
     this.telefonos= new ArrayList<String>();
     this.vacunas= new ArrayList<Vacuna>();
+    this.centros= new ArrayList<CentroAtencion>();
   }
   
-  public Paciente(int pDia, int pMes, int pAno, String tipoSangre, String nacionalidad, int pId) {
+  public Paciente(int pDia, int pMes, int pAno, String tipoSangre, 
+          String nacionalidad, int pId) {
     super(pId);
     this.fechaNacimiento = LocalDate.of(pAno, pMes, pDia);
     this.tipoSangre = tipoSangre;
     this.nacionalidad = nacionalidad;
     this.telefonos= new ArrayList<String>();
     this.vacunas= new ArrayList<Vacuna>();
+    this.centros= new ArrayList<CentroAtencion>();
+    
   }
 
   public LocalDate getFechaNacimiento() {
@@ -117,6 +120,21 @@ public class Paciente extends Usuario{
     
   }
 
+  /**
+   * Agrega los centros del paciente
+   * @param pCentro 
+   */
+  public void asignarCentro(CentroAtencion pCentro){
+    centros.add(pCentro);
+  }
+
+  public ArrayList<CentroAtencion> getCentros() {
+    return centros;
+  }
+
+  public void setCentros(ArrayList<CentroAtencion> centros) {
+    this.centros = centros;
+  }
   
   
   

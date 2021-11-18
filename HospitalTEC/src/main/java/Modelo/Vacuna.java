@@ -1,15 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo;
 
 import java.time.LocalDate;
 
 /**
- *
+ * Clase Vacuna 
  * @author Pablo Chaves, Aaron Soto y Luis Leitón
+ * @version (17/11/2021)
  */
 public class Vacuna {
   private LocalDate fechaAplicacion;
@@ -18,7 +14,7 @@ public class Vacuna {
   private int numeroLote;
 
   /**
-   * 
+   * Este constructor permite crear un objeto Vacuna con los datos de la fecha.
    * @param pDia
    * @param pMes
    * @param pAno
@@ -26,8 +22,24 @@ public class Vacuna {
    * @param pFarmaceutica
    * @param pNumeroLote 
    */
-  public Vacuna(int pDia, int pMes, int pAno, String pNombre, String pFarmaceutica, int pNumeroLote) {
+  public Vacuna(int pDia, int pMes, int pAno, String pNombre, 
+          String pFarmaceutica, int pNumeroLote) {
     this.fechaAplicacion = LocalDate.of(pAno, pMes, pDia);
+    this.nombre = pNombre;
+    this.farmaceutica = pFarmaceutica;
+    this.numeroLote = pNumeroLote;
+  }
+  
+  /**
+   * ste constructor permite crear un objeto Vacuna mediante un localdate
+   * @param pFechaAplicacion
+   * @param pNombre
+   * @param pFarmaceutica
+   * @param pNumeroLote 
+   */
+  public Vacuna(LocalDate pFechaAplicacion, String pNombre, 
+          String pFarmaceutica, int pNumeroLote) {
+    this.fechaAplicacion = pFechaAplicacion;
     this.nombre = pNombre;
     this.farmaceutica = pFarmaceutica;
     this.numeroLote = pNumeroLote;

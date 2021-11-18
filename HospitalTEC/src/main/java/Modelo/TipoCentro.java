@@ -1,22 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Modelo;
 
 /**
- *
+ * Clase Tipo Centro para generar los diferentes tipos de centros para el uso
+ * de la aplicacion
  * @author Pablo Chaves, Aaron Soto y Luis Leitón
+ * @version (17/11/2021)
  */
 class TipoCentro {
   private int codigo;
   private String tipo;
 
   /**
-   * 
-   * @param codigo
-   * @param tipo 
+   * Constructor para la generacon de un tipo de centro
+   * @param codigo codigo del centro
+   * @param tipo  tipo de centro
    */
   public TipoCentro(int pCodigo, String pTipo) {
     this.codigo = pCodigo;
