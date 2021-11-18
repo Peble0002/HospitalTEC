@@ -1,16 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Modelo;
 
+import static Modelo.TipoFuncionario.Doctor;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
- *
+ * Clase doctor hija de funcionario
  * @author  Pablo Chaves, Aaron Soto y Luis Leitón
+ * @version (17/11/2021)
  */
 public final class Doctor extends Funcionario {
   private String codigoMedico;
@@ -24,16 +22,20 @@ public final class Doctor extends Funcionario {
    * @param pFechaIngreso
    * @param pId 
    */
-  public Doctor(String pCodigoMedico, String pEspecialidad, TipoFuncionario pTipo, LocalDate pFechaIngreso, int pId) {
-    super(pTipo, pFechaIngreso, pId);
+  public Doctor(String pCodigoMedico, String pEspecialidad, 
+          LocalDate pFechaIngreso, int pId) {
+    super(pFechaIngreso, pId);
     this.codigoMedico = codigoMedico;
     this.especialidades.add(pEspecialidad);
+    super.setTipo(Doctor);
   }
 
-  public Doctor(String pCodigoMedico, String pEspecialidad, TipoFuncionario pTipo, int pDia, int pMes, int pAno, int pId) {
-    super(pTipo, pDia, pMes, pAno, pId);
+  public Doctor(String pCodigoMedico, String pEspecialidad, int pDia, 
+          int pMes, int pAno, int pId) {
+    super( pDia, pMes, pAno, pId);
     this.codigoMedico = codigoMedico;
     this.especialidades.add(pEspecialidad);
+    super.setTipo(Doctor);
   }
   
   public String getCodigoMedico() {

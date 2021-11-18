@@ -1,15 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Modelo;
 
 import java.time.LocalDate;
 
 /**
- *
+ * Clase funcionario hija de usuario
  * @author  Pablo Chaves, Aaron Soto y Luis Leitón
+ * @version (17/11/2021)
  */
 public class Funcionario extends Usuario{
   protected TipoFuncionario tipo;
@@ -28,10 +25,21 @@ public class Funcionario extends Usuario{
     this.tipo = pTipo;
     this.fechaIngreso = fechaIngreso;
   }
+  
+  public Funcionario(LocalDate pFechaIngreso, int pId) {
+    super(pId);
+    this.fechaIngreso = fechaIngreso;
+  }
 
-  public Funcionario(TipoFuncionario pTipo, int pDia, int pMes, int pAno, int pId) {
+  public Funcionario(TipoFuncionario pTipo, int pDia, int pMes, int pAno, 
+          int pId) {
     super(pId);
     this.tipo = pTipo;
+    this.fechaIngreso = LocalDate.of(pAno, pMes, pDia);
+  }
+  public Funcionario(int pDia, int pMes, int pAno, 
+          int pId) {
+    super(pId);
     this.fechaIngreso = LocalDate.of(pAno, pMes, pDia);
   }
   

@@ -5,11 +5,13 @@
  */
 package Modelo;
 
+import static Modelo.TipoFuncionario.Enfermero;
 import java.time.LocalDate;
 
 /**
- *
+ * Clase enfermero hija de funcionario
  * @author  Pablo Chaves, Aaron Soto y Luis Leitón
+ * @version (17/11/2021)
  */
 public final class Enfermero extends Funcionario{
   private boolean aCargo;
@@ -23,10 +25,12 @@ public final class Enfermero extends Funcionario{
    * @param pFechaIngreso
    * @param pId 
    */
-  public Enfermero(boolean pACargo, boolean pExperiencia, TipoFuncionario pTipo, LocalDate pFechaIngreso, int pId) {
-    super(pTipo, pFechaIngreso, pId);
+  public Enfermero(boolean pACargo, boolean pExperiencia,
+          LocalDate pFechaIngreso, int pId) {
+    super(pFechaIngreso, pId);
     this.aCargo = pACargo;
     this.experiencia = pExperiencia;
+    super.setTipo(Enfermero);
   }
   
   /**
@@ -39,10 +43,12 @@ public final class Enfermero extends Funcionario{
    * @param pAno
    * @param pId 
    */
-  public Enfermero(boolean pACargo, boolean pExperiencia, TipoFuncionario pTipo, int pDia, int pMes, int pAno, int pId) {
-    super(pTipo, pDia, pMes, pAno, pId);
+  public Enfermero(boolean pACargo, boolean pExperiencia, 
+          int pDia, int pMes, int pAno, int pId) {
+    super(pDia, pMes, pAno, pId);
     this.aCargo = pACargo;
     this.experiencia = pExperiencia;
+    super.setTipo(Enfermero);
   }
 
   public boolean isaCargo() {
