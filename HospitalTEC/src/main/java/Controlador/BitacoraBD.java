@@ -1,6 +1,8 @@
 
 package Controlador;
 
+import Modelo.Bitacora;
+
 /**
  * Clase para conectar con la tabla Bitacora
  * @author  Pablo Chaves, Aaron Soto y Luis Leitón
