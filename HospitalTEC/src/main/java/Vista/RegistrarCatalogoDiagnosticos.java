@@ -4,6 +4,8 @@
  */
 package Vista;
 
+
+
 /**
  *
  * @author LUIS LEITON
@@ -138,6 +140,9 @@ public class RegistrarCatalogoDiagnosticos extends javax.swing.JFrame {
                 new RegistrarCatalogoDiagnosticos().setVisible(true);
             }
         });
+    }
+    public boolean datosCorrectos(){
+      return !(tbNombre.getText().equals(""));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
