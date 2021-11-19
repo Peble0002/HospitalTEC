@@ -7,7 +7,7 @@ package Modelo;
  * @version (17/11/2021)
  */
 public abstract class Usuario {
-  protected int id;
+  protected String id;
   protected String contraseña;
   protected String nombre;
   protected String apellido1;
@@ -18,17 +18,17 @@ public abstract class Usuario {
    * @param id
    * @param nombre 
    */
-  public Usuario(int pId) {
+  public Usuario(String pId) {
     this.id = pId;
     
   }
 
-  public Usuario(int id, String contraseña) {
+  public Usuario(String id, String contraseña) {
     this.id = id;
     this.contraseña = contraseña;
   }
 
-  public Usuario(int id, String contraseña, String nombre, 
+  public Usuario(String id, String contraseña, String nombre, 
           String apellido1, String apellido2) {
     this.id = id;
     this.contraseña = contraseña;
@@ -43,7 +43,7 @@ public abstract class Usuario {
    * 
    * @return 
    */
-  public int getId() {
+  public String getId() {
     return id;
   }
 
@@ -51,7 +51,7 @@ public abstract class Usuario {
    * 
    * @param id 
    */
-  public void setId(int pId) {
+  public void setId(String pId) {
     this.id = pId;
   }
 
