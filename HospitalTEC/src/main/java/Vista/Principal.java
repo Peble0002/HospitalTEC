@@ -38,10 +38,8 @@ public class Principal extends javax.swing.JFrame {
         btnDoctor = new javax.swing.JButton();
         btnEnfermero = new javax.swing.JButton();
         btnSecretario = new javax.swing.JButton();
-        btnRegistrarSecretario = new javax.swing.JButton();
         btnRegistrarPaciente = new javax.swing.JButton();
-        btnRegistrarDoctor = new javax.swing.JButton();
-        btnRegistrarEnfermero = new javax.swing.JButton();
+        btnSecretario1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 102, 255));
@@ -102,39 +100,21 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btnRegistrarSecretario.setBackground(new java.awt.Color(0, 102, 102));
-        btnRegistrarSecretario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnRegistrarSecretario.setText("Registrar Secretario");
-        btnRegistrarSecretario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarSecretarioActionPerformed(evt);
-            }
-        });
-
         btnRegistrarPaciente.setBackground(new java.awt.Color(0, 102, 102));
         btnRegistrarPaciente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnRegistrarPaciente.setText("Registrar Paciente");
+        btnRegistrarPaciente.setText("Registrarme");
         btnRegistrarPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarPacienteActionPerformed(evt);
             }
         });
 
-        btnRegistrarDoctor.setBackground(new java.awt.Color(0, 102, 102));
-        btnRegistrarDoctor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnRegistrarDoctor.setText("Registrar Doctor");
-        btnRegistrarDoctor.addActionListener(new java.awt.event.ActionListener() {
+        btnSecretario1.setBackground(new java.awt.Color(0, 102, 102));
+        btnSecretario1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSecretario1.setText("Administrador");
+        btnSecretario1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarDoctorActionPerformed(evt);
-            }
-        });
-
-        btnRegistrarEnfermero.setBackground(new java.awt.Color(0, 102, 102));
-        btnRegistrarEnfermero.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnRegistrarEnfermero.setText("Registrar Enfermero");
-        btnRegistrarEnfermero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarEnfermeroActionPerformed(evt);
+                btnSecretario1ActionPerformed(evt);
             }
         });
 
@@ -164,20 +144,15 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnEnfermero)
                         .addGap(35, 35, 35)
-                        .addComponent(btnSecretario))
+                        .addComponent(btnSecretario)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSecretario1))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(230, 230, 230)
                         .addComponent(btnRegistrarPaciente)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRegistrarDoctor)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRegistrarEnfermero)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRegistrarSecretario))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(292, 292, 292)
+                        .addGap(61, 61, 61)
                         .addComponent(btnIniciarSesion)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,19 +168,16 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(tbContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addComponent(btnIniciarSesion)
-                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrarEnfermero)
-                    .addComponent(btnRegistrarDoctor)
-                    .addComponent(btnRegistrarPaciente)
-                    .addComponent(btnRegistrarSecretario))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                    .addComponent(btnIniciarSesion)
+                    .addComponent(btnRegistrarPaciente))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEnfermero)
                     .addComponent(btnDoctor)
                     .addComponent(btnPaciente)
-                    .addComponent(btnSecretario))
+                    .addComponent(btnSecretario)
+                    .addComponent(btnSecretario1))
                 .addContainerGap())
         );
 
@@ -225,27 +197,6 @@ public class Principal extends javax.swing.JFrame {
       
       this.dispose();
     }//GEN-LAST:event_btnRegistrarPacienteActionPerformed
-
-    private void btnRegistrarDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarDoctorActionPerformed
-     RegistrarDoctor RD = new RegistrarDoctor();
-     RD.setVisible(true);
-      
-     this.dispose(); 
-    }//GEN-LAST:event_btnRegistrarDoctorActionPerformed
-
-    private void btnRegistrarEnfermeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEnfermeroActionPerformed
-      RegistrarEnfermero RE = new RegistrarEnfermero();
-      RE.setVisible(true);
-      
-      this.dispose(); 
-    }//GEN-LAST:event_btnRegistrarEnfermeroActionPerformed
-
-    private void btnRegistrarSecretarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarSecretarioActionPerformed
-      RegistrarSecretario RS = new RegistrarSecretario();
-      RS.setVisible(true);
-      
-      this.dispose(); 
-    }//GEN-LAST:event_btnRegistrarSecretarioActionPerformed
 
     private void btnDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoctorActionPerformed
       VistaDoctor VD = new VistaDoctor();
@@ -267,6 +218,13 @@ public class Principal extends javax.swing.JFrame {
       
       this.dispose();
     }//GEN-LAST:event_btnSecretarioActionPerformed
+
+    private void btnSecretario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSecretario1ActionPerformed
+      Administrador AD = new Administrador();
+      AD.setVisible(true);
+      
+      this.dispose();  
+    }//GEN-LAST:event_btnSecretario1ActionPerformed
 
   /**
    * @param args the command line arguments
@@ -308,11 +266,9 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JButton btnEnfermero;
     public javax.swing.JButton btnIniciarSesion;
     public javax.swing.JButton btnPaciente;
-    public javax.swing.JButton btnRegistrarDoctor;
-    public javax.swing.JButton btnRegistrarEnfermero;
     public javax.swing.JButton btnRegistrarPaciente;
-    public javax.swing.JButton btnRegistrarSecretario;
     public javax.swing.JButton btnSecretario;
+    public javax.swing.JButton btnSecretario1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

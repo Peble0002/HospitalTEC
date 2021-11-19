@@ -124,10 +124,10 @@ public class RegistroAreaTrabajo extends javax.swing.JFrame {
     }//GEN-LAST:event_tbCodigoAreaActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-      VistaSecretario VS = new VistaSecretario();
-      VS.setVisible(true);
-
-      this.dispose();
+      Administrador AD = new Administrador();
+      AD.setVisible(true);
+      
+      this.dispose(); 
     }//GEN-LAST:event_btnVolverActionPerformed
 
     /**

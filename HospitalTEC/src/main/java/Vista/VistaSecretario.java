@@ -31,11 +31,6 @@ public class VistaSecretario extends javax.swing.JFrame {
         btnHospitalizaciones = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         btnAsignarCita = new javax.swing.JButton();
-        btnRCentroMedico = new javax.swing.JButton();
-        btnRDiagnosticos = new javax.swing.JButton();
-        btnAsignarTD = new javax.swing.JButton();
-        btnRATrabajo = new javax.swing.JButton();
-        btnRTratamientos = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,51 +75,6 @@ public class VistaSecretario extends javax.swing.JFrame {
             }
         });
 
-        btnRCentroMedico.setBackground(new java.awt.Color(0, 102, 102));
-        btnRCentroMedico.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnRCentroMedico.setText("Registrar Centro Médico");
-        btnRCentroMedico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRCentroMedicoActionPerformed(evt);
-            }
-        });
-
-        btnRDiagnosticos.setBackground(new java.awt.Color(0, 102, 102));
-        btnRDiagnosticos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnRDiagnosticos.setText("Registrar Diagnósticos");
-        btnRDiagnosticos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRDiagnosticosActionPerformed(evt);
-            }
-        });
-
-        btnAsignarTD.setBackground(new java.awt.Color(0, 102, 102));
-        btnAsignarTD.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnAsignarTD.setText("Asociar Tratamiento-Diagnóstico");
-        btnAsignarTD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAsignarTDActionPerformed(evt);
-            }
-        });
-
-        btnRATrabajo.setBackground(new java.awt.Color(0, 102, 102));
-        btnRATrabajo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnRATrabajo.setText("Registro Área de trabajo");
-        btnRATrabajo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRATrabajoActionPerformed(evt);
-            }
-        });
-
-        btnRTratamientos.setBackground(new java.awt.Color(0, 102, 102));
-        btnRTratamientos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnRTratamientos.setText("Registro Tratamiento");
-        btnRTratamientos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRTratamientosActionPerformed(evt);
-            }
-        });
-
         btnVolver.setBackground(new java.awt.Color(0, 102, 102));
         btnVolver.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnVolver.setText("Volver");
@@ -138,39 +88,22 @@ public class VistaSecretario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addComponent(btnAsignarCita)
+                .addGap(18, 18, 18)
+                .addComponent(btnHospitalizaciones)
+                .addGap(18, 18, 18)
+                .addComponent(btnCancelarCita)
+                .addGap(18, 18, 18)
+                .addComponent(btnCitasRegistradas)
+                .addGap(18, 18, 18)
+                .addComponent(btnVolver)
+                .addGap(71, 71, 71))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(btnHospitalizaciones)
-                                .addGap(50, 50, 50)
-                                .addComponent(btnCancelarCita)))
-                        .addGap(73, 73, 73)
-                        .addComponent(btnCitasRegistradas)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnRCentroMedico)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnRDiagnosticos)
-                                .addGap(43, 43, 43)
-                                .addComponent(btnRTratamientos))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(btnVolver))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnRATrabajo)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                                        .addComponent(btnAsignarCita)))
-                                .addGap(39, 39, 39)
-                                .addComponent(btnAsignarTD)))
-                        .addGap(56, 56, 56))))
+                .addGap(297, 297, 297)
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,19 +114,9 @@ public class VistaSecretario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCitasRegistradas)
                     .addComponent(btnHospitalizaciones)
-                    .addComponent(btnCancelarCita))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRCentroMedico)
-                    .addComponent(btnRDiagnosticos)
-                    .addComponent(btnRTratamientos))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRATrabajo)
+                    .addComponent(btnCancelarCita)
                     .addComponent(btnAsignarCita)
-                    .addComponent(btnAsignarTD))
-                .addGap(34, 34, 34)
-                .addComponent(btnVolver)
+                    .addComponent(btnVolver))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -217,41 +140,6 @@ public class VistaSecretario extends javax.swing.JFrame {
 
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
-
-    private void btnRCentroMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRCentroMedicoActionPerformed
-      RegistrarCentroAtencion RCA = new RegistrarCentroAtencion();
-      RCA.setVisible(true);
-
-      this.dispose();
-    }//GEN-LAST:event_btnRCentroMedicoActionPerformed
-
-    private void btnRDiagnosticosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRDiagnosticosActionPerformed
-      RegistrarCatalogoDiagnosticos RCD = new RegistrarCatalogoDiagnosticos();
-      RCD.setVisible(true);
-
-      this.dispose();
-    }//GEN-LAST:event_btnRDiagnosticosActionPerformed
-
-    private void btnRTratamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRTratamientosActionPerformed
-      RegistrarTratamiento RT = new RegistrarTratamiento();
-      RT.setVisible(true);
-
-      this.dispose();
-    }//GEN-LAST:event_btnRTratamientosActionPerformed
-
-    private void btnRATrabajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRATrabajoActionPerformed
-      RegistroAreaTrabajo RAT = new RegistroAreaTrabajo();
-      RAT.setVisible(true);
-
-      this.dispose();
-    }//GEN-LAST:event_btnRATrabajoActionPerformed
-
-    private void btnAsignarTDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarTDActionPerformed
-      AsociarTratamientoDiagnostico ATD = new AsociarTratamientoDiagnostico();
-      ATD.setVisible(true);
-
-      this.dispose();
-    }//GEN-LAST:event_btnAsignarTDActionPerformed
 
     private void btnCitasRegistradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCitasRegistradasActionPerformed
       CitasSistema CS = new CitasSistema();
@@ -304,14 +192,9 @@ public class VistaSecretario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAsignarCita;
-    public javax.swing.JButton btnAsignarTD;
     public javax.swing.JButton btnCancelarCita;
     public javax.swing.JButton btnCitasRegistradas;
     public javax.swing.JButton btnHospitalizaciones;
-    public javax.swing.JButton btnRATrabajo;
-    public javax.swing.JButton btnRCentroMedico;
-    public javax.swing.JButton btnRDiagnosticos;
-    public javax.swing.JButton btnRTratamientos;
     public javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables

@@ -244,10 +244,10 @@ public class RegistrarSecretario extends javax.swing.JFrame {
     }//GEN-LAST:event_tbCedulaSecretarioActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-     Principal P = new Principal();
-     P.setVisible(true);
+     Administrador AD = new Administrador();
+     AD.setVisible(true);
       
-     this.dispose();
+     this.dispose(); 
     }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
