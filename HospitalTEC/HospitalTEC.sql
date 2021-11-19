@@ -321,6 +321,8 @@ INSERT INTO tipoUsuario VALUES ('Paciente');
 INSERT INTO tipoUsuario VALUES ('Secretario');
 INSERT INTO tipoUsuario VALUES ('Enfermero');
 INSERT INTO tipoUsuario VALUES ('Doctor');
+INSERT INTO tipoUsuario VALUES ('Admin');
+INSERT INTO Usuario VALUES ('111', 'El', 'Super', 'Admin', 'Admin123', 5);
 INSERT INTO Usuario VALUES ('305110992', 'Aarón', 'Soto', 'Cortés', '123123', 1);
 INSERT INTO Usuario VALUES ('305240656', 'Pablo', 'Chaves', 'Rivera', '123123', 2);
 INSERT INTO Usuario VALUES ('305300938', 'Luis', 'Leiton', 'Flores', '123123', 3); 
