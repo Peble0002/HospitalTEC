@@ -10,7 +10,7 @@ import Modelo.Vacuna;
  * @version (17/11/2021)
  */
 public class Paciente_VacunaBD {
-  private Conexion conexion;
+  private Conexion conexion= new Conexion();
   private Paciente paciente;
   private Vacuna vacuna;
 }

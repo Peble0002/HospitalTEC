@@ -9,7 +9,7 @@ import Modelo.CentroAtencion;
  * @version (17/11/2021)
  */
 public class CentroAtencionBD {
-  private Conexion conexion;
+  private Conexion conexion= new Conexion();
   private CentroAtencion centroAtencion;
   
 }

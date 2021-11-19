@@ -8,7 +8,7 @@ import Modelo.Tratamiento;
  * @version (17/11/2021)
  */
 public class TratamientoBD {
-  private Conexion conexion;
+  private Conexion conexion= new Conexion();
   private Tratamiento tratamiento;
   
 }

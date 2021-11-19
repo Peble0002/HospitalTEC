@@ -7,6 +7,6 @@ package Controlador;
  * @version (17/11/2021)
  */
 public class tipoUsuarioBD {
-  Conexion conexionBD;
+  Conexion conexionBD= new Conexion();
   
 }

@@ -9,7 +9,7 @@ import Modelo.Paciente;
  * @version (17/11/2021)
  */
 public class PacienteBD {
-  private Conexion conexion;
+  private Conexion conexion= new Conexion();
   private Paciente paciente;
   
 }

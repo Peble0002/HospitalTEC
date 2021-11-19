@@ -10,7 +10,7 @@ import Modelo.Paciente;
  * @version (17/11/2021)
  */
 public class Centro_pacienteBD {
-  private Conexion conexion;
+  private Conexion conexion= new Conexion();
   private CentroAtencion centro;
   private Paciente paciente;
   

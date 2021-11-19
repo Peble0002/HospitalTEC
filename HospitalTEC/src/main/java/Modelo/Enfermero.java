@@ -26,7 +26,7 @@ public final class Enfermero extends Funcionario{
    * @param pId 
    */
   public Enfermero(boolean pACargo, boolean pExperiencia,
-          LocalDate pFechaIngreso, int pId) {
+          LocalDate pFechaIngreso, String pId) {
     super(pFechaIngreso, pId);
     this.aCargo = pACargo;
     this.experiencia = pExperiencia;
@@ -44,7 +44,7 @@ public final class Enfermero extends Funcionario{
    * @param pId 
    */
   public Enfermero(boolean pACargo, boolean pExperiencia, 
-          int pDia, int pMes, int pAno, int pId) {
+          int pDia, int pMes, int pAno, String pId) {
     super(pDia, pMes, pAno, pId);
     this.aCargo = pACargo;
     this.experiencia = pExperiencia;

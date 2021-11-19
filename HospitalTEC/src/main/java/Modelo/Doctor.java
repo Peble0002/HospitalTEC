@@ -23,7 +23,7 @@ public final class Doctor extends Funcionario {
    * @param pId 
    */
   public Doctor(String pCodigoMedico, String pEspecialidad, 
-          LocalDate pFechaIngreso, int pId) {
+          LocalDate pFechaIngreso, String pId) {
     super(pFechaIngreso, pId);
     this.codigoMedico = codigoMedico;
     this.especialidades.add(pEspecialidad);
@@ -31,7 +31,7 @@ public final class Doctor extends Funcionario {
   }
 
   public Doctor(String pCodigoMedico, String pEspecialidad, int pDia, 
-          int pMes, int pAno, int pId) {
+          int pMes, int pAno, String pId) {
     super( pDia, pMes, pAno, pId);
     this.codigoMedico = codigoMedico;
     this.especialidades.add(pEspecialidad);

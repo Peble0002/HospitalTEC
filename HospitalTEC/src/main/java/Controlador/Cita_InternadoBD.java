@@ -10,7 +10,7 @@ import Modelo.Internado;
  * @version (17/11/2021)
  */
 public class Cita_InternadoBD {
-  private Conexion conexion;
+  private Conexion conexion= new Conexion();
   private Cita cita;
   private Internado internado;
 }

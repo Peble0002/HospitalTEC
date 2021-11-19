@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @version (17/11/2021)
  */
 public class Telefono_PacienteBD {
-  private Conexion conexion;
+  private Conexion conexion= new Conexion();
   private Paciente paciente;
-  private ArrayList<String> telefonos;
+  private ArrayList<String> telefonos= new ArrayList<String>();
 }

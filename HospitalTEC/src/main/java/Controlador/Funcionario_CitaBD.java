@@ -10,7 +10,7 @@ import Modelo.Funcionario;
  * @version (17/11/2021)
  */
 public class Funcionario_CitaBD {
-  private Conexion conexion;
+  private Conexion conexion= new Conexion();
   private Funcionario funcionario;
   private Cita cita;
 }

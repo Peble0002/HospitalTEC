@@ -10,7 +10,7 @@ import Modelo.Funcionario;
  * @version (17/11/2021)
  */
 public class Centro_FuncionarioBD {
-  private Conexion conexion;
+  private Conexion conexion= new Conexion();
   private CentroAtencion centro;
   private Funcionario funcionario;
 }

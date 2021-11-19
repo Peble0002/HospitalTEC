@@ -10,7 +10,7 @@ import Modelo.Diagnostico;
  * @version (17/11/2021)
  */
 public class Cita_DiagnosticoBD {
-  private Conexion conexion;
+  private Conexion conexion= new Conexion();
   private Cita cita;
   private Diagnostico diagnostico;
 }

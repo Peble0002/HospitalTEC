@@ -10,7 +10,7 @@ import Modelo.RegistroSeguimiento;
  * @version (17/11/2021)
  */
 public class Internado_RegistroBD {
-  private Conexion conexion;
+  private Conexion conexion= new Conexion();
   private Internado internado;
   private RegistroSeguimiento registro;
 }

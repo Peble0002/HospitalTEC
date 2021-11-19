@@ -8,7 +8,7 @@ import Modelo.AreaTrabajo;
  * @version (17/11/2021)
  */
 public class AreaTrabajoBD {
-  private Conexion conexion;
+  private Conexion conexion = new Conexion();
   private AreaTrabajo area;
   
   

@@ -9,6 +9,6 @@ import Modelo.Bitacora;
  * @version (17/11/2021)
  */
 public class BitacoraBD {
-  private Conexion conexion;
+  private Conexion conexion= new Conexion();
   private Bitacora bitacora;
 }

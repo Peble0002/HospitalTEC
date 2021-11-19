@@ -9,6 +9,6 @@ import Modelo.Funcionario;
  * @version (17/11/2021)
  */
 public class FuncionarioBD {
-  private Conexion conexion;
+  private Conexion conexion= new Conexion();
   private Funcionario funcionario;
 }

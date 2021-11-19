@@ -8,7 +8,7 @@ import Modelo.TipoCentro;
  * @version (17/11/2021)
  */
 public class TipoCentroBD {
-  private Conexion conexion;
+  private Conexion conexion= new Conexion();
   private TipoCentro tipoCentro;
   
 }

@@ -10,7 +10,7 @@ import Modelo.Cita;
  * @version (17/11/2021)
  */
 public class Bitacora_CitaBD {
-  private Conexion conexion;
+  private Conexion conexion= new Conexion();
   private Bitacora bitacora;
   private Cita cita; 
   
