@@ -1,6 +1,7 @@
 
 package Controlador;
 
+import Modelo.Cita;
 import Modelo.Paciente;
 
 /**
