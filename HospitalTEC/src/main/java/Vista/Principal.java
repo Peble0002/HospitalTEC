@@ -4,17 +4,19 @@
  * and open the template in the editor.
  */
 package Vista;
+import Controlador.*;
 
 /**
  *
  * @author pablo
  */
 public class Principal extends javax.swing.JFrame {
-
+  Conexion conexion = new Conexion();
   /**
    * Creates new form Principal
    */
   public Principal() {
+    conexion.getConexion();
     initComponents();
   }
 

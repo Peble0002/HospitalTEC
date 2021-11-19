@@ -35,6 +35,7 @@ public class Conexion {
     
     try{
       conectar = DriverManager.getConnection(conexionUrl, usuario, contrasena);
+      System.out.println("Conectado");
       return conectar;
     }catch(SQLException e){
       System.out.println("Error detectado.");
