@@ -10,8 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @version (17/11/2021)
  */
 public class CentroAtencion {
-  private static final AtomicInteger contador = new AtomicInteger(0);
-  private final int codigo;
+  private  int codigo;
   private String nombre;
   private String ubicacion;
   private int capacidad;
@@ -31,9 +30,28 @@ public class CentroAtencion {
     this.ubicacion = pUbicacion;
     this.capacidad = pCapacidad;
     this.tipo= pTipo;
-    this.codigo = contador.incrementAndGet(); 
     this.trabajadores = new ArrayList<Funcionario>();
   }
+
+  /**
+   * 
+   * @param codigo
+   * @param nombre
+   * @param ubicacion
+   * @param capacidad
+   * @param tipo 
+   */
+  public CentroAtencion(int codigo, String nombre, String ubicacion, 
+          int capacidad, TipoCentro tipo) {
+    this.codigo = codigo;
+    this.nombre = nombre;
+    this.ubicacion = ubicacion;
+    this.capacidad = capacidad;
+    this.tipo = tipo;
+    this.trabajadores = new ArrayList<Funcionario>();
+  }
+  
+  
 
   public String getNombre() {
     return nombre;

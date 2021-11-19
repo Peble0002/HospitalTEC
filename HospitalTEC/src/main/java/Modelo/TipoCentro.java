@@ -21,6 +21,12 @@ public class TipoCentro {
     this.tipo = pTipo;
   }
 
+  public TipoCentro(String tipo) {
+    this.tipo = tipo;
+  }
+  
+  
+
   public int getCodigo() {
     return codigo;
   }

@@ -19,6 +19,10 @@ public class CatalogoDiagnostico {
     this.idDiagnostico = pIdDiagnostico;
     this.nombreDiagnostico = pNombreDiagnostico;
   }
+  
+  public CatalogoDiagnostico(String pNombreDiagnostico) {
+    this.nombreDiagnostico = pNombreDiagnostico;
+  }
 
   public String getIdDiagnostico() {
     return idDiagnostico;

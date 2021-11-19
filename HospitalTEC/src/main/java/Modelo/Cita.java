@@ -36,6 +36,16 @@ public class Cita {
     this.estado = estado;
   }
   
+  public Cita(LocalDate pFecha, LocalTime pHora, 
+          String pObservaciones, String pEspecialidad, EstadoCita pEstado) {
+    
+    this.fecha = pFecha;
+    this.hora = pHora;
+    this.observaciones = pObservaciones;
+    this.especialidad = pEspecialidad;
+    this.estado = estado;
+  }
+  
   /**
    * constructor con datos de fecha y hora
    * @param pIdCita
@@ -58,6 +68,16 @@ public class Cita {
     this.estado = pEstado;
   }
   
+  public Cita(int pDiaInicio, int pMesInicio, int pAnoInicio, 
+           LocalTime pHora, String pObservaciones, String pEspecialidad, 
+           EstadoCita pEstado) {
+    this.fecha = LocalDate.of(pAnoInicio, pMesInicio, pDiaInicio);
+    this.hora = pHora;
+    this.observaciones = pObservaciones;
+    this.especialidad = pEspecialidad;
+    this.estado = pEstado;
+  } 
+   
    /**
     * constructor con datos de fecha y datos de hora
     * @param pIdCita
@@ -81,6 +101,15 @@ public class Cita {
     this.especialidad = pEspecialidad;
     this.estado = pEstado;
   }
+  public Cita( int pDiaInicio, int pMesInicio, int pAnoInicio, 
+           int pHora, int pMinutos, int pSegundos, String observaciones, 
+           String pEspecialidad, EstadoCita pEstado) {
+    this.fecha = LocalDate.of(pAnoInicio, pMesInicio, pDiaInicio);
+    this.hora = LocalTime.of(pHora,pMinutos, pSegundos);
+    this.observaciones = observaciones;
+    this.especialidad = pEspecialidad;
+    this.estado = pEstado;
+  }
   
   /**
    * Constructor con fecha y datos de la hora
@@ -97,6 +126,16 @@ public class Cita {
           int pSegundos, String pObservaciones, 
            String pEspecialidad, EstadoCita pEstado) {
     this.idCita = pIdCita;
+    this.fecha = pFecha;
+    this.hora = LocalTime.of(pHora,pMinutos, pSegundos);
+    this.observaciones = pObservaciones;
+    this.especialidad = pEspecialidad;
+    this.estado = pEstado;
+  }
+  
+  public Cita(LocalDate pFecha, int pHora, int pMinutos,
+          int pSegundos, String pObservaciones, 
+           String pEspecialidad, EstadoCita pEstado) {
     this.fecha = pFecha;
     this.hora = LocalTime.of(pHora,pMinutos, pSegundos);
     this.observaciones = pObservaciones;

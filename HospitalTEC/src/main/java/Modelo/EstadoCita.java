@@ -7,5 +7,6 @@ package Modelo;
  * @version (17/11/2021)
  */
 public enum EstadoCita {
-  Registrada, CanceladaPorPaciente, CanceladaPorCentroMédico, Asignada, Realizada;
+  Registrada, CanceladaPorPaciente, CanceladaPorCentroMédico, Asignada,
+  Realizada;
 }

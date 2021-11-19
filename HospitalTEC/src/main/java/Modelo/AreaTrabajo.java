@@ -19,6 +19,10 @@ public class AreaTrabajo {
     this.codigo = pCodigo;
     this.areaTrabajo = pAreaTrabajo;
   }
+  
+  public AreaTrabajo(String pAreaTrabajo) {
+    this.areaTrabajo = pAreaTrabajo;
+  }
 
   public int getCodigo() {
     return codigo;
