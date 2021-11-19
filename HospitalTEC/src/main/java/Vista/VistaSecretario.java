@@ -32,6 +32,7 @@ public class VistaSecretario extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnAsignarCita = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
+        btnRATrabajo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,26 +85,42 @@ public class VistaSecretario extends javax.swing.JFrame {
             }
         });
 
+        btnRATrabajo.setBackground(new java.awt.Color(0, 102, 102));
+        btnRATrabajo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnRATrabajo.setText("Registro Área de trabajo");
+        btnRATrabajo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRATrabajoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(btnAsignarCita)
-                .addGap(18, 18, 18)
-                .addComponent(btnHospitalizaciones)
-                .addGap(18, 18, 18)
-                .addComponent(btnCancelarCita)
-                .addGap(18, 18, 18)
-                .addComponent(btnCitasRegistradas)
-                .addGap(18, 18, 18)
-                .addComponent(btnVolver)
-                .addGap(71, 71, 71))
             .addGroup(layout.createSequentialGroup()
-                .addGap(297, 297, 297)
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(60, 60, 60)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnAsignarCita)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnHospitalizaciones)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelarCita)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCitasRegistradas))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(287, 287, 287)
+                                .addComponent(jLabel3))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(294, 294, 294)
+                                .addComponent(btnRATrabajo)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(btnVolver)
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,7 +134,9 @@ public class VistaSecretario extends javax.swing.JFrame {
                     .addComponent(btnCancelarCita)
                     .addComponent(btnAsignarCita)
                     .addComponent(btnVolver))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(44, 44, 44)
+                .addComponent(btnRATrabajo)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -154,6 +173,13 @@ public class VistaSecretario extends javax.swing.JFrame {
 
       this.dispose();
     }//GEN-LAST:event_btnHospitalizacionesActionPerformed
+
+    private void btnRATrabajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRATrabajoActionPerformed
+        RegistroAreaTrabajo RAT = new RegistroAreaTrabajo();
+        RAT.setVisible(true);
+
+        this.dispose();
+    }//GEN-LAST:event_btnRATrabajoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,6 +221,7 @@ public class VistaSecretario extends javax.swing.JFrame {
     public javax.swing.JButton btnCancelarCita;
     public javax.swing.JButton btnCitasRegistradas;
     public javax.swing.JButton btnHospitalizaciones;
+    public javax.swing.JButton btnRATrabajo;
     public javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables

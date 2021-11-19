@@ -39,6 +39,7 @@ public class VistaDoctor extends javax.swing.JFrame {
         btnDetalleHospitalizaciones = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
         btnSeguimientoInternado = new javax.swing.JButton();
+        btnRDiagnosticos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -139,12 +140,21 @@ public class VistaDoctor extends javax.swing.JFrame {
             }
         });
 
+        btnRDiagnosticos.setBackground(new java.awt.Color(0, 102, 102));
+        btnRDiagnosticos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnRDiagnosticos.setText("Registrar Diagnósticos");
+        btnRDiagnosticos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRDiagnosticosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(333, 333, 333)
                         .addComponent(jLabel3))
@@ -170,14 +180,19 @@ public class VistaDoctor extends javax.swing.JFrame {
                                 .addGap(56, 56, 56)
                                 .addComponent(btnDiagnosticos))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(btnVolver))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addComponent(btnDetalleHospitalizaciones)
-                        .addGap(45, 45, 45)
-                        .addComponent(btnSeguimientoInternado)))
-                .addContainerGap(87, Short.MAX_VALUE))
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnVolver)
+                                .addGap(136, 136, 136))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnDetalleHospitalizaciones)
+                                .addGap(37, 37, 37)
+                                .addComponent(btnSeguimientoInternado)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnRDiagnosticos)
+                                .addGap(40, 40, 40)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,25 +200,30 @@ public class VistaDoctor extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAsignarCita)
-                    .addComponent(btnCancelarCita)
-                    .addComponent(btnAtenderCita)
-                    .addComponent(btnCitasRegistradas)
-                    .addComponent(btnDiagnosticos))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnTratamientos)
-                    .addComponent(btnCantidadCitas)
-                    .addComponent(btnCantidadDiagnosticos)
-                    .addComponent(btnCantidadTratamientos))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDetalleHospitalizaciones)
-                    .addComponent(btnSeguimientoInternado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAsignarCita)
+                            .addComponent(btnCancelarCita)
+                            .addComponent(btnAtenderCita)
+                            .addComponent(btnCitasRegistradas)
+                            .addComponent(btnDiagnosticos))
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnTratamientos)
+                            .addComponent(btnCantidadCitas)
+                            .addComponent(btnCantidadDiagnosticos)
+                            .addComponent(btnCantidadTratamientos))
+                        .addGap(92, 92, 92))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnDetalleHospitalizaciones)
+                            .addComponent(btnSeguimientoInternado)
+                            .addComponent(btnRDiagnosticos))
+                        .addGap(30, 30, 30)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(btnVolver)
-                .addContainerGap())
+                .addGap(44, 44, 44))
         );
 
         pack();
@@ -269,6 +289,13 @@ public class VistaDoctor extends javax.swing.JFrame {
       this.dispose();
     }//GEN-LAST:event_btnDetalleHospitalizacionesActionPerformed
 
+    private void btnRDiagnosticosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRDiagnosticosActionPerformed
+        RegistrarCatalogoDiagnosticos RCD = new RegistrarCatalogoDiagnosticos();
+        RCD.setVisible(true);
+
+        this.dispose();
+    }//GEN-LAST:event_btnRDiagnosticosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -314,6 +341,7 @@ public class VistaDoctor extends javax.swing.JFrame {
     public javax.swing.JButton btnCitasRegistradas;
     public javax.swing.JButton btnDetalleHospitalizaciones;
     public javax.swing.JButton btnDiagnosticos;
+    public javax.swing.JButton btnRDiagnosticos;
     public javax.swing.JButton btnSeguimientoInternado;
     public javax.swing.JButton btnTratamientos;
     public javax.swing.JButton btnVolver;

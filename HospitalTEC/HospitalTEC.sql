@@ -45,7 +45,7 @@ CREATE TABLE [Tratamiento_Diagnostico] (
 );
 
 CREATE TABLE [Bitacora] ( ---La bitacora no debería llevar además un dato de a cual estado fue cambiada la cita?
-  [IdBitácora] INT IDENTITY (1,1),
+  [IdBitácora] INT IDENTITY (1,1), --LLEVA TILDE
   [Fecha] DATE,
   [Hora] TIME,
   [Usuario] VARCHAR(30), ---Aquí se almacena el que hizo la bitacora, es una cédula o el nombre del usuario?
