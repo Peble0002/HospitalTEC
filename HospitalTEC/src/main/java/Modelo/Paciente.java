@@ -30,7 +30,7 @@ public class Paciente extends Usuario{
    * @param pId 
    */
   public Paciente(LocalDate pFechaNacimiento, String pTipoSangre,
-          String pNacionalidad, int pId) {
+          String pNacionalidad, String pId) {
     super(pId);
     this.fechaNacimiento = pFechaNacimiento;
     this.tipoSangre = pTipoSangre;
@@ -41,7 +41,7 @@ public class Paciente extends Usuario{
   }
   
   public Paciente(int pDia, int pMes, int pAno, String tipoSangre, 
-          String nacionalidad, int pId) {
+          String nacionalidad, String pId) {
     super(pId);
     this.fechaNacimiento = LocalDate.of(pAno, pMes, pDia);
     this.tipoSangre = tipoSangre;

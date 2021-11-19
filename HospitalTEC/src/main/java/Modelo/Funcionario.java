@@ -20,25 +20,25 @@ public class Funcionario extends Usuario{
    * @param fechaIngreso
    * @param pId 
    */
-  public Funcionario(TipoFuncionario pTipo, LocalDate pFechaIngreso, int pId) {
+  public Funcionario(TipoFuncionario pTipo, LocalDate pFechaIngreso, String pId) {
     super(pId);
     this.tipo = pTipo;
     this.fechaIngreso = fechaIngreso;
   }
   
-  public Funcionario(LocalDate pFechaIngreso, int pId) {
+  public Funcionario(LocalDate pFechaIngreso, String pId) {
     super(pId);
     this.fechaIngreso = fechaIngreso;
   }
 
   public Funcionario(TipoFuncionario pTipo, int pDia, int pMes, int pAno, 
-          int pId) {
+          String pId) {
     super(pId);
     this.tipo = pTipo;
     this.fechaIngreso = LocalDate.of(pAno, pMes, pDia);
   }
   public Funcionario(int pDia, int pMes, int pAno, 
-          int pId) {
+          String pId) {
     super(pId);
     this.fechaIngreso = LocalDate.of(pAno, pMes, pDia);
   }
@@ -75,11 +75,11 @@ public class Funcionario extends Usuario{
     this.centro = pCentro;
   }
 
-  public int getId() {
+  public String getId() {
     return id;
   }
 
-  public void setId(int pId) {
+  public void setId(String pId) {
     this.id = pId;
   }
 
