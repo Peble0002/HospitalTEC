@@ -2,17 +2,17 @@ CREATE DATABASE HospitalTEC
 USE HospitalTEC
 
 CREATE TABLE [tipoUsuario] (
-  [tipoUsuario] INT,
-  [detalle] VARCHAR,
+  [tipoUsuario] INT IDENTITY (1,1),
+  [detalle] VARCHAR(15),
   PRIMARY KEY ([tipoUsuario])
 );
 
 CREATE TABLE [Usuario] (
-  [idUsuario] VARCHAR,
-  [Nombre] VARCHAR,
-  [Apellido1] VARCHAR,
-  [Apellido2] VARCHAR,
-  [Contrasena] VARCHAR,
+  [idUsuario] VARCHAR(30),
+  [Nombre] VARCHAR(30),
+  [Apellido1] VARCHAR(30),
+  [Apellido2] VARCHAR(30),
+  [Contrasena] VARCHAR(50),
   [TipoUsuario] INT,
   PRIMARY KEY ([idUsuario]),
   CONSTRAINT [FK_Usuario.TipoUsuario]
@@ -21,20 +21,21 @@ CREATE TABLE [Usuario] (
 );
 
 CREATE TABLE [CatalogoDiagnosticos] (
-  [IdDiagnostico] VARCHAR,
-  [NombreDiagnostico] VARCHAR,
+  [IdDiagnostico] INT IDENTITY (1,1),
+  [NombreDiagnostico] VARCHAR(70),
   PRIMARY KEY ([IdDiagnostico])
 );
 
 CREATE TABLE [CatalogoTratamientos] (
-  [IdTratamiento] VARCHAR,
-  [Nombre] VARCHAR,
+  [IdTratamiento] INT IDENTITY (1,1),
+  [Nombre] VARCHAR(70),
   PRIMARY KEY ([IdTratamiento])
 );
 
 CREATE TABLE [Tratamiento_Diagnostico] (
-  [IdDiagnostico] VARCHAR,
-  [IdTratamiento] VARCHAR,
+  [IdDiagnostico] INT,
+  [IdTratamiento] INT,
+  PRIMARY KEY ([IdDiagnostico], [IdTratamiento]),
   CONSTRAINT [FK_Tratamiento_Diagnostico.IdDiagnostico]
     FOREIGN KEY ([IdDiagnostico])
       REFERENCES [CatalogoDiagnosticos]([IdDiagnostico]),
@@ -43,27 +44,28 @@ CREATE TABLE [Tratamiento_Diagnostico] (
       REFERENCES [CatalogoTratamientos]([IdTratamiento])
 );
 
-CREATE TABLE [Bitacora] (
-  [IdBitácora] VARCHAR,
+CREATE TABLE [Bitacora] ( ---La bitacora no debería llevar además un dato de a cual estado fue cambiada la cita?
+  [IdBitácora] INT IDENTITY (1,1),
   [Fecha] DATE,
-  [Hora] DATE,
-  [Usuario] VARCHAR,
+  [Hora] TIME,
+  [Usuario] VARCHAR(30), ---Aquí se almacena el que hizo la bitacora, es una cédula o el nombre del usuario?
   PRIMARY KEY ([IdBitácora])
 );
 
 CREATE TABLE [Cita] (
-  [IdCita] VARCHAR,
-  [fecha] Date,
-  [hora] Time,
-  [tipo] VARCHAR,
-  [estado] VARCHAR,
-  [especialidad] VARCHAR,
+  [IdCita] INT IDENTITY (1,1),
+  [fecha] DATE,
+  [hora] TIME,
+  [observaciones] VARCHAR(100),
+  [estado] VARCHAR(50),
+  [especialidad] VARCHAR(50), ---Especialidad escrita o referente a alguna existente en una tabla?
   PRIMARY KEY ([IdCita])
 );
 
 CREATE TABLE [Bitacora_Cita] (
-  [IdCita] VARCHAR,
-  [IdBitacora] VARCHAR,
+  [IdCita] INT,
+  [IdBitacora] INT,
+  PRIMARY KEY ([IdCita], [IdBitacora]),
   CONSTRAINT [FK_Bitacora_Cita.IdBitacora]
     FOREIGN KEY ([IdBitacora])
       REFERENCES [Bitacora]([IdBitácora]),
@@ -73,13 +75,12 @@ CREATE TABLE [Bitacora_Cita] (
 );
 
 CREATE TABLE [Paciente] (
-  [idPaciente] VARCHAR,
-  [nacionalidad] VARCHAR,
-  [tipoSangre] VARCHAR,
-  [fechaNacimiento] Date,
-  [provincia] VARCHAR,
-  [canton] VARCHAR,
-  [distrito] VARCHAR,
+  [idPaciente] VARCHAR(30),
+  [nacionalidad] VARCHAR(50),
+  [tipoSangre] VARCHAR(10),
+  [fechaNacimiento] DATE,
+  [provincia] VARCHAR(20),
+  [canton] VARCHAR(30),
   PRIMARY KEY ([idPaciente]),
   CONSTRAINT [FK_Paciente.idUsuario]
     FOREIGN KEY ([idPaciente])
@@ -87,9 +88,9 @@ CREATE TABLE [Paciente] (
 );
 
 CREATE TABLE [Paciente_Cita] (
-  [idPaciente] VARCHAR,
-  [IdCita] VARCHAR,
-  PRIMARY KEY ([idPaciente]),
+  [idPaciente] VARCHAR(30),
+  [IdCita] INT,
+  PRIMARY KEY ([idPaciente], [IdCita]),
   CONSTRAINT [FK_Paciente_Cita.IdCita]
     FOREIGN KEY ([IdCita])
       REFERENCES [Cita]([IdCita]),
@@ -98,25 +99,26 @@ CREATE TABLE [Paciente_Cita] (
       REFERENCES [Paciente]([idPaciente])
 );
 
-CREATE TABLE [TipoCentro] (
-  [Codigo] int,
-  [TipoCentro] Varchar,
-  PRIMARY KEY ([Codigo])
+CREATE TABLE [TipoCentro](
+  [idTipo] INT IDENTITY (1,1),
+  [TipoCentro] VARCHAR(50),
+  PRIMARY KEY ([idTipo])
 );
 
-CREATE TABLE [CentroAtencion] (
-  [Codigo] int,
-  [nombreCentro] Varchar,
-  [ubicacion] Varchar,
-  [capacidad] int,
+CREATE TABLE [CentroAtencion](
+  [Codigo] INT IDENTITY (1,1),
+  [idTipo] INT,
+  [nombreCentro] VARCHAR(50),
+  [ubicacion] VARCHAR(100),
+  [capacidad] INT,
   PRIMARY KEY ([Codigo]),
   CONSTRAINT [FK_CentroAtencion.Codigo]
-    FOREIGN KEY ([Codigo])
-      REFERENCES [TipoCentro]([Codigo])
+    FOREIGN KEY ([idTipo])
+      REFERENCES [TipoCentro]([idTipo])
 );
 
-CREATE TABLE [Centro_paciente] (
-  [idPaciente] VARCHAR,
+CREATE TABLE [Centro_paciente](
+  [idPaciente] VARCHAR(30),
   [Codigo] INT,
   PRIMARY KEY ([idPaciente], [Codigo]),
   CONSTRAINT [FK_Centro_Paciente.Codigo]
@@ -128,9 +130,9 @@ CREATE TABLE [Centro_paciente] (
 );
 
 CREATE TABLE [Funcionario] (
-  [IDFuncionario] VARCHAR,
-  [TipoFuncionario] VARCHAR,
-  [fechaIngreso] Date,
+  [IDFuncionario] VARCHAR(30),
+  [TipoFuncionario] INT, --Considerar que esta información viene desde la tabla "tipoUsuario"
+  [fechaIngreso] DATE,
   PRIMARY KEY ([IDFuncionario]),
   CONSTRAINT [FK_Funcionario.idUsuario]
     FOREIGN KEY ([IDFuncionario])
@@ -138,28 +140,27 @@ CREATE TABLE [Funcionario] (
 );
 
 CREATE TABLE [Enfermero] (
-  [IDFuncionario] VARCHAR,
-  [aCargo] BIT,
+  [IDFuncionario] VARCHAR(30),
+  [aCargo] BIT, ---1 para TRUE, 0 para FALSE
   [experiencia] BIT,
-  [IDEnfermero] INT,
-  PRIMARY KEY ([IDEnfermero]),
+  PRIMARY KEY ([IDFuncionario]),
   CONSTRAINT [FK_Enfermero.IDFuncionario]
     FOREIGN KEY ([IDFuncionario])
       REFERENCES [Funcionario]([IDFuncionario])
 );
 
 CREATE TABLE [Doctor] (
-  [codigoMedico] VARCHAR,
-  [especialidad] VARCHAR,
-  [IDFuncionario] VARCHAR,
-  PRIMARY KEY ([codigoMedico]),
+  [codigoMedico] VARCHAR(30),
+  [especialidad] VARCHAR(70), ---Un doctor podría tener diferentes especialidades, no?
+  [IDFuncionario] VARCHAR(30),
+  PRIMARY KEY ([IDFuncionario]),
   CONSTRAINT [FK_Doctor.IDFuncionario]
     FOREIGN KEY ([IDFuncionario])
       REFERENCES [Funcionario]([IDFuncionario])
 );
 
 CREATE TABLE [Centro_Funcionario] (
-  [IDFuncionario] VARCHAR,
+  [IDFuncionario] VARCHAR(30),
   [Codigo] INT,
   PRIMARY KEY ([IDFuncionario], [Codigo]),
   CONSTRAINT [FK_Centro_Funcionario.Codigo]
@@ -171,8 +172,8 @@ CREATE TABLE [Centro_Funcionario] (
 );
 
 CREATE TABLE [Funcionario_Cita] (
-  [IDFuncionario] VARCHAR,
-  [IdCita] VARCHAR,
+  [IDFuncionario] VARCHAR(30),
+  [IdCita] INT,
   PRIMARY KEY ([IDFuncionario], [IdCita]),
   CONSTRAINT [FK_Funcionario_Cita.IDFuncionario]
     FOREIGN KEY ([IDFuncionario])
@@ -182,24 +183,33 @@ CREATE TABLE [Funcionario_Cita] (
       REFERENCES [Cita]([IdCita])
 );
 
+CREATE TABLE [AreaTrabajo] (
+  [codigo] INT IDENTITY (1,1),
+  [NombreArea] VARCHAR(50),
+  PRIMARY KEY ([codigo])
+);
+
 CREATE TABLE [Internado] (
-  [IdInternado] VARCHAR,
+  [IdInternado] VARCHAR(30),
   [fechaInicio] DATE,
   [fechaFin] DATE,
-  [codigoAreaTrabajo] VARCHAR,
-  PRIMARY KEY ([IdInternado])
+  [codigoAreaTrabajo] INT,
+  PRIMARY KEY ([IdInternado]),
+  CONSTRAINT [FK_Internado.codigoAreaTrabajo]
+    FOREIGN KEY ([codigoAreaTrabajo])
+      REFERENCES [AreaTrabajo]([codigo])
 );
 
 CREATE TABLE [RegistroSeguimiento] (
-  [idRegistro] VARCHAR,
+  [idRegistro] INT IDENTITY (1,1),
   [fecha] DATE,
-  [observacion] VARCHAR,
+  [observacion] VARCHAR(100),
   PRIMARY KEY ([idRegistro])
 );
 
 CREATE TABLE [Internado_Centro] (
-  [Codigo] int,
-  [IdInternado] VARCHAR,
+  [Codigo] INT,
+  [IdInternado] VARCHAR(30),
   PRIMARY KEY ([Codigo], [IdInternado]),
   CONSTRAINT [FK_Internado_Centro.Codigo]
     FOREIGN KEY ([Codigo])
@@ -210,13 +220,13 @@ CREATE TABLE [Internado_Centro] (
 );
 
 CREATE TABLE [Cita_Diagnostico] (
-  [IdCita] VARCHAR,
-  [IdDiagnostico] VARCHAR,
-  [IdTratamiento] VARCHAR,
-  [Dosis] VARCHAR,
-  [Tipo] VARCHAR,
-  [Nivel] VARCHAR,
-  [Observaciones] VARCHAR,
+  [IdCita] INT,
+  [IdDiagnostico] INT,
+  [IdTratamiento] INT,
+  [Dosis] VARCHAR(30),
+  [Nivel] VARCHAR(30),
+  [Observaciones] VARCHAR(100),
+  PRIMARY KEY ([IdCita], [IdDiagnostico]),
   CONSTRAINT [FK_Cita_Diagnostico.IdCita]
     FOREIGN KEY ([IdCita])
       REFERENCES [Cita]([IdCita]),
@@ -226,12 +236,12 @@ CREATE TABLE [Cita_Diagnostico] (
   CONSTRAINT [FK_Cita_Diagnostico.CatalogoTratamientos]
     FOREIGN KEY ([IdTratamiento])
       REFERENCES [CatalogoTratamientos]([IdTratamiento])
-  
 );
 
-CREATE TABLE [Cita_Internado] (
-  [Idcita] Varchar,
-  [IdInternado] Varchar,
+CREATE TABLE [Cita_Internado] ( ---Esta tabla se ocupa? Estoy analizandolo pero no sé si todo paciente es internado tras recibir una cita
+  [Idcita] INT,
+  [IdInternado] VARCHAR(30),
+  PRIMARY KEY ([Idcita], [IdInternado]),
   CONSTRAINT [FK_Cita_Internado.Idcita]
     FOREIGN KEY ([Idcita])
       REFERENCES [Cita]([IdCita]),
@@ -240,15 +250,9 @@ CREATE TABLE [Cita_Internado] (
       REFERENCES [Internado]([IdInternado])
 );
 
-CREATE TABLE [AreaTrabajo] (
-  [codigo] int,
-  [NombreArea] Varchar,
-  PRIMARY KEY ([codigo])
-);
-
 CREATE TABLE [AreaTrabajo_Funcionario] (
-  [codigo] int,
-  [IDFuncionario] Varchar,
+  [codigo] INT,
+  [IDFuncionario] VARCHAR(30),
   PRIMARY KEY ([codigo], [IDFuncionario]),
   CONSTRAINT [FK_AreaTrabajo_Funcionario.IDFuncionario]
     FOREIGN KEY ([IDFuncionario])
@@ -259,19 +263,19 @@ CREATE TABLE [AreaTrabajo_Funcionario] (
 );
 
 CREATE TABLE [Internado_Doctor] (
-  [IdInternado] VARCHAR,
-  [codigoMedico] VARCHAR,
-  PRIMARY KEY ([IdInternado], [codigoMedico]),
+  [IdInternado] VARCHAR(30),
+  [IDFuncionario] VARCHAR(30),
+  PRIMARY KEY ([IdInternado], [IDFuncionario]),
   CONSTRAINT [FK_Internado_Doctor.codigoMedico]
-    FOREIGN KEY ([codigoMedico])
-      REFERENCES [Doctor]([codigoMedico]),
+    FOREIGN KEY ([IDFuncionario])
+      REFERENCES [Doctor]([IDFuncionario]),
   CONSTRAINT [FK_Internado_Doctor.IdInternado]
     FOREIGN KEY ([IdInternado])
       REFERENCES [Internado]([IdInternado])
 );
 
 CREATE TABLE [Telefono_Paciente] (
-  [idPaciente] VARCHAR,
+  [idPaciente] VARCHAR(30),
   [telefono] INT,
   PRIMARY KEY ([idPaciente], [telefono]),
   CONSTRAINT [FK_Telefono_Paciente.idPaciente]
@@ -280,17 +284,15 @@ CREATE TABLE [Telefono_Paciente] (
 );
 
 CREATE TABLE [Vacuna] (
-  [idVacuna] VARCHAR,
-  [fechaAplicacion] Date,
-  [nombre] Varchar,
-  [farmaceutica] VARCHAR,
-  [lote] int,
+  [idVacuna] INT IDENTITY (1,1),
+  [nombre] VARCHAR(50),
+  [farmaceutica] VARCHAR(50),
   PRIMARY KEY ([idVacuna])
 );
 
 CREATE TABLE [Internado_Registro] (
-  [IdInternado] VARCHAR,
-  [idRegistro] VARCHAR,
+  [IdInternado] VARCHAR(30),
+  [idRegistro] INT,
   PRIMARY KEY ([IdInternado], [idRegistro]),
   CONSTRAINT [FK_Internado_Registro.IdInternado]
     FOREIGN KEY ([IdInternado])
@@ -301,9 +303,11 @@ CREATE TABLE [Internado_Registro] (
 );
 
 CREATE TABLE [Paciente_Vacuna] (
-  [idPaciente] VARCHAR,
-  [idVacuna] VARCHAR,
-  PRIMARY KEY ([idPaciente]),
+  [idPaciente] VARCHAR(30),
+  [idVacuna] INT,
+  [fechaAplicacion] DATE,
+  [lote] INT,
+  PRIMARY KEY ([idPaciente], [idVacuna]),
   CONSTRAINT [FK_Paciente_Vacuna.idPaciente]
     FOREIGN KEY ([idPaciente])
       REFERENCES [Paciente]([idPaciente]),
@@ -311,3 +315,71 @@ CREATE TABLE [Paciente_Vacuna] (
     FOREIGN KEY ([idVacuna])
       REFERENCES [Vacuna]([idVacuna])
 );
+
+-------------------INSERCIONES INICIALES
+INSERT INTO tipoUsuario VALUES ('Paciente');
+INSERT INTO tipoUsuario VALUES ('Secretario');
+INSERT INTO tipoUsuario VALUES ('Enfermero');
+INSERT INTO tipoUsuario VALUES ('Doctor');
+INSERT INTO Usuario VALUES ('305110992', 'Aarón', 'Soto', 'Cortés', '123123', 1);
+INSERT INTO Usuario VALUES ('305240656', 'Pablo', 'Chaves', 'Rivera', '123123', 2);
+INSERT INTO Usuario VALUES ('305300938', 'Luis', 'Leiton', 'Flores', '123123', 3); 
+INSERT INTO Usuario VALUES ('303240163', 'Alonso', 'Chaves', 'Muñoz', '123123', 4);
+INSERT INTO CatalogoDiagnosticos VALUES ('Gastroenteritis aguda');
+INSERT INTO CatalogoDiagnosticos VALUES ('Diabetes Tipo I');
+INSERT INTO CatalogoDiagnosticos VALUES ('Neumonía');
+INSERT INTO CatalogoDiagnosticos VALUES ('Arritmia Cardíaca');
+INSERT INTO CatalogoTratamientos VALUES ('Cirugía gastrointestinal');
+INSERT INTO CatalogoTratamientos VALUES ('Inyección de Insulina');
+INSERT INTO CatalogoTratamientos VALUES ('Ejercicios pulmonares');
+INSERT INTO CatalogoTratamientos VALUES ('Colocación de marcapasos');
+INSERT INTO Tratamiento_Diagnostico VALUES (1,1);
+INSERT INTO Tratamiento_Diagnostico VALUES (2,2);
+INSERT INTO Tratamiento_Diagnostico VALUES (3,3);
+INSERT INTO Tratamiento_Diagnostico VALUES (4,4);
+INSERT INTO Bitacora VALUES ('2021-08-21', '11:30:00', '303240163');
+INSERT INTO Cita VALUES ('2021-08-21', '11:30:00', 'Presenta mareos constantes', 'Registrada', 'Medicina general');
+INSERT INTO Bitacora_Cita VALUES (1,1);
+INSERT INTO Paciente VALUES ('305110992', 'Costarricense', 'B-', '2021-08-21', 'Cartago', 'Central');
+INSERT INTO Paciente_Cita VALUES ('305110992', 1);
+INSERT INTO TipoCentro VALUES ('Hospital');
+INSERT INTO TipoCentro VALUES ('Clínica');
+INSERT INTO TipoCentro VALUES ('Ebais');
+INSERT INTO TipoCentro VALUES ('Consultorio');
+INSERT INTO CentroAtencion VALUES (1, 'Hospital La Católica', 'San Jose Centro', 250);
+INSERT INTO CentroAtencion VALUES (2, 'Clinica Biblica', 'San Jose Centro', 300);
+INSERT INTO CentroAtencion VALUES (3, 'Ebais Agua Caliente', 'Cartago Agua Caliente', 60);
+INSERT INTO CentroAtencion VALUES (4, 'Consultorio Bienestar', 'Heredia', 10);
+INSERT INTO Centro_paciente VALUES ('305110992', 2);
+INSERT INTO Funcionario VALUES ('303240163', 4, '2020-11-01');
+INSERT INTO Funcionario VALUES ('305240656', 2, '2020-12-20');
+INSERT INTO Funcionario VALUES ('305300938', 3, '2021-02-15');
+INSERT INTO Enfermero VALUES ('305300938', 1, 1);
+INSERT INTO Doctor VALUES ('001', 'Gastroenterologo', 303240163);
+INSERT INTO Centro_Funcionario VALUES ('303240163', 1);
+INSERT INTO Centro_Funcionario VALUES ('305240656', 2);
+INSERT INTO Centro_Funcionario VALUES ('305300938', 3);
+INSERT INTO Funcionario_Cita VALUES ('303240163', 1);
+INSERT INTO AreaTrabajo VALUES ('Anestesiología');
+INSERT INTO AreaTrabajo VALUES ('Cuidados Intensivos');
+INSERT INTO AreaTrabajo VALUES ('Emergencias');
+INSERT INTO AreaTrabajo VALUES ('Recepción');
+INSERT INTO Internado VALUES ('305110992', '2021-08-21', '2021-08-23', 2);
+INSERT INTO RegistroSeguimiento VALUES ('2021-08-21', 'El paciente presente dolores constantes de abdomen');
+INSERT INTO RegistroSeguimiento VALUES ('2021-08-22', 'El paciente menciona haber comido pescado el día anterior');
+INSERT INTO RegistroSeguimiento VALUES ('2021-08-23', 'El paciente presenta mejorías notorias');
+INSERT INTO Internado_Centro VALUES (1, '305110992');
+INSERT INTO Cita_Diagnostico VALUES (1, 1, 1, 'N/A', 'Grave', 'Se decide hospitalizar inmediatamente');
+INSERT INTO Cita_Internado VALUES (1, '305110992');
+INSERT INTO AreaTrabajo_Funcionario VALUES (1, '303240163');
+INSERT INTO AreaTrabajo_Funcionario VALUES (2, '305300938');
+INSERT INTO AreaTrabajo_Funcionario VALUES (4, '305240656');
+INSERT INTO Internado_Doctor VALUES ('305110992', '303240163');
+INSERT INTO Telefono_Paciente VALUES ('305110992', 89652266);
+INSERT INTO Vacuna VALUES ('Contra la viruela', 'H&P');
+INSERT INTO Vacuna VALUES ('Contra la varicela', 'Medipharma');
+INSERT INTO Vacuna VALUES ('COVID-19', 'Jhonson & Jhonson');
+INSERT INTO Internado_Registro VALUES ('305110992', 1);
+INSERT INTO Paciente_Vacuna VALUES ('305110992', 1, '2005-01-12', 12573);
+INSERT INTO Paciente_Vacuna VALUES ('305110992', 2, '2007-02-21', 65451);
+INSERT INTO Paciente_Vacuna VALUES ('305110992', 3, '2021-08-30', 48432);
