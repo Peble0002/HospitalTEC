@@ -260,6 +260,10 @@ public class Principal extends javax.swing.JFrame {
       }
     });
   }
+  
+  public boolean datosCorrectos(){
+      return !(tbUsuario.getText().equals("")|| tbContrasena.getText().equals(""));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnDoctor;

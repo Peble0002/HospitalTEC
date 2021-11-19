@@ -138,6 +138,10 @@ public class CancelarCita extends javax.swing.JFrame {
             }
         });
     }
+    
+    public boolean datosCorrectos(){
+      return !(tbCedula.getText().equals(""));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnCancelar;
