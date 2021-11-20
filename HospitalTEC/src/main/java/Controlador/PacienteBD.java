@@ -4,6 +4,7 @@ package Controlador;
 import Modelo.Paciente;
 import Modelo.Usuario;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -31,7 +32,8 @@ public class PacienteBD {
       ps.setString(1, pPaciente.getId());
       ps.setString(2, pPaciente.getNacionalidad());
       ps.setString(3, pPaciente.getTipoSangre());
-      ps.setDate(4, pPaciente.getFechaNacimiento()); /*Hay que usarlos en Date*/
+      Date fecha = Date.valueOf(pPaciente.getFechaNacimiento());
+      ps.setDate(4, fecha); /*Hay que usarlos en Date*/
       ps.setString(5, pPaciente.getProvincia());
       ps.setString(6, pPaciente.getCanton());
       ps.executeUpdate();
