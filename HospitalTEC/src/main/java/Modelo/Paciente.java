@@ -135,9 +135,4 @@ public class Paciente extends Usuario{
   public void setCentros(ArrayList<CentroAtencion> centros) {
     this.centros = centros;
   }
-  
-  
-  
-  
-  
 }

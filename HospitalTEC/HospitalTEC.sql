@@ -385,3 +385,9 @@ INSERT INTO Internado_Registro VALUES ('305110992', 1);
 INSERT INTO Paciente_Vacuna VALUES ('305110992', 1, '2005-01-12', 12573);
 INSERT INTO Paciente_Vacuna VALUES ('305110992', 2, '2007-02-21', 65451);
 INSERT INTO Paciente_Vacuna VALUES ('305110992', 3, '2021-08-30', 48432);
+
+SELECT CDi.NombreDiagnostico FROM Cita C 
+	JOIN Paciente_Cita PC ON C.IdCita = PC.IdCita 
+	JOIN Cita_Diagnostico CD ON PC.IdCita = CD.IdCita
+	JOIN CatalogoDiagnosticos CDi ON CDi.IdDiagnostico = CD.IdDiagnostico
+		WHERE idPaciente = '305110992'

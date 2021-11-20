@@ -8,7 +8,7 @@ package Modelo;
  */
 public abstract class Usuario {
   protected String id;
-  protected String contraseña;
+  protected String contrasena;
   protected String nombre;
   protected String apellido1;
   protected String apellido2;
@@ -23,15 +23,15 @@ public abstract class Usuario {
     
   }
 
-  public Usuario(String id, String contraseña) {
+  public Usuario(String id, String contrasena) {
     this.id = id;
-    this.contraseña = contraseña;
+    this.contrasena = contrasena;
   }
 
-  public Usuario(String id, String contraseña, String nombre, 
+  public Usuario(String id, String contrasena, String nombre, 
           String apellido1, String apellido2) {
     this.id = id;
-    this.contraseña = contraseña;
+    this.contrasena = contrasena;
     this.nombre = nombre;
     this.apellido1 = apellido1;
     this.apellido2 = apellido2;
@@ -53,6 +53,22 @@ public abstract class Usuario {
    */
   public void setId(String pId) {
     this.id = pId;
+  }
+  
+  /**
+   * 
+   * @return 
+   */
+  public String getContrasena() {
+    return contrasena;
+  }
+  
+  /**
+   * 
+   * @return 
+   */
+  public void setContrasena(String pContrasena) {
+    this.contrasena = pContrasena;
   }
 
   /**

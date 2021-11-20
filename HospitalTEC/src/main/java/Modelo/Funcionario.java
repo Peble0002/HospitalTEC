@@ -84,11 +84,11 @@ public class Funcionario extends Usuario{
   }
 
   public String getContraseña() {
-    return contraseña;
+    return contrasena;
   }
 
   public void setContraseña(String pContraseña) {
-    this.contraseña = pContraseña;
+    this.contrasena = pContraseña;
   }
 
   public String getNombre() {

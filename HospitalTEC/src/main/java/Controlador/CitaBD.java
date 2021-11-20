@@ -2,6 +2,12 @@
 package Controlador;
 
 import Modelo.Cita;
+import Modelo.Usuario;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  * Clase para conectar con la tabla Cita
@@ -12,4 +18,64 @@ public class CitaBD {
   private Conexion conexion= new Conexion();
   private Cita cita;
   
+  /**
+   * Método para insertar una Cita en la base de datos
+   * @param pCita de tipo Cita
+   */
+  public void insertarCita(Cita pCita){
+    try{
+      Connection con = conexion.getConexion();
+      PreparedStatement ps = con.prepareStatement("INSERT INTO Cita "
+              + "(fecha, hora, observaciones, estado, especialidad) "
+              + "VALUES (?,?,?,?,?)");
+      ps.setDate(1, pCita.getFecha()); /*Este se dividio en fecha y hora*/
+      ps.setTime(2, pCita.getHora()); /*Habría que buscar la posibilidad de generar un time*/
+      ps.setString(3, pCita.getObservaciones());
+      ps.setString(4, pCita.getEstado()); /*Hay un objeto de tipo estado pero habría que pasarlo a String*/
+      ps.setString(5, pCita.getEspecialidad());
+      ps.executeUpdate();
+      JOptionPane.showMessageDialog(null, "Registro de usuario completado.");
+    }catch(SQLException e){
+      JOptionPane.showMessageDialog(null, e.toString());
+    }
+  }
+  
+  /**
+   * Método para actualizar una Cita en la base de datos
+   * @param pIdCita de tipo Cita
+   * @param pEstado
+   */
+  public void actualizarCita(int pIdCita, String pEstado){ //REVISAR NO SE HAN HECHO UPDATES HASTA EL MOMENTO.
+    try{
+      Connection con = conexion.getConexion();
+      PreparedStatement ps = con.prepareStatement("UPDATE Cita SET"
+              + "estado = " + pEstado + "WHERE IdCita = " + pIdCita);
+      ps.executeUpdate();
+      JOptionPane.showMessageDialog(null, "Registro de usuario completado.");
+    }catch(SQLException e){
+      JOptionPane.showMessageDialog(null, e.toString());
+    }
+  }
+  
+  /**
+   * Método para verificar si existe un usuario en la base de datos
+   * @param pCedula número de cédula del paciente.
+   * @return Un set de resultados con todas citas del paciente en cuestión.
+   */
+  public ResultSet citasAsociadas(String pCedula){
+    ResultSet rs;
+    try{
+      Connection con = conexion.getConexion();
+      PreparedStatement ps = con.prepareStatement("SELECT fecha, hora, "
+              + "observaciones, estado, especialidad FROM Cita JOIN "
+              + "Paciente_Cita ON Cita.IdCita = Paciente_Cita.IdCita "
+              + "WHERE idPaciente = '" + pCedula + "'");
+      rs = ps.executeQuery();
+      rs.next();
+      return rs; //Suponiendo que estos dados serán retornados para cargar en una tabla.
+    }catch(SQLException e){
+      JOptionPane.showMessageDialog(null, e.toString());
+      return null;
+    }
+  }
 }
