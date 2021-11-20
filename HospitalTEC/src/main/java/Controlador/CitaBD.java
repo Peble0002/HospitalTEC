@@ -4,9 +4,11 @@ package Controlador;
 import Modelo.Cita;
 import Modelo.Usuario;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,10 +30,12 @@ public class CitaBD {
       PreparedStatement ps = con.prepareStatement("INSERT INTO Cita "
               + "(fecha, hora, observaciones, estado, especialidad) "
               + "VALUES (?,?,?,?,?)");
-      ps.setDate(1, pCita.getFecha()); /*Este se dividio en fecha y hora*/
-      ps.setTime(2, pCita.getHora()); /*Habría que buscar la posibilidad de generar un time*/
+      Date fecha1 = Date.valueOf(pCita.getFecha());
+      ps.setDate(1, fecha1); /*Este se dividio en fecha y hora*/
+      Time hora = Time.valueOf(pCita.getHora());
+      ps.setTime(2, hora); /*Habría que buscar la posibilidad de generar un time*/
       ps.setString(3, pCita.getObservaciones());
-      ps.setString(4, pCita.getEstado()); /*Hay un objeto de tipo estado pero habría que pasarlo a String*/
+      ps.setString(4, pCita.getEstado().toString()); /*Hay un objeto de tipo estado pero habría que pasarlo a String*/
       ps.setString(5, pCita.getEspecialidad());
       ps.executeUpdate();
       JOptionPane.showMessageDialog(null, "Registro de usuario completado.");

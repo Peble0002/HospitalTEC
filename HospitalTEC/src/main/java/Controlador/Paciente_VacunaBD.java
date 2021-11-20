@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,7 +25,7 @@ public class Paciente_VacunaBD {
    * Método para insertar un usuario en la base de datos
    * @param pUsuario de tipo Usuario
    */
-  public void insertarPacienteVacuna(Paciente pPaciente, Vacuna pVacuna, Date 
+  public void insertarPacienteVacuna(Paciente pPaciente, Vacuna pVacuna, LocalDate 
           pFecha, int pLote){
     try{
       Connection con = conexion.getConexion();
@@ -33,7 +34,8 @@ public class Paciente_VacunaBD {
               + "VALUES (?,?,?,?)");
       ps.setString(1, pPaciente.getId());
       ps.setString(2, pVacuna.getNombre());
-      ps.setDate(3, pFechas); /*Revisar, misma situación de la fecha.*/
+      Date fecha = Date.valueOf(pFecha);
+      ps.setDate(3, fecha); /*Revisar, misma situación de la fecha.*/
       ps.setInt(4, pLote);
       ps.executeUpdate();
       JOptionPane.showMessageDialog(null, "Registro de paciente vacuna completado.");
