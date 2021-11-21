@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 /**
@@ -8,7 +9,7 @@ import java.time.LocalDate;
  * @version (17/11/2021)
  */
 public class Vacuna {
-  private LocalDate fechaAplicacion;
+  private Date fechaAplicacion;
   private String nombre;
   private String farmaceutica;
   private int numeroLote;
@@ -22,13 +23,7 @@ public class Vacuna {
    * @param pFarmaceutica
    * @param pNumeroLote 
    */
-  public Vacuna(int pDia, int pMes, int pAno, String pNombre, 
-          String pFarmaceutica, int pNumeroLote) {
-    this.fechaAplicacion = LocalDate.of(pAno, pMes, pDia);
-    this.nombre = pNombre;
-    this.farmaceutica = pFarmaceutica;
-    this.numeroLote = pNumeroLote;
-  }
+  
   
   /**
    * ste constructor permite crear un objeto Vacuna mediante un localdate
@@ -37,7 +32,7 @@ public class Vacuna {
    * @param pFarmaceutica
    * @param pNumeroLote 
    */
-  public Vacuna(LocalDate pFechaAplicacion, String pNombre, 
+  public Vacuna(Date pFechaAplicacion, String pNombre, 
           String pFarmaceutica, int pNumeroLote) {
     this.fechaAplicacion = pFechaAplicacion;
     this.nombre = pNombre;
@@ -45,12 +40,12 @@ public class Vacuna {
     this.numeroLote = pNumeroLote;
   }
 
-  public LocalDate getFechaAplicacion() {
+  public Date getFechaAplicacion() {
     return fechaAplicacion;
   }
 
-  public void setFechaAplicacion(LocalDate fechaAplicacion) {
-    this.fechaAplicacion = fechaAplicacion;
+  public void setFechaAplicacion(Date pFechaAplicacion) {
+    this.fechaAplicacion = pFechaAplicacion;
   }
 
   public String getNombre() {

@@ -1,6 +1,7 @@
 
 package Modelo;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -10,7 +11,7 @@ import java.util.ArrayList;
  * @version (17/11/2021)
  */
 public class RegistroSeguimiento {
-  private LocalDate fecha;
+  private Date fecha;
   private String observacion;
   private ArrayList<Tratamiento> tratamientos;
   private Internado internado;
@@ -20,24 +21,13 @@ public class RegistroSeguimiento {
    * @param pFecha
    * @param pObservacion 
    */
-  public RegistroSeguimiento(LocalDate pFecha, String pObservacion) {
+  public RegistroSeguimiento(Date pFecha, String pObservacion) {
     this.fecha = pFecha;
     this.observacion = pObservacion;
     this.tratamientos = new ArrayList<Tratamiento>();
   }
 
-  /**
-   * 
-   * @param pDia
-   * @param pMes
-   * @param pAno
-   * @param pObservacion 
-   */
-  public RegistroSeguimiento(int pDia, int pMes, int pAno, String pObservacion) {
-    this.fecha = LocalDate.of(pAno, pMes, pDia);;
-    this.observacion = pObservacion;
-    this.tratamientos = new ArrayList<Tratamiento>();
-  }      
+      
   /**
    * Constructor con todos los atributos
    * @param pFecha
@@ -45,7 +35,7 @@ public class RegistroSeguimiento {
    * @param pTratamientos
    * @param pInternado 
    */
-  public RegistroSeguimiento(LocalDate pFecha, String pObservacion, 
+  public RegistroSeguimiento(Date pFecha, String pObservacion, 
           ArrayList<Tratamiento> pTratamientos, Internado pInternado) {
     this.fecha = pFecha;
     this.observacion = pObservacion;
@@ -59,7 +49,7 @@ public class RegistroSeguimiento {
    * @param pObservacion
    * @param pTratamientos 
    */
-  public RegistroSeguimiento(LocalDate pFecha, String pObservacion,
+  public RegistroSeguimiento(Date pFecha, String pObservacion,
           ArrayList<Tratamiento> pTratamientos) {
     this.fecha = pFecha;
     this.observacion = pObservacion;
@@ -73,7 +63,7 @@ public class RegistroSeguimiento {
    * @param pObservacion
    * @param pInternado 
    */
-  public RegistroSeguimiento(LocalDate pFecha, String pObservacion,
+  public RegistroSeguimiento(Date pFecha, String pObservacion,
           Internado pInternado) {
     this.fecha = pFecha;
     this.observacion = pObservacion;
@@ -81,17 +71,14 @@ public class RegistroSeguimiento {
     this.tratamientos = new ArrayList<Tratamiento>();
   }
 
-  public LocalDate getFehca() {
+  public Date getFehca() {
     return fecha;
   }
 
-  public void setFehca(LocalDate pFecha) {
+  public void setFehca(Date pFecha) {
     this.fecha = pFecha;
   }
   
-  public void setFehca(int pDia, int pMes, int pAno) {
-    this.fecha = LocalDate.of(pAno, pMes, pDia);;
-  }
 
   public String getObservacion() {
     return observacion;

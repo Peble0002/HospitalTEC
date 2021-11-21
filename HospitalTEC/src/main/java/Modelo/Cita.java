@@ -1,6 +1,7 @@
 
 package Modelo;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -11,7 +12,7 @@ import java.time.LocalTime;
  */
 public class Cita {
   protected String idCita;
-  protected LocalDate fecha;
+  protected Date fecha;
   protected LocalTime hora;
   protected String observaciones;
   protected String especialidad;
@@ -26,7 +27,7 @@ public class Cita {
    * @param pEspecialidad
    * @param pEstado 
    */
-  public Cita(String pIdCita, LocalDate pFecha, LocalTime pHora, 
+  public Cita(String pIdCita, Date pFecha, LocalTime pHora, 
           String pObservaciones, String pEspecialidad, EstadoCita pEstado) {
     this.idCita = pIdCita;
     this.fecha = pFecha;
@@ -36,7 +37,7 @@ public class Cita {
     this.estado = estado;
   }
   
-  public Cita(LocalDate pFecha, LocalTime pHora, 
+  public Cita(Date pFecha, LocalTime pHora, 
           String pObservaciones, String pEspecialidad, EstadoCita pEstado) {
     
     this.fecha = pFecha;
@@ -45,71 +46,7 @@ public class Cita {
     this.especialidad = pEspecialidad;
     this.estado = estado;
   }
-  
-  /**
-   * constructor con datos de fecha y hora
-   * @param pIdCita
-   * @param pDiaInicio
-   * @param pMesInicio
-   * @param pAnoInicio
-   * @param pHora
-   * @param pObservaciones
-   * @param pEspecialidad
-   * @param pEstado 
-   */
-   public Cita(String pIdCita, int pDiaInicio, int pMesInicio, int pAnoInicio, 
-           LocalTime pHora, String pObservaciones, String pEspecialidad, 
-           EstadoCita pEstado) {
-    this.idCita = pIdCita;
-    this.fecha = LocalDate.of(pAnoInicio, pMesInicio, pDiaInicio);
-    this.hora = pHora;
-    this.observaciones = pObservaciones;
-    this.especialidad = pEspecialidad;
-    this.estado = pEstado;
-  }
-  
-  public Cita(int pDiaInicio, int pMesInicio, int pAnoInicio, 
-           LocalTime pHora, String pObservaciones, String pEspecialidad, 
-           EstadoCita pEstado) {
-    this.fecha = LocalDate.of(pAnoInicio, pMesInicio, pDiaInicio);
-    this.hora = pHora;
-    this.observaciones = pObservaciones;
-    this.especialidad = pEspecialidad;
-    this.estado = pEstado;
-  } 
-   
-   /**
-    * constructor con datos de fecha y datos de hora
-    * @param pIdCita
-    * @param pDiaInicio
-    * @param pMesInicio
-    * @param pAnoInicio
-    * @param pHora
-    * @param pMinutos
-    * @param pSegundos
-    * @param observaciones
-    * @param pEspecialidad
-    * @param pEstado 
-    */
-  public Cita(String pIdCita, int pDiaInicio, int pMesInicio, int pAnoInicio, 
-           int pHora, int pMinutos, int pSegundos, String observaciones, 
-           String pEspecialidad, EstadoCita pEstado) {
-    this.idCita = pIdCita;
-    this.fecha = LocalDate.of(pAnoInicio, pMesInicio, pDiaInicio);
-    this.hora = LocalTime.of(pHora,pMinutos, pSegundos);
-    this.observaciones = observaciones;
-    this.especialidad = pEspecialidad;
-    this.estado = pEstado;
-  }
-  public Cita( int pDiaInicio, int pMesInicio, int pAnoInicio, 
-           int pHora, int pMinutos, int pSegundos, String observaciones, 
-           String pEspecialidad, EstadoCita pEstado) {
-    this.fecha = LocalDate.of(pAnoInicio, pMesInicio, pDiaInicio);
-    this.hora = LocalTime.of(pHora,pMinutos, pSegundos);
-    this.observaciones = observaciones;
-    this.especialidad = pEspecialidad;
-    this.estado = pEstado;
-  }
+
   
   /**
    * Constructor con fecha y datos de la hora
@@ -122,7 +59,7 @@ public class Cita {
    * @param pEspecialidad
    * @param pEstado 
    */
-  public Cita(String pIdCita, LocalDate pFecha, int pHora, int pMinutos,
+  public Cita(String pIdCita, Date pFecha, int pHora, int pMinutos,
           int pSegundos, String pObservaciones, 
            String pEspecialidad, EstadoCita pEstado) {
     this.idCita = pIdCita;
@@ -133,16 +70,7 @@ public class Cita {
     this.estado = pEstado;
   }
   
-  public Cita(LocalDate pFecha, int pHora, int pMinutos,
-          int pSegundos, String pObservaciones, 
-           String pEspecialidad, EstadoCita pEstado) {
-    this.fecha = pFecha;
-    this.hora = LocalTime.of(pHora,pMinutos, pSegundos);
-    this.observaciones = pObservaciones;
-    this.especialidad = pEspecialidad;
-    this.estado = pEstado;
-  }
-
+ 
   public String getIdCita() {
     return idCita;
   }
@@ -151,17 +79,15 @@ public class Cita {
     this.idCita = pIdCita;
   }
 
-  public LocalDate getFecha() {
+  public Date getFecha() {
     return fecha;
   }
 
-  public void setFecha(LocalDate pFecha) {
+  public void setFecha(Date pFecha) {
     this.fecha = pFecha;
   }
   
-  public void setFecha(int pDiaInicio, int pMesInicio, int pAnoInicio) {
-    this.fecha = LocalDate.of(pAnoInicio, pMesInicio, pDiaInicio);
-  }
+
   public LocalTime getHora() {
     return hora;
   }
