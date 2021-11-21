@@ -1,6 +1,7 @@
 
 package Modelo;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -11,7 +12,7 @@ import java.time.LocalTime;
  */
 public class Bitacora {
   private int idCita;
-  private LocalDate fecha;
+  private Date fecha;
   private LocalTime hora;
   private String nombreUsuario;
 
@@ -22,49 +23,15 @@ public class Bitacora {
    * @param hora
    * @param nombreUsuario 
    */
-  public Bitacora(int pIdCita, LocalDate pFecha, LocalTime pHora, 
+  public Bitacora(int pIdCita, Date pFecha, LocalTime pHora, 
           String pNombreUsuario) {
     this.idCita = pIdCita;
     this.fecha = pFecha;
     this.hora = pHora;
     this.nombreUsuario = pNombreUsuario;
   }
- 
-  /**
-   * Constructor con datos de la fecha y hora
-   * @param idCita
-   * @param pDia
-   * @param pMes
-   * @param pAno
-   * @param hora
-   * @param nombreUsuario 
-   */
-  public Bitacora(int pIdCita, int pDia, int pMes, int pAno, LocalTime pHora,
-          String pNombreUsuario) {
-    this.idCita = pIdCita;
-    this.fecha = LocalDate.of(pAno, pMes, pDia);
-    this.hora = pHora;
-    this.nombreUsuario = pNombreUsuario;
-  }
+
   
-  /**
-   * Constructor con los datos de fecha y los datos de hora
-   * @param idCita
-   * @param pDia
-   * @param pMes
-   * @param pAno
-   * @param pHora
-   * @param pMinutos
-   * @param pSegundos
-   * @param nombreUsuario 
-   */
-  public Bitacora(int pIdCita, int pDia, int pMes, int pAno, int pHora, 
-          int pMinutos, int pSegundos, String pNombreUsuario) {
-    this.idCita = pIdCita;
-    this.fecha = LocalDate.of(pAno, pMes, pDia);
-    this.hora = LocalTime.of(pHora,pMinutos, pSegundos);
-    this.nombreUsuario = pNombreUsuario;
-  }
   
   /**
    * Constructor con fecha y los datos de hora
@@ -75,7 +42,7 @@ public class Bitacora {
    * @param pSegundos
    * @param nombreUsuario 
    */
-  public Bitacora(int pIdCita, LocalDate pFecha, int pHora, int pMinutos,
+  public Bitacora(int pIdCita, Date pFecha, int pHora, int pMinutos,
           int pSegundos, String pNombreUsuario) {
     this.idCita = pIdCita;
     this.fecha = pFecha;
@@ -91,16 +58,12 @@ public class Bitacora {
     this.idCita = pIdCita;
   }
 
-  public LocalDate getFecha() {
+  public Date getFecha() {
     return fecha;
   }
 
-  public void setFecha(LocalDate pFecha) {
+  public void setFecha(Date pFecha) {
     this.fecha = pFecha;
-  }
-  
-  public void setFecha(int pDia, int pMes, int pAno) {
-    this.fecha = LocalDate.of(pAno, pMes, pDia);
   }
 
   public LocalTime getHora() {

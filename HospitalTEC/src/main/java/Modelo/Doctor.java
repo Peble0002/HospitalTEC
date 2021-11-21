@@ -2,6 +2,7 @@
 package Modelo;
 
 import static Modelo.TipoFuncionario.Doctor;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -14,29 +15,84 @@ public final class Doctor extends Funcionario {
   private String codigoMedico;
   private ArrayList<String> especialidades;
 
-  /**
-   * 
-   * @param pCodigoMedico
-   * @param pEspecialidad
-   * @param pTipo
-   * @param pFechaIngreso
-   * @param pId 
-   */
-  public Doctor(String pCodigoMedico, String pEspecialidad, 
-          LocalDate pFechaIngreso, String pId) {
-    super(pFechaIngreso, pId);
+  public Doctor(String codigoMedico, ArrayList<String> especialidades, 
+          TipoFuncionario pTipo, Date pFechaIngreso, String pId) {
+    super(pTipo, pFechaIngreso, pId);
     this.codigoMedico = codigoMedico;
-    this.especialidades.add(pEspecialidad);
-    super.setTipo(Doctor);
+    this.especialidades = especialidades;
   }
 
-  public Doctor(String pCodigoMedico, String pEspecialidad, int pDia, 
-          int pMes, int pAno, String pId) {
-    super( pDia, pMes, pAno, pId);
+  public Doctor(String codigoMedico, ArrayList<String> especialidades,
+          TipoFuncionario tipo, Date fechaIngreso, AreaTrabajo area, 
+          CentroAtencion centro, String pId) {
+    super(tipo, fechaIngreso, area, centro, pId);
     this.codigoMedico = codigoMedico;
-    this.especialidades.add(pEspecialidad);
-    super.setTipo(Doctor);
+    this.especialidades = especialidades;
   }
+
+  public Doctor(String codigoMedico, ArrayList<String> especialidades,
+          TipoFuncionario tipo, Date fechaIngreso, AreaTrabajo area,
+          CentroAtencion centro, String id, String contrasena) {
+    super(tipo, fechaIngreso, area, centro, id, contrasena);
+    this.codigoMedico = codigoMedico;
+    this.especialidades = especialidades;
+  }
+
+  public Doctor(String codigoMedico, ArrayList<String> especialidades,
+          TipoFuncionario tipo, Date fechaIngreso, AreaTrabajo area, 
+          CentroAtencion centro, String id, String contrasena, String nombre, 
+          String apellido1, String apellido2) {
+    super(tipo, fechaIngreso, area, centro, id, contrasena, nombre, apellido1,
+            apellido2);
+    this.codigoMedico = codigoMedico;
+    this.especialidades = especialidades;
+  }
+
+  public Doctor(String codigoMedico, ArrayList<String> especialidades, 
+          Date pFechaIngreso, String pId) {
+    super(pFechaIngreso, pId);
+    this.codigoMedico = codigoMedico;
+    this.especialidades = especialidades;
+  }
+
+  public Doctor(String codigoMedico, TipoFuncionario pTipo, Date pFechaIngreso,
+          String pId, String especialidad) {
+    super(pTipo, pFechaIngreso, pId);
+    this.codigoMedico = codigoMedico;
+    this.especialidades.add(especialidad);
+  }
+
+  public Doctor(String codigoMedico, TipoFuncionario tipo, Date fechaIngreso,
+          AreaTrabajo area, CentroAtencion centro, String pId, String especialidad) {
+    super(tipo, fechaIngreso, area, centro, pId);
+    this.codigoMedico = codigoMedico;
+    this.especialidades.add(especialidad);
+  }
+
+  public Doctor(String codigoMedico, TipoFuncionario tipo, 
+          Date fechaIngreso, AreaTrabajo area, CentroAtencion 
+                  centro, String id, String contrasena, String especialidad) {
+    super(tipo, fechaIngreso, area, centro, id, contrasena);
+    this.codigoMedico = codigoMedico;
+    this.especialidades.add(especialidad);
+  }
+
+  public Doctor(String codigoMedico, TipoFuncionario tipo, Date fechaIngreso, 
+          AreaTrabajo area, CentroAtencion centro, String id, String contrasena, 
+          String nombre, String apellido1, String apellido2, String especialidad) {
+    super(tipo, fechaIngreso, area, centro, id, contrasena, nombre, apellido1, apellido2);
+    this.codigoMedico = codigoMedico;
+    this.especialidades.add(especialidad);
+  }
+
+  public Doctor(String codigoMedico, Date pFechaIngreso, String pId, 
+          String especialidad) {
+    super(pFechaIngreso, pId);
+    this.codigoMedico = codigoMedico;
+    this.especialidades.add(especialidad);
+  }
+
+  
   
   public String getCodigoMedico() {
     return codigoMedico;

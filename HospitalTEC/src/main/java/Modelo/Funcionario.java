@@ -1,6 +1,7 @@
 
 package Modelo;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 /**
@@ -10,7 +11,7 @@ import java.time.LocalDate;
  */
 public class Funcionario extends Usuario{
   protected TipoFuncionario tipo;
-  protected LocalDate fechaIngreso;
+  protected Date fechaIngreso;
   protected AreaTrabajo area;
   protected CentroAtencion centro;
 
@@ -20,28 +21,43 @@ public class Funcionario extends Usuario{
    * @param fechaIngreso
    * @param pId 
    */
-  public Funcionario(TipoFuncionario pTipo, LocalDate pFechaIngreso, String pId) {
+  public Funcionario(TipoFuncionario pTipo, Date pFechaIngreso, String pId) {
     super(pId);
     this.tipo = pTipo;
     this.fechaIngreso = fechaIngreso;
   }
+
+  public Funcionario(TipoFuncionario tipo, Date fechaIngreso, AreaTrabajo area, CentroAtencion centro, String pId) {
+    super(pId);
+    this.tipo = tipo;
+    this.fechaIngreso = fechaIngreso;
+    this.area = area;
+    this.centro = centro;
+  }
+
+  public Funcionario(TipoFuncionario tipo, Date fechaIngreso, AreaTrabajo area, CentroAtencion centro, String id, String contrasena) {
+    super(id, contrasena);
+    this.tipo = tipo;
+    this.fechaIngreso = fechaIngreso;
+    this.area = area;
+    this.centro = centro;
+  }
+
+  public Funcionario(TipoFuncionario tipo, Date fechaIngreso, AreaTrabajo area, CentroAtencion centro, String id, String contrasena, String nombre, String apellido1, String apellido2) {
+    super(id, contrasena, nombre, apellido1, apellido2);
+    this.tipo = tipo;
+    this.fechaIngreso = fechaIngreso;
+    this.area = area;
+    this.centro = centro;
+  }
   
-  public Funcionario(LocalDate pFechaIngreso, String pId) {
+   
+  public Funcionario(Date pFechaIngreso, String pId) {
     super(pId);
     this.fechaIngreso = fechaIngreso;
   }
 
-  public Funcionario(TipoFuncionario pTipo, int pDia, int pMes, int pAno, 
-          String pId) {
-    super(pId);
-    this.tipo = pTipo;
-    this.fechaIngreso = LocalDate.of(pAno, pMes, pDia);
-  }
-  public Funcionario(int pDia, int pMes, int pAno, 
-          String pId) {
-    super(pId);
-    this.fechaIngreso = LocalDate.of(pAno, pMes, pDia);
-  }
+  
   
   public TipoFuncionario getTipo() {
     return tipo;
@@ -51,11 +67,11 @@ public class Funcionario extends Usuario{
     this.tipo = pTipo;
   }
 
-  public LocalDate getFechaIngreso() {
+  public Date getFechaIngreso() {
     return fechaIngreso;
   }
 
-  public void setFechaIngreso(LocalDate pFechaIngreso) {
+  public void setFechaIngreso(Date pFechaIngreso) {
     this.fechaIngreso = pFechaIngreso;
   }
 
