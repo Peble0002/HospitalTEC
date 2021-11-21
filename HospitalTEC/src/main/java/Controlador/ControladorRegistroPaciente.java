@@ -4,6 +4,7 @@
  */
 package Controlador;
 import DAO.*;
+import Modelo.Paciente;
 import Vista.*;
 //import Modelo.*;
 import Modelo.Usuario;
@@ -13,6 +14,9 @@ import java.sql.*;
 //import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.awt.event.*;
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.Calendar;
 
 /**
  *
@@ -51,12 +55,15 @@ public class ControladorRegistroPaciente implements ActionListener{
   }
   
   public void registrarPacientes(){
-        UsuarioBD usuarioBD = new UsuarioBD();
-//      if(vistaInicio.datosCorrectos() == false){
-//      JOptionPane.showMessageDialog(vistaInicio, "Alguno de los espacios de datos está"
+        
+//      if(vistaRegistroPacientes.datosCorrectos() == false){
+//      JOptionPane.showMessageDialog(vistaRegistroPacientes, "Alguno de los espacios de datos está"
 //              + " vacío.");
 //    }
 //    else{
+
+      Date fecha = (Date) vistaRegistroPacientes.jFechaNacimiento.getCalendar().getTime();
+      System.out.print(fecha.toString());
       String cedula = vistaRegistroPacientes.tbCedulaPaciente.getText();
       String nombre = vistaRegistroPacientes.tbNombrePaciente.getText();
       String apellido1 = vistaRegistroPacientes.tbApellido1Paciente.getText();
@@ -67,8 +74,13 @@ public class ControladorRegistroPaciente implements ActionListener{
       String canton = vistaRegistroPacientes.tbCantonPaciente.getText();
       String telefono = vistaRegistroPacientes.tbTelefonoPaciente.getText();
       String tipoSangre = vistaRegistroPacientes.tbTipoSangrePaciente.getText();
-      } 
+      String distrito = vistaRegistroPacientes.tbDistritoPaciente.getText();
+      Paciente paciente = new Paciente( fecha, tipoSangre, nacionalidad,  
+              provincia,  canton, distrito,  telefono,  cedula, contrasena, 
+              nombre,  apellido1, apellido2);
+      pacienteBD.insertarPaciente(paciente);
+    } 
+  }  
     
     
-    
-}
+//}

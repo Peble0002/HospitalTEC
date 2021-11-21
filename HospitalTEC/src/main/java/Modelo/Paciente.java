@@ -1,6 +1,7 @@
 
 package Modelo;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  * @version (17/11/2021)
  */
 public class Paciente extends Usuario{
-  private LocalDate fechaNacimiento;
+  private Date fechaNacimiento;
   private String tipoSangre;
   private String nacionalidad;
   private String provincia;
@@ -29,7 +30,7 @@ public class Paciente extends Usuario{
    * @param pNacionalidad
    * @param pId 
    */
-  public Paciente(LocalDate pFechaNacimiento, String pTipoSangre,
+  public Paciente(Date pFechaNacimiento, String pTipoSangre,
           String pNacionalidad, String pId, String pTelefono) {
     super(pId);
     this.fechaNacimiento = pFechaNacimiento;
@@ -41,20 +42,9 @@ public class Paciente extends Usuario{
     telefonos.add(pTelefono);
   }
   
-  public Paciente(int pDia, int pMes, int pAno, String tipoSangre, 
-          String nacionalidad, String pId, String pTelefono) {
-    super(pId);
-    this.fechaNacimiento = LocalDate.of(pAno, pMes, pDia);
-    this.tipoSangre = tipoSangre;
-    this.nacionalidad = nacionalidad;
-    this.telefonos= new ArrayList<String>();
-    telefonos.add(pTelefono);
-    this.vacunas= new ArrayList<Vacuna>();
-    this.centros= new ArrayList<CentroAtencion>();
-    
-  }
 
-  public Paciente(LocalDate fechaNacimiento, String tipoSangre, 
+
+  public Paciente(Date fechaNacimiento, String tipoSangre, 
           String nacionalidad, String provincia, String canton, 
           String distrito, String pTelefono, String id, 
           String contrasena, String nombre, String apellido1, 
@@ -75,13 +65,10 @@ public class Paciente extends Usuario{
   
   
 
-  public LocalDate getFechaNacimiento() {
+  public Date getFechaNacimiento() {
     return fechaNacimiento;
   }
 
-  public void setFechaNacimiento(int pDia, int pMes, int pAno) {
-    this.fechaNacimiento = LocalDate.of(pAno, pMes, pDia);
-  }
 
   public String getTipoSangre() {
     return tipoSangre;
