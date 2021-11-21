@@ -30,8 +30,7 @@ public class CitaBD {
       PreparedStatement ps = con.prepareStatement("INSERT INTO Cita "
               + "(fecha, hora, observaciones, estado, especialidad) "
               + "VALUES (?,?,?,?,?)");
-      Date fecha1 = Date.valueOf(pCita.getFecha());
-      ps.setDate(1, fecha1); /*Este se dividio en fecha y hora*/
+      ps.setDate(1, pCita.getFecha()); /*Este se dividio en fecha y hora*/
       Time hora = Time.valueOf(pCita.getHora());
       ps.setTime(2, hora); /*Habría que buscar la posibilidad de generar un time*/
       ps.setString(3, pCita.getObservaciones());
