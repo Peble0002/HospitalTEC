@@ -30,7 +30,7 @@ public class Paciente extends Usuario{
    * @param pId 
    */
   public Paciente(LocalDate pFechaNacimiento, String pTipoSangre,
-          String pNacionalidad, String pId) {
+          String pNacionalidad, String pId, String pTelefono) {
     super(pId);
     this.fechaNacimiento = pFechaNacimiento;
     this.tipoSangre = pTipoSangre;
@@ -38,19 +38,42 @@ public class Paciente extends Usuario{
     this.telefonos= new ArrayList<String>();
     this.vacunas= new ArrayList<Vacuna>();
     this.centros= new ArrayList<CentroAtencion>();
+    telefonos.add(pTelefono);
   }
   
   public Paciente(int pDia, int pMes, int pAno, String tipoSangre, 
-          String nacionalidad, String pId) {
+          String nacionalidad, String pId, String pTelefono) {
     super(pId);
     this.fechaNacimiento = LocalDate.of(pAno, pMes, pDia);
     this.tipoSangre = tipoSangre;
     this.nacionalidad = nacionalidad;
     this.telefonos= new ArrayList<String>();
+    telefonos.add(pTelefono);
     this.vacunas= new ArrayList<Vacuna>();
     this.centros= new ArrayList<CentroAtencion>();
     
   }
+
+  public Paciente(LocalDate fechaNacimiento, String tipoSangre, 
+          String nacionalidad, String provincia, String canton, 
+          String distrito, String pTelefono, String id, 
+          String contrasena, String nombre, String apellido1, 
+          String apellido2) {
+    super(id, contrasena, nombre, apellido1, apellido2);
+    this.fechaNacimiento = fechaNacimiento;
+    this.tipoSangre = tipoSangre;
+    this.nacionalidad = nacionalidad;
+    this.provincia = provincia;
+    this.canton = canton;
+    this.distrito = distrito;
+    this.telefonos = telefonos;
+    this.telefonos= new ArrayList<String>();
+    telefonos.add(pTelefono);
+    this.vacunas= new ArrayList<Vacuna>();
+    this.centros= new ArrayList<CentroAtencion>();
+  }
+  
+  
 
   public LocalDate getFechaNacimiento() {
     return fechaNacimiento;
