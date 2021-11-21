@@ -6,7 +6,7 @@
 package Modelo;
 
 import static Modelo.TipoFuncionario.Enfermero;
-import java.time.LocalDate;
+import java.sql.Date;
 
 /**
  * Clase enfermero hija de funcionario
@@ -17,39 +17,39 @@ public final class Enfermero extends Funcionario{
   private boolean aCargo;
   private boolean experiencia;
 
-  /**
-   * 
-   * @param pACargo
-   * @param pExperiencia
-   * @param pTipo
-   * @param pFechaIngreso
-   * @param pId 
-   */
-  public Enfermero(boolean pACargo, boolean pExperiencia,
-          LocalDate pFechaIngreso, String pId) {
+  public Enfermero(boolean aCargo, boolean experiencia, TipoFuncionario pTipo, Date pFechaIngreso, String pId) {
+    super(pTipo, pFechaIngreso, pId);
+    this.aCargo = aCargo;
+    this.experiencia = experiencia;
+  }
+
+  public Enfermero(boolean aCargo, boolean experiencia, TipoFuncionario tipo, Date fechaIngreso, AreaTrabajo area, CentroAtencion centro, String pId) {
+    super(tipo, fechaIngreso, area, centro, pId);
+    this.aCargo = aCargo;
+    this.experiencia = experiencia;
+  }
+
+  public Enfermero(boolean aCargo, boolean experiencia, TipoFuncionario tipo, Date fechaIngreso, AreaTrabajo area, CentroAtencion centro, String id, String contrasena) {
+    super(tipo, fechaIngreso, area, centro, id, contrasena);
+    this.aCargo = aCargo;
+    this.experiencia = experiencia;
+  }
+
+  public Enfermero(boolean aCargo, boolean experiencia, TipoFuncionario tipo, Date fechaIngreso, AreaTrabajo area, CentroAtencion centro, String id, String contrasena, String nombre, String apellido1, String apellido2) {
+    super(tipo, fechaIngreso, area, centro, id, contrasena, nombre, apellido1, apellido2);
+    this.aCargo = aCargo;
+    this.experiencia = experiencia;
+  }
+
+  public Enfermero(boolean aCargo, boolean experiencia, Date pFechaIngreso, String pId) {
     super(pFechaIngreso, pId);
-    this.aCargo = pACargo;
-    this.experiencia = pExperiencia;
-    super.setTipo(Enfermero);
+    this.aCargo = aCargo;
+    this.experiencia = experiencia;
   }
+
+ 
   
-  /**
-   * 
-   * @param pACargo
-   * @param pExperiencia
-   * @param pTipo
-   * @param pDia
-   * @param pMes
-   * @param pAno
-   * @param pId 
-   */
-  public Enfermero(boolean pACargo, boolean pExperiencia, 
-          int pDia, int pMes, int pAno, String pId) {
-    super(pDia, pMes, pAno, pId);
-    this.aCargo = pACargo;
-    this.experiencia = pExperiencia;
-    super.setTipo(Enfermero);
-  }
+  
 
   public boolean isaCargo() {
     return aCargo;
@@ -66,6 +66,8 @@ public final class Enfermero extends Funcionario{
   public void setExperiencia(boolean experiencia) {
     this.experiencia = experiencia;
   }
+ 
+  
   
   
   
