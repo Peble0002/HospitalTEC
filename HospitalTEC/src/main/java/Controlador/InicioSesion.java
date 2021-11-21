@@ -20,13 +20,12 @@ import java.awt.event.*;
  */
 public class InicioSesion implements ActionListener{
   public Principal vistaInicio;
-  public Usuario usuario;
   public UsuarioBD usuarioBD;
   
-  public InicioSesion(Principal pVista, Usuario pUsuario){
-    vistaInicio = pVista;
-    usuario = pUsuario;
+  public InicioSesion(Principal pVista){
+    //Principal vistaInicio = new Principal();
     UsuarioBD usuarioBD = new UsuarioBD();
+    vistaInicio = pVista;
     
     this.vistaInicio.btnIniciarSesion.addActionListener(this);
     this.vistaInicio.btnRegistrar.addActionListener(this);      
@@ -36,12 +35,10 @@ public class InicioSesion implements ActionListener{
   public void actionPerformed(ActionEvent e){
     switch(e.getActionCommand()){
         case "Iniciar sesión":
-            System.out.println("Se ingresó");
-            JOptionPane.showMessageDialog(vistaInicio, "Ingresó");
             logInUsuario();
             break;
         case "Registrarme":
-            //registrar();
+            registrarPaciente();
             break;
         default:
             break;       
@@ -69,6 +66,7 @@ public class InicioSesion implements ActionListener{
       } 
   }
   public void asignarVentanaUsuario(){
+    UsuarioBD usuarioBD = new UsuarioBD();  
     int tipoUsuario = usuarioBD.retonarTipo(vistaInicio.tbUsuario.getText(), 
             vistaInicio.tbContrasena.getText());
     switch(tipoUsuario){
@@ -98,4 +96,15 @@ public class InicioSesion implements ActionListener{
         break;
     } 
   }
+  
+  public void registrarPaciente(){
+      
+      RegistroPacientes vistaRegistro = new RegistroPacientes();
+      vistaInicio.dispose(); 
+    
+      ControladorRegistroPaciente controladorRP = new ControladorRegistroPaciente(vistaRegistro);
+        
+      controladorRP.vistaRegistroPacientes.setVisible(true);
+      controladorRP.vistaRegistroPacientes.setLocationRelativeTo(null);
+     }   
 }

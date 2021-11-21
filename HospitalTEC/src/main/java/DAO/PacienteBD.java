@@ -24,7 +24,9 @@ public class PacienteBD {
    */
   
   public void insertarPaciente(Paciente pPaciente){
+   // UsuarioBD usuarioBD = new UsuarioBD();  
     try{
+        
       Connection con = conexion.getConexion();
       PreparedStatement ps = con.prepareStatement("INSERT INTO Paciente "
               + "(idPaciente, nacionalidad, tipoSangre, fechaNacimiento, "
@@ -41,5 +43,6 @@ public class PacienteBD {
     }catch(SQLException e){
       JOptionPane.showMessageDialog(null, e.toString());
     }
+    //usuarioBD.insertarUsuario(paciente);
   }
 }

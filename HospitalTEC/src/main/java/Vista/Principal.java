@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Vista;
+import Controlador.InicioSesion;
 import Modelo.Usuario;
 import javax.swing.JOptionPane;
 
@@ -188,10 +189,10 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPacienteActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-      RegistroPacientes RP = new RegistroPacientes();
-      RP.setVisible(true);
-      
-      this.dispose();
+//      RegistroPacientes RP = new RegistroPacientes();
+//      RP.setVisible(true);
+//      
+//      this.dispose();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoctorActionPerformed
@@ -272,6 +273,13 @@ public class Principal extends javax.swing.JFrame {
     /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
      */
+//    Principal vista = new Principal();
+//    
+//      InicioSesion controladorInicio = new InicioSesion(vista);
+//        
+//      controladorInicio.vistaInicio.setVisible(true);
+//      controladorInicio.vistaInicio.setLocationRelativeTo(null); 
+      
     try {
       for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
         if ("Nimbus".equals(info.getName())) {
@@ -289,7 +297,7 @@ public class Principal extends javax.swing.JFrame {
       java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
     //</editor-fold>
-
+   
     /* Create and display the form */
     java.awt.EventQueue.invokeLater(new Runnable() {
       public void run() {
