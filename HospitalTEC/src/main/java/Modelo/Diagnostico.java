@@ -10,6 +10,7 @@ public class Diagnostico {
   private CatalogoDiagnostico nombreDiagnostico;
   private Nivel nivel;
   private String observaciones;
+  private String dosis;
 
   public Diagnostico(CatalogoDiagnostico pNombreDiagnostico, Nivel pNivel,
           String pObservaciones) {
@@ -42,5 +43,11 @@ public class Diagnostico {
     this.observaciones = pObservaciones;
   }
   
-  
+  public String getDosis() {
+    return dosis;
+  }
+
+  public void setDosis(String pDosis) {
+    this.dosis = pDosis;
+  }
 }

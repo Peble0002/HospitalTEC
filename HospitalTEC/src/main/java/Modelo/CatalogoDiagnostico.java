@@ -7,7 +7,7 @@ package Modelo;
  * @version (17/11/2021)
  */
 public class CatalogoDiagnostico {
-  private String idDiagnostico;
+  private int idDiagnostico;
   private String nombreDiagnostico;
 
   /**
@@ -15,7 +15,7 @@ public class CatalogoDiagnostico {
    * @param pIdDiagnostico Id del diagnostico
    * @param pNombreDiagnostico nombre del diagnostico
    */
-  public CatalogoDiagnostico(String pIdDiagnostico, String pNombreDiagnostico) {
+  public CatalogoDiagnostico(int pIdDiagnostico, String pNombreDiagnostico) {
     this.idDiagnostico = pIdDiagnostico;
     this.nombreDiagnostico = pNombreDiagnostico;
   }
@@ -24,11 +24,11 @@ public class CatalogoDiagnostico {
     this.nombreDiagnostico = pNombreDiagnostico;
   }
 
-  public String getIdDiagnostico() {
+  public int getIdDiagnostico() {
     return idDiagnostico;
   }
 
-  public void setIdDiagnostico(String pIdDiagnostico) {
+  public void setIdDiagnostico(int pIdDiagnostico) {
     this.idDiagnostico = pIdDiagnostico;
   }
 

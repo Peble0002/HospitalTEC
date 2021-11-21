@@ -386,6 +386,37 @@ INSERT INTO Paciente_Vacuna VALUES ('305110992', 1, '2005-01-12', 12573);
 INSERT INTO Paciente_Vacuna VALUES ('305110992', 2, '2007-02-21', 65451);
 INSERT INTO Paciente_Vacuna VALUES ('305110992', 3, '2021-08-30', 48432);
 
+DELETE FROM tipoUsuario
+DELETE FROM Usuario
+DELETE FROM CatalogoDiagnosticos
+DELETE FROM CatalogoTratamientos
+DELETE FROM Tratamiento_Diagnostico
+DELETE FROM Bitacora
+DELETE FROM Cita
+DELETE FROM Bitacora_Cita
+DELETE FROM Paciente
+DELETE FROM Paciente_Cita
+DELETE FROM TipoCentro
+DELETE FROM CentroAtencion
+DELETE FROM Centro_paciente
+DELETE FROM Funcionario
+DELETE FROM Enfermero
+DELETE FROM Doctor
+DELETE FROM Centro_Funcionario
+DELETE FROM Funcionario_Cita
+DELETE FROM AreaTrabajo
+DELETE FROM Internado
+DELETE FROM RegistroSeguimiento
+DELETE FROM Internado_Centro
+DELETE FROM Cita_Diagnostico
+DELETE FROM Cita_Internado
+DELETE FROM AreaTrabajo_Funcionario
+DELETE FROM Internado_Doctor
+DELETE FROM Telefono_Paciente
+DELETE FROM Vacuna
+DELETE FROM Internado_Registro
+DELETE FROM Paciente_Vacuna
+
 SELECT CDi.NombreDiagnostico FROM Cita C 
 	JOIN Paciente_Cita PC ON C.IdCita = PC.IdCita 
 	JOIN Cita_Diagnostico CD ON PC.IdCita = CD.IdCita

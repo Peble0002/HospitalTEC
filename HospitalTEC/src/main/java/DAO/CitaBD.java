@@ -47,7 +47,7 @@ public class CitaBD {
   /**
    * Método para actualizar una Cita en la base de datos
    * @param pIdCita de tipo Cita
-   * @param pEstado
+   * @param pEstado que especifica el nuevo estado de la cita
    */
   public void actualizarCita(int pIdCita, String pEstado){ //REVISAR NO SE HAN HECHO UPDATES HASTA EL MOMENTO.
     try{
