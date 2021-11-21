@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Vista;
-import Controlador.*;
 import Modelo.Usuario;
 import javax.swing.JOptionPane;
 
@@ -13,7 +12,7 @@ import javax.swing.JOptionPane;
  * @author pablo
  */
 public class Principal extends javax.swing.JFrame {
-  UsuarioBD usuario = new UsuarioBD();
+  //UsuarioBD usuario = new UsuarioBD();
   
   
   /**
@@ -43,7 +42,7 @@ public class Principal extends javax.swing.JFrame {
         btnDoctor = new javax.swing.JButton();
         btnEnfermero = new javax.swing.JButton();
         btnSecretario = new javax.swing.JButton();
-        btnRegistrarPaciente = new javax.swing.JButton();
+        btnRegistrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 102, 255));
@@ -109,12 +108,12 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btnRegistrarPaciente.setBackground(new java.awt.Color(0, 102, 102));
-        btnRegistrarPaciente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnRegistrarPaciente.setText("Registrarme");
-        btnRegistrarPaciente.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrar.setBackground(new java.awt.Color(0, 102, 102));
+        btnRegistrar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnRegistrar.setText("Registrarme");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarPacienteActionPerformed(evt);
+                btnRegistrarActionPerformed(evt);
             }
         });
 
@@ -147,7 +146,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(btnSecretario))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(230, 230, 230)
-                        .addComponent(btnRegistrarPaciente)
+                        .addComponent(btnRegistrar)
                         .addGap(61, 61, 61)
                         .addComponent(btnIniciarSesion)))
                 .addContainerGap(152, Short.MAX_VALUE))
@@ -168,7 +167,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnIniciarSesion)
-                    .addComponent(btnRegistrarPaciente))
+                    .addComponent(btnRegistrar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEnfermero)
@@ -188,12 +187,12 @@ public class Principal extends javax.swing.JFrame {
       this.dispose();  
     }//GEN-LAST:event_btnPacienteActionPerformed
 
-    private void btnRegistrarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPacienteActionPerformed
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
       RegistroPacientes RP = new RegistroPacientes();
       RP.setVisible(true);
       
       this.dispose();
-    }//GEN-LAST:event_btnRegistrarPacienteActionPerformed
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoctorActionPerformed
       VistaDoctor VD = new VistaDoctor();
@@ -217,52 +216,52 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSecretarioActionPerformed
 
   private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
-    if(datosCorrectos() == false){
-      JOptionPane.showMessageDialog(null, "Alguno de los espacios de datos está"
-              + " vacío.");
-    }
-    else{
-      if(usuario.existeUsuario(tbUsuario.getText())){
-        if(usuario.validarIngreso(tbUsuario.getText(), tbContrasena.getText())){
-          asignarVentanaUsuario();
-        }else{
-          JOptionPane.showMessageDialog(null, "Contraseña Incorrecta");
-        }
-      }else{
-        JOptionPane.showMessageDialog(null, "El usuario ingresado no existe");
-      }
-    }
+//    if(datosCorrectos() == false){
+//      JOptionPane.showMessageDialog(null, "Alguno de los espacios de datos está"
+//              + " vacío.");
+//    }
+//    else{
+//      if(usuario.existeUsuario(tbUsuario.getText())){
+//        if(usuario.validarIngreso(tbUsuario.getText(), tbContrasena.getText())){
+//          asignarVentanaUsuario();
+//        }else{
+//          JOptionPane.showMessageDialog(null, "Contraseña Incorrecta");
+//        }
+//      }else{
+//        JOptionPane.showMessageDialog(null, "El usuario ingresado no existe");
+//      }
+//    }
   }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
-  public void asignarVentanaUsuario(){
-    int tipoUsuario = usuario.retonarTipo(tbUsuario.getText(), tbContrasena.getText());
-    switch(tipoUsuario){
-      case 1:
-        VistaPaciente VP = new VistaPaciente();
-        VP.setVisible(true);
-        this.dispose();
-        break;
-      case 2:
-        VistaSecretario VS = new VistaSecretario();
-        VS.setVisible(true);
-        this.dispose();
-        break;
-      case 3:
-        VistaEnfermero VE = new VistaEnfermero();
-        VE.setVisible(true);
-        this.dispose();
-        break;
-      case 4:
-        VistaDoctor VD = new VistaDoctor();
-        VD.setVisible(true);
-        this.dispose(); 
-        break;
-      default:
-        JOptionPane.showMessageDialog(null, "Ha ocurrido algo, por favor intent"
-                + "elo a iniciar sesión nuevamente.");
-        break;
-    } 
-  }
+//  public void asignarVentanaUsuario(){
+//    int tipoUsuario = usuario.retonarTipo(tbUsuario.getText(), tbContrasena.getText());
+//    switch(tipoUsuario){
+//      case 1:
+//        VistaPaciente VP = new VistaPaciente();
+//        VP.setVisible(true);
+//        this.dispose();
+//        break;
+//      case 2:
+//        VistaSecretario VS = new VistaSecretario();
+//        VS.setVisible(true);
+//        this.dispose();
+//        break;
+//      case 3:
+//        VistaEnfermero VE = new VistaEnfermero();
+//        VE.setVisible(true);
+//        this.dispose();
+//        break;
+//      case 4:
+//        VistaDoctor VD = new VistaDoctor();
+//        VD.setVisible(true);
+//        this.dispose(); 
+//        break;
+//      default:
+//        JOptionPane.showMessageDialog(null, "Ha ocurrido algo, por favor intent"
+//                + "elo a iniciar sesión nuevamente.");
+//        break;
+//    } 
+//  }
   
   /**
    * @param args the command line arguments
@@ -308,7 +307,7 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JButton btnEnfermero;
     public javax.swing.JButton btnIniciarSesion;
     public javax.swing.JButton btnPaciente;
-    public javax.swing.JButton btnRegistrarPaciente;
+    public javax.swing.JButton btnRegistrar;
     public javax.swing.JButton btnSecretario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
