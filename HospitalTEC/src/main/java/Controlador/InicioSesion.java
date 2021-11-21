@@ -5,12 +5,8 @@
 package Controlador;
 import DAO.*;
 import Vista.*;
-//import Modelo.*;
-import Modelo.Usuario;
-//import java.awt.event.ActionEvent;
+import Modelo.*;
 import java.sql.*;
-//import javax.swing.JOptionPane;
-//import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.awt.event.*;
 

@@ -154,17 +154,17 @@ public class VistaPaciente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCitaActionPerformed
-        CancelarCita CC = new CancelarCita();
-        CC.setVisible(true);
-
-        this.dispose();
+//        CancelarCita CC = new CancelarCita();
+//        CC.setVisible(true);
+//
+//        this.dispose();
     }//GEN-LAST:event_btnCancelarCitaActionPerformed
 
     private void btnSolicitarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitarCitaActionPerformed
-        SolicitarCita SC = new SolicitarCita();
-        SC.setVisible(true);
-
-        this.dispose();
+//        SolicitarCita SC = new SolicitarCita();
+//        SC.setVisible(true);
+//
+//        this.dispose();
     }//GEN-LAST:event_btnSolicitarCitaActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
