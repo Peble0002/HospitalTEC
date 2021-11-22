@@ -218,8 +218,8 @@ CREATE TABLE [RegistroSeguimiento](
 );
 
 CREATE TABLE [Internado_Centro] (
-  [Codigo] INT,
   [codInternado] INT,
+  [Codigo] INT,
   PRIMARY KEY ([Codigo], [codInternado]),
   CONSTRAINT [FK_Internado_Centro.Codigo]
     FOREIGN KEY ([Codigo])
@@ -388,39 +388,73 @@ INSERT INTO CentroAtencion VALUES (3, 'Ebais San Joaquí', 'Heredia San Joaquí', 
 INSERT INTO CentroAtencion VALUES (4, 'Consultorio Bienestar', 'Heredia', 10);
 INSERT INTO CentroAtencion VALUES (4, 'Consultorio Curamales', 'Limón', 30);
 INSERT INTO Centro_paciente VALUES ('305110992', 2);
+INSERT INTO Centro_paciente VALUES ('206220885', 4);
 INSERT INTO Funcionario VALUES ('303240163', '2020-11-01');
 INSERT INTO Funcionario VALUES ('305240656', '2020-12-20');
 INSERT INTO Funcionario VALUES ('305300938', '2021-02-15');
+INSERT INTO Funcionario VALUES ('502420345', '2005-06-13');
+INSERT INTO Funcionario VALUES ('802340534', '2012-12-21');
+INSERT INTO Funcionario VALUES ('901230132', '2004-01-01');
 INSERT INTO Enfermero VALUES ('305300938', 1, 1);
-INSERT INTO Doctor VALUES ('001', 303240163);
-INSERT INTO Especialidades_Doctor VALUES (303240163, 'Gastroenterólogo');
+INSERT INTO Enfermero VALUES ('802340534', 0, 1);
+INSERT INTO Doctor VALUES ('001', '303240163');
+INSERT INTO Doctor VALUES ('002', '901230132');
+INSERT INTO Especialidades_Doctor VALUES ('303240163', 'Gastroenterólogo');
+INSERT INTO Especialidades_Doctor VALUES ('303240163', 'Médico General');
+INSERT INTO Especialidades_Doctor VALUES ('901230132', 'Pediatría');
+INSERT INTO Especialidades_Doctor VALUES ('901230132', 'Obstetricia');
 INSERT INTO Centro_Funcionario VALUES ('303240163', 1);
 INSERT INTO Centro_Funcionario VALUES ('305240656', 2);
 INSERT INTO Centro_Funcionario VALUES ('305300938', 3);
+INSERT INTO Centro_Funcionario VALUES ('502420345', 4);
+INSERT INTO Centro_Funcionario VALUES ('802340534', 5);
+INSERT INTO Centro_Funcionario VALUES ('901230132', 6);
 INSERT INTO Funcionario_Cita VALUES ('303240163', 1);
+INSERT INTO Funcionario_Cita VALUES ('901230132', 2);
 INSERT INTO AreaTrabajo VALUES ('Anestesiología');
 INSERT INTO AreaTrabajo VALUES ('Cuidados Intensivos');
 INSERT INTO AreaTrabajo VALUES ('Emergencias');
 INSERT INTO AreaTrabajo VALUES ('Recepción');
 INSERT INTO Internado VALUES ('305110992', '2021-08-21', '2021-08-23', 2);
+INSERT INTO Internado VALUES ('206220885', '2021-10-22', '2021-10-30', 3);
 INSERT INTO RegistroSeguimiento VALUES ('2021-08-21', 'El paciente presente dolores constantes de abdomen');
 INSERT INTO RegistroSeguimiento VALUES ('2021-08-22', 'El paciente menciona haber comido pescado el día anterior');
 INSERT INTO RegistroSeguimiento VALUES ('2021-08-23', 'El paciente presenta mejorías notorias');
+INSERT INTO RegistroSeguimiento VALUES ('2021-10-22', 'El paciente presente dolores de cabeza crónicos');
+INSERT INTO RegistroSeguimiento VALUES ('2021-10-27', 'El paciente constantemente se desmaya');
+INSERT INTO RegistroSeguimiento VALUES ('2021-10-30', 'El paciente presenta mejorías pero se mantiene en observación');
 INSERT INTO Internado_Centro VALUES (1, 1);
+INSERT INTO Internado_Centro VALUES (2, 5);
 INSERT INTO Cita_Diagnostico VALUES (1, 1, 1, 'N/A', 'Grave', 'Se decide hospitalizar inmediatamente');
+INSERT INTO Cita_Diagnostico VALUES (2, 4, 4, 'N/A', 'Leve', 'Realizar ecocardiograma');
 INSERT INTO Cita_Internado VALUES (1, 1);
+INSERT INTO Cita_Internado VALUES (2, 2);
 INSERT INTO AreaTrabajo_Funcionario VALUES (1, '303240163');
 INSERT INTO AreaTrabajo_Funcionario VALUES (2, '305300938');
 INSERT INTO AreaTrabajo_Funcionario VALUES (4, '305240656');
+INSERT INTO AreaTrabajo_Funcionario VALUES (3, '502420345');
+INSERT INTO AreaTrabajo_Funcionario VALUES (3, '802340534');
+INSERT INTO AreaTrabajo_Funcionario VALUES (2, '901230132');
 INSERT INTO Internado_Doctor VALUES (1, '303240163');
+INSERT INTO Internado_Doctor VALUES (2, '901230132');
 INSERT INTO Telefono_Paciente VALUES ('305110992', '89652266');
+INSERT INTO Telefono_Paciente VALUES ('305110992', '88886666');
+INSERT INTO Telefono_Paciente VALUES ('206220885', '85868586');
+INSERT INTO Telefono_Paciente VALUES ('206220885', '77775555');
 INSERT INTO Vacuna VALUES ('Contra la viruela', 'H&P');
+INSERT INTO Vacuna VALUES ('Contra Fiebre Amarilla', 'H&P');
 INSERT INTO Vacuna VALUES ('Contra la varicela', 'Medipharma');
+INSERT INTO Vacuna VALUES ('Contra el Sarampión', 'Medipharma');
 INSERT INTO Vacuna VALUES ('COVID-19', 'Jhonson & Jhonson');
+INSERT INTO Vacuna VALUES ('Contra paperas', 'Jhonson & Jhonson');
 INSERT INTO Internado_Registro VALUES (1, 1);
+INSERT INTO Internado_Registro VALUES (2, 2);
 INSERT INTO Paciente_Vacuna VALUES ('305110992', 1, '2005-01-12', '12573');
 INSERT INTO Paciente_Vacuna VALUES ('305110992', 2, '2007-02-21', '65451');
 INSERT INTO Paciente_Vacuna VALUES ('305110992', 3, '2021-08-30', '48432');
+INSERT INTO Paciente_Vacuna VALUES ('206220885', 4, '2009-05-13', '7856');
+INSERT INTO Paciente_Vacuna VALUES ('206220885', 5, '2010-07-19', '9652');
+INSERT INTO Paciente_Vacuna VALUES ('206220885', 6, '2020-10-12', '3584');
 
 SELECT CDi.NombreDiagnostico FROM Cita C 
 	JOIN Paciente_Cita PC ON C.IdCita = PC.IdCita 
