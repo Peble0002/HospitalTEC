@@ -44,12 +44,13 @@ CREATE TABLE [Tratamiento_Diagnostico] (
       REFERENCES [CatalogoTratamientos]([IdTratamiento])
 );
 
-CREATE TABLE [Bitacora] ( ---La bitacora no debería llevar además un dato de a cual estado fue cambiada la cita?
-  [IdBitácora] INT IDENTITY (1,1), --LLEVA TILDE
+CREATE TABLE [Bitacora] (
+  [IdBitacora] INT IDENTITY (1,1),
   [Fecha] DATE,
   [Hora] TIME,
-  [Usuario] VARCHAR(30), ---Aquí se almacena el que hizo la bitacora, es una cédula o el nombre del usuario?
-  PRIMARY KEY ([IdBitácora])
+  [idUsuario] VARCHAR(30), ---Es la cédula del usuario que cambia la cita
+  [nuevoEstado] VARCHAR(50),
+  PRIMARY KEY ([IdBitacora])
 );
 
 CREATE TABLE [Cita] (
@@ -58,7 +59,7 @@ CREATE TABLE [Cita] (
   [hora] TIME,
   [observaciones] VARCHAR(100),
   [estado] VARCHAR(50),
-  [especialidad] VARCHAR(50), ---Especialidad escrita o referente a alguna existente en una tabla?
+  [especialidad] VARCHAR(50), ---Se maneja mediante la clase enum
   PRIMARY KEY ([IdCita])
 );
 
@@ -68,7 +69,7 @@ CREATE TABLE [Bitacora_Cita] (
   PRIMARY KEY ([IdCita], [IdBitacora]),
   CONSTRAINT [FK_Bitacora_Cita.IdBitacora]
     FOREIGN KEY ([IdBitacora])
-      REFERENCES [Bitacora]([IdBitácora]),
+      REFERENCES [Bitacora]([IdBitacora]),
   CONSTRAINT [FK_Bitacora_Cita.IdCita]
     FOREIGN KEY ([IdCita])
       REFERENCES [Cita]([IdCita])
@@ -131,7 +132,6 @@ CREATE TABLE [Centro_paciente](
 
 CREATE TABLE [Funcionario] (
   [IDFuncionario] VARCHAR(30),
-  [TipoFuncionario] INT, --Considerar que esta información viene desde la tabla "tipoUsuario"
   [fechaIngreso] DATE,
   PRIMARY KEY ([IDFuncionario]),
   CONSTRAINT [FK_Funcionario.idUsuario]
@@ -151,12 +151,20 @@ CREATE TABLE [Enfermero] (
 
 CREATE TABLE [Doctor] (
   [codigoMedico] VARCHAR(30),
-  [especialidad] VARCHAR(70), ---Un doctor podría tener diferentes especialidades, no?
   [IDFuncionario] VARCHAR(30),
   PRIMARY KEY ([IDFuncionario]),
   CONSTRAINT [FK_Doctor.IDFuncionario]
     FOREIGN KEY ([IDFuncionario])
       REFERENCES [Funcionario]([IDFuncionario])
+);
+
+CREATE TABLE [Especialidades_Doctor] (
+  [idFuncionario] VARCHAR(30),
+  [especialidad] VARCHAR(50),
+  PRIMARY KEY ([idFuncionario], [especialidad]),
+  CONSTRAINT [FK_Especialidades_Doctor.idFuncionario]
+    FOREIGN KEY ([idFuncionario])
+      REFERENCES [Doctor]([idFuncionario])
 );
 
 CREATE TABLE [Centro_Funcionario] (
@@ -190,11 +198,12 @@ CREATE TABLE [AreaTrabajo] (
 );
 
 CREATE TABLE [Internado] (
+  [codInternado] INT IDENTITY (1,1),
   [IdInternado] VARCHAR(30),
   [fechaInicio] DATE,
   [fechaFin] DATE,
   [codigoAreaTrabajo] INT,
-  PRIMARY KEY ([IdInternado]),
+  PRIMARY KEY ([codInternado]),
   CONSTRAINT [FK_Internado.codigoAreaTrabajo]
     FOREIGN KEY ([codigoAreaTrabajo])
       REFERENCES [AreaTrabajo]([codigo])
@@ -209,14 +218,14 @@ CREATE TABLE [RegistroSeguimiento] (
 
 CREATE TABLE [Internado_Centro] (
   [Codigo] INT,
-  [IdInternado] VARCHAR(30),
-  PRIMARY KEY ([Codigo], [IdInternado]),
+  [codInternado] INT,
+  PRIMARY KEY ([Codigo], [codInternado]),
   CONSTRAINT [FK_Internado_Centro.Codigo]
     FOREIGN KEY ([Codigo])
       REFERENCES [CentroAtencion]([Codigo]),
   CONSTRAINT [FK_Internado_Centro.IdInternado]
-    FOREIGN KEY ([IdInternado])
-      REFERENCES [Internado]([IdInternado])
+    FOREIGN KEY ([codInternado])
+      REFERENCES [Internado]([codInternado])
 );
 
 CREATE TABLE [Cita_Diagnostico] (
@@ -240,14 +249,14 @@ CREATE TABLE [Cita_Diagnostico] (
 
 CREATE TABLE [Cita_Internado] ( ---Esta tabla se ocupa? Estoy analizandolo pero no sé si todo paciente es internado tras recibir una cita
   [Idcita] INT,
-  [IdInternado] VARCHAR(30),
-  PRIMARY KEY ([Idcita], [IdInternado]),
+  [codInternado] INT,
+  PRIMARY KEY ([Idcita], [codInternado]),
   CONSTRAINT [FK_Cita_Internado.Idcita]
     FOREIGN KEY ([Idcita])
       REFERENCES [Cita]([IdCita]),
   CONSTRAINT [FK_Cita_Internado.IdInternado]
-    FOREIGN KEY ([IdInternado])
-      REFERENCES [Internado]([IdInternado])
+    FOREIGN KEY ([codInternado])
+      REFERENCES [Internado]([codInternado])
 );
 
 CREATE TABLE [AreaTrabajo_Funcionario] (
@@ -263,15 +272,15 @@ CREATE TABLE [AreaTrabajo_Funcionario] (
 );
 
 CREATE TABLE [Internado_Doctor] (
-  [IdInternado] VARCHAR(30),
+  [codInternado] INT,
   [IDFuncionario] VARCHAR(30),
-  PRIMARY KEY ([IdInternado], [IDFuncionario]),
+  PRIMARY KEY ([codInternado], [IDFuncionario]),
   CONSTRAINT [FK_Internado_Doctor.codigoMedico]
     FOREIGN KEY ([IDFuncionario])
       REFERENCES [Doctor]([IDFuncionario]),
   CONSTRAINT [FK_Internado_Doctor.IdInternado]
-    FOREIGN KEY ([IdInternado])
-      REFERENCES [Internado]([IdInternado])
+    FOREIGN KEY ([codInternado])
+      REFERENCES [Internado]([codInternado])
 );
 
 CREATE TABLE [Telefono_Paciente] (
@@ -291,12 +300,12 @@ CREATE TABLE [Vacuna] (
 );
 
 CREATE TABLE [Internado_Registro] (
-  [IdInternado] VARCHAR(30),
+  [codInternado] INT,
   [idRegistro] INT,
-  PRIMARY KEY ([IdInternado], [idRegistro]),
+  PRIMARY KEY ([codInternado], [idRegistro]),
   CONSTRAINT [FK_Internado_Registro.IdInternado]
-    FOREIGN KEY ([IdInternado])
-      REFERENCES [Internado]([IdInternado]),
+    FOREIGN KEY ([codInternado])
+      REFERENCES [Internado]([codInternado]),
   CONSTRAINT [FK_Internado_Registro.idRegistro]
     FOREIGN KEY ([idRegistro])
       REFERENCES [RegistroSeguimiento]([idRegistro])
@@ -385,37 +394,6 @@ INSERT INTO Internado_Registro VALUES ('305110992', 1);
 INSERT INTO Paciente_Vacuna VALUES ('305110992', 1, '2005-01-12', 12573);
 INSERT INTO Paciente_Vacuna VALUES ('305110992', 2, '2007-02-21', 65451);
 INSERT INTO Paciente_Vacuna VALUES ('305110992', 3, '2021-08-30', 48432);
-
-DELETE FROM tipoUsuario
-DELETE FROM Usuario
-DELETE FROM CatalogoDiagnosticos
-DELETE FROM CatalogoTratamientos
-DELETE FROM Tratamiento_Diagnostico
-DELETE FROM Bitacora
-DELETE FROM Cita
-DELETE FROM Bitacora_Cita
-DELETE FROM Paciente
-DELETE FROM Paciente_Cita
-DELETE FROM TipoCentro
-DELETE FROM CentroAtencion
-DELETE FROM Centro_paciente
-DELETE FROM Funcionario
-DELETE FROM Enfermero
-DELETE FROM Doctor
-DELETE FROM Centro_Funcionario
-DELETE FROM Funcionario_Cita
-DELETE FROM AreaTrabajo
-DELETE FROM Internado
-DELETE FROM RegistroSeguimiento
-DELETE FROM Internado_Centro
-DELETE FROM Cita_Diagnostico
-DELETE FROM Cita_Internado
-DELETE FROM AreaTrabajo_Funcionario
-DELETE FROM Internado_Doctor
-DELETE FROM Telefono_Paciente
-DELETE FROM Vacuna
-DELETE FROM Internado_Registro
-DELETE FROM Paciente_Vacuna
 
 SELECT CDi.NombreDiagnostico FROM Cita C 
 	JOIN Paciente_Cita PC ON C.IdCita = PC.IdCita 
