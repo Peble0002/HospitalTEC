@@ -493,7 +493,15 @@ public class RegistroPacientes extends javax.swing.JFrame {
   private void btnRegistrarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPacienteActionPerformed
     // TODO add your handling code here:
   }//GEN-LAST:event_btnRegistrarPacienteActionPerformed
-
+  public boolean datosCorrectos(){
+    return !(tbApellido1Paciente.getText().equals("")|| tbApellido2Paciente.getText().equals("")
+            || tbCantonPaciente.getText().equals("")|| tbCedulaPaciente.getText().equals("")
+            || tbContrasenaPaciente.getText().equals("")|| tbDistritoPaciente.getText().equals("")
+            || tbNacionalidadPaciente.getText().equals("")|| tbProvinciaPaciente.getText().equals("")
+            || tbNombrePaciente.getText().equals("")|| tbNumeroLote.getText().equals("")
+            || tbTelefonoPaciente.getText().equals("")|| tbTipoSangrePaciente.getText().equals(""));
+  }
+  
     /**
      * @param args the command line arguments
      */
