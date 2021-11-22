@@ -6,21 +6,15 @@ package Controlador;
 import DAO.*;
 import Modelo.Paciente;
 import Vista.*;
-//import Modelo.*;
-import Modelo.Usuario;
-//import java.awt.event.ActionEvent;
 import java.sql.*;
-//import javax.swing.JOptionPane;
-//import java.awt.event.ActionListener;
+
 import javax.swing.*;
 import java.awt.event.*;
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.Calendar;
 
 /**
- *
- * @author LUIS LEITON
+ * Clase para la conexion con AreaTrabajo
+ * @author  Pablo Chaves, Aaron Soto y Luis Leitón
+ * @version (22/11/2021)
  */
 public class ControladorRegistroPaciente implements ActionListener{
     
