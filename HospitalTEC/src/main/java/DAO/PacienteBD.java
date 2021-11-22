@@ -22,12 +22,12 @@ public class PacienteBD {
    * Método para insertar un paciente en la base de datos
    * @param pPaciente de tipo Usuario
    */
-  
   public void insertarPaciente(Paciente pPaciente){
-   // UsuarioBD usuarioBD = new UsuarioBD();  
+    UsuarioBD usuarioBD = new UsuarioBD();  
     try{
-        
+      usuarioBD.insertarUsuario(pPaciente);  
       Connection con = conexion.getConexion();
+      
       PreparedStatement ps = con.prepareStatement("INSERT INTO Paciente "
               + "(idPaciente, nacionalidad, tipoSangre, fechaNacimiento, "
               + "provincia, canton) VALUES (?,?,?,?,?,?)");
@@ -42,6 +42,5 @@ public class PacienteBD {
     }catch(SQLException e){
       JOptionPane.showMessageDialog(null, e.toString());
     }
-    //usuarioBD.insertarUsuario(paciente);
   }
 }

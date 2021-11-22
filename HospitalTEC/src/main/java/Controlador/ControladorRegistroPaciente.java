@@ -6,31 +6,25 @@ package Controlador;
 import DAO.*;
 import Modelo.Paciente;
 import Vista.*;
-//import Modelo.*;
-import Modelo.Usuario;
-//import java.awt.event.ActionEvent;
 import java.sql.*;
-//import javax.swing.JOptionPane;
-//import java.awt.event.ActionListener;
+
 import javax.swing.*;
 import java.awt.event.*;
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.Calendar;
 
 /**
- *
- * @author LUIS LEITON
+ * Clase para la conexion con AreaTrabajo
+ * @author  Pablo Chaves, Aaron Soto y Luis Leitón
+ * @version (22/11/2021)
  */
 public class ControladorRegistroPaciente implements ActionListener{
     
-    public RegistroPacientes vistaRegistroPacientes;
-    public PacienteBD pacienteBD;
+    public RegistroPacientes vistaRegistroPacientes = new RegistroPacientes();
+    public PacienteBD pacienteBD = new PacienteBD();
     
     public ControladorRegistroPaciente(RegistroPacientes pVista){
     
     
-      PacienteBD pacienteBD = new PacienteBD();
+      PacienteBD pacienteBaseDatos = new PacienteBD();
       vistaRegistroPacientes = pVista;
     
       this.vistaRegistroPacientes.btnRegistrarPaciente.addActionListener(this);
@@ -40,7 +34,7 @@ public class ControladorRegistroPaciente implements ActionListener{
     @Override
   public void actionPerformed(ActionEvent e){
     switch(e.getActionCommand()){
-        case "Registrarme":
+        case "Registrar":
             registrarPacientes();
             break;
         case "Volver":
@@ -55,15 +49,30 @@ public class ControladorRegistroPaciente implements ActionListener{
   }
   
   public void registrarPacientes(){
-        
+      
 //      if(vistaRegistroPacientes.datosCorrectos() == false){
 //      JOptionPane.showMessageDialog(vistaRegistroPacientes, "Alguno de los espacios de datos está"
 //              + " vacío.");
 //    }
 //    else{
-
-      Date fecha = (Date) vistaRegistroPacientes.jFechaNacimiento.getCalendar().getTime();
-      System.out.print(fecha.toString());
+//      Date date = (Date) vistaRegistroPacientes.jFechaNacimiento.getDate(); //ic es la interfaz, jDate el JDatechooser
+//      long d = date.getTime(); //guardamos en un long el tiempo
+//      java.sql.Date fecha = new java.sql.Date(d);// parseamos al formato del sql
+      //Date fecha = (Date) vistaRegistroPacientes.jFechaNacimiento.getCalendar().getTime();
+      
+      String dia = (String) vistaRegistroPacientes.cbDia.getSelectedItem();
+      String mes = (String) vistaRegistroPacientes.cbMes.getSelectedItem();
+      String ano = (String) vistaRegistroPacientes.cbAno.getSelectedItem();
+      
+      int pDia = Integer.parseInt(dia);
+      int pMes = Integer.parseInt(mes);
+      int pAno = Integer.parseInt(ano);
+      pAno = pAno-1900;
+      pMes = pMes-1;
+      System.out.println(mes + "\n" );
+      System.out.print(pMes+ "\n" );
+      Date fecha = new Date(pAno,pMes,pDia);
+      
       String cedula = vistaRegistroPacientes.tbCedulaPaciente.getText();
       String nombre = vistaRegistroPacientes.tbNombrePaciente.getText();
       String apellido1 = vistaRegistroPacientes.tbApellido1Paciente.getText();
@@ -79,6 +88,7 @@ public class ControladorRegistroPaciente implements ActionListener{
               provincia,  canton, distrito,  telefono,  cedula, contrasena, 
               nombre,  apellido1, apellido2);
       pacienteBD.insertarPaciente(paciente);
+      JOptionPane.showMessageDialog(vistaRegistroPacientes, "REGISTRADO");
     } 
   }  
     
