@@ -50,11 +50,11 @@ public class ControladorRegistroPaciente implements ActionListener{
   
   public void registrarPacientes(){
       
-//      if(vistaRegistroPacientes.datosCorrectos() == false){
-//      JOptionPane.showMessageDialog(vistaRegistroPacientes, "Alguno de los espacios de datos está"
-//              + " vacío.");
-//    }
-//    else{
+    if(vistaRegistroPacientes.datosCorrectos() == false){
+      JOptionPane.showMessageDialog(vistaRegistroPacientes, "Alguno de los espacios de datos está"
+              + " vacío.");
+    }
+    else{
       
       String dia = (String) vistaRegistroPacientes.cbDia.getSelectedItem();
       String mes = (String) vistaRegistroPacientes.cbMes.getSelectedItem();
