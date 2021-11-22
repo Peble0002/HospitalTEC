@@ -24,13 +24,13 @@ import java.util.Calendar;
  */
 public class ControladorRegistroPaciente implements ActionListener{
     
-    public RegistroPacientes vistaRegistroPacientes;
-    public PacienteBD pacienteBD;
+    public RegistroPacientes vistaRegistroPacientes = new RegistroPacientes();
+    public PacienteBD pacienteBD = new PacienteBD();
     
     public ControladorRegistroPaciente(RegistroPacientes pVista){
     
     
-      PacienteBD pacienteBD = new PacienteBD();
+      PacienteBD pacienteBaseDatos = new PacienteBD();
       vistaRegistroPacientes = pVista;
     
       this.vistaRegistroPacientes.btnRegistrarPaciente.addActionListener(this);
@@ -55,7 +55,7 @@ public class ControladorRegistroPaciente implements ActionListener{
   }
   
   public void registrarPacientes(){
-      //PacienteBD pacienteBD = new PacienteBD();  
+      
 //      if(vistaRegistroPacientes.datosCorrectos() == false){
 //      JOptionPane.showMessageDialog(vistaRegistroPacientes, "Alguno de los espacios de datos está"
 //              + " vacío.");
@@ -67,13 +67,16 @@ public class ControladorRegistroPaciente implements ActionListener{
       //Date fecha = (Date) vistaRegistroPacientes.jFechaNacimiento.getCalendar().getTime();
       
       String dia = (String) vistaRegistroPacientes.cbDia.getSelectedItem();
-      String mes = (String) vistaRegistroPacientes.cbDia.getSelectedItem();
-      String ano = (String) vistaRegistroPacientes.cbDia.getSelectedItem();
+      String mes = (String) vistaRegistroPacientes.cbMes.getSelectedItem();
+      String ano = (String) vistaRegistroPacientes.cbAno.getSelectedItem();
       
       int pDia = Integer.parseInt(dia);
       int pMes = Integer.parseInt(mes);
       int pAno = Integer.parseInt(ano);
-      
+      pAno = pAno-1900;
+      pMes = pMes-1;
+      System.out.println(mes + "\n" );
+      System.out.print(pMes+ "\n" );
       Date fecha = new Date(pAno,pMes,pDia);
       
       String cedula = vistaRegistroPacientes.tbCedulaPaciente.getText();
@@ -91,7 +94,7 @@ public class ControladorRegistroPaciente implements ActionListener{
               provincia,  canton, distrito,  telefono,  cedula, contrasena, 
               nombre,  apellido1, apellido2);
       pacienteBD.insertarPaciente(paciente);
-       JOptionPane.showMessageDialog(vistaRegistroPacientes, "REGISTRADO");
+      JOptionPane.showMessageDialog(vistaRegistroPacientes, "REGISTRADO");
     } 
   }  
     
