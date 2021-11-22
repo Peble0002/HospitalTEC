@@ -77,14 +77,12 @@ public class ControladorRegistroPaciente implements ActionListener{
       String canton = vistaRegistroPacientes.tbCantonPaciente.getText();
       String telefono = vistaRegistroPacientes.tbTelefonoPaciente.getText();
       String tipoSangre = vistaRegistroPacientes.tbTipoSangrePaciente.getText();
-      String distrito = vistaRegistroPacientes.tbDistritoPaciente.getText();
       Paciente paciente = new Paciente( fecha, tipoSangre, nacionalidad,  
-              provincia,  canton, distrito,  telefono,  cedula, contrasena, 
+              provincia,  canton, telefono,  cedula, contrasena, 
               nombre,  apellido1, apellido2);
       pacienteBD.insertarPaciente(paciente);
       JOptionPane.showMessageDialog(vistaRegistroPacientes, "REGISTRADO");
     } 
   }  
     
-    
-//}
+}

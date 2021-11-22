@@ -17,7 +17,6 @@ public class Paciente extends Usuario{
   private String nacionalidad;
   private String provincia;
   private String canton;
-  private String distrito;
   //revisar la generic
   private ArrayList<String> telefonos;
   private ArrayList<Vacuna> vacunas;
@@ -46,7 +45,7 @@ public class Paciente extends Usuario{
 
   public Paciente(Date fechaNacimiento, String tipoSangre, 
           String nacionalidad, String provincia, String canton, 
-          String distrito, String pTelefono, String id, 
+          String pTelefono, String id, 
           String contrasena, String nombre, String apellido1, 
           String apellido2) {
     super(id, contrasena, nombre, apellido1, apellido2);
@@ -55,7 +54,6 @@ public class Paciente extends Usuario{
     this.nacionalidad = nacionalidad;
     this.provincia = provincia;
     this.canton = canton;
-    this.distrito = distrito;
     //this.telefonos = telefonos;
     this.telefonos= new ArrayList<String>();
     telefonos.add(pTelefono);
@@ -100,14 +98,6 @@ public class Paciente extends Usuario{
 
   public void setCanton(String canton) {
     this.canton = canton;
-  }
-
-  public String getDistrito() {
-    return distrito;
-  }
-
-  public void setDistrito(String distrito) {
-    this.distrito = distrito;
   }
 
   public ArrayList<String> getTelefonos() {
