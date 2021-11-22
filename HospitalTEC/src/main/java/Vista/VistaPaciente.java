@@ -168,10 +168,10 @@ public class VistaPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSolicitarCitaActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-      Principal P = new Principal();
-      P.setVisible(true);
-
-      this.dispose();
+//      Principal P = new Principal();
+//      P.setVisible(true);
+//
+//      this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnCitasAsociadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCitasAsociadasActionPerformed

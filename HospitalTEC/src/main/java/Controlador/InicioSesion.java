@@ -79,16 +79,16 @@ public class InicioSesion implements ActionListener{
         vistaInicio.dispose();
         break;
       case 3:
-          //FALTA
         VistaEnfermero VE = new VistaEnfermero();
-        VE.setVisible(true);
+        ControladorVistaEnfermero CVE = new ControladorVistaEnfermero(VE,IDusuario);
+        CVE.vistaEnfermero.setVisible(true);
         vistaInicio.dispose();
         break;
       case 4:
-          //FALTA
         VistaDoctor VD = new VistaDoctor();
-        VD.setVisible(true);
-        vistaInicio.dispose(); 
+        ControladorVistaDoctor CVD = new ControladorVistaDoctor(VD,IDusuario);
+        CVD.vistaDoctor.setVisible(true);
+        vistaInicio.dispose();
         break;
       default:
         JOptionPane.showMessageDialog(vistaInicio, "Ha ocurrido algo, por favor intent"

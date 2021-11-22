@@ -154,10 +154,10 @@ public class VistaSecretario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAsignarCitaActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        Principal P = new Principal();
-        P.setVisible(true);
-
-        this.dispose();
+//        Principal P = new Principal();
+//        P.setVisible(true);
+//
+//        this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnCitasRegistradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCitasRegistradasActionPerformed
