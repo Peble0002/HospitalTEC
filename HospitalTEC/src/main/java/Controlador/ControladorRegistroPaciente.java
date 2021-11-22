@@ -55,10 +55,6 @@ public class ControladorRegistroPaciente implements ActionListener{
 //              + " vacío.");
 //    }
 //    else{
-//      Date date = (Date) vistaRegistroPacientes.jFechaNacimiento.getDate(); //ic es la interfaz, jDate el JDatechooser
-//      long d = date.getTime(); //guardamos en un long el tiempo
-//      java.sql.Date fecha = new java.sql.Date(d);// parseamos al formato del sql
-      //Date fecha = (Date) vistaRegistroPacientes.jFechaNacimiento.getCalendar().getTime();
       
       String dia = (String) vistaRegistroPacientes.cbDia.getSelectedItem();
       String mes = (String) vistaRegistroPacientes.cbMes.getSelectedItem();
@@ -69,8 +65,6 @@ public class ControladorRegistroPaciente implements ActionListener{
       int pAno = Integer.parseInt(ano);
       pAno = pAno-1900;
       pMes = pMes-1;
-      System.out.println(mes + "\n" );
-      System.out.print(pMes+ "\n" );
       Date fecha = new Date(pAno,pMes,pDia);
       
       String cedula = vistaRegistroPacientes.tbCedulaPaciente.getText();

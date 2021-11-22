@@ -36,27 +36,25 @@ public class ControladorVistaPaciente implements ActionListener {
      @Override
      public void actionPerformed(ActionEvent e){
        switch(e.getActionCommand()){
-        case "Solicitar Cita":
-            SolicitarCita SC = new SolicitarCita();
-            SC.setVisible(true);
+          case "Solicitar Cita":
+            break;
+          case "Cancelar Cita":
+            break;
+          case "Citas asociadas":
+            break;
+          case "Diagnósticos":
+            break;
+          case "Tratamientos":
+            break;
+          case "Hospitalizaciones":
+            break;
+            
+        case "Volver":
+            Principal P = new Principal();
+            InicioSesion IS = new InicioSesion(P);
+            IS.vistaInicio.setVisible(true);
             vistaPacientes.dispose();
             break;
-        case "Cancelar Cita":
-             CancelarCita CC = new CancelarCita();
-             CC.setVisible(true);
-            vistaPacientes.dispose();
-            break;
-//        case "Citas asociadas":SolicitarCita SC = new SolicitarCita();
-//            SC.setVisible(true);
-//            vistaPacientes.dispose();
-//            break;
-//            
-//        case "Volver":
-//            Principal P = new Principal();
-//            InicioSesion IS = new InicioSesion(P);
-//            IS.vistaInicio.setVisible(true);
-//            vistaRegistroPacientes.dispose();
-//            break;
         default:
             break;       
     }

@@ -63,25 +63,29 @@ public class InicioSesion implements ActionListener{
   }
   public void asignarVentanaUsuario(){
     UsuarioBD usuarioBD = new UsuarioBD();  
+    String IDusuario = vistaInicio.tbUsuario.getText();
     int tipoUsuario = usuarioBD.retonarTipo(vistaInicio.tbUsuario.getText(), 
             vistaInicio.tbContrasena.getText());
     switch(tipoUsuario){
       case 1:
         VistaPaciente VP = new VistaPaciente();
-        VP.setVisible(true);
+        ControladorVistaPaciente CVP = new ControladorVistaPaciente(VP,IDusuario);
+        CVP.vistaPacientes.setVisible(true);
         vistaInicio.dispose();
-        break;
       case 2:
         VistaSecretario VS = new VistaSecretario();
-        VS.setVisible(true);
+        ControladorVistaSecretario CVS = new ControladorVistaSecretario(VS,IDusuario);
+        CVS.vistaSecretario.setVisible(true);
         vistaInicio.dispose();
         break;
       case 3:
+          //FALTA
         VistaEnfermero VE = new VistaEnfermero();
         VE.setVisible(true);
         vistaInicio.dispose();
         break;
       case 4:
+          //FALTA
         VistaDoctor VD = new VistaDoctor();
         VD.setVisible(true);
         vistaInicio.dispose(); 
