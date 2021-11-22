@@ -40,7 +40,7 @@ public class ControladorRegistroPaciente implements ActionListener{
     @Override
   public void actionPerformed(ActionEvent e){
     switch(e.getActionCommand()){
-        case "Registrarme":
+        case "Registrar":
             registrarPacientes();
             break;
         case "Volver":
@@ -55,15 +55,27 @@ public class ControladorRegistroPaciente implements ActionListener{
   }
   
   public void registrarPacientes(){
-        
+      //PacienteBD pacienteBD = new PacienteBD();  
 //      if(vistaRegistroPacientes.datosCorrectos() == false){
 //      JOptionPane.showMessageDialog(vistaRegistroPacientes, "Alguno de los espacios de datos está"
 //              + " vacío.");
 //    }
 //    else{
-
-      Date fecha = (Date) vistaRegistroPacientes.jFechaNacimiento.getCalendar().getTime();
-      System.out.print(fecha.toString());
+//      Date date = (Date) vistaRegistroPacientes.jFechaNacimiento.getDate(); //ic es la interfaz, jDate el JDatechooser
+//      long d = date.getTime(); //guardamos en un long el tiempo
+//      java.sql.Date fecha = new java.sql.Date(d);// parseamos al formato del sql
+      //Date fecha = (Date) vistaRegistroPacientes.jFechaNacimiento.getCalendar().getTime();
+      
+      String dia = (String) vistaRegistroPacientes.cbDia.getSelectedItem();
+      String mes = (String) vistaRegistroPacientes.cbDia.getSelectedItem();
+      String ano = (String) vistaRegistroPacientes.cbDia.getSelectedItem();
+      
+      int pDia = Integer.parseInt(dia);
+      int pMes = Integer.parseInt(mes);
+      int pAno = Integer.parseInt(ano);
+      
+      Date fecha = new Date(pAno,pMes,pDia);
+      
       String cedula = vistaRegistroPacientes.tbCedulaPaciente.getText();
       String nombre = vistaRegistroPacientes.tbNombrePaciente.getText();
       String apellido1 = vistaRegistroPacientes.tbApellido1Paciente.getText();
@@ -79,6 +91,7 @@ public class ControladorRegistroPaciente implements ActionListener{
               provincia,  canton, distrito,  telefono,  cedula, contrasena, 
               nombre,  apellido1, apellido2);
       pacienteBD.insertarPaciente(paciente);
+       JOptionPane.showMessageDialog(vistaRegistroPacientes, "REGISTRADO");
     } 
   }  
     

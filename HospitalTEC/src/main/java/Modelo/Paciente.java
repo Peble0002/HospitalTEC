@@ -56,7 +56,7 @@ public class Paciente extends Usuario{
     this.provincia = provincia;
     this.canton = canton;
     this.distrito = distrito;
-    this.telefonos = telefonos;
+    //this.telefonos = telefonos;
     this.telefonos= new ArrayList<String>();
     telefonos.add(pTelefono);
     this.vacunas= new ArrayList<Vacuna>();
@@ -145,4 +145,45 @@ public class Paciente extends Usuario{
   public void setCentros(ArrayList<CentroAtencion> centros) {
     this.centros = centros;
   }
+    
+  //@Override
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido1() {
+        return apellido1;
+    }
+
+    public void setApellido1(String apellido1) {
+        this.apellido1 = apellido1;
+    }
+
+    public String getApellido2() {
+        return apellido2;
+    }
+
+    public void setApellido2(String apellido2) {
+        this.apellido2 = apellido2;
+    }
 }
