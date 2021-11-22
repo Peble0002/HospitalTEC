@@ -50,7 +50,11 @@ public class ControladorVistaDoctor implements ActionListener {
           break;
         case "Citas registradas":
           break;
-        case "Atender cita": //FALTA
+        case "Atender cita":
+          AtenderCita AC = new AtenderCita();
+          ControladorAtenderCita CAC = new ControladorAtenderCita(AC,usuario);
+          CAC.vistaAtenderCita.setVisible(true);
+          vistaDoctor.dispose();
           break;
         case "Diagnósticos":
           break;

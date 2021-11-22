@@ -42,16 +42,16 @@ public class ControladorAtenderCita implements ActionListener {
           CDP.vistaDiagnosticoPaciente.setVisible(true);
           vistaAtenderCita.dispose();
           break;
-        case "Registrar Bitácora": //FALTA
-          VistaDoctor VD = new VistaDoctor();
-          ControladorVistaDoctor CVD = new ControladorVistaDoctor(VD,usuario);
-          CVD.vistaDoctor.setVisible(true);
+        case "Registrar Bitácora": 
+          RegistroBitacora RB = new RegistroBitacora();
+          ControladorRegistroBitacora CRB = new ControladorRegistroBitacora(RB,usuario,paciente);
+          CRB.vistaRegistroBitacora.setVisible(true);
           vistaAtenderCita.dispose();
           break;
-        case "Internar Paciente": // FALTA
-          VistaDoctor VD = new VistaDoctor();
-          ControladorVistaDoctor CVD = new ControladorVistaDoctor(VD,usuario);
-          CVD.vistaDoctor.setVisible(true);
+        case "Internar Paciente": 
+          RegistroInternado RI = new RegistroInternado();
+          ControladorRegistroInternado CRI = new ControladorRegistroInternado(RI,usuario,paciente);
+          CRI.vistaRegistroInternado.setVisible(true);
           vistaAtenderCita.dispose();
           break;
         case "Volver":

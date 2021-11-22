@@ -61,6 +61,11 @@ public class RegistroBitacora extends javax.swing.JFrame {
         btnRegistrarBitacora.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnRegistrarBitacora.setForeground(new java.awt.Color(11, 136, 136));
         btnRegistrarBitacora.setText("Registrar");
+        btnRegistrarBitacora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarBitacoraActionPerformed(evt);
+            }
+        });
 
         cbMinutos.setBackground(new java.awt.Color(192, 225, 249));
         cbMinutos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -197,11 +202,15 @@ public class RegistroBitacora extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-      AtenderCita AC = new AtenderCita();
-      AC.setVisible(true);
-      
-      this.dispose();
+//      AtenderCita AC = new AtenderCita();
+//      AC.setVisible(true);
+//      
+//      this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnRegistrarBitacoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarBitacoraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistrarBitacoraActionPerformed
 
     /**
      * @param args the command line arguments

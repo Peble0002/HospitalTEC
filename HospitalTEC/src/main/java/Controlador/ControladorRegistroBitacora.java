@@ -4,7 +4,7 @@
  */
 package Controlador;
 import DAO.*;
-import Modelo.Paciente;
+import Modelo.*;
 import Vista.*;
 import java.sql.*;
 

@@ -230,10 +230,10 @@ public class VistaDoctor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCitaActionPerformed
-        CancelarCitaDoctor CCD = new CancelarCitaDoctor();
-        CCD.setVisible(true);
-
-        this.dispose();
+//        CancelarCitaDoctor CCD = new CancelarCitaDoctor();
+//        CCD.setVisible(true);
+//
+//        this.dispose();
     }//GEN-LAST:event_btnCancelarCitaActionPerformed
 
     private void btnAsignarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarCitaActionPerformed
@@ -241,10 +241,10 @@ public class VistaDoctor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAsignarCitaActionPerformed
 
     private void btnAtenderCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtenderCitaActionPerformed
-      AtenderCita AC = new AtenderCita();
-        AC.setVisible(true);
-
-        this.dispose();
+//      AtenderCita AC = new AtenderCita();
+//        AC.setVisible(true);
+//
+//        this.dispose();
     }//GEN-LAST:event_btnAtenderCitaActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
@@ -255,45 +255,45 @@ public class VistaDoctor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnSeguimientoInternadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeguimientoInternadoActionPerformed
-      RegistroSeguimientoInternado RSI = new RegistroSeguimientoInternado();
-      RSI.setVisible(true);
-
-      this.dispose(); 
+//      RegistroSeguimientoInternado RSI = new RegistroSeguimientoInternado();
+//      RSI.setVisible(true);
+//
+//      this.dispose(); 
     }//GEN-LAST:event_btnSeguimientoInternadoActionPerformed
 
     private void btnCitasRegistradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCitasRegistradasActionPerformed
-      CitasSistema CS = new CitasSistema();
-      CS.setVisible(true);
-
-      this.dispose();   
+//      CitasSistema CS = new CitasSistema();
+//      CS.setVisible(true);
+//
+//      this.dispose();   
     }//GEN-LAST:event_btnCitasRegistradasActionPerformed
 
     private void btnDiagnosticosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosticosActionPerformed
-      DiagnosticosSistema DS = new DiagnosticosSistema();
-      DS.setVisible(true);
-
-      this.dispose();
+//      DiagnosticosSistema DS = new DiagnosticosSistema();
+//      DS.setVisible(true);
+//
+//      this.dispose();
     }//GEN-LAST:event_btnDiagnosticosActionPerformed
 
     private void btnTratamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTratamientosActionPerformed
-      TratamientosSistema TS = new TratamientosSistema();
-      TS.setVisible(true);
-
-      this.dispose();
+//      TratamientosSistema TS = new TratamientosSistema();
+//      TS.setVisible(true);
+//
+//      this.dispose();
     }//GEN-LAST:event_btnTratamientosActionPerformed
 
     private void btnDetalleHospitalizacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalleHospitalizacionesActionPerformed
-      DetalleHospitalizacionSistema DHS = new DetalleHospitalizacionSistema();
-      DHS.setVisible(true);
-
-      this.dispose();
+//      DetalleHospitalizacionSistema DHS = new DetalleHospitalizacionSistema();
+//      DHS.setVisible(true);
+//
+//      this.dispose();
     }//GEN-LAST:event_btnDetalleHospitalizacionesActionPerformed
 
     private void btnRDiagnosticosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRDiagnosticosActionPerformed
-        RegistrarCatalogoDiagnosticos RCD = new RegistrarCatalogoDiagnosticos();
-        RCD.setVisible(true);
-
-        this.dispose();
+//        RegistrarCatalogoDiagnosticos RCD = new RegistrarCatalogoDiagnosticos();
+//        RCD.setVisible(true);
+//
+//        this.dispose();
     }//GEN-LAST:event_btnRDiagnosticosActionPerformed
 
     /**
