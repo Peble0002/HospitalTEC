@@ -32,4 +32,24 @@ public class CatalogoDiagnosticoBD {
       return null;
     }
   }
+  
+  public CatalogoDiagnostico consultarDiagnostico(int id){
+    PreparedStatement ps;
+    ResultSet rs;
+
+    try{
+      Connection con = conexion.getConexion();
+      ps = con.prepareStatement("SELECT NombreDiagnostico FROM "
+              + "CatalogoDiagnosticos Where IdDiagnostico= "+id );
+      rs = ps.executeQuery();
+      rs.next();
+      CatalogoDiagnostico catalogoDiagnostico = new CatalogoDiagnostico(id,rs.getString(1) );
+      return catalogoDiagnostico;
+    }catch(SQLException e){
+      JOptionPane.showMessageDialog(null, e.toString());
+      return null;
+    }
+  }
+  
+  
 }

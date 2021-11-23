@@ -13,10 +13,11 @@ public class Diagnostico {
   private String dosis;
 
   public Diagnostico(CatalogoDiagnostico pNombreDiagnostico, Nivel pNivel,
-          String pObservaciones) {
+          String pObservaciones, String pDosis) {
     this.nombreDiagnostico = pNombreDiagnostico;
     this.nivel = pNivel;
     this.observaciones = pObservaciones;
+    this.dosis = pDosis;
   }
 
   public CatalogoDiagnostico getNombreDiagnostico() {
