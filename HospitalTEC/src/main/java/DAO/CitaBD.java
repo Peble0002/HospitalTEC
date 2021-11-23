@@ -23,8 +23,9 @@ public class CitaBD {
   /**
    * Método para insertar una Cita en la base de datos
    * @param pCita de tipo Cita
+   * @param pEstado de tipo String
    */
-  public void insertarCita(Cita pCita){
+  public void insertarCita(Cita pCita, String pEstado){
     try{
       Connection con = conexion.getConexion();
       PreparedStatement ps = con.prepareStatement("INSERT INTO Cita "
@@ -34,7 +35,7 @@ public class CitaBD {
       Time hora = Time.valueOf(pCita.getHora());
       ps.setTime(2, hora); /*Habría que buscar la posibilidad de generar un time*/
       ps.setString(3, pCita.getObservaciones());
-      ps.setString(4, pCita.getEstado().toString()); /*Hay un objeto de tipo estado pero habría que pasarlo a String*/
+      ps.setString(4, pEstado);
       ps.setString(5, pCita.getEspecialidad());
       ps.executeUpdate();
       JOptionPane.showMessageDialog(null, "Registro de Cita completado.");

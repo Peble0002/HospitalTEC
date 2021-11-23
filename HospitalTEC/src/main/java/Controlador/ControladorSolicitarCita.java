@@ -9,6 +9,7 @@ import Modelo.*;
 import java.sql.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.time.LocalTime;
 /**
  *
  * @author LUIS LEITON
@@ -61,6 +62,7 @@ public class ControladorSolicitarCita implements ActionListener{
     }
     
     public void registroCita(){
+      CitaBD conexionCita = new CitaBD();
       String dia = (String) vistaSolicitarCita.cbDia.getSelectedItem();
       String mes = (String) vistaSolicitarCita.cbMes.getSelectedItem();
       String ano = (String) vistaSolicitarCita.cbAno.getSelectedItem();
@@ -70,8 +72,20 @@ public class ControladorSolicitarCita implements ActionListener{
       int pAno = Integer.parseInt(ano);
       pAno = pAno-1900;
       pMes = pMes-1;
-      Date fecha = new Date(pAno,pMes,pDia); 
+      Date fecha = new Date(pAno,pMes,pDia);
       
+      String horas = (String) vistaSolicitarCita.cbHora.getSelectedItem();
+      String minutos = (String) vistaSolicitarCita.cbMinutos.getSelectedItem();
       
+      int pHoras = Integer.parseInt(horas);
+      int pMinutos = Integer.parseInt(minutos);
+      
+      LocalTime hora = LocalTime.of(pHoras, pMinutos);
+      
+      String observacion = (String) vistaSolicitarCita.tbObservacion.getText();
+      String especialidad = (String) vistaSolicitarCita.cbAreaCita.getSelectedItem();
+      
+      Cita citaNueva = new Cita(fecha, hora, observacion, especialidad);
+      conexionCita.insertarCita(citaNueva, "Registrada");
     }
 }
