@@ -24,6 +24,7 @@ public class ControladorDiagnosticoPaciente implements ActionListener {
     usuario = pUsuario;
     paciente = pPaciente;
     cargarComboBoxDiagnosticos();
+    cargarComboBoxCitas();
     
     this.vistaDiagnosticoPaciente.btnRegistrarDiagnostico.addActionListener(this);
     this.vistaDiagnosticoPaciente.btnVolver.addActionListener(this);
@@ -89,11 +90,31 @@ public class ControladorDiagnosticoPaciente implements ActionListener {
         JOptionPane.showMessageDialog(null, e.toString());
       }
     }
+    
+    private void cargarComboBoxCitas(){
+      CitaBD citasBD = new CitaBD();
+      ResultSet rs = citasBD.consultarIdCitasRegistradas(paciente);
+
+      try{
+        while(rs.next()){
+          vistaDiagnosticoPaciente.cbCitas.addItem(rs.getString("IdCita"));
+        }
+      }catch(SQLException e){
+        JOptionPane.showMessageDialog(null, e.toString());
+      }
+    }
      
   public void registrarDiagnosticoCita(){
       
     String dosis1 = vistaDiagnosticoPaciente.tbDosis.getText();
     String obs  = vistaDiagnosticoPaciente.tbObservacion.getText();
+    String cita = (String) vistaDiagnosticoPaciente.cbCitas.getSelectedItem();
+    int codCita = Integer.parseInt(cita); // ID CITA
+    
+    String tratamiento = (String) vistaDiagnosticoPaciente.cbDiagnosticoPaciente.getSelectedItem();
+    String idT = tratamiento.substring(0, tratamiento.indexOf("-")-1);
+
+    int codigoT = Integer.parseInt(idT); // ID TRATAMIENTO
     
     if( dosis1.equals("")|| obs.equals("")){
      JOptionPane.showMessageDialog(vistaDiagnosticoPaciente, "Se debe ingresar "
@@ -106,23 +127,15 @@ public class ControladorDiagnosticoPaciente implements ActionListener {
     CatalogoDiagnosticoBD catalogo = new CatalogoDiagnosticoBD();
     CatalogoDiagnostico catalogoDiagnostico = catalogo.consultarDiagnostico(codigo);    
     
-    Nivel nivel = (Nivel) vistaDiagnosticoPaciente.cbNivel.getSelectedItem();
-    String tratamiento = (String) vistaDiagnosticoPaciente.cbTratamiento.getSelectedItem();
-    String tipo = (String) vistaDiagnosticoPaciente.cbTipo.getSelectedItem();      
+    Nivel nivel = (Nivel) vistaDiagnosticoPaciente.cbNivel.getSelectedItem(); 
     String observaciones = vistaDiagnosticoPaciente.tbObservacion.getText();
     String dosis = vistaDiagnosticoPaciente.tbDosis.getText();
     
-    Diagnostico diagnostico1 = new Diagnostico(catalogoDiagnostico,nivel,observaciones, dosis );
-    
-    
-    
-    
-    
+    Diagnostico diagnostico1 = new Diagnostico(catalogoDiagnostico,nivel,observaciones, dosis);
     
     Cita_DiagnosticoBD cita_DiagnosticoBD = new Cita_DiagnosticoBD();
-    cita_DiagnosticoBD.insertarCitaDiagnostico(pDiagnostico, idCita, idTratamiento);//Falta
+    cita_DiagnosticoBD.insertarCitaDiagnostico(diagnostico1, codCita, codigoT);
     
-
     JOptionPane.showMessageDialog(vistaDiagnosticoPaciente, "REGISTRADO");    
   }
   }

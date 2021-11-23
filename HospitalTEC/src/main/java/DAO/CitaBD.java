@@ -81,4 +81,26 @@ public class CitaBD {
       return null;
     }
   }
+  
+  /**
+     * Método para consultar las cédulas de pacientes con citas registradas
+     * @return un ResultSet con la información de las cedulas en la base de datos
+     */
+    public ResultSet consultarIdCitasRegistradas(String idPaciente){
+      PreparedStatement ps;
+      ResultSet rs;
+
+      try{
+        Connection con = conexion.getConexion();
+        ps = con.prepareStatement("SELECT Cita.IdCita FROM Cita, Paciente_Cita "
+              + "WHERE Cita.IdCita = Paciente_Cita.IdCita AND estado = "
+              + "'REGISTRADA' AND Paciente_Cita.idPaciente = '" + idPaciente 
+              + "' ORDER BY (IdCita)");
+        rs = ps.executeQuery();
+        return rs;
+      }catch(SQLException e){
+        JOptionPane.showMessageDialog(null, e.toString());
+        return null;
+      }
+    }
 }
