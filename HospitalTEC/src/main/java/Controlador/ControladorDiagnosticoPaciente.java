@@ -106,16 +106,21 @@ public class ControladorDiagnosticoPaciente implements ActionListener {
     CatalogoDiagnosticoBD catalogo = new CatalogoDiagnosticoBD();
     CatalogoDiagnostico catalogoDiagnostico = catalogo.consultarDiagnostico(codigo);    
     
-    String nivel = (String) vistaDiagnosticoPaciente.cbNivel.getSelectedItem();
+    Nivel nivel = (Nivel) vistaDiagnosticoPaciente.cbNivel.getSelectedItem();
     String tratamiento = (String) vistaDiagnosticoPaciente.cbTratamiento.getSelectedItem();
     String tipo = (String) vistaDiagnosticoPaciente.cbTipo.getSelectedItem();      
     String observaciones = vistaDiagnosticoPaciente.tbObservacion.getText();
     String dosis = vistaDiagnosticoPaciente.tbDosis.getText();
     
-    Diagnostico diagnostico = new Diagnostico(catalogoDiagnostico,nivel,observaciones, dosis );
+    Diagnostico diagnostico1 = new Diagnostico(catalogoDiagnostico,nivel,observaciones, dosis );
+    
+    
+    
+    
+    
     
     Cita_DiagnosticoBD cita_DiagnosticoBD = new Cita_DiagnosticoBD();
-    cita_DiagnosticoBD.insertarCitaDiagnostico(pDiagnostico, codigo, codigo);
+    cita_DiagnosticoBD.insertarCitaDiagnostico(pDiagnostico, idCita, idTratamiento);//Falta
     
 
     JOptionPane.showMessageDialog(vistaDiagnosticoPaciente, "REGISTRADO");    
