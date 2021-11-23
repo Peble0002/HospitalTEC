@@ -61,6 +61,23 @@ public class Paciente extends Usuario{
     this.centros= new ArrayList<CentroAtencion>();
   }
   
+  public Paciente(Date fechaNacimiento, String tipoSangre, 
+          String nacionalidad, String provincia, String canton, 
+          String id, 
+          String contrasena, String nombre, String apellido1, 
+          String apellido2) {
+    super(id, contrasena, nombre, apellido1, apellido2);
+    this.fechaNacimiento = fechaNacimiento;
+    this.tipoSangre = tipoSangre;
+    this.nacionalidad = nacionalidad;
+    this.provincia = provincia;
+    this.canton = canton;
+    //this.telefonos = telefonos;
+    this.telefonos= new ArrayList<String>();
+    this.vacunas= new ArrayList<Vacuna>();
+    this.centros= new ArrayList<CentroAtencion>();
+  }
+  
   
 
   public Date getFechaNacimiento() {

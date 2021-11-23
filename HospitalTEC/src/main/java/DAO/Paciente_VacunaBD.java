@@ -25,8 +25,7 @@ public class Paciente_VacunaBD {
    * Método para insertar un usuario en la base de datos
    * @param pUsuario de tipo Usuario
    */
-  public void insertarPacienteVacuna(Paciente pPaciente, Vacuna pVacuna, LocalDate 
-          pFecha, int pLote){
+  public void insertarPacienteVacuna(Paciente pPaciente, Vacuna pVacuna){
     try{
       Connection con = conexion.getConexion();
       PreparedStatement ps = con.prepareStatement("INSERT INTO Paciente_Vacuna "
@@ -34,9 +33,8 @@ public class Paciente_VacunaBD {
               + "VALUES (?,?,?,?)");
       ps.setString(1, pPaciente.getId());
       ps.setString(2, pVacuna.getNombre());
-      Date fecha = Date.valueOf(pFecha);
-      ps.setDate(3, fecha); /*Revisar, misma situación de la fecha.*/
-      ps.setInt(4, pLote);
+      ps.setDate(3, pVacuna.getFechaAplicacion()); /*Revisar, misma situación de la fecha.*/
+      ps.setString(4, pVacuna.getNumeroLote());
       ps.executeUpdate();
       JOptionPane.showMessageDialog(null, "Registro de paciente vacuna completado.");
     }catch(SQLException e){

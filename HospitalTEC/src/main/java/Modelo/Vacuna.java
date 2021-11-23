@@ -12,7 +12,7 @@ public class Vacuna {
   private Date fechaAplicacion;
   private String nombre;
   private String farmaceutica;
-  private int numeroLote;
+  private String numeroLote;
 
   /**
    * Este constructor permite crear un objeto Vacuna con los datos de la fecha.
@@ -32,11 +32,22 @@ public class Vacuna {
    * @param pFarmaceutica
    * @param pNumeroLote 
    */
+  
+  public Vacuna(){
+  
+  }
   public Vacuna(Date pFechaAplicacion, String pNombre, 
-          String pFarmaceutica, int pNumeroLote) {
+          String pFarmaceutica, String pNumeroLote) {
     this.fechaAplicacion = pFechaAplicacion;
     this.nombre = pNombre;
     this.farmaceutica = pFarmaceutica;
+    this.numeroLote = pNumeroLote;
+  }
+  
+   public Vacuna(Date pFechaAplicacion, String pNombre, 
+         String pNumeroLote) {
+    this.fechaAplicacion = pFechaAplicacion;
+    this.nombre = pNombre;
     this.numeroLote = pNumeroLote;
   }
 
@@ -64,11 +75,11 @@ public class Vacuna {
     this.farmaceutica = pFarmaceutica;
   }
 
-  public int getNumeroLote() {
+  public String getNumeroLote() {
     return numeroLote;
   }
 
-  public void setNumeroLote(int pNumeroLote) {
+  public void setNumeroLote(String pNumeroLote) {
     this.numeroLote = pNumeroLote;
   }
   

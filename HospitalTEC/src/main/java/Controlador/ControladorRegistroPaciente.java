@@ -4,12 +4,13 @@
  */
 package Controlador;
 import DAO.*;
-import Modelo.Paciente;
+import Modelo.*;
 import Vista.*;
 import java.sql.*;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 /**
  * Clase para la conexion con AreaTrabajo
@@ -20,22 +21,49 @@ public class ControladorRegistroPaciente implements ActionListener{
     
     public RegistroPacientes vistaRegistroPacientes = new RegistroPacientes();
     public PacienteBD pacienteBD = new PacienteBD();
+    public ArrayList<String> telefonos = new ArrayList<String>();
+    public ArrayList<Vacuna> vacunas = new ArrayList<Vacuna>();
     
     public ControladorRegistroPaciente(RegistroPacientes pVista){
     
     
       PacienteBD pacienteBaseDatos = new PacienteBD();
       vistaRegistroPacientes = pVista;
+      cargarComboBoxVacunas();
     
       this.vistaRegistroPacientes.btnRegistrarPaciente.addActionListener(this);
       this.vistaRegistroPacientes.btnVolver.addActionListener(this);
+      this.vistaRegistroPacientes.btnRegistrarTelefono.addActionListener(this);
+      this.vistaRegistroPacientes.btnRegistraVacunas.addActionListener(this);
   }
+    
+    /**
+     * carga el combobox
+     */
+    private void cargarComboBoxVacunas(){
+      VacunaBD vacunasBD = new VacunaBD();
+      ResultSet rs = vacunasBD.consultarVacunas();
+
+      try{
+        while(rs.next()){
+          vistaRegistroPacientes.cbNombreVacunas.addItem(rs.getString("nombre"));
+        }
+      }catch(SQLException e){
+        JOptionPane.showMessageDialog(null, e.toString());
+      }
+    }
     
     @Override
   public void actionPerformed(ActionEvent e){
     switch(e.getActionCommand()){
         case "Registrar":
             registrarPacientes();
+            break;
+        case "Registrar Vacuna":
+            registrarVacunas();
+            break;
+        case "Agregar":
+            registrarTelefonos();
             break;
         case "Volver":
             Principal P = new Principal();
@@ -48,8 +76,37 @@ public class ControladorRegistroPaciente implements ActionListener{
     }
   }
   
-  public void registrarPacientes(){
+  public void registrarTelefonos(){
+    String telefono = vistaRegistroPacientes.tbTelefonoPaciente.getText();
+    telefonos.add(telefono);
+    JOptionPane.showMessageDialog(vistaRegistroPacientes, "Se agregó el teléfono");
+  }
+  
+  public void registrarVacunas(){
+    String nombre = (String) vistaRegistroPacientes.cbNombreVacunas.getSelectedItem();  
+    String dia = (String) vistaRegistroPacientes.cbDiaVacuna.getSelectedItem();
+    String mes = (String) vistaRegistroPacientes.cbMesVacuna.getSelectedItem();
+    String ano = (String) vistaRegistroPacientes.cbAnoVacuna.getSelectedItem();
       
+    int pDia = Integer.parseInt(dia);
+    int pMes = Integer.parseInt(mes);
+    int pAno = Integer.parseInt(ano);
+    pAno = pAno-1900;
+    pMes = pMes-1;
+    Date fecha = new Date(pAno,pMes,pDia); 
+    
+    String lote = vistaRegistroPacientes.tbNumeroLote.getText();
+    
+    Vacuna vacunaNueva = new Vacuna(fecha,nombre,lote);
+    vacunas.add(vacunaNueva);
+    JOptionPane.showMessageDialog(vistaRegistroPacientes, "Se agregó la vacuna");
+  }
+  
+  public void registrarPacientes(){
+    
+    Telefono_PacienteBD telefonoPaciente = new Telefono_PacienteBD();
+    Paciente_VacunaBD pacienteVacuna = new Paciente_VacunaBD();
+    
     if(vistaRegistroPacientes.datosCorrectos() == false){
       JOptionPane.showMessageDialog(vistaRegistroPacientes, "Alguno de los espacios de datos está"
               + " vacío.");
@@ -75,13 +132,29 @@ public class ControladorRegistroPaciente implements ActionListener{
       String nacionalidad = vistaRegistroPacientes.tbNacionalidadPaciente.getText();
       String provincia = vistaRegistroPacientes.tbProvinciaPaciente.getText();
       String canton = vistaRegistroPacientes.tbCantonPaciente.getText();
-      String telefono = vistaRegistroPacientes.tbTelefonoPaciente.getText();
       String tipoSangre = vistaRegistroPacientes.tbTipoSangrePaciente.getText();
       Paciente paciente = new Paciente( fecha, tipoSangre, nacionalidad,  
-              provincia,  canton, telefono,  cedula, contrasena, 
+              provincia,  canton, cedula, contrasena, 
               nombre,  apellido1, apellido2);
       pacienteBD.insertarPaciente(paciente);
-      JOptionPane.showMessageDialog(vistaRegistroPacientes, "REGISTRADO");
+      
+      String tel;
+      
+      for(int i=0; i<telefonos.size();i++){
+        
+          tel = telefonos.get(i);
+          telefonoPaciente.insertarPacienteTelefono(cedula,tel);
+      }
+      
+      Vacuna insertarV = new Vacuna(); 
+
+      for(int x=0; x<vacunas.size();x++){
+          
+          insertarV = vacunas.get(x);
+          pacienteVacuna.insertarPacienteVacuna(paciente,insertarV);
+      }
+      JOptionPane.showMessageDialog(vistaRegistroPacientes, "Se ha registrado "
+              + "el paciente exitosamente");
     } 
   }  
     
