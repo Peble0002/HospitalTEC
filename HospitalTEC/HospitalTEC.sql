@@ -374,7 +374,7 @@ INSERT INTO Bitacora_Cita VALUES (2,3);
 INSERT INTO Paciente VALUES ('305110992', 'Costarricense', 'B-', '1998-08-21', 'Cartago', 'Central');
 INSERT INTO Paciente VALUES ('206220885', 'Puertorriqueño', 'A+', '1995-08-21', 'Heredia', 'San Joaquín');
 INSERT INTO Paciente_Cita VALUES ('305110992', 1);
-INSERT INTO Paciente_Cita VALUES ('206220885', 1);
+INSERT INTO Paciente_Cita VALUES ('206220885', 2);
 INSERT INTO TipoCentro VALUES ('Hospital');
 INSERT INTO TipoCentro VALUES ('Clínica');
 INSERT INTO TipoCentro VALUES ('Ebais');
@@ -461,3 +461,5 @@ SELECT CDi.NombreDiagnostico FROM Cita C
 	JOIN Cita_Diagnostico CD ON PC.IdCita = CD.IdCita
 	JOIN CatalogoDiagnosticos CDi ON CDi.IdDiagnostico = CD.IdDiagnostico
 		WHERE idPaciente = '305110992'
+
+SELECT Cita.IdCita FROM Cita, Paciente_Cita WHERE Cita.IdCita = Paciente_Cita.IdCita AND estado = 'REGISTRADA' AND Paciente_Cita.idPaciente = '305110992' ORDER BY (IdCita)
