@@ -40,7 +40,7 @@ public class ControladorDiagnosticoPaciente implements ActionListener {
           registrarDiagnosticoCita();
           break;
         case "Cargar":
-          registrarDiagnosticoCita();
+          cargarComboBoxTratamientosDiagnosticos();
           break;
         case "Volver":
             AtenderCita AC = new AtenderCita();
@@ -57,7 +57,7 @@ public class ControladorDiagnosticoPaciente implements ActionListener {
      * carga el combobox
      */
     private void cargarComboBoxTratamientosDiagnosticos(){
-        
+      vistaDiagnosticoPaciente.cbTratamiento.removeAllItems();
       String diagnostico = (String) vistaDiagnosticoPaciente.cbDiagnosticoPaciente.getSelectedItem();
       String id = diagnostico.substring(0, diagnostico.indexOf("-")-1);
       
@@ -117,8 +117,8 @@ public class ControladorDiagnosticoPaciente implements ActionListener {
     int codigoT = Integer.parseInt(idT); // ID TRATAMIENTO
     
     if( dosis1.equals("")|| obs.equals("")){
-     JOptionPane.showMessageDialog(vistaDiagnosticoPaciente, "Se debe ingresar "
-               + "un número de teléfono"); 
+     JOptionPane.showMessageDialog(vistaDiagnosticoPaciente, "Se deben ingresar "
+               + "los datos solicitados"); 
     }else{
     String diagnostico = (String) vistaDiagnosticoPaciente.cbDiagnosticoPaciente.getSelectedItem();
     String id = diagnostico.substring(0, diagnostico.indexOf("-")-1);
@@ -127,14 +127,14 @@ public class ControladorDiagnosticoPaciente implements ActionListener {
     CatalogoDiagnosticoBD catalogo = new CatalogoDiagnosticoBD();
     CatalogoDiagnostico catalogoDiagnostico = catalogo.consultarDiagnostico(codigo);    
     
-    Nivel nivel = (Nivel) vistaDiagnosticoPaciente.cbNivel.getSelectedItem(); 
+    String nivel = (String) vistaDiagnosticoPaciente.cbNivel.getSelectedItem(); 
     String observaciones = vistaDiagnosticoPaciente.tbObservacion.getText();
     String dosis = vistaDiagnosticoPaciente.tbDosis.getText();
     
-    Diagnostico diagnostico1 = new Diagnostico(catalogoDiagnostico,nivel,observaciones, dosis);
+    Diagnostico diagnostico1 = new Diagnostico(catalogoDiagnostico,observaciones, dosis);
     
     Cita_DiagnosticoBD cita_DiagnosticoBD = new Cita_DiagnosticoBD();
-    cita_DiagnosticoBD.insertarCitaDiagnostico(diagnostico1, codCita, codigoT);
+    cita_DiagnosticoBD.insertarCitaDiagnostico(diagnostico1, codCita, codigoT,nivel);
     
     JOptionPane.showMessageDialog(vistaDiagnosticoPaciente, "REGISTRADO");    
   }

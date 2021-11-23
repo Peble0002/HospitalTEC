@@ -51,7 +51,6 @@ public class AtenderCita extends javax.swing.JFrame {
 
         cbCedulasPacientes.setBackground(new java.awt.Color(192, 225, 249));
         cbCedulasPacientes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        cbCedulasPacientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnInternar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnInternar.setForeground(new java.awt.Color(11, 136, 136));
@@ -130,7 +129,7 @@ public class AtenderCita extends javax.swing.JFrame {
                     .addComponent(btnRegistrarDiagnostico)
                     .addComponent(btnRegistrarBitacora)
                     .addComponent(btnInternar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(btnVolver)
                 .addGap(36, 36, 36))
         );

@@ -26,7 +26,7 @@ public class TratamientoBD {
 
     try{
       Connection con = conexion.getConexion();
-      ps = con.prepareStatement("SELECT IdTratamiento, Nombre FROM "
+      ps = con.prepareStatement("SELECT CatalogoTratamientos.IdTratamiento, Nombre FROM "
               + "CatalogoTratamientos, Tratamiento_Diagnostico WHERE "
               + "Tratamiento_Diagnostico.IdDiagnostico = "+ idDiagnostico +" AND"
               + " CatalogoTratamientos.IdTratamiento = Tratamiento_Diagnostico."

@@ -19,6 +19,13 @@ public class Diagnostico {
     this.observaciones = pObservaciones;
     this.dosis = pDosis;
   }
+  
+  public Diagnostico(CatalogoDiagnostico pNombreDiagnostico,
+          String pObservaciones, String pDosis) {
+    this.nombreDiagnostico = pNombreDiagnostico;
+    this.observaciones = pObservaciones;
+    this.dosis = pDosis;
+  }
 
   public CatalogoDiagnostico getNombreDiagnostico() {
     return nombreDiagnostico;

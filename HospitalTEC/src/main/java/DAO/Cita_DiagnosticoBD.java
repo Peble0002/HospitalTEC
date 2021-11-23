@@ -21,8 +21,9 @@ public class Cita_DiagnosticoBD {
    * @param pDiagnostico de tipo Diagnostico
    * @param idTratamiento de tipo Tratamiento
    * @param idCita de tipo Cita
+   * @param pNivel de tipo String
    */
-  public void insertarCitaDiagnostico(Diagnostico pDiagnostico, int idTratamiento, int idCita){
+  public void insertarCitaDiagnostico(Diagnostico pDiagnostico, int idTratamiento, int idCita,String pNivel){
     try{
       Connection con = conexion.getConexion();
       PreparedStatement ps = con.prepareStatement("INSERT INTO Cita_Diagnostico"
@@ -32,7 +33,7 @@ public class Cita_DiagnosticoBD {
       ps.setInt(2, pDiagnostico.getNombreDiagnostico().getIdDiagnostico());
       ps.setInt(3, idTratamiento);
       ps.setString(4, pDiagnostico.getDosis());
-      ps.setString(5, pDiagnostico.getNivel().toString());
+      ps.setString(5, pNivel);
       ps.setString(6, pDiagnostico.getObservaciones());
       ps.executeUpdate();
       JOptionPane.showMessageDialog(null, "Registro de diagnostico de una cita completado.");
