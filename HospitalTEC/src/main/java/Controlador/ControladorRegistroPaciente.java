@@ -23,6 +23,7 @@ public class ControladorRegistroPaciente implements ActionListener{
     public PacienteBD pacienteBD = new PacienteBD();
     public ArrayList<String> telefonos = new ArrayList<String>();
     public ArrayList<Vacuna> vacunas = new ArrayList<Vacuna>();
+    public int codigoVacuna;
     
     public ControladorRegistroPaciente(RegistroPacientes pVista){
     
@@ -46,7 +47,8 @@ public class ControladorRegistroPaciente implements ActionListener{
 
       try{
         while(rs.next()){
-          vistaRegistroPacientes.cbNombreVacunas.addItem(rs.getString("nombre"));
+          vistaRegistroPacientes.cbNombreVacunas.addItem(rs.getString("idVacuna")
+                  +" - " + rs.getString("nombre"));
         }
       }catch(SQLException e){
         JOptionPane.showMessageDialog(null, e.toString());
@@ -77,13 +79,26 @@ public class ControladorRegistroPaciente implements ActionListener{
   }
   
   public void registrarTelefonos(){
+    String tbValidar = vistaRegistroPacientes.tbTelefonoPaciente.getText();
+    if( tbValidar.equals("")){
+     JOptionPane.showMessageDialog(vistaRegistroPacientes, "Se debe ingresar "
+               + "un número de teléfono"); 
+    }else{
     String telefono = vistaRegistroPacientes.tbTelefonoPaciente.getText();
     telefonos.add(telefono);
     JOptionPane.showMessageDialog(vistaRegistroPacientes, "Se agregó el teléfono");
+    }
   }
   
   public void registrarVacunas(){
+    String tbValidar = vistaRegistroPacientes.tbNumeroLote.getText();
+    if( tbValidar.equals("")){
+       JOptionPane.showMessageDialog(vistaRegistroPacientes, "Se debe ingresar "
+               + "el número de lote"); 
+    }else{
     String nombre = (String) vistaRegistroPacientes.cbNombreVacunas.getSelectedItem();  
+    String idVacunaS = nombre.substring(0, nombre.indexOf("-")-1);
+    codigoVacuna = Integer.parseInt(idVacunaS);
     String dia = (String) vistaRegistroPacientes.cbDiaVacuna.getSelectedItem();
     String mes = (String) vistaRegistroPacientes.cbMesVacuna.getSelectedItem();
     String ano = (String) vistaRegistroPacientes.cbAnoVacuna.getSelectedItem();
@@ -97,13 +112,14 @@ public class ControladorRegistroPaciente implements ActionListener{
     
     String lote = vistaRegistroPacientes.tbNumeroLote.getText();
     
-    Vacuna vacunaNueva = new Vacuna(fecha,nombre,lote);
+    Vacuna vacunaNueva = new Vacuna(fecha,nombre,lote,codigoVacuna);
     vacunas.add(vacunaNueva);
     JOptionPane.showMessageDialog(vistaRegistroPacientes, "Se agregó la vacuna");
+    }
   }
   
   public void registrarPacientes(){
-    
+   
     Telefono_PacienteBD telefonoPaciente = new Telefono_PacienteBD();
     Paciente_VacunaBD pacienteVacuna = new Paciente_VacunaBD();
     

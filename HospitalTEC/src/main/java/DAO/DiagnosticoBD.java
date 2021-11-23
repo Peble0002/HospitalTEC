@@ -4,6 +4,7 @@ package DAO;
 import Modelo.CatalogoDiagnostico;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -33,4 +34,7 @@ public class DiagnosticoBD {
     }
     //usuarioBD.insertarUsuario(paciente);
   }
+  
+  
+
 }

@@ -32,7 +32,7 @@ public class Paciente_VacunaBD {
               + "(idPaciente, idVacuna, fechaAplicacion, lote) "
               + "VALUES (?,?,?,?)");
       ps.setString(1, pPaciente.getId());
-      ps.setString(2, pVacuna.getNombre());
+      ps.setInt(2, pVacuna.getID());
       ps.setDate(3, pVacuna.getFechaAplicacion()); /*Revisar, misma situación de la fecha.*/
       ps.setString(4, pVacuna.getNumeroLote());
       ps.executeUpdate();

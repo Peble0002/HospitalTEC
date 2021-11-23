@@ -72,6 +72,7 @@ public class InicioSesion implements ActionListener{
         ControladorVistaPaciente CVP = new ControladorVistaPaciente(VP,IDusuario);
         CVP.vistaPacientes.setVisible(true);
         vistaInicio.dispose();
+        break;
       case 2:
         VistaSecretario VS = new VistaSecretario();
         ControladorVistaSecretario CVS = new ControladorVistaSecretario(VS,IDusuario);

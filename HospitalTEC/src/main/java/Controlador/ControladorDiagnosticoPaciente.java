@@ -23,9 +23,12 @@ public class ControladorDiagnosticoPaciente implements ActionListener {
     vistaDiagnosticoPaciente = pVista;
     usuario = pUsuario;
     paciente = pPaciente;
+    cargarComboBoxDiagnosticos();
     
     this.vistaDiagnosticoPaciente.btnRegistrarDiagnostico.addActionListener(this);
     this.vistaDiagnosticoPaciente.btnVolver.addActionListener(this);
+    this.vistaDiagnosticoPaciente.btnCargar.addActionListener(this);
+    
     
   }
     
@@ -33,6 +36,9 @@ public class ControladorDiagnosticoPaciente implements ActionListener {
      public void actionPerformed(ActionEvent e){
        switch(e.getActionCommand()){
         case "Registrar":
+          registrarDiagnosticoCita();
+          break;
+        case "Cargar":
           registrarDiagnosticoCita();
           break;
         case "Volver":
@@ -46,8 +52,58 @@ public class ControladorDiagnosticoPaciente implements ActionListener {
     }
   }
      
+      /*
+     * carga el combobox
+     */
+    private void cargarComboBoxTratamientosDiagnosticos(){
+        
+      String diagnostico = (String) vistaDiagnosticoPaciente.cbDiagnosticoPaciente.getSelectedItem();
+      String id = diagnostico.substring(0, diagnostico.indexOf("-")-1);
+      
+      int codigo = Integer.parseInt(id);
+      
+      TratamientoBD tratamientosBD = new TratamientoBD();
+      ResultSet rs = tratamientosBD.consultarTratamientosDiagnostico(codigo);
+      
+      try{
+        while(rs.next()){
+         vistaDiagnosticoPaciente.cbTratamiento.addItem(rs.getString("IdTratamiento") + " - "
+                  + rs.getString("Nombre"));
+        }
+      }catch(SQLException e){
+        JOptionPane.showMessageDialog(null, e.toString());
+      }
+    }
+     
+       /* carga el combobox*/
+    private void cargarComboBoxDiagnosticos(){
+      CatalogoDiagnosticoBD diagnosticosBD = new CatalogoDiagnosticoBD();
+      ResultSet rs = diagnosticosBD.consultarDiagnosticos();
+
+      try{
+        while(rs.next()){
+          vistaDiagnosticoPaciente.cbDiagnosticoPaciente.addItem(rs.getString("IdDiagnostico") + " - "
+                  + rs.getString("NombreDiagnostico"));
+        }
+      }catch(SQLException e){
+        JOptionPane.showMessageDialog(null, e.toString());
+      }
+    }
+     
   public void registrarDiagnosticoCita(){
+      
+    String dosis1 = vistaDiagnosticoPaciente.tbDosis.getText();
+    String obs  = vistaDiagnosticoPaciente.tbObservacion.getText();
+    
+    if( dosis1.equals("")|| obs.equals("")){
+     JOptionPane.showMessageDialog(vistaDiagnosticoPaciente, "Se debe ingresar "
+               + "un número de teléfono"); 
+    }else{
     String diagnostico = (String) vistaDiagnosticoPaciente.cbDiagnosticoPaciente.getSelectedItem();
+    String id = diagnostico.substring(0, diagnostico.indexOf("-")-1);
+      
+    int codigo = Integer.parseInt(id); // ID DIAGNOSTICO
+    
     String nivel = (String) vistaDiagnosticoPaciente.cbNivel.getSelectedItem();
     String tratamiento = (String) vistaDiagnosticoPaciente.cbTratamiento.getSelectedItem();
     String tipo = (String) vistaDiagnosticoPaciente.cbTipo.getSelectedItem();
@@ -60,5 +116,6 @@ public class ControladorDiagnosticoPaciente implements ActionListener {
 //            nombre,  apellido1, apellido2);
 //    pacienteBD.insertarPaciente(paciente);
     JOptionPane.showMessageDialog(vistaDiagnosticoPaciente, "REGISTRADO");    
+  }
   }
 }

@@ -28,7 +28,7 @@ public class VacunaBD {
 
     try{
       Connection con = conexion.getConexion();
-      ps = con.prepareStatement("SELECT nombre FROM Vacuna");
+      ps = con.prepareStatement("SELECT idVacuna, nombre FROM Vacuna");
       rs = ps.executeQuery();
       return rs;
     }catch(SQLException e){
