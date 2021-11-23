@@ -40,7 +40,7 @@ public class FuncionarioBD {
       }
       ps.setString(3, pFuncionario.getFechaIngreso().toString());
       ps.executeUpdate();
-      JOptionPane.showMessageDialog(null, "Registro de usuario completado.");
+      JOptionPane.showMessageDialog(null, "Registro de Funcionario completado.");
     }catch(SQLException e){
       JOptionPane.showMessageDialog(null, e.toString());
     }

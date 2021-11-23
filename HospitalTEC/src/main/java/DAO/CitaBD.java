@@ -37,7 +37,7 @@ public class CitaBD {
       ps.setString(4, pCita.getEstado().toString()); /*Hay un objeto de tipo estado pero habría que pasarlo a String*/
       ps.setString(5, pCita.getEspecialidad());
       ps.executeUpdate();
-      JOptionPane.showMessageDialog(null, "Registro de usuario completado.");
+      JOptionPane.showMessageDialog(null, "Registro de Cita completado.");
     }catch(SQLException e){
       JOptionPane.showMessageDialog(null, e.toString());
     }
@@ -54,7 +54,7 @@ public class CitaBD {
       PreparedStatement ps = con.prepareStatement("UPDATE Cita SET"
               + "estado = " + pEstado + "WHERE IdCita = " + pIdCita);
       ps.executeUpdate();
-      JOptionPane.showMessageDialog(null, "Registro de usuario completado.");
+      JOptionPane.showMessageDialog(null, "Actualizacion de cita completado.");
     }catch(SQLException e){
       JOptionPane.showMessageDialog(null, e.toString());
     }

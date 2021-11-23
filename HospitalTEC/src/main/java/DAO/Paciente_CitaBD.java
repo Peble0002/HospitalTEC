@@ -34,7 +34,7 @@ public class Paciente_CitaBD {
       ps.setString(1, pPaciente.getId());
       ps.setString(2, pCita.getIdCita());
       ps.executeUpdate();
-      JOptionPane.showMessageDialog(null, "Registro de usuario Cita.");
+      //JOptionPane.showMessageDialog(null, "Registro de usuario Cita.");
     }catch(SQLException e){
       JOptionPane.showMessageDialog(null, e.toString());
     }

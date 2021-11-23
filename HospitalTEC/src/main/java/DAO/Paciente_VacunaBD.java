@@ -36,7 +36,7 @@ public class Paciente_VacunaBD {
       ps.setDate(3, pVacuna.getFechaAplicacion()); /*Revisar, misma situación de la fecha.*/
       ps.setString(4, pVacuna.getNumeroLote());
       ps.executeUpdate();
-      JOptionPane.showMessageDialog(null, "Registro de paciente vacuna completado.");
+      JOptionPane.showMessageDialog(null, "Registro de vacuna del paciente completado.");
     }catch(SQLException e){
       JOptionPane.showMessageDialog(null, e.toString());
     }

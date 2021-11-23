@@ -29,7 +29,7 @@ public class InternadoBD {
       ps.setDate(3, pInternado.getFechaFin());
       ps.setString(4, pInternado.getArea().getAreaTrabajo().toString());
       ps.executeUpdate();
-      JOptionPane.showMessageDialog(null, "Registro de usuario completado.");
+      JOptionPane.showMessageDialog(null, "Registro de Internado completado.");
     }catch(SQLException e){
       JOptionPane.showMessageDialog(null, e.toString());
     }

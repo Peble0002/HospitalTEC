@@ -38,7 +38,7 @@ public class PacienteBD {
       ps.setString(5, pPaciente.getProvincia());
       ps.setString(6, pPaciente.getCanton());
       ps.executeUpdate();
-      JOptionPane.showMessageDialog(null, "Registro de usuario completado.");
+      JOptionPane.showMessageDialog(null, "Registro de Paciente completado.");
     }catch(SQLException e){
       JOptionPane.showMessageDialog(null, e.toString());
     }

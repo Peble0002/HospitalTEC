@@ -31,7 +31,7 @@ public class Telefono_PacienteBD {
       ps.setString(1, idPaciente);
       ps.setString(2, telefono);
       ps.executeUpdate();
-      JOptionPane.showMessageDialog(null, "Registro de paciente vacuna completado.");
+      JOptionPane.showMessageDialog(null, "Registro de telefonos completados.");
     }catch(SQLException e){
       JOptionPane.showMessageDialog(null, e.toString());
     }
