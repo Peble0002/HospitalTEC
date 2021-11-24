@@ -11,7 +11,7 @@ import java.time.LocalTime;
  * @version (17/11/2021)
  */
 public class Cita {
-  protected String idCita;
+  protected int idCita;
   protected Date fecha;
   protected LocalTime hora;
   protected String observaciones;
@@ -27,7 +27,7 @@ public class Cita {
    * @param pEspecialidad
    * @param pEstado 
    */
-  public Cita(String pIdCita, Date pFecha, LocalTime pHora, 
+  public Cita(int pIdCita, Date pFecha, LocalTime pHora, 
           String pObservaciones, String pEspecialidad, EstadoCita pEstado) {
     this.idCita = pIdCita;
     this.fecha = pFecha;
@@ -68,7 +68,7 @@ public class Cita {
    * @param pEspecialidad
    * @param pEstado 
    */
-  public Cita(String pIdCita, Date pFecha, int pHora, int pMinutos,
+  public Cita(int pIdCita, Date pFecha, int pHora, int pMinutos,
           int pSegundos, String pObservaciones, 
            String pEspecialidad, EstadoCita pEstado) {
     this.idCita = pIdCita;
@@ -80,11 +80,11 @@ public class Cita {
   }
   
  
-  public String getIdCita() {
+  public int getIdCita() {
     return idCita;
   }
 
-  public void setIdCita(String pIdCita) {
+  public void setIdCita(int pIdCita) {
     this.idCita = pIdCita;
   }
 

@@ -29,7 +29,7 @@ public class Paciente_CitaBD {
       PreparedStatement ps = con.prepareStatement("INSERT INTO Paciente_Cita "
               + "(idPaciente ) VALUES (?,?)");
       ps.setString(1, pPaciente);
-      ps.setString(2, pCita.getIdCita());
+      ps.setInt(2, pCita.getIdCita());
       ps.executeUpdate();
       //JOptionPane.showMessageDialog(null, "Registro de usuario Cita.");
     }catch(SQLException e){

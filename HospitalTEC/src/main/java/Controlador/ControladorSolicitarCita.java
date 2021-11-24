@@ -1,18 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Controlador;
+
 import DAO.*;
 import Vista.*;
 import Modelo.*;
 import java.sql.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.time.LocalDate;
 import java.time.LocalTime;
-/**
- *
- * @author LUIS LEITON
+
+/* Clase para conectar con la tabla Bitacora
+ * @author  Pablo Chaves, Aaron Soto y Luis Leitón
+ * @version (22/11/2021)
  */
 public class ControladorSolicitarCita implements ActionListener{
   public SolicitarCita vistaSolicitarCita;
@@ -88,6 +88,17 @@ public class ControladorSolicitarCita implements ActionListener{
       
       Cita citaNueva = new Cita(fecha, hora, observacion, especialidad);
       conexionCita.insertarCita(citaNueva, "Registrada");
+      int IdCita = conexionCita.consultarIDCitaReciente();
+      citaNueva.setIdCita(IdCita);
       conexionPC.insertarPaciente_Cita(citaNueva, this.usuario);
+      LocalDate ahora = LocalDate.now();
+      Date fechaHoy = Date.valueOf(ahora);
+      LocalTime horaHoy = LocalTime.now();
+          
+      Bitacora bitacora = new Bitacora(IdCita,fechaHoy , horaHoy,this.usuario);
+      BitacoraBD bitacorabd = new BitacoraBD();
+      bitacorabd.insertarBitacora(bitacora);
+      Bitacora_CitaBD bitacora_Cita = new Bitacora_CitaBD();
+      bitacora_Cita.insertarBitacoraCita(bitacora, citaNueva);
     }
 }

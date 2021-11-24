@@ -20,14 +20,13 @@ public class BitacoraBD {
    * Método para insertar una bitacora en la base de datos
    * @param pBitacora
    */
-  public void insertarPaciente(Bitacora pBitacora){
+  public void insertarBitacora(Bitacora pBitacora){
     try{
 
       Connection con = conexion.getConexion();
 
-      PreparedStatement ps = con.prepareStatement("INSERT INTO Paciente "
-              + "(idPaciente, nacionalidad, tipoSangre, fechaNacimiento, "
-              + "provincia, canton) VALUES (?,?,?,?,?,?)");
+      PreparedStatement ps = con.prepareStatement("INSERT INTO Bitacora "
+              + "(Fecha, Hora, idUsuario, nuevoEstado) VALUES (?,?,?,?)");
       ps.setDate(1, pBitacora.getFecha());
       Time hora = Time.valueOf(pBitacora.getHora());
       ps.setTime(2, hora);

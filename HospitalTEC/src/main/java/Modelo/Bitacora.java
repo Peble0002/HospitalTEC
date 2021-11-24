@@ -1,6 +1,7 @@
 
 package Modelo;
 
+import static Modelo.EstadoCita.Registrada;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -30,6 +31,7 @@ public class Bitacora {
     this.fecha = pFecha;
     this.hora = pHora;
     this.nombreUsuario = pNombreUsuario;
+    this.estado = Registrada;
   }
 
   /**

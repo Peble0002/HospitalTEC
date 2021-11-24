@@ -125,5 +125,22 @@ public class CitaBD {
       return null;
     }
   }
+  
+  public int consultarIDCitaReciente(){
+    PreparedStatement ps;
+    ResultSet rs;
+
+    try{
+      Connection con = conexion.getConexion();
+      ps = con.prepareStatement("SELECT Cita.IdCita FROM Cita ORDER BY (IdCita) DESC");
+      rs = ps.executeQuery();
+      rs.next();
+      return rs.getInt(1);
+    }catch(SQLException e){
+      JOptionPane.showMessageDialog(null, e.toString());
+      return 0;
+    }
+  }
+  
 
 }
