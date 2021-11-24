@@ -43,7 +43,7 @@ public class ControladorCancelarCita implements ActionListener{
    
   }
   
-  /*  @Override*/
+  @Override
    public void actionPerformed(ActionEvent e){
      switch(e.getActionCommand()){
       case "Buscar Cita":

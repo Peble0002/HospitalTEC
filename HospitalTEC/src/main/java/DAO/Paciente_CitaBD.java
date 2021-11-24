@@ -74,7 +74,7 @@ public class Paciente_CitaBD {
     }
   }
   //Falta los parametros
-  public ResultSet consultarCitasPaciente(){ //Date inicio, Date fin, String Area, String estado
+  public ResultSet consultarCitasPaciente(Date inicio, Date fin, String Area, String estado){ 
     PreparedStatement ps;
     ResultSet rs;
     
@@ -86,7 +86,7 @@ public class Paciente_CitaBD {
       "---FILTROS\n" +
       "AND fecha >= '2021-08-21'\n" +
       "AND fecha <= '2021-08-21'\n" +
-      "AND estado = 'Registrada' \n" +
+      "AND estado = 'Cancelada por paciente' \n" +
       "AND especialidad LIKE '%Medicina general%'");
             rs = ps.executeQuery();
       return rs;

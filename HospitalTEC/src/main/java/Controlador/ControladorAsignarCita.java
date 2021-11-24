@@ -16,6 +16,7 @@ import Vista.VistaEnfermero;
 import Vista.VistaPaciente;
 import Vista.VistaSecretario;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,18 +28,22 @@ import javax.swing.JOptionPane;
  *
  * @author pablo
  */
-public class ControladorAsignarCita {
+public class ControladorAsignarCita  implements ActionListener{
   public AsignarCita vistaAsignarCita;
   private final String usuario;
 
-
+  
   
   public ControladorAsignarCita(AsignarCita pVistaAsignarCita, String pUsuario) {
     this.vistaAsignarCita = pVistaAsignarCita;
     usuario = pUsuario;
+    
+    this.vistaAsignarCita.btnAsignar.addActionListener(this);
+    this.vistaAsignarCita.btnVolver.addActionListener(this);
+    this.vistaAsignarCita.btBuscarCitas.addActionListener(this);
   }
   
-  /*  @Override*/
+  @Override
    public void actionPerformed(ActionEvent e){
      switch(e.getActionCommand()){
       case "Buscar Cita":

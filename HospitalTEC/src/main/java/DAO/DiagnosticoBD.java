@@ -21,12 +21,12 @@ public class DiagnosticoBD {
    * Método para insertar un diagnostico en la base de datos
    * @param pDiagnostico de tipo Diagnostico
    */
-  public void insertarDiagnostico(CatalogoDiagnostico pDiagnostico){
+  public void insertarDiagnostico(String pNombre){
     try{   
       Connection con = conexion.getConexion();
       PreparedStatement ps = con.prepareStatement("INSERT INTO CatalogoDiagnosticos "
               + "(NombreDiagnostico) VALUES (?)");
-      ps.setString(1, pDiagnostico.getNombreDiagnostico());
+      ps.setString(1, pNombre);
       ps.executeUpdate();
       JOptionPane.showMessageDialog(null, "Registro de diagnostico completado.");
     }catch(SQLException e){

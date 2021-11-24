@@ -5,10 +5,13 @@
  */
 package Controlador;
 
+import DAO.AreaTrabajoBD;
 import DAO.Paciente_CitaBD;
 import Vista.CitasAsociadasPaciente;
-import Vista.VistaPaciente;
+import Vista.Principal;
+import Vista.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,30 +22,47 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author pablo
  */
-public class ControladorCitasPaciente {
+public class ControladorCitasPaciente implements ActionListener {
   String usuario;
   CitasAsociadasPaciente vistaCitasAsociadasPaciente;
 
   public ControladorCitasPaciente(String usuario, CitasAsociadasPaciente vistaCitasAsociadasPaciente) {
     this.usuario = usuario;
     this.vistaCitasAsociadasPaciente = vistaCitasAsociadasPaciente;
+    cargarComboBoxAreaTrabajo();
+    this.vistaCitasAsociadasPaciente.btnVolver.addActionListener(this);
+    this.vistaCitasAsociadasPaciente.btnBuscar.addActionListener(this);
+    
   }
   
-     public void actionPerformed(ActionEvent e) throws SQLException{
-       switch(e.getActionCommand()){
-        case "Buscar":
-          cargarTabla();
-          break;
-        case "Volver":
-           //FaltaVolver
+  @Override
+  public void actionPerformed(ActionEvent e){
+    switch(e.getActionCommand()){
+      case "Buscar":
+          try{
+            cargarTabla();
             break;
-        default:
-            break;       
+          }catch (SQLException o){ 
+            JOptionPane.showMessageDialog(null, o.toString()); 
+            break;
+          }
+      case "Volver":
+          VistaPaciente VP = new VistaPaciente();
+          ControladorVistaPaciente CVP = new ControladorVistaPaciente(VP,usuario);
+          CVP.vistaPacientes.setVisible(true);
+          vistaCitasAsociadasPaciente.dispose();
+          break;
+      default:
+        break;       
     }
   }
-  
-  
-  
+  //FALTA
+  public String cargarQuery(){
+    String consulta = "SELECT Cita.IdCita, fecha, hora, observaciones, estado,"
+            +" especialidad, correo"  
+	+ " FROM Cita INNER JOIN Paciente_Cita ON Cita.IdCita = Paciente_Cita.IdCita" 
+		+" WHERE idPaciente = '305110992'";
+  }
   
   private void cargarTabla() throws SQLException{
     String dia = (String) vistaCitasAsociadasPaciente.cbDiaInicio.getSelectedItem();
@@ -89,5 +109,19 @@ public class ControladorCitasPaciente {
       JOptionPane.showMessageDialog(null, e.toString());
     }
   }
+  
+  private void cargarComboBoxAreaTrabajo(){
+      AreaTrabajoBD areaBD = new AreaTrabajoBD();
+      ResultSet rs = areaBD.consultarAreasTrabajo();
+      vistaCitasAsociadasPaciente.cbAreas.addItem("-");
+      try{
+        while(rs.next()){
+          vistaCitasAsociadasPaciente.cbAreas.addItem(rs.getString("codigo") 
+                  + " - " + rs.getString("NombreArea"));
+        }
+      }catch(SQLException e){
+        JOptionPane.showMessageDialog(null, e.toString());
+      }
+    }
   
 }

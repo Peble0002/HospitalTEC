@@ -6,18 +6,23 @@
 package Controlador;
 
 import Vista.DiagnosticosSistema;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author pablo
  */
-public class ControladorDiagnostico {
+public class ControladorDiagnostico{
   String usuario;
   DiagnosticosSistema vistaDiagnosticosSistema;
 
   public ControladorDiagnostico(String usuario, DiagnosticosSistema vistaDiagnosticosSistema) {
     this.usuario = usuario;
     this.vistaDiagnosticosSistema = vistaDiagnosticosSistema;
+    
+//    this.vistaDiagnosticosSistema..addActionListener(this);
+//    this.vistaDiagnosticosSistema.btnVolver.addActionListener(this);
+    
   }
   
   
