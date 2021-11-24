@@ -39,13 +39,6 @@ public class ControladorAtenderCita implements ActionListener {
           CDP.vistaDiagnosticoPaciente.setVisible(true);
           vistaAtenderCita.dispose();
           break;
-        case "Registrar Bitácora": 
-          paciente = (String) vistaAtenderCita.cbCedulasPacientes.getSelectedItem();
-          RegistroBitacora RB = new RegistroBitacora();
-          ControladorRegistroBitacora CRB = new ControladorRegistroBitacora(RB,usuario,paciente);
-          CRB.vistaRegistroBitacora.setVisible(true);
-          vistaAtenderCita.dispose();
-          break;
         case "Internar Paciente": 
           paciente = (String) vistaAtenderCita.cbCedulasPacientes.getSelectedItem();
           RegistroInternado RI = new RegistroInternado();
@@ -79,4 +72,6 @@ public class ControladorAtenderCita implements ActionListener {
         JOptionPane.showMessageDialog(null, e.toString());
       }
     }
+    
+    
 }

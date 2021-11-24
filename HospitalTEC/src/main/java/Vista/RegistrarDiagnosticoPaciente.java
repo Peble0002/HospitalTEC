@@ -209,6 +209,9 @@ public class RegistrarDiagnosticoPaciente extends javax.swing.JFrame {
     // TODO add your handling code here:
   }//GEN-LAST:event_cbTratamientoActionPerformed
 
+  public boolean datosCorrectos(){
+    return !(tbDosis.getText().equals("")|| tbObservacion.getText().equals(""));
+  }
     /**
      * @param args the command line arguments
      */

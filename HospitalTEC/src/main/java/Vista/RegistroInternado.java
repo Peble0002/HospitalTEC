@@ -338,6 +338,7 @@ public class RegistroInternado extends javax.swing.JFrame {
     // TODO add your handling code here:
   }//GEN-LAST:event_btnRegistrarInternadoActionPerformed
 
+  
     /**
      * @param args the command line arguments
      */

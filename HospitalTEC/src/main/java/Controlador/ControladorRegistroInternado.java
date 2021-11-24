@@ -112,10 +112,6 @@ public class ControladorRegistroInternado implements ActionListener {
       Internado pInternado = new Internado(fechaInicio,fechaFin, area );
       InternadoBD internadobd = new InternadoBD();
       internadobd.insertarInternado(pInternado);
-  //    Paciente paciente = new Paciente( fecha, tipoSangre, nacionalidad,  
-  //            provincia,  canton, distrito,  telefono,  cedula, contrasena, 
-  //            nombre,  apellido1, apellido2);
-  //    pacienteBD.insertarPaciente(paciente);
     JOptionPane.showMessageDialog(vistaRegistroInternado, "REGISTRADO");    
     }  
   }
