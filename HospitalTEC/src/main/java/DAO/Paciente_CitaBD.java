@@ -4,6 +4,7 @@ package DAO;
 import Modelo.Cita;
 import Modelo.Paciente;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -66,6 +67,28 @@ public class Paciente_CitaBD {
               + "Paciente_Cita WHERE Cita.IdCita = Paciente_Cita.IdCita "
               + "AND Paciente_Cita.idPaciente = '"+ cedula+ "' ORDER BY (IdCita) DESC");
       rs = ps.executeQuery();
+      return rs;
+    }catch(SQLException e){
+      JOptionPane.showMessageDialog(null, e.toString());
+      return null;
+    }
+  }
+  //Falta los parametros
+  public ResultSet consultarCitasPaciente(){ //Date inicio, Date fin, String Area, String estado
+    PreparedStatement ps;
+    ResultSet rs;
+    
+    try{
+      Connection con = conexion.getConexion();
+      ps = con.prepareStatement("SELECT Cita.IdCita, fecha, hora, observaciones, estado, especialidad, correo \n" +
+      "	FROM Cita INNER JOIN Paciente_Cita ON Cita.IdCita = Paciente_Cita.IdCita \n" +
+      "		WHERE idPaciente = '305110992'\n" +
+      "---FILTROS\n" +
+      "AND fecha >= '2021-08-21'\n" +
+      "AND fecha <= '2021-08-21'\n" +
+      "AND estado = 'Registrada' \n" +
+      "AND especialidad LIKE '%Medicina general%'");
+            rs = ps.executeQuery();
       return rs;
     }catch(SQLException e){
       JOptionPane.showMessageDialog(null, e.toString());
