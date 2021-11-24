@@ -43,6 +43,10 @@ public class ControladorVistaPaciente implements ActionListener {
             vistaPacientes.dispose();
             break;
           case "Cancelar Cita":
+            CancelarCita CC = new CancelarCita();
+            ControladorCancelarCita controladorCancelar = new ControladorCancelarCita(CC, this.usuario);
+            controladorCancelar.vistaCanceltarCita.setVisible(true);
+            vistaPacientes.dispose();
             break;
           case "Citas asociadas":
             break;

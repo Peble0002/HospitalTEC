@@ -39,10 +39,17 @@ public class ControladorVistaEnfermero implements ActionListener{
      public void actionPerformed(ActionEvent e){
        switch(e.getActionCommand()){
         case "Asignar cita":
+          AsignarCita AC = new AsignarCita();
+          ControladorAsignarCita controladorAsignar = new ControladorAsignarCita(AC, this.usuario);
+          controladorAsignar.vistaAsignarCita.setVisible(true);
           break;
         case "Detalle hospitalizaciones":
           break;
         case "Cancelar cita":
+          CancelarCita CC = new CancelarCita();
+          ControladorCancelarCita controladorCancelar = new ControladorCancelarCita(CC, this.usuario);
+          controladorCancelar.vistaCanceltarCita.setVisible(true);
+          vistaEnfermero.dispose();
           break;
         case "Citas registradas":
           break;

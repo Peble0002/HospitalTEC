@@ -9,6 +9,7 @@ import DAO.Paciente_CitaBD;
 import DAO.UsuarioBD;
 import Modelo.Bitacora;
 import Modelo.Cita;
+import Vista.AsignarCita;
 import Vista.CancelarCita;
 import Vista.VistaDoctor;
 import Vista.VistaEnfermero;
@@ -26,14 +27,14 @@ import javax.swing.JOptionPane;
  *
  * @author pablo
  */
-public class ControladorCancelarCita {
-  public CancelarCita vistaCanceltarCita;
+public class ControladorAsignarCita {
+  public AsignarCita vistaAsignarCita;
   private final String usuario;
 
 
   
-  public ControladorCancelarCita(CancelarCita vistaCanceltarCita, String pUsuario) {
-    this.vistaCanceltarCita = vistaCanceltarCita;
+  public ControladorAsignarCita(AsignarCita pVistaAsignarCita, String pUsuario) {
+    this.vistaAsignarCita = pVistaAsignarCita;
     usuario = pUsuario;
   }
   
@@ -43,8 +44,8 @@ public class ControladorCancelarCita {
       case "Buscar Cita":
         cargarComboBoxCitas();
         break;
-      case "Cancelar": 
-        cancelarCita();
+      case "Asignar": 
+        asignarCita();
         cargarComboBoxCitas();
         break;
       case "Volver":
@@ -70,8 +71,8 @@ public class ControladorCancelarCita {
   
   public void asignarVentanaUsuario(){
     UsuarioBD usuarioBD = new UsuarioBD();  
-    if( vistaCanceltarCita.datosCorrectos()==false){
-     JOptionPane.showMessageDialog(vistaCanceltarCita, "Debe ingresar una cedula"); 
+    if( vistaAsignarCita.datosCorrectos()==false){
+     JOptionPane.showMessageDialog(vistaAsignarCita, "Debe ingresar una cedula"); 
     }else{
       int tipoUsuario = usuarioBD.retonarTipo(usuario);
       switch(tipoUsuario){
@@ -79,28 +80,28 @@ public class ControladorCancelarCita {
           VistaPaciente VP = new VistaPaciente();
           ControladorVistaPaciente CVP = new ControladorVistaPaciente(VP,usuario);
           CVP.vistaPacientes.setVisible(true);
-          vistaCanceltarCita.dispose();
+          vistaAsignarCita.dispose();
           break;
         case 2:
           VistaSecretario VS = new VistaSecretario();
           ControladorVistaSecretario CVS = new ControladorVistaSecretario(VS,usuario);
           CVS.vistaSecretario.setVisible(true);
-          vistaCanceltarCita.dispose();
+          vistaAsignarCita.dispose();
           break;
         case 3:
           VistaEnfermero VE = new VistaEnfermero();
           ControladorVistaEnfermero CVE = new ControladorVistaEnfermero(VE,usuario);
           CVE.vistaEnfermero.setVisible(true);
-          vistaCanceltarCita.dispose();
+          vistaAsignarCita.dispose();
           break;
         case 4:
           VistaDoctor VD = new VistaDoctor();
           ControladorVistaDoctor CVD = new ControladorVistaDoctor(VD,usuario);
           CVD.vistaDoctor.setVisible(true);
-          vistaCanceltarCita.dispose();
+          vistaAsignarCita.dispose();
           break;
         default:
-          JOptionPane.showMessageDialog(vistaCanceltarCita, "Ha ocurrido algo, por favor intent"
+          JOptionPane.showMessageDialog(vistaAsignarCita, "Ha ocurrido algo, por favor intent"
                   + "elo a iniciar sesión nuevamente.");
           break;
       } 
@@ -108,7 +109,7 @@ public class ControladorCancelarCita {
   }
   
   
-  public void cancelarCita(){
+  public void asignarCita(){
     CitaBD cita = new CitaBD();
     String combo = (String)CancelarCita.cbCitasAsociadas.getSelectedItem();
     String id = combo.substring(0, combo.indexOf(" - "));
@@ -121,15 +122,7 @@ public class ControladorCancelarCita {
     LocalTime horaHoy = LocalTime.now();
           
     Bitacora bitacora = new Bitacora(idCita,fechaHoy , horaHoy,this.usuario);  
-    String Estado;
-    switch(tipoUsuario){
-      case 1:
-        Estado="Cancelada por paciente";       
-        break;
-      default:
-        Estado="Cancelada por centro medico";
-        break;
-    }
+    String Estado = "Asignada";
     cita.actualizarCita(idCita,Estado);
     bitacora.setEstado(Estado);
     BitacoraBD bitacorabd = new BitacoraBD();
