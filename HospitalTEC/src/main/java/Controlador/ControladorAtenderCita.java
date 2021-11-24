@@ -34,7 +34,7 @@ public class ControladorAtenderCita implements ActionListener {
         case "Registrar Diagnóstico":
           paciente = (String) vistaAtenderCita.cbCedulasPacientes.getSelectedItem();
           RegistrarDiagnosticoPaciente RDP = new RegistrarDiagnosticoPaciente();
-          ControladorDiagnosticoPaciente CDP = new ControladorDiagnosticoPaciente(RDP,usuario,paciente);
+          ControladorRegistrarDiagnosticoPaciente CDP = new ControladorRegistrarDiagnosticoPaciente(RDP,usuario,paciente);
           CDP.vistaDiagnosticoPaciente.setVisible(true);
           vistaAtenderCita.dispose();
           break;

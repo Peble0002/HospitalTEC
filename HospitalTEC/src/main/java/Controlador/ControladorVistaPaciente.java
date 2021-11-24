@@ -50,26 +50,26 @@ public class ControladorVistaPaciente implements ActionListener {
             break;
           case "Citas asociadas":
              CitasAsociadasPaciente CAP = new CitasAsociadasPaciente();
-             CAP.setVisible(true);
-             //FaltaControlado
+             ControladorCitasPaciente controladorCitasPaciente = new ControladorCitasPaciente(usuario, CAP);
+             controladorCitasPaciente.vistaCitasAsociadasPaciente.setVisible(true);
              vistaPacientes.dispose();
             break;
           case "Diagnósticos":
             DiagnosticosAsociadosPaciente DAP = new DiagnosticosAsociadosPaciente();
-            DAP.setVisible(true);
-            //Falta Controlador
+            ControladorDiagnosticoPaciente controladorDiagnosticoPaciente = new ControladorDiagnosticoPaciente(usuario, DAP); 
+            controladorDiagnosticoPaciente.vistaDiagnosticosAsociadosPaciente.setVisible(true);
             vistaPacientes.dispose();
             break;
           case "Tratamientos":
             TratamientosAsociadosPaciente TAP = new TratamientosAsociadosPaciente();
-            TAP.setVisible(true);
-            //FaltaControlador
+            ControladorTratamientosPaciente controladorTratamientosPaciente = new ControladorTratamientosPaciente(usuario, TAP);
+            controladorTratamientosPaciente.vistaTratamientosSistema.setVisible(true);
             vistaPacientes.dispose(); 
             break;
           case "Hospitalizaciones":
             HospitalizacionesAsociadasPaciente HAP = new HospitalizacionesAsociadasPaciente();
-            HAP.setVisible(true);
-//FaltaContolador
+            ControladorHospitalizacionesPaciente controladorHospitalizacionesPaciente = new ControladorHospitalizacionesPaciente(HAP, usuario);
+            controladorHospitalizacionesPaciente.vistahospitalizacionesSistema.setVisible(true);
             vistaPacientes.dispose();
             break;  
         case "Volver":
