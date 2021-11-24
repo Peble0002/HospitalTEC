@@ -77,6 +77,27 @@ public class UsuarioBD {
   }
   
   /**
+   * Método para verificar si existe un usuario en la base de datos
+   * @param id la cedula del usuario
+   * @param contrasena la contrasena designada para este usuario
+   * @return un int correspondiente al tipo de usuario de la base de datos.
+   */
+  public int retonarTipo(String id){
+    ResultSet rs;
+    try{
+      Connection con = conexion.getConexion();
+      PreparedStatement ps = con.prepareStatement("SELECT TipoUsuario FROM "
+              + "Usuario WHERE Usuario.idUsuario = '" + id + "'");
+      rs = ps.executeQuery();
+      rs.next();
+      return rs.getInt(1);
+    }catch(SQLException e){
+      JOptionPane.showMessageDialog(null, e.toString());
+      return -1;
+    }
+  }
+  
+  /**
    * Método para insertar un usuario en la base de datos
    * @param pUsuario de tipo Usuario
    */

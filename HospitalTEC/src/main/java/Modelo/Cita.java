@@ -36,6 +36,12 @@ public class Cita {
     this.especialidad = pEspecialidad;
     this.estado = estado;
   }
+
+  public Cita(int idCita) {
+    this.idCita = idCita;
+  }
+  
+  
   
   public Cita(Date pFecha, LocalTime pHora, 
           String pObservaciones, String pEspecialidad, EstadoCita pEstado) {

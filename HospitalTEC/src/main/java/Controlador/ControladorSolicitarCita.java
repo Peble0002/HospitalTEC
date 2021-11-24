@@ -98,6 +98,8 @@ public class ControladorSolicitarCita implements ActionListener{
       Bitacora bitacora = new Bitacora(IdCita,fechaHoy , horaHoy,this.usuario);
       BitacoraBD bitacorabd = new BitacoraBD();
       bitacorabd.insertarBitacora(bitacora);
+      int idBitacora = bitacorabd.consultarIDBitacoraReciente();
+      bitacora.setIdBitacora(idBitacora);
       Bitacora_CitaBD bitacora_Cita = new Bitacora_CitaBD();
       bitacora_Cita.insertarBitacoraCita(bitacora, citaNueva);
     }

@@ -27,7 +27,7 @@ public class Bitacora_CitaBD {
       PreparedStatement ps = con.prepareStatement("INSERT INTO Bitacora_Cita "
               + "(IdCita, IdBitacora) VALUES (?,?)");
       ps.setInt(1, pCita.getIdCita());
-      ps.setInt(2, pBitacora.getIdCita());
+      ps.setInt(2, pBitacora.getIdBitacora());
       ps.executeUpdate();
       JOptionPane.showMessageDialog(null, "Registro de Cita en Bitacora completado.");
     }catch(SQLException e){

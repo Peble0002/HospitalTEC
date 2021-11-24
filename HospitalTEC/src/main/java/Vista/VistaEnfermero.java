@@ -184,7 +184,7 @@ public class VistaEnfermero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCitaActionPerformed
-        CancelarCitaEnfermero CCE = new CancelarCitaEnfermero();
+        CancelarCita CCE = new CancelarCita();
         CCE.setVisible(true);
 
         this.dispose();

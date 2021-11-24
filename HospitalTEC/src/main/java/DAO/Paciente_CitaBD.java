@@ -27,7 +27,7 @@ public class Paciente_CitaBD {
         
       Connection con = conexion.getConexion();
       PreparedStatement ps = con.prepareStatement("INSERT INTO Paciente_Cita "
-              + "(idPaciente ) VALUES (?,?)");
+              + "(idPaciente, IdCita ) VALUES (?,?)");
       ps.setString(1, pPaciente);
       ps.setInt(2, pCita.getIdCita());
       ps.executeUpdate();
@@ -48,7 +48,23 @@ public class Paciente_CitaBD {
       Connection con = conexion.getConexion();
       ps = con.prepareStatement("SELECT Cita.IdCita, IdPaciente FROM Cita, "
               + "Paciente_Cita WHERE Cita.IdCita = Paciente_Cita.IdCita AND "
-              + "estado = 'REGISTRADA' ORDER BY (IdCita)");
+              + "estado = 'Registrada' ORDER BY (IdCita)");
+      rs = ps.executeQuery();
+      return rs;
+    }catch(SQLException e){
+      JOptionPane.showMessageDialog(null, e.toString());
+      return null;
+    }
+  }
+  
+  public ResultSet consultarCitasRegistradasParaUnUsuario(String cedula){
+    PreparedStatement ps;
+    ResultSet rs;
+    try{
+      Connection con = conexion.getConexion();
+      ps = con.prepareStatement("SELECT Cita.IdCita, fecha FROM Cita, "
+              + "Paciente_Cita WHERE Cita.IdCita = Paciente_Cita.IdCita "
+              + "AND Paciente_Cita.idPaciente = '"+ cedula+ "' ORDER BY (IdCita) DESC");
       rs = ps.executeQuery();
       return rs;
     }catch(SQLException e){

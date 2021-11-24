@@ -12,11 +12,12 @@ import java.time.LocalTime;
  * @version (17/11/2021)
  */
 public class Bitacora {
+  private int idBitacora;
   private int idCita;
   private Date fecha;
   private LocalTime hora;
   private String nombreUsuario;
-  private EstadoCita estado;
+  private String estado;
 
   /**
    * Constructor con Fecha y Hora
@@ -31,7 +32,7 @@ public class Bitacora {
     this.fecha = pFecha;
     this.hora = pHora;
     this.nombreUsuario = pNombreUsuario;
-    this.estado = Registrada;
+    this.estado = "Registrada";
   }
 
   /**
@@ -44,7 +45,7 @@ public class Bitacora {
    * @param nombreUsuario 
    */
   public Bitacora(int pIdCita, Date pFecha, int pHora, int pMinutos,
-          int pSegundos, String pNombreUsuario, EstadoCita pEstado) {
+          int pSegundos, String pNombreUsuario, String pEstado) {
     this.idCita = pIdCita;
     this.fecha = pFecha;
     this.hora = LocalTime.of(pHora,pMinutos, pSegundos);
@@ -88,11 +89,21 @@ public class Bitacora {
     this.nombreUsuario = pNombreUsuario;
   }
 
-  public EstadoCita getEstado() {
+  public String getEstado() {
     return estado;
   }
 
-  public void setEstado(EstadoCita pEstado) {
+  public void setEstado(String pEstado) {
     this.estado = pEstado;
   } 
+
+  public int getIdBitacora() {
+    return idBitacora;
+  }
+
+  public void setIdBitacora(int idBitacora) {
+    this.idBitacora = idBitacora;
+  }
+  
+  
 }

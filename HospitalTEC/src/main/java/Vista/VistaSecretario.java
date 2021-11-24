@@ -143,7 +143,7 @@ public class VistaSecretario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCitaActionPerformed
-      CancelarCitaSecretario CCS = new CancelarCitaSecretario();
+      CancelarCita CCS = new CancelarCita();
       CCS.setVisible(true);
 
       this.dispose();
