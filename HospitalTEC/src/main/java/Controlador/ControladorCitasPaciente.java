@@ -7,6 +7,8 @@ package Controlador;
 
 import DAO.Paciente_CitaBD;
 import Vista.CitasAsociadasPaciente;
+import Vista.VistaPaciente;
+import java.awt.event.ActionEvent;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,6 +27,22 @@ public class ControladorCitasPaciente {
     this.usuario = usuario;
     this.vistaCitasAsociadasPaciente = vistaCitasAsociadasPaciente;
   }
+  
+     public void actionPerformed(ActionEvent e) throws SQLException{
+       switch(e.getActionCommand()){
+        case "Buscar":
+          cargarTabla();
+          break;
+        case "Volver":
+           //FaltaVolver
+            break;
+        default:
+            break;       
+    }
+  }
+  
+  
+  
   
   private void cargarTabla() throws SQLException{
     String dia = (String) vistaCitasAsociadasPaciente.cbDiaInicio.getSelectedItem();
