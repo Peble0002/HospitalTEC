@@ -37,6 +37,10 @@ public class ControladorVistaPaciente implements ActionListener {
      public void actionPerformed(ActionEvent e){
        switch(e.getActionCommand()){
           case "Solicitar Cita":
+            SolicitarCita SC = new SolicitarCita();
+            ControladorSolicitarCita controladorSolicitud = new ControladorSolicitarCita(SC, this.usuario);
+            controladorSolicitud.vistaSolicitarCita.setVisible(true);
+            vistaPacientes.dispose();
             break;
           case "Cancelar Cita":
             break;

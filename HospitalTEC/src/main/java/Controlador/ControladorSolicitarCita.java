@@ -63,6 +63,7 @@ public class ControladorSolicitarCita implements ActionListener{
     
     public void registroCita(){
       CitaBD conexionCita = new CitaBD();
+      Paciente_CitaBD conexionPC = new Paciente_CitaBD();
       String dia = (String) vistaSolicitarCita.cbDia.getSelectedItem();
       String mes = (String) vistaSolicitarCita.cbMes.getSelectedItem();
       String ano = (String) vistaSolicitarCita.cbAno.getSelectedItem();
@@ -87,5 +88,6 @@ public class ControladorSolicitarCita implements ActionListener{
       
       Cita citaNueva = new Cita(fecha, hora, observacion, especialidad);
       conexionCita.insertarCita(citaNueva, "Registrada");
+      conexionPC.insertarPaciente_Cita(citaNueva, this.usuario);
     }
 }

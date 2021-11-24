@@ -19,18 +19,16 @@ public class Paciente_CitaBD {
   private Cita cita;
   private Paciente paciente;
 
-  public Paciente_CitaBD(Cita cita, Paciente paciente) {
-    this.cita = cita;
-    this.paciente = paciente;
+  public Paciente_CitaBD() {
   }
   
-  public void insertarPaciente_Cita(Cita pCita,Paciente pPaciente ){  
+  public void insertarPaciente_Cita(Cita pCita, String pPaciente){  
     try{
         
       Connection con = conexion.getConexion();
       PreparedStatement ps = con.prepareStatement("INSERT INTO Paciente_Cita "
               + "(idPaciente ) VALUES (?,?)");
-      ps.setString(1, pPaciente.getId());
+      ps.setString(1, pPaciente);
       ps.setString(2, pCita.getIdCita());
       ps.executeUpdate();
       //JOptionPane.showMessageDialog(null, "Registro de usuario Cita.");
