@@ -552,11 +552,60 @@ AND especialidad LIKE '%Medicina general%'
 ---CONSULTA 5 DE DOCTOR
 SELECT COUNT(IdDiagnostico)	FROM CatalogoDiagnosticos ---CONTEO GENERAL
 
-SELECT COUNT(CatalogoDiagnosticos.IdDiagnostico) AS TotalDiagnosticos
+SELECT COUNT(CatalogoDiagnosticos.IdDiagnostico) AS TotalDiagnosticos ---CONTEO ESPECIALIZADO CON FILTROS
 	FROM CatalogoDiagnosticos INNER JOIN Cita_Diagnostico ON CatalogoDiagnosticos.IdDiagnostico = Cita_Diagnostico.IdDiagnostico
 		INNER JOIN Cita ON Cita_Diagnostico.IdCita = Cita.IdCita
-			INNER JOIN Paciente_Cita
-			WHERE CatalogoDiagnosticos.IdDiagnostico = Cita_Diagnostico.IdDiagnostico
+			INNER JOIN Paciente_Cita ON Paciente_Cita.IdCita = Cita.IdCita
+				WHERE CatalogoDiagnosticos.IdDiagnostico = Cita_Diagnostico.IdDiagnostico
 ---FILTROS
 AND Nivel = 'Grave'
+AND Cita.especialidad = 'Medicina General'
+AND idPaciente = '305110992'
+
+---CONSULTA 6 DE DOCTOR
+SELECT COUNT(IdTratamiento)	FROM CatalogoTratamientos ---CONTEO GENERAL
+
+SELECT COUNT(CatalogoTratamientos.IdTratamiento) AS TotalTratamientos ---CONTEO ESPECIALIZADO CON FILTROS
+	FROM CatalogoTratamientos INNER JOIN Cita_Diagnostico ON CatalogoTratamientos.IdTratamiento = Cita_Diagnostico.IdTratamiento
+		INNER JOIN Cita ON Cita_Diagnostico.IdCita = Cita.IdCita
+			INNER JOIN Paciente_Cita ON Paciente_Cita.IdCita = Cita.IdCita
+				WHERE CatalogoTratamientos.IdTratamiento = Cita_Diagnostico.IdTratamiento
+---FILTROS
+AND Cita.especialidad = 'Medicina General'
+AND idPaciente = '305110992'
+
+---CONSULTA 7 DE PACIENTE CON CEDULA
+SELECT fechaInicio, fechaFin, nombreCentro, (Nombre + ' ' + Apellido1 + ' ' + Apellido2) AS nombreDoctor 
+	FROM Internado INNER JOIN Internado_Centro ON Internado.codInternado = Internado_Centro.codInternado
+		INNER JOIN CentroAtencion ON CentroAtencion.Codigo = Internado_Centro.Codigo
+			INNER JOIN Internado_Doctor ON Internado.codInternado = Internado_Doctor.codInternado
+				INNER JOIN Usuario ON Internado_Doctor.IDFuncionario = Usuario.idUsuario
+					WHERE IdInternado = '305110992'
+
+---CONSULTA 7 DE PACIENTE CON NOMBRE
+SELECT idUsuario FROM Usuario
+	WHERE Nombre LIKE '%Aarón%' AND Apellido1 LIKE '%Soto%' AND Apellido2 LIKE '%Cortés%'
+
+---CONSULTA 1 DE SECRETARIO
+SELECT Cita.IdCita, fecha, (Nombre + ' ' + Apellido1 + ' ' + Apellido2) AS nombreCompleto, hora, observaciones, estado, especialidad, correo 
+	FROM Cita INNER JOIN Paciente_Cita ON Cita.IdCita = Paciente_Cita.IdCita
+		INNER JOIN Usuario ON Paciente_Cita.idPaciente = Usuario.idUsuario
+--- EL WHERE DEBE SER AGREGADO AL STRING EN EL MOMENTO EN QUE SE ENCUENTRE UN FILTRO ACTIVO			
+WHERE fecha >= '2021-08-21'
+AND fecha <= '2021-08-21'
+AND estado = 'Registrada'
+AND Nombre LIKE '%Aarón%' OR Apellido1 LIKE '%Soto%' OR Apellido2 LIKE '%Cortés%'
+
+---CONSULTA 2 DE SECRETARIO HARÍA FALTA OBTENER EL NOMBRE DEL PACIENTE QUE ES INTERNADO
+SELECT IdInternado, fechaInicio, fechaFin, nombreCentro, (Nombre + ' ' + Apellido1 + ' ' + Apellido2) AS nombreCompleto 
+	FROM Internado INNER JOIN Internado_Centro ON Internado.codInternado = Internado_Centro.codInternado
+		INNER JOIN Cita_Internado ON Internado.codInternado = Cita_Internado.codInternado
+			INNER JOIN Cita ON Cita_Internado.Idcita = Cita.IdCita
+				INNER JOIN CentroAtencion ON CentroAtencion.Codigo = Internado_Centro.Codigo
+					INNER JOIN Internado_Doctor ON Internado.codInternado = Internado_Doctor.codInternado
+						INNER JOIN Usuario ON Internado_Doctor.IDFuncionario = Usuario.idUsuario
+---FILTROS
+WHERE fechaInicio >= '2021-08-21' OR fechaFin >= '2021-08-21'
+AND fechaInicio <= '2021-08-21' OR fechaFin <= '2021-08-21'
+AND estado = 'Registrada'
 AND Cita.especialidad = 'Medicina General'
