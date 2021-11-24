@@ -69,7 +69,8 @@ public class ControladorVistaEnfermero implements ActionListener{
           break;
         case "Tratamientos":
           TratamientosSistema TS = new TratamientosSistema();
-          TS.setVisible(true);
+          ControladorTratamientos controladorTratamientos = new ControladorTratamientos(usuario, TS);
+          controladorTratamientos.vistaTratamientosSistema.setVisible(true);
           vistaEnfermero.dispose();
           break;
         case "Cantidad de citas":

@@ -64,7 +64,6 @@ public class ControladorVistaDoctor implements ActionListener {
           ControladorCitasRegistradas CCR = new ControladorCitasRegistradas(usuario, CS);
           CCR.vistaCitas.setVisible(true);
           vistaDoctor.dispose(); 
-          
           break;
         case "Atender cita":
           AtenderCita AC = new AtenderCita();
@@ -80,8 +79,8 @@ public class ControladorVistaDoctor implements ActionListener {
           break;
         case "Tratamientos":
           TratamientosSistema TS = new TratamientosSistema();
-          TS.setVisible(true);
-          //FaltaControlador
+          ControladorTratamientos controladorTratamientos = new ControladorTratamientos(usuario, TS);
+          controladorTratamientos.vistaTratamientosSistema.setVisible(true);
           vistaDoctor.dispose();
           break;
         case "Cantidad de citas":
@@ -92,14 +91,14 @@ public class ControladorVistaDoctor implements ActionListener {
           break;
         case "Seguimiento Internado":
           RegistroSeguimientoInternado RSI = new RegistroSeguimientoInternado();
-          RSI.setVisible(true);
-          //faltacontrolador
+          ControladorSeguimientoInternado controladorSeguimientoInternado = new ControladorSeguimientoInternado(usuario, RSI);
+          controladorSeguimientoInternado.vistaRegistroSeguimientoInternado.setVisible(true);
           vistaDoctor.dispose();
           break;
         case "Registrar Diágnosticos":
           RegistrarCatalogoDiagnosticos RCD = new RegistrarCatalogoDiagnosticos();
-          //FaltaControlador
-          RCD.setVisible(true);
+          ControladorRegistrarDiagnostico controladorRegistrarDiagnostico = new ControladorRegistrarDiagnostico(usuario, RCD);
+          controladorRegistrarDiagnostico.vistaRegistrarCatalogoDiagnosticos.setVisible(true);
           vistaDoctor.dispose();
           break;
         case "Volver":
