@@ -15,6 +15,7 @@ public class Bitacora {
   private Date fecha;
   private LocalTime hora;
   private String nombreUsuario;
+  private EstadoCita estado;
 
   /**
    * Constructor con Fecha y Hora
@@ -31,8 +32,6 @@ public class Bitacora {
     this.nombreUsuario = pNombreUsuario;
   }
 
-  
-  
   /**
    * Constructor con fecha y los datos de hora
    * @param idCita
@@ -43,11 +42,12 @@ public class Bitacora {
    * @param nombreUsuario 
    */
   public Bitacora(int pIdCita, Date pFecha, int pHora, int pMinutos,
-          int pSegundos, String pNombreUsuario) {
+          int pSegundos, String pNombreUsuario, EstadoCita pEstado) {
     this.idCita = pIdCita;
     this.fecha = pFecha;
     this.hora = LocalTime.of(pHora,pMinutos, pSegundos);
     this.nombreUsuario = pNombreUsuario;
+    this.estado = pEstado;
   }
 
   public int getIdCita() {
@@ -85,7 +85,12 @@ public class Bitacora {
   public void setNombreUsuario(String pNombreUsuario) {
     this.nombreUsuario = pNombreUsuario;
   }
-  
-  
-  
+
+  public EstadoCita getEstado() {
+    return estado;
+  }
+
+  public void setEstado(EstadoCita pEstado) {
+    this.estado = pEstado;
+  } 
 }

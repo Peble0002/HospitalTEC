@@ -35,6 +35,23 @@ public class DiagnosticoBD {
     //usuarioBD.insertarUsuario(paciente);
   }
   
-  
+  /*
+   * Método para consultar nombre de los diagnosticos
+   * @return un ResultSet con la información de las vacunas en la base de datos
+   */
+  public ResultSet consultarDiagnosticos(){
+    PreparedStatement ps;
+    ResultSet rs;
 
+    try{
+      Connection con = conexion.getConexion();
+      ps = con.prepareStatement("SELECT IdDiagnostico, NombreDiagnostico FROM "
+              + "CatalogoDiagnosticos");
+      rs = ps.executeQuery();
+      return rs;
+    }catch(SQLException e){
+      JOptionPane.showMessageDialog(null, e.toString());
+      return null;
+    }
+  }
 }

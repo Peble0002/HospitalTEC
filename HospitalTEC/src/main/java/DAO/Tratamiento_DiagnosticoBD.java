@@ -19,5 +19,26 @@ public class Tratamiento_DiagnosticoBD {
   private Tratamiento tratamiento;
   private Diagnostico diagnostico;
   
-  
+  /*
+   * Método para consultar nombre de los diagnosticos
+   * @return un ResultSet con la información de las vacunas en la base de datos
+   */
+  public ResultSet consultarTratamientosDiagnostico(int idDiagnostico){
+    PreparedStatement ps;
+    ResultSet rs;
+
+    try{
+      Connection con = conexion.getConexion();
+      ps = con.prepareStatement("SELECT IdTratamiento, Nombre FROM "
+              + "CatalogoTratamientos, Tratamiento_Diagnostico WHERE "
+              + "Tratamiento_Diagnostico.IdDiagnostico = "+ idDiagnostico +" AND"
+              + " CatalogoTratamientos.IdTratamiento = Tratamiento_Diagnostico."
+              + "IdTratamiento");
+      rs = ps.executeQuery();
+      return rs;
+    }catch(SQLException e){
+      JOptionPane.showMessageDialog(null, e.toString());
+      return null;
+    }
+  }
 }

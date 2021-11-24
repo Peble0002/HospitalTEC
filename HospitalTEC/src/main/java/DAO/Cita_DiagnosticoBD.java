@@ -23,7 +23,7 @@ public class Cita_DiagnosticoBD {
    * @param idCita de tipo Cita
    * @param pNivel de tipo String
    */
-  public void insertarCitaDiagnostico(Diagnostico pDiagnostico, int idTratamiento, int idCita,String pNivel){
+  public void insertarCitaDiagnostico(Diagnostico pDiagnostico, int idTratamiento, int idCita, String pNivel){
     try{
       Connection con = conexion.getConexion();
       PreparedStatement ps = con.prepareStatement("INSERT INTO Cita_Diagnostico"

@@ -29,32 +29,61 @@ public class ControladorRegistroInternado implements ActionListener {
     
   }
     
-   @Override
-   public void actionPerformed(ActionEvent e){
-     switch(e.getActionCommand()){
+  @Override
+  public void actionPerformed(ActionEvent e){
+    switch(e.getActionCommand()){
       case "Registrar":
         registrarInternadoCita();
         break;
       case "Volver":
-          AtenderCita AC = new AtenderCita();
-          ControladorAtenderCita CAC = new ControladorAtenderCita(AC,usuario);
-          CAC.vistaAtenderCita.setVisible(true);
-          vistaRegistroInternado.dispose();
-          break;
-        default:
-          break;       
+        AtenderCita AC = new AtenderCita();
+        ControladorAtenderCita CAC = new ControladorAtenderCita(AC,usuario);
+        CAC.vistaAtenderCita.setVisible(true);
+        vistaRegistroInternado.dispose();
+        break;
+      default:
+        break;       
+    }
+  }
+  
+   /*
+    * carga el combobox
+    */
+  private void cargarComboBoxCentros(){
+    CentroAtencionBD centroBD = new CentroAtencionBD();
+    ResultSet rs = centroBD.consultarCentroAtencion();
+
+    try{
+      while(rs.next()){
+        vistaRegistroInternado.cbCentroAtencion.addItem(rs.getString("Codigo") + " - " + rs.getString("nombreCentro"));
+      }
+    }catch(SQLException e){
+      JOptionPane.showMessageDialog(null, e.toString());
+    }
+  }
+  
+  /*
+   * carga el combobox
+   */
+  private void cargarComboBoxDiagnosticos(){
+    CatalogoDiagnosticoBD diagnosticosBD = new CatalogoDiagnosticoBD();
+    ResultSet rs = diagnosticosBD.consultarDiagnosticos();
+
+    try{
+      while(rs.next()){
+        vistaRegistroInternado.cbDiagnosticos.addItem(rs.getString("IdDiagnostico") + " - "
+                + rs.getString("NombreDiagnostico"));
+      }
+    }catch(SQLException e){
+      JOptionPane.showMessageDialog(null, e.toString());
     }
   }
      
   public void registrarInternadoCita(){
-    
     if(vistaRegistroInternado.datosCorrectos() == false){
-      JOptionPane.showMessageDialog(vistaRegistroInternado, "Alguno de los espacios de datos está"
-              + " vacío.");
-    }
-    else{
-
-
+      JOptionPane.showMessageDialog(vistaRegistroInternado, "Alguno de los "
+              + "espacios de datos está vacío.");
+    }else{
       CentroAtencion centroAtencion = (CentroAtencion) vistaRegistroInternado.cbCentroAtencion.getSelectedItem();
       String diagnostico = (String) vistaRegistroInternado.cbDiagnosticos.getSelectedItem();
       AreaTrabajo area = (AreaTrabajo) vistaRegistroInternado.cbEspecialidad.getSelectedItem();
@@ -83,16 +112,11 @@ public class ControladorRegistroInternado implements ActionListener {
       Internado pInternado = new Internado(fechaInicio,fechaFin, area );
       InternadoBD internadobd = new InternadoBD();
       internadobd.insertarInternado(pInternado);
-
-
   //    Paciente paciente = new Paciente( fecha, tipoSangre, nacionalidad,  
   //            provincia,  canton, distrito,  telefono,  cedula, contrasena, 
   //            nombre,  apellido1, apellido2);
   //    pacienteBD.insertarPaciente(paciente);
     JOptionPane.showMessageDialog(vistaRegistroInternado, "REGISTRADO");    
-  }  
-}
-
-
-
+    }  
+  }
 }

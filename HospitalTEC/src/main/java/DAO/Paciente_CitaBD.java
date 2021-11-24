@@ -5,6 +5,7 @@ import Modelo.Cita;
 import Modelo.Paciente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -23,9 +24,7 @@ public class Paciente_CitaBD {
     this.paciente = paciente;
   }
   
-  
-  public void insertarPaciente_Cita(Cita pCita,Paciente pPaciente ){
-    
+  public void insertarPaciente_Cita(Cita pCita,Paciente pPaciente ){  
     try{
         
       Connection con = conexion.getConexion();
@@ -37,6 +36,26 @@ public class Paciente_CitaBD {
       //JOptionPane.showMessageDialog(null, "Registro de usuario Cita.");
     }catch(SQLException e){
       JOptionPane.showMessageDialog(null, e.toString());
+    }
+  }
+  
+  /*
+   * Método para consultar las cédulas de pacientes con citas registradas
+   * @return un ResultSet con la información de las cedulas en la base de datos
+   */
+  public ResultSet consultarCitasRegistradas(){
+    PreparedStatement ps;
+    ResultSet rs;
+    try{
+      Connection con = conexion.getConexion();
+      ps = con.prepareStatement("SELECT Cita.IdCita, IdPaciente FROM Cita, "
+              + "Paciente_Cita WHERE Cita.IdCita = Paciente_Cita.IdCita AND "
+              + "estado = 'REGISTRADA' ORDER BY (IdCita)");
+      rs = ps.executeQuery();
+      return rs;
+    }catch(SQLException e){
+      JOptionPane.showMessageDialog(null, e.toString());
+      return null;
     }
   }
 }
