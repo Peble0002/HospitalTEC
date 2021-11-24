@@ -175,31 +175,31 @@ public class VistaPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnCitasAsociadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCitasAsociadasActionPerformed
-      CitasAsociadasPaciente CAP = new CitasAsociadasPaciente();
-      CAP.setVisible(true);
-
-      this.dispose();
+//      CitasAsociadasPaciente CAP = new CitasAsociadasPaciente();
+//      CAP.setVisible(true);
+//
+//      this.dispose();
     }//GEN-LAST:event_btnCitasAsociadasActionPerformed
 
     private void btnDiagnosticosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosticosActionPerformed
-      DiagnosticosAsociadosPaciente DAP = new DiagnosticosAsociadosPaciente();
-      DAP.setVisible(true);
-
-      this.dispose();
+//      DiagnosticosAsociadosPaciente DAP = new DiagnosticosAsociadosPaciente();
+//      DAP.setVisible(true);
+//
+//      this.dispose();
     }//GEN-LAST:event_btnDiagnosticosActionPerformed
 
     private void btnTratamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTratamientosActionPerformed
-      TratamientosAsociadosPaciente TAP = new TratamientosAsociadosPaciente();
-      TAP.setVisible(true);
-
-      this.dispose(); 
+//      TratamientosAsociadosPaciente TAP = new TratamientosAsociadosPaciente();
+//      TAP.setVisible(true);
+//
+//      this.dispose(); 
     }//GEN-LAST:event_btnTratamientosActionPerformed
 
     private void btnHospitalizacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalizacionesActionPerformed
-      HospitalizacionesAsociadasPaciente HAP = new HospitalizacionesAsociadasPaciente();
-      HAP.setVisible(true);
-
-      this.dispose();
+//      HospitalizacionesAsociadasPaciente HAP = new HospitalizacionesAsociadasPaciente();
+//      HAP.setVisible(true);
+//
+//      this.dispose();
     }//GEN-LAST:event_btnHospitalizacionesActionPerformed
 
     /**

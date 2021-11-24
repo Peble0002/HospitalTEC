@@ -44,6 +44,10 @@ public class ControladorVistaEnfermero implements ActionListener{
           controladorAsignar.vistaAsignarCita.setVisible(true);
           break;
         case "Detalle hospitalizaciones":
+         DetalleHospitalizacionSistema DHS = new DetalleHospitalizacionSistema();
+          ControladorDetallesHospitalizacion vistaDetalleHospitalizacionSistema = new ControladorDetallesHospitalizacion(usuario, DHS);
+          vistaDetalleHospitalizacionSistema.vistaDetalleHospitalizacionSistema.setVisible(true);
+          vistaEnfermero.dispose();
           break;
         case "Cancelar cita":
           CancelarCita CC = new CancelarCita();
@@ -52,10 +56,21 @@ public class ControladorVistaEnfermero implements ActionListener{
           vistaEnfermero.dispose();
           break;
         case "Citas registradas":
-          break;
+           CitasSistema CS = new CitasSistema();
+           ControladorCitasRegistradas CCR = new ControladorCitasRegistradas(usuario, CS);
+           CCR.vistaCitas.setVisible(true);
+           vistaEnfermero.dispose();
+           break;
         case "Diagnósticos":
+          DiagnosticosSistema DS = new DiagnosticosSistema();
+          ControladorDiagnostico controladorDiagnostico = new ControladorDiagnostico(usuario, DS);
+          controladorDiagnostico.vistaDiagnosticosSistema.setVisible(true);
+          vistaEnfermero.dispose();
           break;
         case "Tratamientos":
+          TratamientosSistema TS = new TratamientosSistema();
+          TS.setVisible(true);
+          vistaEnfermero.dispose();
           break;
         case "Cantidad de citas":
           break;

@@ -48,15 +48,23 @@ public class ControladorVistaDoctor implements ActionListener {
           controladorAsignar.vistaAsignarCita.setVisible(true);
           break;
         case "Detalle hospitalizaciones":
+          DetalleHospitalizacionSistema DHS = new DetalleHospitalizacionSistema();
+          ControladorDetallesHospitalizacion vistaDetalleHospitalizacionSistema = new ControladorDetallesHospitalizacion(usuario, DHS);
+          vistaDetalleHospitalizacionSistema.vistaDetalleHospitalizacionSistema.setVisible(true);
+          vistaDoctor.dispose();
           break;
         case "Cancelar cita":
           CancelarCita CC = new CancelarCita();
           ControladorCancelarCita controladorCancelar = new ControladorCancelarCita(CC, this.usuario);
           controladorCancelar.vistaCanceltarCita.setVisible(true);
           vistaDoctor.dispose();
-
           break;
         case "Citas registradas":
+          CitasSistema CS = new CitasSistema();
+          ControladorCitasRegistradas CCR = new ControladorCitasRegistradas(usuario, CS);
+          CCR.vistaCitas.setVisible(true);
+          vistaDoctor.dispose(); 
+          
           break;
         case "Atender cita":
           AtenderCita AC = new AtenderCita();
@@ -65,8 +73,16 @@ public class ControladorVistaDoctor implements ActionListener {
           vistaDoctor.dispose();
           break;
         case "Diagnósticos":
+          DiagnosticosSistema DS = new DiagnosticosSistema();
+          ControladorDiagnostico controladorDiagnostico = new ControladorDiagnostico(usuario, DS);
+          controladorDiagnostico.vistaDiagnosticosSistema.setVisible(true);
+          vistaDoctor.dispose();
           break;
         case "Tratamientos":
+          TratamientosSistema TS = new TratamientosSistema();
+          TS.setVisible(true);
+          //FaltaControlador
+          vistaDoctor.dispose();
           break;
         case "Cantidad de citas":
           break;
@@ -75,8 +91,16 @@ public class ControladorVistaDoctor implements ActionListener {
         case "Cantidad de tratamientos":
           break;
         case "Seguimiento Internado":
+          RegistroSeguimientoInternado RSI = new RegistroSeguimientoInternado();
+          RSI.setVisible(true);
+          //faltacontrolador
+          vistaDoctor.dispose();
           break;
         case "Registrar Diágnosticos":
+          RegistrarCatalogoDiagnosticos RCD = new RegistrarCatalogoDiagnosticos();
+          //FaltaControlador
+          RCD.setVisible(true);
+          vistaDoctor.dispose();
           break;
         case "Volver":
             Principal P = new Principal();

@@ -42,6 +42,10 @@ public class ControladorVistaSecretario implements ActionListener{
           vistaSecretario.dispose();
           break;
         case "Hospitalizaciones registradas":
+           HospitalizacionesSistema HS = new HospitalizacionesSistema();
+           ControladorHospitalizacionesRegistradas CHR =new ControladorHospitalizacionesRegistradas(HS, usuario);
+           CHR.vistahospitalizacionesSistema.setVisible(true);
+           vistaSecretario.dispose();
           break;
         case "Cancelar cita":
           CancelarCita CC = new CancelarCita();
@@ -50,6 +54,10 @@ public class ControladorVistaSecretario implements ActionListener{
           vistaSecretario.dispose();
           break;
         case "Citas registradas":
+          CitasSistema CS = new CitasSistema();
+          ControladorCitasRegistradas CCR = new ControladorCitasRegistradas(usuario, CS);
+          CCR.vistaCitas.setVisible(true);
+          vistaSecretario.dispose();
           break;
         case "Volver":
             Principal P = new Principal();

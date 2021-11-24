@@ -49,14 +49,29 @@ public class ControladorVistaPaciente implements ActionListener {
             vistaPacientes.dispose();
             break;
           case "Citas asociadas":
+             CitasAsociadasPaciente CAP = new CitasAsociadasPaciente();
+             CAP.setVisible(true);
+             //FaltaControlado
+             vistaPacientes.dispose();
             break;
           case "Diagnósticos":
+            DiagnosticosAsociadosPaciente DAP = new DiagnosticosAsociadosPaciente();
+            DAP.setVisible(true);
+            //Falta Controlador
+            vistaPacientes.dispose();
             break;
           case "Tratamientos":
+            TratamientosAsociadosPaciente TAP = new TratamientosAsociadosPaciente();
+            TAP.setVisible(true);
+            //FaltaControlador
+            vistaPacientes.dispose(); 
             break;
           case "Hospitalizaciones":
-            break;
-            
+            HospitalizacionesAsociadasPaciente HAP = new HospitalizacionesAsociadasPaciente();
+            HAP.setVisible(true);
+//FaltaContolador
+            vistaPacientes.dispose();
+            break;  
         case "Volver":
             Principal P = new Principal();
             InicioSesion IS = new InicioSesion(P);

@@ -23,7 +23,6 @@ public class ControladorAtenderCita implements ActionListener {
     usuario = pUsuario;
     cargarComboBoxCitasRegistradas();
     this.vistaAtenderCita.btnInternar.addActionListener(this);
-    this.vistaAtenderCita.btnRegistrarBitacora.addActionListener(this);
     this.vistaAtenderCita.btnRegistrarDiagnostico.addActionListener(this);
     this.vistaAtenderCita.btnVolver.addActionListener(this);
     
