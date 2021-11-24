@@ -462,4 +462,101 @@ SELECT CDi.NombreDiagnostico FROM Cita C
 	JOIN CatalogoDiagnosticos CDi ON CDi.IdDiagnostico = CD.IdDiagnostico
 		WHERE idPaciente = '305110992'
 
-SELECT Cita.IdCita FROM Cita, Paciente_Cita WHERE Cita.IdCita = Paciente_Cita.IdCita AND estado = 'REGISTRADA' AND Paciente_Cita.idPaciente = '305110992' ORDER BY (IdCita)
+SELECT IdBitacora FROM Bitacora ORDER BY (IdBitacora) DESC
+
+---CONSULTA 1 DE PACIENTE
+SELECT Cita.IdCita, fecha, hora, observaciones, estado, especialidad, correo 
+	FROM Cita INNER JOIN Paciente_Cita ON Cita.IdCita = Paciente_Cita.IdCita 
+		WHERE idPaciente = '305110992'
+---FILTROS
+AND fecha >= '2021-08-21'
+AND fecha <= '2021-08-21'
+AND estado = 'Registrada' 
+AND especialidad LIKE '%Medicina general%'
+
+---CONSULTA 2 DE PACIENTE
+SELECT CatalogoDiagnosticos.IdDiagnostico, CatalogoDiagnosticos.NombreDiagnostico 
+	FROM Cita INNER JOIN Paciente_Cita ON Cita.IdCita = Paciente_Cita.IdCita 
+		INNER JOIN Cita_Diagnostico ON Cita.IdCita = Cita_Diagnostico.IdCita
+			INNER JOIN CatalogoDiagnosticos ON Cita_Diagnostico.IdDiagnostico = CatalogoDiagnosticos.IdDiagnostico
+				WHERE idPaciente = '305110992'
+---FILTROS
+AND fecha >= '2021-08-21'
+AND fecha <= '2021-08-21'
+AND Nivel = 'Grave' 
+AND NombreDiagnostico LIKE '%Gastroenteritis%'
+
+---CONSULTA 3 DE PACIENTE
+SELECT * 
+	FROM Cita INNER JOIN Paciente_Cita ON Cita.IdCita = Paciente_Cita.IdCita 
+		INNER JOIN Cita_Diagnostico ON Cita.IdCita = Cita_Diagnostico.IdCita
+			INNER JOIN CatalogoTratamientos ON Cita_Diagnostico.IdTratamiento = CatalogoTratamientos.IdTratamiento
+				WHERE idPaciente = '305110992'
+---FILTROS
+AND fecha >= '2021-08-21'
+AND fecha <= '2021-08-21'
+AND CatalogoTratamientos.Nombre LIKE '%Cirugía gastrointestinal%'
+AND Cita_Diagnostico.Dosis = '%N/A%'
+
+---CONSULTA 4 DE PACIENTE
+SELECT fechaInicio, fechaFin, nombreCentro, (Nombre + ' ' + Apellido1 + ' ' + Apellido2) AS nombreCompleto 
+	FROM Internado INNER JOIN Internado_Centro ON Internado.codInternado = Internado_Centro.codInternado
+		INNER JOIN CentroAtencion ON CentroAtencion.Codigo = Internado_Centro.Codigo
+			INNER JOIN Internado_Doctor ON Internado.codInternado = Internado_Doctor.codInternado
+				INNER JOIN Usuario ON Internado_Doctor.IDFuncionario = Usuario.idUsuario
+					WHERE IdInternado = '305110992'
+---NO REQUIERE DE FILTROS.
+
+---CONSULTA 1 DE DOCTOR
+SELECT Cita.IdCita, fecha, (Nombre + ' ' + Apellido1 + ' ' + Apellido2) AS nombreCompleto, hora, observaciones, estado, especialidad, correo 
+	FROM Cita INNER JOIN Paciente_Cita ON Cita.IdCita = Paciente_Cita.IdCita
+		INNER JOIN Usuario ON Paciente_Cita.idPaciente = Usuario.idUsuario
+--- EL WHERE DEBE SER AGREGADO AL STRING EN EL MOMENTO EN QUE SE ENCUENTRE UN FILTRO ACTIVO			
+WHERE fecha >= '2021-08-21'
+AND fecha <= '2021-08-21'
+AND estado = 'Registrada'
+AND Nombre LIKE '%Aarón%' OR Apellido1 LIKE '%Soto%' OR Apellido2 LIKE '%Cortés%'
+
+---CONSULTA 2 DE DOCTOR
+SELECT CatalogoDiagnosticos.IdDiagnostico, CatalogoDiagnosticos.NombreDiagnostico 
+	FROM Cita INNER JOIN Paciente_Cita ON Cita.IdCita = Paciente_Cita.IdCita 
+		INNER JOIN Cita_Diagnostico ON Cita.IdCita = Cita_Diagnostico.IdCita
+			INNER JOIN CatalogoDiagnosticos ON Cita_Diagnostico.IdDiagnostico = CatalogoDiagnosticos.IdDiagnostico
+				WHERE idPaciente = '305110992'
+---FILTROS
+AND fecha >= '2021-08-21'
+AND fecha <= '2021-08-21'
+AND Nivel = 'Grave' 
+AND NombreDiagnostico LIKE '%Gastroenteritis%'
+
+---CONSULTA 3 DE DOCTOR
+SELECT * 
+	FROM Cita INNER JOIN Paciente_Cita ON Cita.IdCita = Paciente_Cita.IdCita 
+		INNER JOIN Cita_Diagnostico ON Cita.IdCita = Cita_Diagnostico.IdCita
+			INNER JOIN CatalogoTratamientos ON Cita_Diagnostico.IdTratamiento = CatalogoTratamientos.IdTratamiento
+				WHERE idPaciente = '305110992'
+---FILTROS
+AND fecha >= '2021-08-21'
+AND fecha <= '2021-08-21'
+AND Cita_Diagnostico.Dosis = '%N/A%'
+AND CatalogoTratamientos.Nombre LIKE '%Cirugía gastrointestinal%'
+
+---CONSULTA 4 DE DOCTOR
+SELECT COUNT(Cita.IdCita) FROM Cita
+---FILTROS
+WHERE fecha >= '2021-08-21'
+AND fecha <= '2021-08-21'
+AND estado = 'Registrada' 
+AND especialidad LIKE '%Medicina general%'
+
+---CONSULTA 5 DE DOCTOR
+SELECT COUNT(IdDiagnostico)	FROM CatalogoDiagnosticos ---CONTEO GENERAL
+
+SELECT COUNT(CatalogoDiagnosticos.IdDiagnostico) AS TotalDiagnosticos
+	FROM CatalogoDiagnosticos INNER JOIN Cita_Diagnostico ON CatalogoDiagnosticos.IdDiagnostico = Cita_Diagnostico.IdDiagnostico
+		INNER JOIN Cita ON Cita_Diagnostico.IdCita = Cita.IdCita
+			INNER JOIN Paciente_Cita
+			WHERE CatalogoDiagnosticos.IdDiagnostico = Cita_Diagnostico.IdDiagnostico
+---FILTROS
+AND Nivel = 'Grave'
+AND Cita.especialidad = 'Medicina General'
