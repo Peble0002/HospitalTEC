@@ -52,8 +52,8 @@ public class CitaBD {
   public void actualizarCita(int pIdCita, String pEstado){ //REVISAR NO SE HAN HECHO UPDATES HASTA EL MOMENTO.
     try{
       Connection con = conexion.getConexion();
-      PreparedStatement ps = con.prepareStatement("UPDATE Cita SET"
-              + "estado = " + pEstado + "WHERE IdCita = " + pIdCita);
+      PreparedStatement ps = con.prepareStatement("UPDATE Cita SET "
+              + "estado = '" + pEstado + "' WHERE IdCita = " + pIdCita);
       ps.executeUpdate();
       JOptionPane.showMessageDialog(null, "Actualizacion de cita completado.");
     }catch(SQLException e){

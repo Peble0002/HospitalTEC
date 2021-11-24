@@ -15,6 +15,7 @@ import Vista.VistaEnfermero;
 import Vista.VistaPaciente;
 import Vista.VistaSecretario;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,7 +27,7 @@ import javax.swing.JOptionPane;
  *
  * @author pablo
  */
-public class ControladorCancelarCita {
+public class ControladorCancelarCita implements ActionListener{
   public CancelarCita vistaCanceltarCita;
   private final String usuario;
 
@@ -35,6 +36,11 @@ public class ControladorCancelarCita {
   public ControladorCancelarCita(CancelarCita vistaCanceltarCita, String pUsuario) {
     this.vistaCanceltarCita = vistaCanceltarCita;
     usuario = pUsuario;
+    
+    this.vistaCanceltarCita.btnCancelar.addActionListener(this);
+    this.vistaCanceltarCita.btnVolver.addActionListener(this);
+    this.vistaCanceltarCita.btBuscarCitas.addActionListener(this);
+   
   }
   
   /*  @Override*/
