@@ -247,6 +247,10 @@ public class SolicitarCita extends javax.swing.JFrame {
       this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
+    
+    public boolean datosCorrectos(){
+      return !(tbHora1.getText().equals("")|| tbObservacion.getText().equals(""));
+  }
     /**
      * @param args the command line arguments
      */

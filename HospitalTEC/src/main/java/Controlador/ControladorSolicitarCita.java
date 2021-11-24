@@ -62,45 +62,51 @@ public class ControladorSolicitarCita implements ActionListener{
     }
     
     public void registroCita(){
-      CitaBD conexionCita = new CitaBD();
-      Paciente_CitaBD conexionPC = new Paciente_CitaBD();
-      String dia = (String) vistaSolicitarCita.cbDia.getSelectedItem();
-      String mes = (String) vistaSolicitarCita.cbMes.getSelectedItem();
-      String ano = (String) vistaSolicitarCita.cbAno.getSelectedItem();
-      
-      int pDia = Integer.parseInt(dia);
-      int pMes = Integer.parseInt(mes);
-      int pAno = Integer.parseInt(ano);
-      pAno = pAno-1900;
-      pMes = pMes-1;
-      Date fecha = new Date(pAno,pMes,pDia);
-      
-      String horas = (String) vistaSolicitarCita.cbHora.getSelectedItem();
-      String minutos = (String) vistaSolicitarCita.cbMinutos.getSelectedItem();
-      
-      int pHoras = Integer.parseInt(horas);
-      int pMinutos = Integer.parseInt(minutos);
-      
-      LocalTime hora = LocalTime.of(pHoras, pMinutos);
-      
-      String observacion = (String) vistaSolicitarCita.tbObservacion.getText();
-      String especialidad = (String) vistaSolicitarCita.cbAreaCita.getSelectedItem();
-      
-      Cita citaNueva = new Cita(fecha, hora, observacion, especialidad);
-      conexionCita.insertarCita(citaNueva, "Registrada");
-      int IdCita = conexionCita.consultarIDCitaReciente();
-      citaNueva.setIdCita(IdCita);
-      conexionPC.insertarPaciente_Cita(citaNueva, this.usuario);
-      LocalDate ahora = LocalDate.now();
-      Date fechaHoy = Date.valueOf(ahora);
-      LocalTime horaHoy = LocalTime.now();
-          
-      Bitacora bitacora = new Bitacora(IdCita,fechaHoy , horaHoy,this.usuario);
-      BitacoraBD bitacorabd = new BitacoraBD();
-      bitacorabd.insertarBitacora(bitacora);
-      int idBitacora = bitacorabd.consultarIDBitacoraReciente();
-      bitacora.setIdBitacora(idBitacora);
-      Bitacora_CitaBD bitacora_Cita = new Bitacora_CitaBD();
-      bitacora_Cita.insertarBitacoraCita(bitacora, citaNueva);
-    }
+      if(vistaSolicitarCita.datosCorrectos() == false){
+      JOptionPane.showMessageDialog(vistaSolicitarCita, "Alguno de los "
+              + "espacios de datos está vacío.");
+      }
+      else{
+        CitaBD conexionCita = new CitaBD();
+        Paciente_CitaBD conexionPC = new Paciente_CitaBD();
+        String dia = (String) vistaSolicitarCita.cbDia.getSelectedItem();
+        String mes = (String) vistaSolicitarCita.cbMes.getSelectedItem();
+        String ano = (String) vistaSolicitarCita.cbAno.getSelectedItem();
+
+        int pDia = Integer.parseInt(dia);
+        int pMes = Integer.parseInt(mes);
+        int pAno = Integer.parseInt(ano);
+        pAno = pAno-1900;
+        pMes = pMes-1;
+        Date fecha = new Date(pAno,pMes,pDia);
+
+        String horas = (String) vistaSolicitarCita.cbHora.getSelectedItem();
+        String minutos = (String) vistaSolicitarCita.cbMinutos.getSelectedItem();
+
+        int pHoras = Integer.parseInt(horas);
+        int pMinutos = Integer.parseInt(minutos);
+
+        LocalTime hora = LocalTime.of(pHoras, pMinutos);
+
+        String observacion = (String) vistaSolicitarCita.tbObservacion.getText();
+        String especialidad = (String) vistaSolicitarCita.cbAreaCita.getSelectedItem();
+
+        Cita citaNueva = new Cita(fecha, hora, observacion, especialidad);
+        conexionCita.insertarCita(citaNueva, "Registrada");
+        int IdCita = conexionCita.consultarIDCitaReciente();
+        citaNueva.setIdCita(IdCita);
+        conexionPC.insertarPaciente_Cita(citaNueva, this.usuario);
+        LocalDate ahora = LocalDate.now();
+        Date fechaHoy = Date.valueOf(ahora);
+        LocalTime horaHoy = LocalTime.now();
+
+        Bitacora bitacora = new Bitacora(IdCita,fechaHoy , horaHoy,this.usuario);
+        BitacoraBD bitacorabd = new BitacoraBD();
+        bitacorabd.insertarBitacora(bitacora);
+        int idBitacora = bitacorabd.consultarIDBitacoraReciente();
+        bitacora.setIdBitacora(idBitacora);
+        Bitacora_CitaBD bitacora_Cita = new Bitacora_CitaBD();
+        bitacora_Cita.insertarBitacoraCita(bitacora, citaNueva);
+      }
+  }
 }
