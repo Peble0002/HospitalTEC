@@ -473,10 +473,7 @@ public class RegistroPacientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistraVacunasActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-//      Principal nPrincipal = new Principal();
-//      nPrincipal.setVisible(true);
-//
-//      this.dispose();
+
     }//GEN-LAST:event_btnVolverActionPerformed
 
   private void btnRegistrarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPacienteActionPerformed

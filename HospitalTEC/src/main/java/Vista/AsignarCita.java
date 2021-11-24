@@ -122,10 +122,7 @@ public class AsignarCita extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-      VistaPaciente VP = new VistaPaciente();
-      VP.setVisible(true);
-      
-      this.dispose();
+     
     }//GEN-LAST:event_btnVolverActionPerformed
 
   private void btnAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarActionPerformed

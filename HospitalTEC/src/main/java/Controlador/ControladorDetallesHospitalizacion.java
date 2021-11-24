@@ -5,7 +5,10 @@
  */
 package Controlador;
 
+import DAO.UsuarioBD;
 import Vista.DetalleHospitalizacionSistema;
+import Vista.VistaDoctor;
+import Vista.VistaEnfermero;
 import Vista.VistaPaciente;
 import Vista.VistaSecretario;
 import java.awt.event.ActionEvent;
@@ -35,15 +38,37 @@ public class ControladorDetallesHospitalizacion implements ActionListener{
       case "Buscar":
          //FUNCION
       case "Volver":
-          VistaSecretario VS = new VistaSecretario();
-          ControladorVistaSecretario CVP = new ControladorVistaSecretario(VS,usuario);
-          CVP.vistaSecretario.setVisible(true);
-          vistaDetalleHospitalizacionSistema.dispose();
+          asignarVentanaUsuario();
           break;
       default:
         break;       
     }
   }
+  
+   public void asignarVentanaUsuario(){
+    UsuarioBD usuarioBD = new UsuarioBD();  
+      int tipoUsuario = usuarioBD.retonarTipo(usuario);
+      switch(tipoUsuario){
+        case 1:
+          VistaEnfermero VE = new VistaEnfermero();
+          ControladorVistaEnfermero CVE = new ControladorVistaEnfermero(VE,usuario);
+          CVE.vistaEnfermero.setVisible(true);
+          vistaDetalleHospitalizacionSistema.dispose();
+          break;
+        case 3:
+          VistaDoctor VD = new VistaDoctor();
+          ControladorVistaDoctor CVD = new ControladorVistaDoctor(VD,usuario);
+          CVD.vistaDoctor.setVisible(true);
+          vistaDetalleHospitalizacionSistema.dispose();
+          break;
+        default:
+          JOptionPane.showMessageDialog(vistaDetalleHospitalizacionSistema, "Ha ocurrido algo, por favor intent"
+                  + "elo a iniciar sesión nuevamente.");
+          break;
+    }
+  }
+  
+  
   
   
 }

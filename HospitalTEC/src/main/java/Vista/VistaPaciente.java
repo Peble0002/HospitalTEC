@@ -154,52 +154,31 @@ public class VistaPaciente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCitaActionPerformed
-//        CancelarCita CC = new CancelarCita();
-//        CC.setVisible(true);
-//
-//        this.dispose();
+
     }//GEN-LAST:event_btnCancelarCitaActionPerformed
 
     private void btnSolicitarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitarCitaActionPerformed
-//        SolicitarCita SC = new SolicitarCita();
-//        SC.setVisible(true);
-//
-//        this.dispose();
+
     }//GEN-LAST:event_btnSolicitarCitaActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-//      Principal P = new Principal();
-//      P.setVisible(true);
-//
-//      this.dispose();
+
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnCitasAsociadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCitasAsociadasActionPerformed
-//      CitasAsociadasPaciente CAP = new CitasAsociadasPaciente();
-//      CAP.setVisible(true);
-//
-//      this.dispose();
+
     }//GEN-LAST:event_btnCitasAsociadasActionPerformed
 
     private void btnDiagnosticosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosticosActionPerformed
-//      DiagnosticosAsociadosPaciente DAP = new DiagnosticosAsociadosPaciente();
-//      DAP.setVisible(true);
-//
-//      this.dispose();
+
     }//GEN-LAST:event_btnDiagnosticosActionPerformed
 
     private void btnTratamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTratamientosActionPerformed
-//      TratamientosAsociadosPaciente TAP = new TratamientosAsociadosPaciente();
-//      TAP.setVisible(true);
-//
-//      this.dispose(); 
+
     }//GEN-LAST:event_btnTratamientosActionPerformed
 
     private void btnHospitalizacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalizacionesActionPerformed
-//      HospitalizacionesAsociadasPaciente HAP = new HospitalizacionesAsociadasPaciente();
-//      HAP.setVisible(true);
-//
-//      this.dispose();
+
     }//GEN-LAST:event_btnHospitalizacionesActionPerformed
 
     /**

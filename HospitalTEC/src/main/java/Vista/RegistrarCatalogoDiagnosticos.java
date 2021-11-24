@@ -101,10 +101,7 @@ public class RegistrarCatalogoDiagnosticos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-      VistaDoctor VD = new VistaDoctor();
-      VD.setVisible(true);
       
-      this.dispose(); 
     }//GEN-LAST:event_btnVolverActionPerformed
 
     /**

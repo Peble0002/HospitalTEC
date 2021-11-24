@@ -143,10 +143,7 @@ public class VistaSecretario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCitaActionPerformed
-//      CancelarCita CCS = new CancelarCita();
-//      CCS.setVisible(true);
-//
-//      this.dispose();
+
     }//GEN-LAST:event_btnCancelarCitaActionPerformed
 
     private void btnAsignarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarCitaActionPerformed
@@ -154,31 +151,19 @@ public class VistaSecretario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAsignarCitaActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-//        Principal P = new Principal();
-//        P.setVisible(true);
-//
-//        this.dispose();
+
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnCitasRegistradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCitasRegistradasActionPerformed
-//      CitasSistema CS = new CitasSistema();
-//      CS.setVisible(true);
-//
-//      this.dispose();
+
     }//GEN-LAST:event_btnCitasRegistradasActionPerformed
 
     private void btnHospitalizacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalizacionesActionPerformed
-//      HospitalizacionesSistema HS = new HospitalizacionesSistema();
-//      HS.setVisible(true);
-//
-//      this.dispose();
+
     }//GEN-LAST:event_btnHospitalizacionesActionPerformed
 
     private void btnRATrabajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRATrabajoActionPerformed
-//        RegistroAreaTrabajo RAT = new RegistroAreaTrabajo();
-//        RAT.setVisible(true);
-//
-//        this.dispose();
+
     }//GEN-LAST:event_btnRATrabajoActionPerformed
 
     /**

@@ -127,59 +127,14 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-//      RegistroPacientes RP = new RegistroPacientes();
-//      RP.setVisible(true);
-//      
-//      this.dispose();
+
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
   private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
-//    if(datosCorrectos() == false){
-//      JOptionPane.showMessageDialog(null, "Alguno de los espacios de datos está"
-//              + " vacío.");
-//    }
-//    else{
-//      if(usuario.existeUsuario(tbUsuario.getText())){
-//        if(usuario.validarIngreso(tbUsuario.getText(), tbContrasena.getText())){
-//          asignarVentanaUsuario();
-//        }else{
-//          JOptionPane.showMessageDialog(null, "Contraseña Incorrecta");
-//        }
-//      }else{
-//        JOptionPane.showMessageDialog(null, "El usuario ingresado no existe");
-//      }
-//    }
+
   }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
-//  public void asignarVentanaUsuario(){
-//    int tipoUsuario = usuario.retonarTipo(tbUsuario.getText(), tbContrasena.getText());
-//    switch(tipoUsuario){
-//      case 1:
-//        VistaPaciente VP = new VistaPaciente();
-//        VP.setVisible(true);
-//        this.dispose();
-//        break;
-//      case 2:
-//        VistaSecretario VS = new VistaSecretario();
-//        VS.setVisible(true);
-//        this.dispose();
-//        break;
-//      case 3:
-//        VistaEnfermero VE = new VistaEnfermero();
-//        VE.setVisible(true);
-//        this.dispose();
-//        break;
-//      case 4:
-//        VistaDoctor VD = new VistaDoctor();
-//        VD.setVisible(true);
-//        this.dispose(); 
-//        break;
-//      default:
-//        JOptionPane.showMessageDialog(null, "Ha ocurrido algo, por favor intent"
-//                + "elo a iniciar sesión nuevamente.");
-//        break;
-//    } 
-//  }
+
   
   /**
    * @param args the command line arguments

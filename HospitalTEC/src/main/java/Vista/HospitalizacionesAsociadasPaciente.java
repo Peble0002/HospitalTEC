@@ -36,7 +36,7 @@ public class HospitalizacionesAsociadasPaciente extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 153, 153));
-        jLabel5.setText("Hopitalizaciones Asociados");
+        jLabel5.setText("Hopitalizaciones Asociadas");
 
         btnBuscar.setBackground(new java.awt.Color(0, 102, 102));
         btnBuscar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -105,10 +105,7 @@ public class HospitalizacionesAsociadasPaciente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-      VistaPaciente VP = new VistaPaciente();
-      VP.setVisible(true);
-
-      this.dispose();
+     
     }//GEN-LAST:event_btnVolverActionPerformed
 
     /**

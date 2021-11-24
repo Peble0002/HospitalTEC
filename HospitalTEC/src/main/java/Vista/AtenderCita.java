@@ -125,24 +125,15 @@ public class AtenderCita extends javax.swing.JFrame {
   }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarDiagnosticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarDiagnosticoActionPerformed
-//      RegistrarDiagnosticoPaciente RDP = new RegistrarDiagnosticoPaciente();
-//      RDP.setVisible(true);
-//      
-//      this.dispose();
+
     }//GEN-LAST:event_btnRegistrarDiagnosticoActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-//      VistaDoctor VD = new VistaDoctor();
-//      VD.setVisible(true);
-//      
-//      this.dispose();
+
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnInternarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInternarActionPerformed
-//      RegistroInternado RI = new RegistroInternado();
-//      RI.setVisible(true);
-//      
-//      this.dispose();
+
     }//GEN-LAST:event_btnInternarActionPerformed
 
     /**

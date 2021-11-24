@@ -19,9 +19,10 @@ public class ControladorSolicitarCita implements ActionListener{
     public String usuario;
     
     public ControladorSolicitarCita(SolicitarCita pVista, String pUsuario){
-      cargarComboBoxAreaTrabajo();
+      
       vistaSolicitarCita = pVista;
       usuario = pUsuario;
+      cargarComboBoxAreaTrabajo();
     
       this.vistaSolicitarCita.btnSolicitarCita.addActionListener(this);
       this.vistaSolicitarCita.btnVolver.addActionListener(this);
