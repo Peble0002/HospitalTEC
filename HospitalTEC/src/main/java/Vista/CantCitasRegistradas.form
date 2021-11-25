@@ -682,12 +682,13 @@
           <Font name="Tahoma" size="14" style="1"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="5">
-            <StringItem index="0" value="Registrada"/>
-            <StringItem index="1" value="Cancelada por paciente"/>
-            <StringItem index="2" value="Cancelada por centro m&#xe9;dico"/>
-            <StringItem index="3" value="Asignada"/>
-            <StringItem index="4" value="Realizada"/>
+          <StringArray count="6">
+            <StringItem index="0" value="-"/>
+            <StringItem index="1" value="Registrada"/>
+            <StringItem index="2" value="Cancelada por paciente"/>
+            <StringItem index="3" value="Cancelada por centro m&#xe9;dico"/>
+            <StringItem index="4" value="Asignada"/>
+            <StringItem index="5" value="Realizada"/>
           </StringArray>
         </Property>
       </Properties>

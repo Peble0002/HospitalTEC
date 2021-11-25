@@ -47,8 +47,46 @@ public class ControladorCantDiagnosticos implements ActionListener {
       default:
           break;       
   }
-  
 }
+   
+   public String cargarQuery(String nivel, String paciente, String area){
+    String consulta = "SELECT COUNT(CatalogoDiagnosticos.IdDiagnostico) AS "
+            + "TotalDiagnosticos FROM CatalogoDiagnosticos INNER JOIN "
+            + "Cita_Diagnostico ON CatalogoDiagnosticos.IdDiagnostico = "
+            + "Cita_Diagnostico.IdDiagnostico INNER JOIN Cita ON "
+            + "Cita_Diagnostico.IdCita = Cita.IdCita INNER JOIN Paciente_Cita "
+            + "ON Paciente_Cita.IdCita = Cita.IdCita WHERE "
+            + "CatalogoDiagnosticos.IdDiagnostico = "
+            + "Cita_Diagnostico.IdDiagnostico";
+    
+    
+    return consulta;
+  }
+   
+  public String cargarQueryGeneral(){
+    String consulta = "SELECT COUNT(IdDiagnostico)	FROM CatalogoDiagnosticos";
+    return consulta;
+  }
+  
+  private void cargarResultado() throws SQLException{
+    String nivel = (String) vistaCantDiagnosticos.cbNivel.getSelectedItem();
+    String paciente = (String) vistaCantDiagnosticos.cbPacientes.getSelectedItem();
+    String area = (String) vistaCantDiagnosticos.cbAreaCita.getSelectedItem();
+    String consulta;
+    
+    if(nivel.equals("-") && area.equals("-") && paciente.equals("-")){
+      consulta = cargarQueryGeneral();  
+    }else{
+      consulta = cargarQuery(nivel, paciente, area);
+    }
+    Conexion conexion = new Conexion();
+    ResultSet rs = conexion.consulta(consulta);
+    rs.next();
+    int cant = rs.getInt("TotalDiagnosticos");
+    String resultado = String.valueOf(cant);
+    
+    vistaCantDiagnosticos.lbCantidad.setText(resultado);
+  }
    
 public void asignarVentanaUsuario(){
     UsuarioBD usuarioBD = new UsuarioBD(); 
@@ -76,6 +114,7 @@ public void asignarVentanaUsuario(){
 private void cargarComboBoxAreaTrabajo(){
       AreaTrabajoBD areaBD = new AreaTrabajoBD();
       ResultSet rs = areaBD.consultarAreasTrabajo();
+      vistaCantDiagnosticos.cbAreaCita.addItem("-");
 
       try{
         while(rs.next()){
@@ -89,6 +128,7 @@ private void cargarComboBoxAreaTrabajo(){
  private void cargarComboBoxPacientes(){
       PacienteBD pacienteBD = new PacienteBD();
       ResultSet rs = pacienteBD.consultarPacientes();
+      vistaCantDiagnosticos.cbPacientes.addItem("-");
 
       try{
         while(rs.next()){

@@ -112,7 +112,7 @@ public class ControladorCitasRegistradas implements ActionListener{
         } 
       }if(!estado.equals("-")){
         if(primerConsulta){
-          consulta += " estado = '%" + estado + "%'";
+          consulta += " estado = '" + estado + "'";
           primerConsulta = false;
         }else{
           consulta += " AND estado = '" + estado + "'";
