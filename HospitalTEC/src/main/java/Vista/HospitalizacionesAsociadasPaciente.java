@@ -47,11 +47,11 @@ public class HospitalizacionesAsociadasPaciente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Codigo del Curso", "Nombre del Curso"
+                "fechaInicio", "fechaFin", "nombreCentro", "nombreCompleto"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
