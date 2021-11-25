@@ -76,41 +76,37 @@ public class ControladorCancelarCita implements ActionListener{
   
   public void asignarVentanaUsuario(){
     UsuarioBD usuarioBD = new UsuarioBD();  
-    if( vistaCanceltarCita.datosCorrectos()==false){
-     JOptionPane.showMessageDialog(vistaCanceltarCita, "Debe ingresar una cedula"); 
-    }else{
-      int tipoUsuario = usuarioBD.retonarTipo(usuario);
-      switch(tipoUsuario){
-        case 1:
-          VistaPaciente VP = new VistaPaciente();
-          ControladorVistaPaciente CVP = new ControladorVistaPaciente(VP,usuario);
-          CVP.vistaPacientes.setVisible(true);
-          vistaCanceltarCita.dispose();
-          break;
-        case 2:
-          VistaSecretario VS = new VistaSecretario();
-          ControladorVistaSecretario CVS = new ControladorVistaSecretario(VS,usuario);
-          CVS.vistaSecretario.setVisible(true);
-          vistaCanceltarCita.dispose();
-          break;
-        case 3:
-          VistaEnfermero VE = new VistaEnfermero();
-          ControladorVistaEnfermero CVE = new ControladorVistaEnfermero(VE,usuario);
-          CVE.vistaEnfermero.setVisible(true);
-          vistaCanceltarCita.dispose();
-          break;
-        case 4:
-          VistaDoctor VD = new VistaDoctor();
-          ControladorVistaDoctor CVD = new ControladorVistaDoctor(VD,usuario);
-          CVD.vistaDoctor.setVisible(true);
-          vistaCanceltarCita.dispose();
-          break;
-        default:
-          JOptionPane.showMessageDialog(vistaCanceltarCita, "Ha ocurrido algo, por favor intent"
-                  + "elo a iniciar sesión nuevamente.");
-          break;
-      } 
-    }
+    int tipoUsuario = usuarioBD.retonarTipo(usuario);
+    switch(tipoUsuario){
+      case 1:
+        VistaPaciente VP = new VistaPaciente();
+        ControladorVistaPaciente CVP = new ControladorVistaPaciente(VP,usuario);
+        CVP.vistaPacientes.setVisible(true);
+        vistaCanceltarCita.dispose();
+        break;
+      case 2:
+        VistaSecretario VS = new VistaSecretario();
+        ControladorVistaSecretario CVS = new ControladorVistaSecretario(VS,usuario);
+        CVS.vistaSecretario.setVisible(true);
+        vistaCanceltarCita.dispose();
+        break;
+      case 3:
+        VistaEnfermero VE = new VistaEnfermero();
+        ControladorVistaEnfermero CVE = new ControladorVistaEnfermero(VE,usuario);
+        CVE.vistaEnfermero.setVisible(true);
+        vistaCanceltarCita.dispose();
+        break;
+      case 4:
+        VistaDoctor VD = new VistaDoctor();
+        ControladorVistaDoctor CVD = new ControladorVistaDoctor(VD,usuario);
+        CVD.vistaDoctor.setVisible(true);
+        vistaCanceltarCita.dispose();
+        break;
+      default:
+        JOptionPane.showMessageDialog(vistaCanceltarCita, "Ha ocurrido algo, por favor intent"
+                + "elo a iniciar sesión nuevamente.");
+        break;
+    } 
   }
   
   

@@ -185,7 +185,8 @@ public class ControladorCitasRegistradas implements ActionListener{
   private void cargarComboBoxAreaTrabajo(){
       AreaTrabajoBD areaBD = new AreaTrabajoBD();
       ResultSet rs = areaBD.consultarAreasTrabajo();
-
+      vistaCitas.cbArea.addItem("-");
+      
       try{
         while(rs.next()){
           vistaCitas.cbArea.addItem(rs.getString("NombreArea"));
