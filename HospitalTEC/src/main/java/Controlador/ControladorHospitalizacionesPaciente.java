@@ -20,15 +20,15 @@ import javax.swing.table.DefaultTableModel;
  * @author pablo
  */
 public class ControladorHospitalizacionesPaciente  implements ActionListener{
-  public HospitalizacionesAsociadasPaciente vistahospitalizacionesSistema;
+  public HospitalizacionesAsociadasPaciente vistaHospitalizacionesAsociadasPaciente;
   String usuario;
 
   public ControladorHospitalizacionesPaciente(HospitalizacionesAsociadasPaciente hospitalizacionesSistema, String usuario) {
-    this.vistahospitalizacionesSistema = hospitalizacionesSistema;
+    this.vistaHospitalizacionesAsociadasPaciente = hospitalizacionesSistema;
     this.usuario = usuario;
     
-    this.vistahospitalizacionesSistema.btnBuscar.addActionListener(this);
-    this.vistahospitalizacionesSistema.btnVolver.addActionListener(this);
+    this.vistaHospitalizacionesAsociadasPaciente.btnBuscar.addActionListener(this);
+    this.vistaHospitalizacionesAsociadasPaciente.btnVolver.addActionListener(this);
   }
   
   @Override
@@ -46,7 +46,7 @@ public class ControladorHospitalizacionesPaciente  implements ActionListener{
           VistaPaciente VP = new VistaPaciente();
           ControladorVistaPaciente CVP = new ControladorVistaPaciente(VP,usuario);
           CVP.vistaPacientes.setVisible(true);
-          vistahospitalizacionesSistema.dispose();
+          vistaHospitalizacionesAsociadasPaciente.dispose();
           break;
       default:
         break;       
@@ -69,7 +69,7 @@ public class ControladorHospitalizacionesPaciente  implements ActionListener{
     
     String consulta = cargarQuery();    
 
-    DefaultTableModel modeloTabla = (DefaultTableModel) vistahospitalizacionesSistema.tablaHospitalizaciones.getModel();
+    DefaultTableModel modeloTabla = (DefaultTableModel) vistaHospitalizacionesAsociadasPaciente.tablaHospitalizaciones.getModel();
     modeloTabla.setRowCount(0);
     
     Conexion conexion = new Conexion();
