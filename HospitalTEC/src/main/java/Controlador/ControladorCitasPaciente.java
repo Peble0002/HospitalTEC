@@ -57,43 +57,54 @@ public class ControladorCitasPaciente implements ActionListener {
     }
   }
   //FALTA
-  public String cargarQuery(){
-    String consulta = "SELECT Cita.IdCita, fecha, hora, observaciones, estado,"
-            +" especialidad, correo"  
-	+ " FROM Cita INNER JOIN Paciente_Cita ON Cita.IdCita = Paciente_Cita.IdCita" 
-		+" WHERE idPaciente = '305110992'";
+  public String cargarQuery(String fechaI, String fechaF, String estado, String area){
+    String consulta = "SELECT Cita.IdCita, fecha, hora, observaciones, estado, "
+            + "especialidad, correo FROM Cita INNER JOIN Paciente_Cita ON "
+            + "Cita.IdCita = Paciente_Cita.IdCita WHERE idPaciente = '" + 
+            usuario + "'";
+    if(fechaI != null){
+      consulta += " AND fecha >= '" + fechaI + "'";
+    }if(fechaF != null){
+      consulta += " AND fecha <= '" + fechaF + "'";
+    }if(!estado.equals("-")){
+      consulta += " AND estado = '" + estado + "'";
+    }if(!area.equals("-")){
+      consulta += " AND especialidad LIKE '%" + area + "%'";
+    }
+    return consulta;
+  }
+  
+  private String validarFecha(String dia, String mes, String ano){
+    if(dia.equals("-") || mes.equals("-") || ano.equals("-")){
+      return null;
+    }else{
+      return ano + "-" + mes + "-" + dia;
+    }
   }
   
   private void cargarTabla() throws SQLException{
     String dia = (String) vistaCitasAsociadasPaciente.cbDiaInicio.getSelectedItem();
     String mes = (String) vistaCitasAsociadasPaciente.cbMesInicio.getSelectedItem();
     String ano = (String) vistaCitasAsociadasPaciente.cbAnoInicio.getSelectedItem();
-    int pDiaInicio = Integer.parseInt(dia);
-    int pMesInicio = Integer.parseInt(mes);
-    int pAnoInicio = Integer.parseInt(ano);
-    pAnoInicio = pAnoInicio-1900;
-    pMesInicio = pMesInicio-1;
-    Date fechaInicio = new Date(pDiaInicio,pMesInicio,pAnoInicio);
+
+    String fechaI = validarFecha(dia, mes, ano);
    
-    dia = (String) vistaCitasAsociadasPaciente.cbDiaFin.getSelectedItem();
-    mes = (String) vistaCitasAsociadasPaciente.cbMesFin.getSelectedItem();
-    ano = (String) vistaCitasAsociadasPaciente.cbAnoFin.getSelectedItem();
-    int pDiaFin = Integer.parseInt(dia);
-    int pMesFin = Integer.parseInt(mes);
-    int pAnoFin = Integer.parseInt(ano);
-    pAnoFin = pAnoFin-1900;
-    pMesFin = pMesFin-1;
-    Date fechaFin = new Date(pDiaFin,pMesFin,pAnoFin);
+    String diaF = (String) vistaCitasAsociadasPaciente.cbDiaFin.getSelectedItem();
+    String mesF = (String) vistaCitasAsociadasPaciente.cbMesFin.getSelectedItem();
+    String anoF = (String) vistaCitasAsociadasPaciente.cbAnoFin.getSelectedItem();
+
+    String fechaF = validarFecha(diaF, mesF, anoF);
 
     String estado = (String) vistaCitasAsociadasPaciente.cbEstado.getSelectedItem();
     String Areas = (String) vistaCitasAsociadasPaciente.cbAreas.getSelectedItem();
     
+    String consulta = cargarQuery(fechaI, fechaF, estado, Areas);    
 
     DefaultTableModel modeloTabla = (DefaultTableModel) vistaCitasAsociadasPaciente.tablaCitasPaciente.getModel();
     modeloTabla.setRowCount(0);
     
     Paciente_CitaBD pacienteBD = new Paciente_CitaBD ();
-    ResultSet rs = pacienteBD.consultarCitasPaciente();
+    ResultSet rs = pacienteBD.consultarCitasPaciente(consulta);
     int columnas = rs.getMetaData().getColumnCount();
 
     try{
@@ -110,18 +121,17 @@ public class ControladorCitasPaciente implements ActionListener {
     }
   }
   
-  private void cargarComboBoxAreaTrabajo(){
-      AreaTrabajoBD areaBD = new AreaTrabajoBD();
-      ResultSet rs = areaBD.consultarAreasTrabajo();
-      vistaCitasAsociadasPaciente.cbAreas.addItem("-");
-      try{
-        while(rs.next()){
-          vistaCitasAsociadasPaciente.cbAreas.addItem(rs.getString("codigo") 
-                  + " - " + rs.getString("NombreArea"));
-        }
-      }catch(SQLException e){
-        JOptionPane.showMessageDialog(null, e.toString());
+private void cargarComboBoxAreaTrabajo(){
+    AreaTrabajoBD areaBD = new AreaTrabajoBD();
+    ResultSet rs = areaBD.consultarAreasTrabajo();
+    vistaCitasAsociadasPaciente.cbAreas.addItem("-");
+    try{
+      while(rs.next()){
+        vistaCitasAsociadasPaciente.cbAreas.addItem(rs.getString("codigo") 
+                + " - " + rs.getString("NombreArea"));
       }
+    }catch(SQLException e){
+      JOptionPane.showMessageDialog(null, e.toString());
     }
-  
+  }
 }

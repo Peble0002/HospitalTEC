@@ -82,127 +82,18 @@ public class Paciente_CitaBD {
    * @param estado
    * @return 
    */
-  public ResultSet consultarCitasPaciente(String usuario, Date inicio, Date fin, String Area, String estado){ 
+  public ResultSet consultarCitasPaciente(String consulta){ 
     PreparedStatement ps;
     ResultSet rs;
     
     try{
       Connection con = conexion.getConexion();
-      ps = con.prepareStatement("SELECT Cita.IdCita, fecha, hora, observaciones, estado, especialidad, correo \n" +
-      "	FROM Cita INNER JOIN Paciente_Cita ON Cita.IdCita = Paciente_Cita.IdCita \n" +
-      "		WHERE idPaciente = '"+usuario+"'\n" +
-      "---FILTROS\n" +
-      "AND fecha >= '"+inicio+"'\n" +
-      "AND fecha <= '"+fin+"'\n" +
-      "AND estado = '"+estado+"' \n" +
-      "AND especialidad LIKE '%"+Area+"'%");
-            rs = ps.executeQuery();
+      ps = con.prepareStatement(consulta);
+      rs = ps.executeQuery();
       return rs;
     }catch(SQLException e){
       JOptionPane.showMessageDialog(null, e.toString());
       return null;
     }
   }
-  
-  /**
-   * 
-   * @param usuario
-   * @param inicio
-   * @param fin
-   * @param Area
-   * @return 
-   */
-   public ResultSet consultarCitasPaciente(String usuario, Date inicio, Date fin, String Area){ 
-    PreparedStatement ps;
-    ResultSet rs;
-    
-    try{
-      Connection con = conexion.getConexion();
-      ps = con.prepareStatement("SELECT Cita.IdCita, fecha, hora, observaciones, estado, especialidad, correo \n" +
-      "	FROM Cita INNER JOIN Paciente_Cita ON Cita.IdCita = Paciente_Cita.IdCita \n" +
-      "		WHERE idPaciente = '"+usuario+"'\n" +
-      "---FILTROS\n" +
-      "AND fecha >= '"+inicio+"'\n" +
-      "AND fecha <= '"+fin+"'\n" +
-      "AND especialidad LIKE '%"+Area+"'%");
-            rs = ps.executeQuery();
-      return rs;
-    }catch(SQLException e){
-      JOptionPane.showMessageDialog(null, e.toString());
-      return null;
-    }
-  } 
-
-   /**
-    * 
-    * @param usuario
-    * @param inicio
-    * @param fin
-    * @return 
-    */
-  public ResultSet consultarCitasPaciente(String usuario, Date inicio, Date fin){ 
-    PreparedStatement ps;
-    ResultSet rs;
-    
-    try{
-      Connection con = conexion.getConexion();
-      ps = con.prepareStatement("SELECT Cita.IdCita, fecha, hora, observaciones, estado, especialidad, correo \n" +
-      "	FROM Cita INNER JOIN Paciente_Cita ON Cita.IdCita = Paciente_Cita.IdCita \n" +
-      "		WHERE idPaciente = '"+usuario+"'\n" +
-      "---FILTROS\n" +
-      "AND fecha >= '"+inicio+"'\n" +
-      "AND fecha <= '"+fin+"'\n");
-            rs = ps.executeQuery();
-      return rs;
-    }catch(SQLException e){
-      JOptionPane.showMessageDialog(null, e.toString());
-      return null;
-    }
-  }  
-  /**
-   * 
-   * @param usuario
-   * @param inicio
-   * @return 
-   */
-  public ResultSet consultarCitasPaciente(String usuario, Date inicio){ 
-    PreparedStatement ps;
-    ResultSet rs;
-    
-    try{
-      Connection con = conexion.getConexion();
-      ps = con.prepareStatement("SELECT Cita.IdCita, fecha, hora, observaciones, estado, especialidad, correo \n" +
-      "	FROM Cita INNER JOIN Paciente_Cita ON Cita.IdCita = Paciente_Cita.IdCita \n" +
-      "		WHERE idPaciente = '"+usuario+"'\n" +
-      "---FILTROS\n" +
-      "AND fecha >= '"+inicio+"'\n");
-            rs = ps.executeQuery();
-      return rs;
-    }catch(SQLException e){
-      JOptionPane.showMessageDialog(null, e.toString());
-      return null;
-    }
-  }    
-  /**
-   * 
-   * @param usuario
-   * @return 
-   */
-  public ResultSet consultarCitasPaciente(String usuario){ 
-    PreparedStatement ps;
-    ResultSet rs;
-    
-    try{
-      Connection con = conexion.getConexion();
-      ps = con.prepareStatement("SELECT Cita.IdCita, fecha, hora, observaciones, estado, especialidad, correo \n" +
-      "	FROM Cita INNER JOIN Paciente_Cita ON Cita.IdCita = Paciente_Cita.IdCita \n" +
-      "		WHERE idPaciente = '"+usuario+"'\n");
-            rs = ps.executeQuery();
-      return rs;
-    }catch(SQLException e){
-      JOptionPane.showMessageDialog(null, e.toString());
-      return null;
-    }
-  } 
-  
 }
