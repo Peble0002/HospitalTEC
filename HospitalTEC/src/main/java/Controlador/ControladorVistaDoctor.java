@@ -93,11 +93,13 @@ public class ControladorVistaDoctor implements ActionListener {
           CantDiagnosticos CCD = new CantDiagnosticos();
           ControladorCantDiagnosticos cantDiagnosticos = new ControladorCantDiagnosticos(CCD,usuario);
           cantDiagnosticos.vistaCantDiagnosticos.setVisible(true);
+          vistaDoctor.dispose();
           break;
         case "Cantidad de tratamientos":
           CantTratamientos CT = new CantTratamientos();
           ControladorCantTratamientos cantTratamientos = new ControladorCantTratamientos(CT,usuario);
           cantTratamientos.vistaCantTratamientos.setVisible(true);
+          vistaDoctor.dispose();
           break;
         case "Seguimiento Internado":
           RegistroSeguimientoInternado RSI = new RegistroSeguimientoInternado();

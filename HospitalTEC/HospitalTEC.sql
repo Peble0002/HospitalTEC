@@ -572,6 +572,7 @@ SELECT COUNT(CatalogoTratamientos.IdTratamiento) AS TotalTratamientos ---CONTEO 
 			INNER JOIN Paciente_Cita ON Paciente_Cita.IdCita = Cita.IdCita
 				WHERE CatalogoTratamientos.IdTratamiento = Cita_Diagnostico.IdTratamiento
 ---FILTROS
+AND Cita_Diagnostico.Dosis = 'Tipo'
 AND Cita.especialidad = 'Medicina General'
 AND idPaciente = '305110992'
 
