@@ -22,14 +22,15 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ControladorTratamientosPaciente implements ActionListener {
   String usuario;
-  TratamientosAsociadosPaciente vistaTratamientosSistema;
+  TratamientosAsociadosPaciente vistaTratamientosAsociados;
 
   public ControladorTratamientosPaciente(String usuario, TratamientosAsociadosPaciente vistaTratamientosSistema) {
     this.usuario = usuario;
-    this.vistaTratamientosSistema = vistaTratamientosSistema;
+    this.vistaTratamientosAsociados = vistaTratamientosSistema;
+    cargarComboBoxTratamiento();
     
-    this.vistaTratamientosSistema.btnBuscar.addActionListener(this);
-    this.vistaTratamientosSistema.btnVolver.addActionListener(this);
+    this.vistaTratamientosAsociados.btnBuscar.addActionListener(this);
+    this.vistaTratamientosAsociados.btnVolver.addActionListener(this);
     
   }
   
@@ -48,7 +49,7 @@ public class ControladorTratamientosPaciente implements ActionListener {
           VistaPaciente VP = new VistaPaciente();
           ControladorVistaPaciente CVP = new ControladorVistaPaciente(VP,usuario);
           CVP.vistaPacientes.setVisible(true);
-          vistaTratamientosSistema.dispose();
+          vistaTratamientosAsociados.dispose();
           break;
       default:
         break;       
@@ -67,10 +68,10 @@ public class ControladorTratamientosPaciente implements ActionListener {
       consulta += " AND fecha >= '" + fechaI + "'";
     }if(fechaF != null){
       consulta += " AND fecha <= '" + fechaF + "'";
-    }if(!tipo.equals("-")){
-      consulta += " AND CatalogoTratamientos.Nombre = '%" + tipo + "%'";
     }if(!nombreTratamiento.equals("-")){
-      consulta += " AND Cita_Diagnostico.Dosis LIKE '%" + nombreTratamiento + "%'";
+      consulta += " AND CatalogoTratamientos.Nombre = '" + nombreTratamiento + "'";
+    }if(!tipo.equals("-")){
+      consulta += " AND Cita_Diagnostico.Dosis = '" + tipo + "'";
     }
     return consulta;
   }
@@ -84,24 +85,24 @@ public class ControladorTratamientosPaciente implements ActionListener {
   }
   
   private void cargarTabla() throws SQLException{
-    String dia = (String) vistaTratamientosSistema.cbDiaInicio.getSelectedItem();
-    String mes = (String) vistaTratamientosSistema.cbMesInicio.getSelectedItem();
-    String ano = (String) vistaTratamientosSistema.cbAnoInicio.getSelectedItem();
+    String dia = (String) vistaTratamientosAsociados.cbDiaInicio.getSelectedItem();
+    String mes = (String) vistaTratamientosAsociados.cbMesInicio.getSelectedItem();
+    String ano = (String) vistaTratamientosAsociados.cbAnoInicio.getSelectedItem();
 
     String fechaI = validarFecha(dia, mes, ano);
    
-    String diaF = (String) vistaTratamientosSistema.cbDiaFin.getSelectedItem();
-    String mesF = (String) vistaTratamientosSistema.cbMesFin.getSelectedItem();
-    String anoF = (String) vistaTratamientosSistema.cbAnoFin.getSelectedItem();
+    String diaF = (String) vistaTratamientosAsociados.cbDiaFin.getSelectedItem();
+    String mesF = (String) vistaTratamientosAsociados.cbMesFin.getSelectedItem();
+    String anoF = (String) vistaTratamientosAsociados.cbAnoFin.getSelectedItem();
 
     String fechaF = validarFecha(diaF, mesF, anoF);
 
-    String tipo = (String) vistaTratamientosSistema.cbTipo.getSelectedItem();
-    String nombreTratamiento = (String) vistaTratamientosSistema.cbNombreTratamiento.getSelectedItem();
+    String tipo = (String) vistaTratamientosAsociados.cbTipo.getSelectedItem();
+    String nombreTratamiento = (String) vistaTratamientosAsociados.cbNombreTratamiento.getSelectedItem();
     
     String consulta = cargarQuery(fechaI, fechaF, tipo, nombreTratamiento);    
 
-    DefaultTableModel modeloTabla = (DefaultTableModel) vistaTratamientosSistema.tablaTratamientos.getModel();
+    DefaultTableModel modeloTabla = (DefaultTableModel) vistaTratamientosAsociados.tablaTratamientos.getModel();
     modeloTabla.setRowCount(0);
     
     Conexion conexion = new Conexion();
@@ -121,14 +122,14 @@ public class ControladorTratamientosPaciente implements ActionListener {
       JOptionPane.showMessageDialog(null, e.toString());
     }
   }
-  private void cargarComboBoxDiagnosticos(){
+  private void cargarComboBoxTratamiento(){
       TratamientoBD tratamientos = new TratamientoBD();
       ResultSet rs = tratamientos.consultarTratamientos();
-      vistaTratamientosSistema.cbNombreTratamiento.addItem("-");
+      vistaTratamientosAsociados.cbNombreTratamiento.addItem("-");
 
       try{
         while(rs.next()){
-          vistaTratamientosSistema.cbNombreTratamiento.addItem(rs.getString("NombreDiagnostico"));
+          vistaTratamientosAsociados.cbNombreTratamiento.addItem(rs.getString("Nombre"));
         }
       }catch(SQLException e){
         JOptionPane.showMessageDialog(null, e.toString());
