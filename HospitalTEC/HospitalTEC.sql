@@ -515,6 +515,7 @@ SELECT Cita.IdCita, fecha, (Nombre + ' ' + Apellido1 + ' ' + Apellido2) AS nombr
 WHERE fecha >= '2021-08-21'
 AND fecha <= '2021-08-21'
 AND estado = 'Registrada'
+AND especialidad LIKE '%icina%'
 AND Nombre LIKE '%Aarón%' OR Apellido1 LIKE '%Soto%' OR Apellido2 LIKE '%Cortés%'
 
 ---CONSULTA 2 DE DOCTOR
