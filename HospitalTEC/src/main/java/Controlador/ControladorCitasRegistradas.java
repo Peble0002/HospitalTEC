@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import DAO.AreaTrabajoBD;
 import DAO.Conexion;
 import DAO.UsuarioBD;
 import Vista.CitasSistema;
@@ -26,10 +27,11 @@ import javax.swing.table.DefaultTableModel;
 public class ControladorCitasRegistradas implements ActionListener{
   String usuario;
   public CitasSistema vistaCitas;
-
+  
   public ControladorCitasRegistradas(String usuario, CitasSistema vistaCitas) {
     this.usuario = usuario;
     this.vistaCitas = vistaCitas;
+    cargarComboBoxAreaTrabajo();
     
     this.vistaCitas.btnBuscar.addActionListener(this);
   }
@@ -117,18 +119,18 @@ public class ControladorCitasRegistradas implements ActionListener{
 
     String fechaI = validarFecha(dia, mes, ano);
    
-    String diaF = (String) vistaTratamientosSistema.cbDiaFin.getSelectedItem();
-    String mesF = (String) vistaTratamientosSistema.cbMesFin.getSelectedItem();
-    String anoF = (String) vistaTratamientosSistema.cbAnoFin.getSelectedItem();
+    String diaF = (String) vistaCitas.cbDiaFin.getSelectedItem();
+    String mesF = (String) vistaCitas.cbMesFin.getSelectedItem();
+    String anoF = (String) vistaCitas.cbAnoFin.getSelectedItem();
 
     String fechaF = validarFecha(diaF, mesF, anoF);
 
-    String tipo = (String) vistaTratamientosSistema.cbTipo.getSelectedItem();
-    String nombreTratamiento = (String) vistaTratamientosSistema.cbNombreTratamiento.getSelectedItem();
+    String tipo = (String) vistaCitas.cbTipo.getSelectedItem();
+    String nombreTratamiento = (String) vistaCitas.cbNombreTratamiento.getSelectedItem();
     
     String consulta = cargarQuery(fechaI, fechaF, tipo, nombreTratamiento);    
 
-    DefaultTableModel modeloTabla = (DefaultTableModel) vistaTratamientosSistema.tablaTratamientos.getModel();
+    DefaultTableModel modeloTabla = (DefaultTableModel) vistaCitas.tablaTratamientos.getModel();
     modeloTabla.setRowCount(0);
     
     Conexion conexion = new Conexion();
@@ -148,5 +150,16 @@ public class ControladorCitasRegistradas implements ActionListener{
       JOptionPane.showMessageDialog(null, e.toString());
     }
   }
-  
+  private void cargarComboBoxAreaTrabajo(){
+      AreaTrabajoBD areaBD = new AreaTrabajoBD();
+      ResultSet rs = areaBD.consultarAreasTrabajo();
+
+      try{
+        while(rs.next()){
+          vistaCitas.cbArea.addItem(rs.getString("NombreArea"));
+        }
+      }catch(SQLException e){
+        JOptionPane.showMessageDialog(null, e.toString());
+      }
+    }
 }
