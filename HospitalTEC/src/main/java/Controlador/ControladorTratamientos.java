@@ -58,13 +58,13 @@ public class ControladorTratamientos implements ActionListener{
     UsuarioBD usuarioBD = new UsuarioBD();  
       int tipoUsuario = usuarioBD.retonarTipo(usuario);
       switch(tipoUsuario){
-        case 1:
+        case 3:
           VistaEnfermero VE = new VistaEnfermero();
           ControladorVistaEnfermero CVE = new ControladorVistaEnfermero(VE,usuario);
           CVE.vistaEnfermero.setVisible(true);
           vistaTratamientosSistema.dispose();
           break;
-        case 2:
+        case 4:
           VistaDoctor VD = new VistaDoctor();
           ControladorVistaDoctor CVD = new ControladorVistaDoctor(VD,usuario);
           CVD.vistaDoctor.setVisible(true);

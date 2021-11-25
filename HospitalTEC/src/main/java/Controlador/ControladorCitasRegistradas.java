@@ -34,6 +34,7 @@ public class ControladorCitasRegistradas implements ActionListener{
     cargarComboBoxAreaTrabajo();
     
     this.vistaCitas.btnBuscar.addActionListener(this);
+    this.vistaCitas.btVolver.addActionListener(this);
   }
   
   @Override
@@ -59,19 +60,19 @@ public class ControladorCitasRegistradas implements ActionListener{
     UsuarioBD usuarioBD = new UsuarioBD();  
       int tipoUsuario = usuarioBD.retonarTipo(usuario);
       switch(tipoUsuario){
-        case 1:
+        case 2:
           VistaSecretario VS = new VistaSecretario();
           ControladorVistaSecretario CVS = new ControladorVistaSecretario(VS,usuario);
           CVS.vistaSecretario.setVisible(true);
           vistaCitas.dispose();
           break;
-        case 2:
+        case 3:
           VistaEnfermero VE = new VistaEnfermero();
           ControladorVistaEnfermero CVE = new ControladorVistaEnfermero(VE,usuario);
           CVE.vistaEnfermero.setVisible(true);
           vistaCitas.dispose();
           break;
-        case 3:
+        case 4:
           VistaDoctor VD = new VistaDoctor();
           ControladorVistaDoctor CVD = new ControladorVistaDoctor(VD,usuario);
           CVD.vistaDoctor.setVisible(true);

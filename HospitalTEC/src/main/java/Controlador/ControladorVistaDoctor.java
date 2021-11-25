@@ -84,10 +84,20 @@ public class ControladorVistaDoctor implements ActionListener {
           vistaDoctor.dispose();
           break;
         case "Cantidad de citas":
+          CantCitasRegistradas CCC = new CantCitasRegistradas();
+          ControladorCantCitasRegistradas controladorCantCitas = new ControladorCantCitasRegistradas(CCC,usuario);
+          controladorCantCitas.vistaCantCitas.setVisible(true);
+          vistaDoctor.dispose();
           break;
         case "Cantidad de diagnósticos":
+          CantDiagnosticos CCD = new CantDiagnosticos();
+          ControladorCantDiagnosticos cantDiagnosticos = new ControladorCantDiagnosticos(CCD,usuario);
+          cantDiagnosticos.vistaCantDiagnosticos.setVisible(true);
           break;
         case "Cantidad de tratamientos":
+          CantTratamientos CT = new CantTratamientos();
+          ControladorCantTratamientos cantTratamientos = new ControladorCantTratamientos(CT,usuario);
+          cantTratamientos.vistaCantTratamientos.setVisible(true);
           break;
         case "Seguimiento Internado":
           RegistroSeguimientoInternado RSI = new RegistroSeguimientoInternado();
