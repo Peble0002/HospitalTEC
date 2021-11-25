@@ -47,11 +47,11 @@ public class ControladorCancelarCita implements ActionListener{
    public void actionPerformed(ActionEvent e){
      switch(e.getActionCommand()){
       case "Buscar Cita":
-        cargarComboBoxCitas();
+        cargarComboBoxCitas(vistaCanceltarCita.tbCedula.getText());
         break;
       case "Cancelar": 
         cancelarCita();
-        cargarComboBoxCitas();
+        cargarComboBoxCitas(vistaCanceltarCita.tbCedula.getText());
         break;
       case "Volver":
           asignarVentanaUsuario();
@@ -60,9 +60,9 @@ public class ControladorCancelarCita implements ActionListener{
           break;       
   }
 }
-  private void cargarComboBoxCitas(){
+  private void cargarComboBoxCitas(String cedula){
       Paciente_CitaBD pacienteCitaBD = new Paciente_CitaBD();
-      ResultSet rs = pacienteCitaBD.consultarCitasRegistradasParaUnUsuario(this.usuario);
+      ResultSet rs = pacienteCitaBD.consultarCitasRegistradasParaUnUsuario(cedula);
       
       try{
         while(rs.next()){
@@ -72,6 +72,8 @@ public class ControladorCancelarCita implements ActionListener{
         JOptionPane.showMessageDialog(null, e.toString());
       }
     }     
+  
+   
    
   
   public void asignarVentanaUsuario(){
