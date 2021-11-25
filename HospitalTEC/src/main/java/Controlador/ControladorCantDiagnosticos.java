@@ -55,7 +55,7 @@ public class ControladorCantDiagnosticos implements ActionListener {
   }
 }
    
-   public String cargarQuery(String nivel, String paciente, String area){
+  public String cargarQuery(String nivel, String paciente, String area){
     String consulta = "SELECT COUNT(CatalogoDiagnosticos.IdDiagnostico) AS "
             + "TotalDiagnosticos FROM CatalogoDiagnosticos INNER JOIN "
             + "Cita_Diagnostico ON CatalogoDiagnosticos.IdDiagnostico = "

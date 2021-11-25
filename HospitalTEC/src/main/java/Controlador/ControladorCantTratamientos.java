@@ -37,16 +37,64 @@ public class ControladorCantTratamientos implements ActionListener{
    public void actionPerformed(ActionEvent e){
      switch(e.getActionCommand()){
       case "Buscar":
-        
-        break;
+        try{
+          cargarResultado();
+          break;
+        }catch (SQLException o){ 
+          JOptionPane.showMessageDialog(null, o.toString()); 
+          break;
+        }
       case "Volver":
           asignarVentanaUsuario();
           break;
       default:
           break;       
   }
-  
 }
+   
+  public String cargarQuery(String paciente, String area, String tipo){
+    String consulta = "SELECT COUNT(CatalogoTratamientos.IdTratamiento) AS "
+            + "TotalTratamientos FROM CatalogoTratamientos INNER JOIN "
+            + "Cita_Diagnostico ON CatalogoTratamientos.IdTratamiento = "
+            + "Cita_Diagnostico.IdTratamiento INNER JOIN Cita ON "
+            + "Cita_Diagnostico.IdCita = Cita.IdCita INNER JOIN "
+            + "Paciente_Cita ON Paciente_Cita.IdCita = Cita.IdCita "
+            + "WHERE CatalogoTratamientos.IdTratamiento = "
+            + "Cita_Diagnostico.IdTratamiento";
+    if(!paciente.equals("-")){
+      consulta += " AND idPaciente = '" + paciente + "'";
+    }if(!area.equals("-")){
+      consulta += " AND Cita.especialidad = '" + area + "'";
+    }if(!tipo.equals("-")){
+      consulta += " AND Cita_Diagnostico.Dosis = '" + tipo + "'";
+    }
+    return consulta;
+  }
+   
+  public String cargarQueryGeneral(){
+    String consulta = "SELECT COUNT(IdTratamiento) AS TotalTratamientos	FROM CatalogoTratamientos";
+    return consulta;
+  }
+  
+  private void cargarResultado() throws SQLException{
+    String paciente = (String) vistaCantTratamientos.cbPacientes.getSelectedItem();
+    String area = (String) vistaCantTratamientos.cbAreaCita.getSelectedItem();
+    String tipo = (String) vistaCantTratamientos.cbTipo.getSelectedItem();
+    String consulta;
+    
+    if(paciente.equals("-") && area.equals("-") && tipo.equals("-")){
+      consulta = cargarQueryGeneral();  
+    }else{
+      consulta = cargarQuery(paciente, area, tipo);
+    }
+    Conexion conexion = new Conexion();
+    ResultSet rs = conexion.consulta(consulta);
+    rs.next();
+    int cant = rs.getInt("TotalTratamientos");
+    String resultado = String.valueOf(cant);
+    
+    vistaCantTratamientos.jLabel1.setText(resultado);
+  }
    
 public void asignarVentanaUsuario(){
     UsuarioBD usuarioBD = new UsuarioBD(); 
@@ -74,6 +122,7 @@ public void asignarVentanaUsuario(){
  private void cargarComboBoxAreaTrabajo(){
       AreaTrabajoBD areaBD = new AreaTrabajoBD();
       ResultSet rs = areaBD.consultarAreasTrabajo();
+      vistaCantTratamientos.cbAreaCita.addItem("-");
 
       try{
         while(rs.next()){
@@ -87,6 +136,7 @@ public void asignarVentanaUsuario(){
  private void cargarComboBoxPacientes(){
       PacienteBD pacienteBD = new PacienteBD();
       ResultSet rs = pacienteBD.consultarPacientes();
+      vistaCantTratamientos.cbPacientes.addItem("-");
 
       try{
         while(rs.next()){
