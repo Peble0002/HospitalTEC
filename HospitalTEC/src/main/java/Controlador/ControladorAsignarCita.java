@@ -47,11 +47,11 @@ public class ControladorAsignarCita  implements ActionListener{
    public void actionPerformed(ActionEvent e){
      switch(e.getActionCommand()){
       case "Buscar Cita":
-        cargarComboBoxCitas();
+        cargarComboBoxCitas(vistaAsignarCita.tbCedula.getText());
         break;
       case "Asignar": 
         asignarCita();
-        cargarComboBoxCitas();
+        cargarComboBoxCitas(vistaAsignarCita.tbCedula.getText());
         break;
       case "Volver":
           asignarVentanaUsuario();
@@ -60,13 +60,13 @@ public class ControladorAsignarCita  implements ActionListener{
           break;       
   }
 }
-  private void cargarComboBoxCitas(){
+  private void cargarComboBoxCitas(String cedula){
       Paciente_CitaBD pacienteCitaBD = new Paciente_CitaBD();
-      ResultSet rs = pacienteCitaBD.consultarCitasRegistradasParaUnUsuario(this.usuario);
+      ResultSet rs = pacienteCitaBD.consultarCitasRegistradasParaUnUsuario(cedula);
       
       try{
         while(rs.next()){
-          CancelarCita.cbCitasAsociadas.addItem(rs.getString("IdCita") + " - " + rs.getString("fecha"));
+          vistaAsignarCita.cbCitasAsociadas.addItem(rs.getString("IdCita") + " - " + rs.getString("fecha"));
         }
       }catch(SQLException e){
         JOptionPane.showMessageDialog(null, e.toString());
@@ -107,7 +107,7 @@ public class ControladorAsignarCita  implements ActionListener{
           break;
         default:
           JOptionPane.showMessageDialog(vistaAsignarCita, "Ha ocurrido algo, por favor intent"
-                  + "elo a iniciar sesión nuevamente.");
+                  + "e iniciar sesión nuevamente.");
           break;
       } 
     }
