@@ -6,6 +6,7 @@ import Modelo.Usuario;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -41,6 +42,21 @@ public class PacienteBD {
       JOptionPane.showMessageDialog(null, "Registro de Paciente completado.");
     }catch(SQLException e){
       JOptionPane.showMessageDialog(null, e.toString());
+    }
+  }
+  
+  public ResultSet consultarPacientes(){
+    PreparedStatement ps;
+    ResultSet rs;
+
+    try{
+      Connection con = conexion.getConexion();
+      ps = con.prepareStatement("SELECT idPaciente FROM Paciente");
+      rs = ps.executeQuery();
+      return rs;
+    }catch(SQLException e){
+      JOptionPane.showMessageDialog(null, e.toString());
+      return null;
     }
   }
 }

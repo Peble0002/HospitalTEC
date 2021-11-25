@@ -531,7 +531,7 @@ AND Nivel = 'Grave'
 AND NombreDiagnostico LIKE '%Gastroenteritis%'
 
 ---CONSULTA 3 DE DOCTOR
-SELECT * 
+SELECT CatalogoTratamientos.IdTratamiento, CatalogoTratamientos.Nombre
 	FROM Cita INNER JOIN Paciente_Cita ON Cita.IdCita = Paciente_Cita.IdCita 
 		INNER JOIN Cita_Diagnostico ON Cita.IdCita = Cita_Diagnostico.IdCita
 			INNER JOIN CatalogoTratamientos ON Cita_Diagnostico.IdTratamiento = CatalogoTratamientos.IdTratamiento
@@ -539,8 +539,8 @@ SELECT *
 ---FILTROS
 AND fecha >= '2021-08-21'
 AND fecha <= '2021-08-21'
-AND Cita_Diagnostico.Dosis = '%N/A%'
-AND CatalogoTratamientos.Nombre LIKE '%Cirugía gastrointestinal%'
+AND Cita_Diagnostico.Dosis = 'N/A'
+AND CatalogoTratamientos.Nombre = 'Cirugía gastrointestinal'
 
 ---CONSULTA 4 DE DOCTOR
 SELECT COUNT(Cita.IdCita) FROM Cita
