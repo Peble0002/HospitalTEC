@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import DAO.CatalogoDiagnosticoBD;
 import DAO.Paciente_CitaBD;
 import Vista.DiagnosticosAsociadosPaciente;
 import Vista.VistaPaciente;
@@ -26,6 +27,7 @@ public class ControladorDiagnosticoPaciente  implements ActionListener{
   public ControladorDiagnosticoPaciente(String usuario, DiagnosticosAsociadosPaciente vistaDiagnosticosAsociadosPaciente) {
     this.usuario = usuario;
     this.vistaDiagnosticosAsociadosPaciente = vistaDiagnosticosAsociadosPaciente;
+    cargarComboBoxDiagnosticos();
     
     this.vistaDiagnosticosAsociadosPaciente.btnBuscar.addActionListener(this);
     this.vistaDiagnosticosAsociadosPaciente.btnVolver.addActionListener(this);
@@ -120,4 +122,19 @@ public class ControladorDiagnosticoPaciente  implements ActionListener{
       JOptionPane.showMessageDialog(null, e.toString());
     }
   }
+  
+  private void cargarComboBoxDiagnosticos(){
+      CatalogoDiagnosticoBD diagnosticosBD = new CatalogoDiagnosticoBD();
+      ResultSet rs = diagnosticosBD.consultarDiagnosticos();
+      vistaDiagnosticosAsociadosPaciente.cbNombreDiagnosticos.addItem("-");
+
+      try{
+        while(rs.next()){
+          vistaDiagnosticosAsociadosPaciente.cbNombreDiagnosticos.addItem(rs.getString("IdDiagnostico") + " - "
+                  + rs.getString("NombreDiagnostico"));
+        }
+      }catch(SQLException e){
+        JOptionPane.showMessageDialog(null, e.toString());
+      }
+    }
 }

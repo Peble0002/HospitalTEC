@@ -35,8 +35,6 @@ public class DiagnosticosAsociadosPaciente extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
-        jCedula = new javax.swing.JLabel();
-        tbCedula = new javax.swing.JTextField();
         cbMesFin = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         cbDiaInicio = new javax.swing.JComboBox<>();
@@ -62,11 +60,11 @@ public class DiagnosticosAsociadosPaciente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Codigo del Curso", "Nombre del Curso"
+                "IdDiagnostico", "NombreDiagnostico"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -106,16 +104,6 @@ public class DiagnosticosAsociadosPaciente extends javax.swing.JFrame {
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVolverActionPerformed(evt);
-            }
-        });
-
-        jCedula.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jCedula.setForeground(new java.awt.Color(0, 153, 153));
-        jCedula.setText("Cedula");
-
-        tbCedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tbCedulaActionPerformed(evt);
             }
         });
 
@@ -234,11 +222,7 @@ public class DiagnosticosAsociadosPaciente extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jCedula)
-                .addGap(18, 18, 18)
-                .addComponent(tbCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnBuscar)
                 .addGap(46, 46, 46)
                 .addComponent(btnVolver)
@@ -289,16 +273,10 @@ public class DiagnosticosAsociadosPaciente extends javax.swing.JFrame {
                             .addComponent(cbAnoFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbMesFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbDiaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jCedula)
-                        .addComponent(tbCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnBuscar)
-                            .addComponent(btnVolver))))
+                    .addComponent(btnBuscar)
+                    .addComponent(btnVolver))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -310,10 +288,6 @@ public class DiagnosticosAsociadosPaciente extends javax.swing.JFrame {
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
      
     }//GEN-LAST:event_btnVolverActionPerformed
-
-  private void tbCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbCedulaActionPerformed
-    // TODO add your handling code here:
-  }//GEN-LAST:event_tbCedulaActionPerformed
 
   private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
     // TODO add your handling code here:
@@ -365,7 +339,6 @@ public class DiagnosticosAsociadosPaciente extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> cbMesInicio;
     public javax.swing.JComboBox<String> cbNivel;
     public javax.swing.JComboBox<String> cbNombreDiagnosticos;
-    private javax.swing.JLabel jCedula;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -379,6 +352,5 @@ public class DiagnosticosAsociadosPaciente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tablaDiagnosticos;
-    private javax.swing.JTextField tbCedula;
     // End of variables declaration//GEN-END:variables
 }
