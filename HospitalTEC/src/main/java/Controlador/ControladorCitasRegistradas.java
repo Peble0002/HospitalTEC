@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import DAO.AreaTrabajoBD;
 import DAO.UsuarioBD;
 import Vista.CitasSistema;
 import Vista.VistaDoctor;
@@ -13,6 +14,8 @@ import Vista.VistaPaciente;
 import Vista.VistaSecretario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -72,6 +75,17 @@ public class ControladorCitasRegistradas implements ActionListener{
     }
   }
   
-  
+  private void cargarComboBoxAreaTrabajo(){
+      AreaTrabajoBD areaBD = new AreaTrabajoBD();
+      ResultSet rs = areaBD.consultarAreasTrabajo();
+
+      try{
+        while(rs.next()){
+          vistaCitas.cbArea.addItem(rs.getString("codigo") + " - " + rs.getString("NombreArea"));
+        }
+      }catch(SQLException e){
+        JOptionPane.showMessageDialog(null, e.toString());
+      }
+    }
   
 }
