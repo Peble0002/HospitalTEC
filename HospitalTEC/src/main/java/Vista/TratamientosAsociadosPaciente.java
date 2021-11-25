@@ -64,11 +64,11 @@ public class TratamientosAsociadosPaciente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Codigo del Curso", "Nombre del Curso"
+                "IdTratamiento", "Nombre"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {

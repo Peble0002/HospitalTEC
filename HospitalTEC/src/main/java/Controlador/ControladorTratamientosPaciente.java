@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import DAO.*;
 import DAO.Conexion;
 import Vista.TratamientosAsociadosPaciente;
 import Vista.*;
@@ -120,4 +121,17 @@ public class ControladorTratamientosPaciente implements ActionListener {
       JOptionPane.showMessageDialog(null, e.toString());
     }
   }
+  private void cargarComboBoxDiagnosticos(){
+      TratamientoBD tratamientos = new TratamientoBD();
+      ResultSet rs = tratamientos.consultarTratamientos();
+      vistaTratamientosSistema.cbNombreTratamiento.addItem("-");
+
+      try{
+        while(rs.next()){
+          vistaTratamientosSistema.cbNombreTratamiento.addItem(rs.getString("NombreDiagnostico"));
+        }
+      }catch(SQLException e){
+        JOptionPane.showMessageDialog(null, e.toString());
+      }
+    }
 }

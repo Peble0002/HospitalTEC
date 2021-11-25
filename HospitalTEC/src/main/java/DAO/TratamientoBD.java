@@ -55,4 +55,19 @@ public class TratamientoBD {
       return null;
     }
   } 
+   
+   public ResultSet consultarTratamientos(){
+    PreparedStatement ps;
+    ResultSet rs;
+
+    try{
+      Connection con = conexion.getConexion();
+      ps = con.prepareStatement("SELECT Nombre FROM CatalogoTratamientos");
+      rs = ps.executeQuery();
+      return rs;
+    }catch(SQLException e){
+      JOptionPane.showMessageDialog(null, e.toString());
+      return null;
+    }
+  }
 }
