@@ -487,7 +487,7 @@ AND Nivel = 'Grave'
 AND NombreDiagnostico LIKE '%Gastroenteritis%'
 
 ---CONSULTA 3 DE PACIENTE
-SELECT * 
+SELECT CatalogoTratamientos.IdTratamiento, CatalogoTratamientos.Nombre 
 	FROM Cita INNER JOIN Paciente_Cita ON Cita.IdCita = Paciente_Cita.IdCita 
 		INNER JOIN Cita_Diagnostico ON Cita.IdCita = Cita_Diagnostico.IdCita
 			INNER JOIN CatalogoTratamientos ON Cita_Diagnostico.IdTratamiento = CatalogoTratamientos.IdTratamiento
