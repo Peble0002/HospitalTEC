@@ -84,24 +84,55 @@ public class ControladorCitasRegistradas implements ActionListener{
     }
   }
   
-  public String cargarQuery(String fechaI, String fechaF, String tipo, String nombreTratamiento){
-    String consulta = "SELECT CatalogoTratamientos.IdTratamiento, "
-            + "CatalogoTratamientos.Nombre FROM Cita INNER JOIN Paciente_Cita "
-            + "ON Cita.IdCita = Paciente_Cita.IdCita INNER JOIN Cita_Diagnostico "
-            + "ON Cita.IdCita = Cita_Diagnostico.IdCita INNER JOIN "
-            + "CatalogoTratamientos ON Cita_Diagnostico.IdTratamiento = "
-            + "CatalogoTratamientos.IdTratamiento WHERE idPaciente = '" + 
-            usuario + "'";
-    if(fechaI != null){
-      consulta += " AND fecha >= '" + fechaI + "'";
-    }if(fechaF != null){
-      consulta += " AND fecha <= '" + fechaF + "'";
-    }if(!tipo.equals("-")){
-      consulta += " AND CatalogoTratamientos.Nombre = '%" + tipo + "%'";
-    }if(!nombreTratamiento.equals("-")){
-      consulta += " AND Cita_Diagnostico.Dosis LIKE '%" + nombreTratamiento + "%'";
-    }
+  public String cargarQuery(String fechaI, String fechaF, String estado, String area, String nombre){
+    String consulta = "SELECT Cita.IdCita, fecha, (Nombre + ' ' + Apellido1 + "
+            + "' ' + Apellido2) AS nombreCompleto, hora, observaciones, estado, "
+            + "especialidad, correo FROM Cita INNER JOIN Paciente_Cita ON "
+            + "Cita.IdCita = Paciente_Cita.IdCita INNER JOIN Usuario ON "
+            + "Paciente_Cita.idPaciente = Usuario.idUsuario";
+    if(fechaI == null && fechaF == null && estado.equals("-") && area.equals("-") && nombre.equals("")){
+      return consulta;
+    }else{
+      consulta += " WHERE";
+      boolean primerConsulta = true;
+      if(fechaI != null){
+        if(primerConsulta){
+          consulta += " fecha >= '" + fechaI + "'";
+          primerConsulta = false;
+        }else{
+          consulta += " AND fecha >= '" + fechaI + "'";
+        }
+      }if(fechaF != null){
+        if(primerConsulta){
+          consulta += " fecha <= '" + fechaF + "'";
+          primerConsulta = false;
+        }else{
+          consulta += " AND fecha <= '" + fechaF + "'";
+        } 
+      }if(!estado.equals("-")){
+        if(primerConsulta){
+          consulta += " estado = '%" + estado + "%'";
+          primerConsulta = false;
+        }else{
+          consulta += " AND estado = '" + estado + "'";
+        }
+      }if(!area.equals("-")){
+        if(primerConsulta){
+          consulta += " especialidad = '" + area + "'";
+          primerConsulta = false;
+        }else{
+          consulta += " AND especialidad = '" + area + "'";
+        }
+      }if(!nombre.equals("")){
+        if(primerConsulta){
+          consulta += " Nombre LIKE '%" + nombre + "%'";
+          primerConsulta = false;
+        }else{
+          consulta += " AND Nombre LIKE '%" + nombre + "%'";
+        }
+      }
     return consulta;
+    }
   }
   
   private String validarFecha(String dia, String mes, String ano){
@@ -125,12 +156,13 @@ public class ControladorCitasRegistradas implements ActionListener{
 
     String fechaF = validarFecha(diaF, mesF, anoF);
 
-    String tipo = (String) vistaCitas.cbTipo.getSelectedItem();
-    String nombreTratamiento = (String) vistaCitas.cbNombreTratamiento.getSelectedItem();
+    String estado = (String) vistaCitas.cbEstado.getSelectedItem();
+    String area = (String) vistaCitas.cbArea.getSelectedItem();
+    String nombre = (String) vistaCitas.tbNombre.getText();
     
-    String consulta = cargarQuery(fechaI, fechaF, tipo, nombreTratamiento);    
+    String consulta = cargarQuery(fechaI, fechaF, estado, area, nombre);  
 
-    DefaultTableModel modeloTabla = (DefaultTableModel) vistaCitas.tablaTratamientos.getModel();
+    DefaultTableModel modeloTabla = (DefaultTableModel) vistaCitas.tablaCitasSistema.getModel();
     modeloTabla.setRowCount(0);
     
     Conexion conexion = new Conexion();
