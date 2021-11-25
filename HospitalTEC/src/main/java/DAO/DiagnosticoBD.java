@@ -56,28 +56,18 @@ public class DiagnosticoBD {
     }
   }
   
-  
-  public ResultSet consultarDiagnosticoPaciente(String cedula, Date inicio, Date fin, String nivel, String nombre){ 
+  public ResultSet consultarDiagnosticoPaciente(String consulta){ 
     PreparedStatement ps;
     ResultSet rs;
     
     try{
       Connection con = conexion.getConexion();
-      ps = con.prepareStatement("SELECT CatalogoDiagnosticos.IdDiagnostico, CatalogoDiagnosticos.NombreDiagnostico \n" +
-      "FROM Cita INNER JOIN Paciente_Cita ON Cita.IdCita = Paciente_Cita.IdCita \n" +
-      "INNER JOIN Cita_Diagnostico ON Cita.IdCita = Cita_Diagnostico.IdCita\n" +
-      "INNER JOIN CatalogoDiagnosticos ON Cita_Diagnostico.IdDiagnostico = CatalogoDiagnosticos.IdDiagnostico\n" +
-      "WHERE idPaciente = '"+cedula+"'\n" +
-      "---FILTROS\n" +
-      "AND fecha >= '"+inicio+"'\n" +
-      "AND fecha <= '"+fin+"'\n" +
-      "AND Nivel = '"+nivel+"' \n" +
-      "AND NombreDiagnostico LIKE '%"+nombre+"%'");
-            rs = ps.executeQuery();
+      ps = con.prepareStatement(consulta);
+      rs = ps.executeQuery();
       return rs;
     }catch(SQLException e){
       JOptionPane.showMessageDialog(null, e.toString());
       return null;
     }
-  }  
-}
+  }
+}  

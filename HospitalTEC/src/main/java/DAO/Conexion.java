@@ -6,6 +6,8 @@
 package DAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -43,4 +45,20 @@ public class Conexion {
       return null;
     }
   }
+  
+    public ResultSet consulta(String consulta){ 
+    PreparedStatement ps;
+    ResultSet rs;
+    
+    try{
+      Connection con = getConexion();
+      ps = con.prepareStatement(consulta);
+      rs = ps.executeQuery();
+      return rs;
+    }catch(SQLException e){
+      JOptionPane.showMessageDialog(null, e.toString());
+      return null;
+    }
+  }
+  
 }

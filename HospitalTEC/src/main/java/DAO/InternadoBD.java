@@ -36,23 +36,18 @@ public class InternadoBD {
     }
   }
   
-  public ResultSet consultarTratamientoPaciente(String cedula){ 
+    public ResultSet consultarInternadoPaciente(String consulta){ 
     PreparedStatement ps;
     ResultSet rs;
     
     try{
       Connection con = conexion.getConexion();
-      ps = con.prepareStatement("SELECT fechaInicio, fechaFin, nombreCentro, (Nombre + ' ' + Apellido1 + ' ' + Apellido2) AS nombreCompleto \n" +
-      "FROM Internado INNER JOIN Internado_Centro ON Internado.codInternado = Internado_Centro.codInternado\n" +
-      "INNER JOIN CentroAtencion ON CentroAtencion.Codigo = Internado_Centro.Codigo\n" +
-      "INNER JOIN Internado_Doctor ON Internado.codInternado = Internado_Doctor.codInternado\n" +
-      "INNER JOIN Usuario ON Internado_Doctor.IDFuncionario = Usuario.idUsuario\n" +
-      "WHERE IdInternado = '"+cedula+"'");
-            rs = ps.executeQuery();
+      ps = con.prepareStatement(consulta);
+      rs = ps.executeQuery();
       return rs;
     }catch(SQLException e){
       JOptionPane.showMessageDialog(null, e.toString());
       return null;
     }
-  } 
+  }
 }
