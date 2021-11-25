@@ -39,10 +39,16 @@ public class ControladorCantDiagnosticos implements ActionListener {
    public void actionPerformed(ActionEvent e){
      switch(e.getActionCommand()){
       case "Buscar":
-        
-        break;
+        try{
+          cargarResultado();
+          break;
+        }catch (SQLException o){ 
+          JOptionPane.showMessageDialog(null, o.toString()); 
+          break;
+        }
       case "Volver":
           asignarVentanaUsuario();
+          vistaCantDiagnosticos.dispose();
           break;
       default:
           break;       
@@ -58,13 +64,19 @@ public class ControladorCantDiagnosticos implements ActionListener {
             + "ON Paciente_Cita.IdCita = Cita.IdCita WHERE "
             + "CatalogoDiagnosticos.IdDiagnostico = "
             + "Cita_Diagnostico.IdDiagnostico";
-    
+    if(!nivel.equals("-")){
+      consulta += " AND Nivel = '" + nivel + "'";
+    }if(!paciente.equals("-")){
+      consulta += " AND idPaciente = '" + paciente + "'";
+    }if(!area.equals("-")){
+      consulta += " AND Cita.especialidad = '" + area + "'";
+    }
     
     return consulta;
   }
    
   public String cargarQueryGeneral(){
-    String consulta = "SELECT COUNT(IdDiagnostico)	FROM CatalogoDiagnosticos";
+    String consulta = "SELECT COUNT(IdDiagnostico) AS TotalDiagnosticos	FROM CatalogoDiagnosticos";
     return consulta;
   }
   
