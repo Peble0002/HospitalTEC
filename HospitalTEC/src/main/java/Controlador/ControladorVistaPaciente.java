@@ -69,7 +69,7 @@ public class ControladorVistaPaciente implements ActionListener {
           case "Hospitalizaciones":
             HospitalizacionesAsociadasPaciente HAP = new HospitalizacionesAsociadasPaciente();
             ControladorHospitalizacionesPaciente controladorHospitalizacionesPaciente = new ControladorHospitalizacionesPaciente(HAP, usuario);
-            controladorHospitalizacionesPaciente.vistahospitalizacionesSistema.setVisible(true);
+            controladorHospitalizacionesPaciente.vistahospitalizacionesPaciente.setVisible(true);
             vistaPacientes.dispose();
             break;  
         case "Volver":
